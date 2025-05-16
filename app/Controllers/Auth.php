@@ -35,7 +35,7 @@ class Auth extends Controller
         
         $email = $this->request->getPost('email');
         $username = $this->request->getPost('usuario');
-        $contrasenia = $this->request->getPost('password');
+        $contrasenia = $this->request->getPost('passwordd');
         $colegioSeleccionado = $this->request->getPost('idcolegio'); // Nuevo: lo que seleccionó el usuario
     
         // Buscar al usuario por nombre de usuario
