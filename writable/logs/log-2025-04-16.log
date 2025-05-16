@@ -1,0 +1,80 @@
+ERROR - 2025-04-16 11:48:29 --> Intento fallido
+CRITICAL - 2025-04-16 09:04:34 --> ErrorException: Undefined property: App\Controllers\AdminController::$Usuario
+[Method: POST, Route: admin/guardarUsuario]
+in APPPATH\Controllers\AdminController.php on line 46.
+ 1 APPPATH\Controllers\AdminController.php(46): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\AdminController::$Usuario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\AdminController.php', 46)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-16 09:06:04 --> Error: Class "App\Models\Usuarios" not found
+[Method: POST, Route: admin/guardarUsuario]
+in APPPATH\Controllers\AdminController.php on line 47.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-16 12:44:17 --> ErrorException: foreach() argument must be of type array|object, string given
+[Method: GET, Route: horarios/editar/1]
+in APPPATH\Views\editar_horario.php on line 128.
+ 1 APPPATH\Views\editar_horario.php(128): CodeIgniter\Debug\Exceptions->errorHandler(2, 'foreach() argument must be of type array|object, string given', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\editar_horario.php', 128)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\editar_horario.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('editar_horario', [], true)
+ 5 APPPATH\Controllers\Horarios.php(35): view('editar_horario', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->editar('1')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-16 12:44:53 --> ParseError: syntax error, unexpected token "endif", expecting end of file
+[Method: GET, Route: horarios/editar/1]
+in APPPATH\Views\editar_horario.php on line 134.
+ 1 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('editar_horario', [], true)
+ 3 APPPATH\Controllers\Horarios.php(35): view('editar_horario', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->editar('1')
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-04-16 13:25:50 --> Intento fallido
+ERROR - 2025-04-16 13:27:39 --> Intento fallido
+ERROR - 2025-04-16 13:28:48 --> Intento fallido
+ERROR - 2025-04-16 17:15:59 --> Intento fallido
+CRITICAL - 2025-04-16 14:18:26 --> ErrorException: Undefined variable $usuarioModel
+[Method: POST, Route: admin/guardarUsuario]
+in APPPATH\Controllers\AdminController.php on line 74.
+ 1 APPPATH\Controllers\AdminController.php(74): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuarioModel', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\AdminController.php', 74)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-16 14:18:54 --> ErrorException: Undefined variable $usuarioModel
+[Method: POST, Route: admin/guardarUsuario]
+in APPPATH\Controllers\AdminController.php on line 74.
+ 1 APPPATH\Controllers\AdminController.php(74): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuarioModel', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\AdminController.php', 74)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-16 14:19:03 --> ErrorException: Undefined variable $usuarioModel
+[Method: POST, Route: admin/guardarUsuario]
+in APPPATH\Controllers\AdminController.php on line 74.
+ 1 APPPATH\Controllers\AdminController.php(74): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuarioModel', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\AdminController.php', 74)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

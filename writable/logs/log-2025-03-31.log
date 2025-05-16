@@ -1,0 +1,278 @@
+INFO - 2025-03-31 14:16:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-31 14:16:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-31 14:16:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-31 14:17:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-31 14:17:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-31 14:17:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-31 14:31:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-31 14:31:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-31 14:32:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-31 14:32:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-31 14:32:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-31 14:39:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-31 14:39:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-31 14:39:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-31 14:49:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-31 14:49:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-31 14:57:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-31 14:58:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2025-03-31 14:58:00 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2025-03-31 15:09:41 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-03-31 15:09:41 --> 220 smtp.gmail.com ESMTP d9443c01a7336-2291f1df011sm70099455ad.194 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [190.244.214.228]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+starttls: 220 2.0.0 Ready to start TLS
+
+hello: 250-smtp.gmail.com at your service, [190.244.214.228]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+Failed to authenticate password. Error: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2291f1df011sm70099455ad.194 - gsmtp
+
+ERROR - 2025-03-31 15:09:41 --> Error al enviar correo de recuperación a brunocameille@alumnos.itr3.edu.ar: 220 smtp.gmail.com ESMTP d9443c01a7336-2291f1df011sm70099455ad.194 - gsmtp
+<br><pre>hello: 250-smtp.gmail.com at your service, [190.244.214.228]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+</pre><pre>starttls: 220 2.0.0 Ready to start TLS
+</pre><pre>hello: 250-smtp.gmail.com at your service, [190.244.214.228]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+</pre>Failed to authenticate password. Error: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials d9443c01a7336-2291f1df011sm70099455ad.194 - gsmtp
+<br>Unable to send email using SMTP. Your server might not be configured to send mail using this method.<br><pre>Date: Mon, 31 Mar 2025 15:09:39 +0000
+From: =?UTF-8?Q?Soporte=20de=20Timbre=20Autom=C3=A1tico?= &lt;timbreautomatico2025@gmail.com&gt;
+Return-Path: &lt;timbreautomatico2025@gmail.com&gt;
+To: brunocameille@alumnos.itr3.edu.ar
+Subject: =?UTF-8?Q?Recuperaci=C3=B3n=20de=20contrase=C3=B1a?=
+Reply-To: &lt;timbreautomatico2025@gmail.com&gt;
+User-Agent: CodeIgniter
+X-Sender: timbreautomatico2025@gmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;67eab033686770.08450360@gmail.com&gt;
+Mime-Version: 1.0
+
+
+Content-Type: multipart/alternative; boundary=&quot;B_ALT_67eab033686843.88205494&quot;
+
+This is a multi-part message in MIME format.
+Your email application may not support this format.
+
+--B_ALT_67eab033686843.88205494
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Hola, Para recuperar tu contraseña, haz clic en el siguiente enlace:
+Recuperar contraseñaSi no solicitaste esta recuperación, ignora este
+correo.
+
+
+--B_ALT_67eab033686843.88205494
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Hola, &lt;br&gt; Para recuperar tu contrase=C3=B1a, haz clic en el siguiente enla=
+ce: &lt;br&gt;&lt;br&gt;&lt;a href=3D&#039;http://localhost/juanxiomaram2024/tesina2025/public/=
+resetear_contrasena?token=3D2a71b29fe5b7f0eaa3cb3c46b845639837222b949201857=
+ed920e7e123654ad341110672753b00b5f3b17cbf26345043bf65&#039;&gt;Recuperar contrase=
+=C3=B1a&lt;/a&gt;&lt;br&gt;&lt;br&gt;Si no solicitaste esta recuperaci=C3=B3n, ignora este co=
+rreo.
+
+--B_ALT_67eab033686843.88205494--</pre>
+ERROR - 2025-03-31 16:12:33 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-03-31 16:12:33 --> 220 smtp.gmail.com ESMTP 41be03b00d2f7-af93b8b1aa6sm6565732a12.52 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [190.244.214.228]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+starttls: 220 2.0.0 Ready to start TLS
+
+hello: 250-smtp.gmail.com at your service, [190.244.214.228]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+Failed to authenticate password. Error: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 41be03b00d2f7-af93b8b1aa6sm6565732a12.52 - gsmtp
+
+ERROR - 2025-03-31 16:12:33 --> Error al enviar correo de recuperación a brunocameille@alumnos.itr3.edu.ar: 220 smtp.gmail.com ESMTP 41be03b00d2f7-af93b8b1aa6sm6565732a12.52 - gsmtp
+<br><pre>hello: 250-smtp.gmail.com at your service, [190.244.214.228]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+</pre><pre>starttls: 220 2.0.0 Ready to start TLS
+</pre><pre>hello: 250-smtp.gmail.com at your service, [190.244.214.228]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+</pre>Failed to authenticate password. Error: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 41be03b00d2f7-af93b8b1aa6sm6565732a12.52 - gsmtp
+<br>Unable to send email using SMTP. Your server might not be configured to send mail using this method.<br><pre>Date: Mon, 31 Mar 2025 16:12:30 +0000
+From: =?UTF-8?Q?Soporte=20de=20Timbre=20Autom=C3=A1tico?= &lt;timbreautomatico2025@gmail.com&gt;
+Return-Path: &lt;timbreautomatico2025@gmail.com&gt;
+To: brunocameille@alumnos.itr3.edu.ar
+Subject: =?UTF-8?Q?Recuperaci=C3=B3n=20de=20contrase=C3=B1a?=
+Reply-To: &lt;timbreautomatico2025@gmail.com&gt;
+User-Agent: CodeIgniter
+X-Sender: timbreautomatico2025@gmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;67eabeeedb9836.76483656@gmail.com&gt;
+Mime-Version: 1.0
+
+
+Content-Type: multipart/alternative; boundary=&quot;B_ALT_67eabeeedb98f0.84280869&quot;
+
+This is a multi-part message in MIME format.
+Your email application may not support this format.
+
+--B_ALT_67eabeeedb98f0.84280869
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Hola, Para recuperar tu contraseña, haz clic en el siguiente enlace:
+Recuperar contraseñaSi no solicitaste esta recuperación, ignora este
+correo.
+
+
+--B_ALT_67eabeeedb98f0.84280869
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Hola, &lt;br&gt; Para recuperar tu contrase=C3=B1a, haz clic en el siguiente enla=
+ce: &lt;br&gt;&lt;br&gt;&lt;a href=3D&#039;http://localhost/juanxiomaram2024/tesina2025/public/=
+resetear_contrasena?token=3Dbb2b8b930b2502e98151844c0f6b288b0b530319ffaaba2=
+e0e3495ebdcf379a03361d7cac6126a07c06e4214fea8d945e410&#039;&gt;Recuperar contrase=
+=C3=B1a&lt;/a&gt;&lt;br&gt;&lt;br&gt;Si no solicitaste esta recuperaci=C3=B3n, ignora este co=
+rreo.
+
+--B_ALT_67eabeeedb98f0.84280869--</pre>
+ERROR - 2025-03-31 17:48:48 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-03-31 17:48:48 --> 220 smtp.gmail.com ESMTP 41be03b00d2f7-af93b8adc93sm6518361a12.57 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [190.244.214.228]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+starttls: 220 2.0.0 Ready to start TLS
+
+hello: 250-smtp.gmail.com at your service, [190.244.214.228]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+Failed to authenticate password. Error: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 41be03b00d2f7-af93b8adc93sm6518361a12.57 - gsmtp
+
+ERROR - 2025-03-31 17:48:48 --> Error al enviar correo de recuperación a brunocameille@alumnos.itr3.edu.ar: 220 smtp.gmail.com ESMTP 41be03b00d2f7-af93b8adc93sm6518361a12.57 - gsmtp
+<br><pre>hello: 250-smtp.gmail.com at your service, [190.244.214.228]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+</pre><pre>starttls: 220 2.0.0 Ready to start TLS
+</pre><pre>hello: 250-smtp.gmail.com at your service, [190.244.214.228]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+</pre>Failed to authenticate password. Error: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 41be03b00d2f7-af93b8adc93sm6518361a12.57 - gsmtp
+<br>Unable to send email using SMTP. Your server might not be configured to send mail using this method.<br><pre>Date: Mon, 31 Mar 2025 17:48:46 +0000
+From: =?UTF-8?Q?Soporte=20de=20Timbre=20Autom=C3=A1tico?= &lt;timbreautomatico2025@gmail.com&gt;
+Return-Path: &lt;timbreautomatico2025@gmail.com&gt;
+To: brunocameille@alumnos.itr3.edu.ar
+Subject: =?UTF-8?Q?Recuperaci=C3=B3n=20de=20contrase=C3=B1a?=
+Reply-To: &lt;timbreautomatico2025@gmail.com&gt;
+User-Agent: CodeIgniter
+X-Sender: timbreautomatico2025@gmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;67ead57e342789.70833351@gmail.com&gt;
+Mime-Version: 1.0
+
+
+Content-Type: multipart/alternative; boundary=&quot;B_ALT_67ead57e342845.74094267&quot;
+
+This is a multi-part message in MIME format.
+Your email application may not support this format.
+
+--B_ALT_67ead57e342845.74094267
+Content-Type: text/plain; charset=UTF-8
+Content-Transfer-Encoding: 8bit
+
+Hola, Para recuperar tu contraseña, haz clic en el siguiente enlace:
+Recuperar contraseñaSi no solicitaste esta recuperación, ignora este
+correo.
+
+
+--B_ALT_67ead57e342845.74094267
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+Hola, &lt;br&gt; Para recuperar tu contrase=C3=B1a, haz clic en el siguiente enla=
+ce: &lt;br&gt;&lt;br&gt;&lt;a href=3D&#039;http://localhost/juanxiomaram2024/tesina2025/public/=
+resetear_contrasena?token=3D9605ab1a46079a4cd0c34a15e12dddd74edf8cd7f40e497=
+fc7cab21ad4145a4849eddc1709dd0d418df8c5dc7dd0ffe3f099&#039;&gt;Recuperar contrase=
+=C3=B1a&lt;/a&gt;&lt;br&gt;&lt;br&gt;Si no solicitaste esta recuperaci=C3=B3n, ignora este co=
+rreo.
+
+--B_ALT_67ead57e342845.74094267--</pre>
+ERROR - 2025-03-31 18:00:00 --> Intento fallido

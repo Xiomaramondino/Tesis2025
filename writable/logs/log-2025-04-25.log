@@ -1,0 +1,50 @@
+CRITICAL - 2025-04-25 11:10:36 --> Error: Cannot use object of type stdClass as array
+[Method: GET, Route: horarios_lector]
+in APPPATH\Views\horarios_lector.php on line 125.
+ 1 SYSTEMPATH\View\View.php(234): include()
+ 2 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_lector', [], true)
+ 4 APPPATH\Controllers\Horarios.php(209): view('horarios_lector', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->horariosLector()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-25 13:28:49 --> Error: Class "App\Controllers\Dispositivo" not found
+[Method: POST, Route: registro]
+in APPPATH\Controllers\Auth.php on line 78.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->guardarRegistro()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-25 13:29:41 --> Error: Class "App\Controllers\Dispositivo" not found
+[Method: POST, Route: registro]
+in APPPATH\Controllers\Auth.php on line 79.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->guardarRegistro()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-25 13:30:08 --> ErrorException: Undefined array key "id"
+[Method: POST, Route: registro]
+in APPPATH\Controllers\Auth.php on line 125.
+ 1 APPPATH\Controllers\Auth.php(125): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\Auth.php', 125)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->guardarRegistro()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-25 13:38:40 --> Error: Class "App\Controllers\DispositivoModel" not found
+[Method: POST, Route: registro]
+in APPPATH\Controllers\Auth.php on line 78.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->guardarRegistro()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

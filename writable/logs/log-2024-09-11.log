@@ -1,0 +1,198 @@
+CRITICAL - 2024-09-11 00:03:36 --> ErrorException: Undefined variable $data
+[Method: GET, Route: horarios/editar/7]
+in APPPATH\Views\horarios_edit.php on line 8.
+ 1 APPPATH\Views\horarios_edit.php(8): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_edit.php', 8)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_edit.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_edit', [], true)
+ 5 APPPATH\Controllers\Horarios.php(61): view('horarios_edit')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->editar('7')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-11 00:04:34 --> ErrorException: Undefined variable $data
+[Method: GET, Route: horarios/editar/7]
+in APPPATH\Views\horarios_edit.php on line 8.
+ 1 APPPATH\Views\horarios_edit.php(8): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_edit.php', 8)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_edit.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_edit', [], true)
+ 5 APPPATH\Controllers\Horarios.php(61): view('horarios_edit')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->editar('7')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-11 00:04:34 --> ErrorException: Undefined variable $data
+[Method: GET, Route: horarios/editar/7]
+in APPPATH\Views\horarios_edit.php on line 8.
+ 1 APPPATH\Views\horarios_edit.php(8): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_edit.php', 8)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_edit.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_edit', [], true)
+ 5 APPPATH\Controllers\Horarios.php(61): view('horarios_edit')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->editar('7')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-11 00:04:37 --> ErrorException: Undefined variable $data
+[Method: GET, Route: horarios/editar/11]
+in APPPATH\Views\horarios_edit.php on line 8.
+ 1 APPPATH\Views\horarios_edit.php(8): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_edit.php', 8)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_edit.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_edit', [], true)
+ 5 APPPATH\Controllers\Horarios.php(61): view('horarios_edit')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->editar('11')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-11 00:05:52 --> ErrorException: Undefined variable $data
+[Method: GET, Route: horarios/editar/11]
+in APPPATH\Views\horarios_edit.php on line 9.
+ 1 APPPATH\Views\horarios_edit.php(9): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_edit.php', 9)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_edit.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_edit', [], true)
+ 5 APPPATH\Controllers\Horarios.php(61): view('horarios_edit')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->editar('11')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-11 00:06:19 --> ErrorException: Undefined variable $row
+[Method: GET, Route: horarios/editar/12]
+in APPPATH\Views\horarios_edit.php on line 7.
+ 1 APPPATH\Views\horarios_edit.php(7): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $row', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_edit.php', 7)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_edit.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_edit', [], true)
+ 5 APPPATH\Controllers\Horarios.php(61): view('horarios_edit')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->editar('12')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-11 00:20:25 --> ErrorException: Undefined variable $idhorario
+[Method: GET, Route: horarios/editar/13]
+in APPPATH\Views\horarios_edit.php on line 4.
+ 1 APPPATH\Views\horarios_edit.php(4): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $idhorario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_edit.php', 4)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_edit.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_edit', [], true)
+ 5 APPPATH\Controllers\Horarios.php(61): view('horarios_edit')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->editar('13')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-11 00:20:27 --> ErrorException: Undefined variable $idhorario
+[Method: GET, Route: horarios/editar/13]
+in APPPATH\Views\horarios_edit.php on line 4.
+ 1 APPPATH\Views\horarios_edit.php(4): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $idhorario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_edit.php', 4)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_edit.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_edit', [], true)
+ 5 APPPATH\Controllers\Horarios.php(61): view('horarios_edit')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->editar('13')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-11 00:33:21 --> CodeIgniter\HTTP\Exceptions\BadRequestException: The URI you submitted has disallowed characters: " $idhorario"
+[Method: POST, Route: horarios/edit/%20$idhorario]
+in SYSTEMPATH\Router\Router.php on line 737.
+ 1 SYSTEMPATH\Router\Router.php(204): CodeIgniter\Router\Router->checkDisallowedChars('horarios/edit/ $idhorario')
+ 2 SYSTEMPATH\CodeIgniter.php(834): CodeIgniter\Router\Router->handle('horarios/edit/ $idhorario')
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-11 00:33:50 --> CodeIgniter\HTTP\Exceptions\BadRequestException: The URI you submitted has disallowed characters: "$idhorario"
+[Method: POST, Route: horarios/edit/$idhorario]
+in SYSTEMPATH\Router\Router.php on line 737.
+ 1 SYSTEMPATH\Router\Router.php(204): CodeIgniter\Router\Router->checkDisallowedChars('horarios/edit/$idhorario')
+ 2 SYSTEMPATH\CodeIgniter.php(834): CodeIgniter\Router\Router->handle('horarios/edit/$idhorario')
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-11 00:34:46 --> CodeIgniter\HTTP\Exceptions\BadRequestException: The URI you submitted has disallowed characters: "$idhorario"
+[Method: POST, Route: horarios/edit/$idhorario]
+in SYSTEMPATH\Router\Router.php on line 737.
+ 1 SYSTEMPATH\Router\Router.php(204): CodeIgniter\Router\Router->checkDisallowedChars('horarios/edit/$idhorario')
+ 2 SYSTEMPATH\CodeIgniter.php(834): CodeIgniter\Router\Router->handle('horarios/edit/$idhorario')
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-11 00:34:47 --> ErrorException: Undefined variable $row
+[Method: GET, Route: horarios/editar/13]
+in APPPATH\Views\horarios_edit.php on line 4.
+ 1 APPPATH\Views\horarios_edit.php(4): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $row', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_edit.php', 4)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_edit.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_edit', [], true)
+ 5 APPPATH\Controllers\Horarios.php(61): view('horarios_edit')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->editar('13')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-11 00:34:51 --> ErrorException: Undefined variable $row
+[Method: GET, Route: horarios/editar/7]
+in APPPATH\Views\horarios_edit.php on line 4.
+ 1 APPPATH\Views\horarios_edit.php(4): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $row', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_edit.php', 4)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_edit.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_edit', [], true)
+ 5 APPPATH\Controllers\Horarios.php(61): view('horarios_edit')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->editar('7')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-11 00:35:20 --> ErrorException: Undefined variable $data
+[Method: GET, Route: horarios/editar/7]
+in APPPATH\Views\horarios_edit.php on line 4.
+ 1 APPPATH\Views\horarios_edit.php(4): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_edit.php', 4)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_edit.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_edit', [], true)
+ 5 APPPATH\Controllers\Horarios.php(61): view('horarios_edit')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->editar('7')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-11 00:36:50 --> ErrorException: Undefined variable $data
+[Method: GET, Route: horarios/editar/7]
+in APPPATH\Views\horarios_edit.php on line 4.
+ 1 APPPATH\Views\horarios_edit.php(4): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $data', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_edit.php', 4)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_edit.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_edit', [], true)
+ 5 APPPATH\Controllers\Horarios.php(61): view('horarios_edit')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->editar('7')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

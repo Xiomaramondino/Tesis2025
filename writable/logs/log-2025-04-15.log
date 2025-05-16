@@ -1,0 +1,23 @@
+ERROR - 2025-04-15 12:26:34 --> Intento fallido
+CRITICAL - 2025-04-15 16:42:08 --> ParseError: syntax error, unexpected single-quoted string "rol", expecting "]"
+[Method: GET, Route: gestionar_usuarios]
+in APPPATH\Controllers\DirectivoController.php on line 46.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\DirectivoController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\DirectivoController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\DirectivoController')
+ 4 SYSTEMPATH\CodeIgniter.php(887): class_exists('\\App\\Controllers\\DirectivoController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(496): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-15 16:45:15 --> ErrorException: Undefined array key "turno"
+[Method: POST, Route: directivo/agregarUsuario]
+in APPPATH\Controllers\DirectivoController.php on line 45.
+ 1 APPPATH\Controllers\DirectivoController.php(45): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "turno"', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\DirectivoController.php', 45)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DirectivoController->agregarUsuario()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DirectivoController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

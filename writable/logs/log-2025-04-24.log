@@ -1,0 +1,48 @@
+CRITICAL - 2025-04-24 16:14:45 --> Error: Class "App\Controllers\Usuario" not found
+[Method: GET, Route: /]
+in APPPATH\Controllers\Home.php on line 9.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-24 16:15:32 --> Error: Class "App\Controllers\UsuarioModel" not found
+[Method: GET, Route: /]
+in APPPATH\Controllers\Home.php on line 9.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Home->index()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Home))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-04-24 16:32:30 --> Intento fallido
+ERROR - 2025-04-24 16:34:45 --> Intento fallido
+ERROR - 2025-04-24 16:36:02 --> Intento fallido
+ERROR - 2025-04-24 16:44:53 --> Intento fallido
+ERROR - 2025-04-24 16:45:14 --> Intento fallido
+CRITICAL - 2025-04-24 17:18:45 --> ErrorException: Undefined array key "hora_inicio"
+[Method: GET, Route: horarios]
+in APPPATH\Controllers\Horarios.php on line 29.
+ 1 APPPATH\Controllers\Horarios.php(29): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "hora_inicio"', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\Horarios.php', 29)
+ 2 [internal function]: App\Controllers\Horarios->App\Controllers\{closure}([...])
+ 3 APPPATH\Controllers\Horarios.php(28): array_filter([...], Object(Closure))
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->index()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-24 17:24:27 --> Error: Cannot use object of type stdClass as array
+[Method: GET, Route: horarios]
+in APPPATH\Views\horarios.php on line 124.
+ 1 SYSTEMPATH\View\View.php(234): include()
+ 2 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios', [], true)
+ 4 APPPATH\Controllers\Horarios.php(36): view('horarios', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->index()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

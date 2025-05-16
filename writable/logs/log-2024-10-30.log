@@ -1,0 +1,24 @@
+INFO - 2024-10-30 00:02:02 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-30 00:02:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-30 00:06:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-30 00:06:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-30 00:06:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+WARNING - 2024-10-30 00:13:57 --> [DEPRECATED] preg_match(): Passing null to parameter #2 ($subject) of type string is deprecated in APPPATH\Controllers\Horarios.php on line 128.
+ 1 APPPATH\Controllers\Horarios.php(128): preg_match('/^(2[0-3]|[01]?[0-9]):([0-5]?[0-9])$/', null)
+ 2 APPPATH\Controllers\Horarios.php(110): App\Controllers\Horarios->isValidTime(null)
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->actualizarHora()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2024-10-30 00:14:45 --> [DEPRECATED] preg_match(): Passing null to parameter #2 ($subject) of type string is deprecated in APPPATH\Controllers\Horarios.php on line 128.
+ 1 APPPATH\Controllers\Horarios.php(128): preg_match('/^(2[0-3]|[01]?[0-9]):([0-5]?[0-9])$/', null)
+ 2 APPPATH\Controllers\Horarios.php(110): App\Controllers\Horarios->isValidTime(null)
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->actualizarHora()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-10-30 18:51:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

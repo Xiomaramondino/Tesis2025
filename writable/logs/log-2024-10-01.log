@@ -1,0 +1,314 @@
+INFO - 2024-10-01 19:26:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 19:26:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-10-01 19:26:47 --> Email: sendWithMail throwed ErrorException: mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Email\Email.php:1762
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mail(): Failed ...', 'C:\\xampp\\htdocs...', 1762)
+#1 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Email\Email.php(1762): mail('xiomaramondino@...', '=?UTF-8?Q?Recup...', 'This is a multi...', 'Date: Tue, 1 Oc...', '-f noreply@tu-d...')
+#2 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithMail()
+#3 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#4 C:\xampp\htdocs\juanxiomaram2024\timbre25\app\Controllers\Auth.php(149): CodeIgniter\Email\Email->send()
+#5 C:\xampp\htdocs\juanxiomaram2024\timbre25\app\Controllers\Auth.php(124): App\Controllers\Auth->sendRecoveryEmail('xiomaramondino@...', 'f99637d5d1565d2...')
+#6 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\CodeIgniter.php(933): App\Controllers\Auth->enviar_recuperacion()
+#7 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#8 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\juanxiomaram2024\timbre25\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+ERROR - 2024-10-01 19:26:47 --> Email: Unable to send email using PHP mail(). Your server might not be configured to send mail using this method.
+ERROR - 2024-10-01 19:26:47 --> 
+ERROR - 2024-10-01 19:26:47 --> Error al enviar el correo de recuperación: Unable to send email using PHP mail(). Your server might not be configured to send mail using this method.<br><pre>Date: Tue, 1 Oct 2024 19:26:45 +0000
+From: =?UTF-8?Q?Soporte=20de=20Timbre=20Autom=C3=A1tico?= &lt;noreply@tu-dominio.com&gt;
+Return-Path: &lt;noreply@tu-dominio.com&gt;
+Reply-To: &lt;noreply@tu-dominio.com&gt;
+User-Agent: CodeIgniter
+X-Sender: noreply@tu-dominio.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;66fc4cf5b40eb6.33958513@tu-dominio.com&gt;
+Mime-Version: 1.0
+Content-Type: multipart/alternative; boundary=&quot;B_ALT_66fc4cf5b40f97.25994457&quot;
+</pre>
+INFO - 2024-10-01 19:26:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 19:26:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-10-01 19:27:51 --> Email: sendWithMail throwed ErrorException: mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Email\Email.php:1762
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mail(): Failed ...', 'C:\\xampp\\htdocs...', 1762)
+#1 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Email\Email.php(1762): mail('xiomaramondino@...', '=?UTF-8?Q?Recup...', 'This is a multi...', 'Date: Tue, 1 Oc...', '-f timbreautoma...')
+#2 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithMail()
+#3 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#4 C:\xampp\htdocs\juanxiomaram2024\timbre25\app\Controllers\Auth.php(149): CodeIgniter\Email\Email->send()
+#5 C:\xampp\htdocs\juanxiomaram2024\timbre25\app\Controllers\Auth.php(124): App\Controllers\Auth->sendRecoveryEmail('xiomaramondino@...', '156d1545b8d0cbe...')
+#6 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\CodeIgniter.php(933): App\Controllers\Auth->enviar_recuperacion()
+#7 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#8 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\juanxiomaram2024\timbre25\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+ERROR - 2024-10-01 19:27:51 --> Email: Unable to send email using PHP mail(). Your server might not be configured to send mail using this method.
+ERROR - 2024-10-01 19:27:51 --> 
+ERROR - 2024-10-01 19:27:51 --> Error al enviar el correo de recuperación: Unable to send email using PHP mail(). Your server might not be configured to send mail using this method.<br><pre>Date: Tue, 1 Oct 2024 19:27:49 +0000
+From: =?UTF-8?Q?Soporte=20de=20Timbre=20Autom=C3=A1tico?= &lt;timbreautomatico25@gmail.com&gt;
+Return-Path: &lt;timbreautomatico25@gmail.com&gt;
+Reply-To: &lt;timbreautomatico25@gmail.com&gt;
+User-Agent: CodeIgniter
+X-Sender: timbreautomatico25@gmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;66fc4d35b20748.59413801@gmail.com&gt;
+Mime-Version: 1.0
+Content-Type: multipart/alternative; boundary=&quot;B_ALT_66fc4d35b207f7.01861298&quot;
+</pre>
+INFO - 2024-10-01 19:27:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 19:27:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-10-01 19:29:56 --> Email: sendWithMail throwed ErrorException: mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Email\Email.php:1762
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mail(): Failed ...', 'C:\\xampp\\htdocs...', 1762)
+#1 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Email\Email.php(1762): mail('xiomaramondino@...', '=?UTF-8?Q?Recup...', 'This is a multi...', 'Date: Tue, 1 Oc...', '-f timbreautoma...')
+#2 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithMail()
+#3 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#4 C:\xampp\htdocs\juanxiomaram2024\timbre25\app\Controllers\Auth.php(149): CodeIgniter\Email\Email->send()
+#5 C:\xampp\htdocs\juanxiomaram2024\timbre25\app\Controllers\Auth.php(124): App\Controllers\Auth->sendRecoveryEmail('xiomaramondino@...', '11d2e601af3580f...')
+#6 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\CodeIgniter.php(933): App\Controllers\Auth->enviar_recuperacion()
+#7 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#8 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\juanxiomaram2024\timbre25\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+ERROR - 2024-10-01 19:29:56 --> Email: Unable to send email using PHP mail(). Your server might not be configured to send mail using this method.
+ERROR - 2024-10-01 19:29:56 --> 
+ERROR - 2024-10-01 19:29:56 --> Error al enviar el correo de recuperación: Unable to send email using PHP mail(). Your server might not be configured to send mail using this method.<br><pre>Date: Tue, 1 Oct 2024 19:29:53 +0000
+From: =?UTF-8?Q?Soporte=20de=20Timbre=20Autom=C3=A1tico?= &lt;timbreautomatico2025@gmail.com&gt;
+Return-Path: &lt;timbreautomatico2025@gmail.com&gt;
+Reply-To: &lt;timbreautomatico2025@gmail.com&gt;
+User-Agent: CodeIgniter
+X-Sender: timbreautomatico2025@gmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;66fc4db1ee29c6.99782957@gmail.com&gt;
+Mime-Version: 1.0
+Content-Type: multipart/alternative; boundary=&quot;B_ALT_66fc4db1ee2a99.01065984&quot;
+</pre>
+INFO - 2024-10-01 19:29:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 19:29:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-10-01 19:31:34 --> Email: sendWithMail throwed ErrorException: mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Email\Email.php:1762
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mail(): Failed ...', 'C:\\xampp\\htdocs...', 1762)
+#1 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Email\Email.php(1762): mail('juanmarquez@alu...', '=?UTF-8?Q?Recup...', 'This is a multi...', 'Date: Tue, 1 Oc...', '-f timbreautoma...')
+#2 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithMail()
+#3 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#4 C:\xampp\htdocs\juanxiomaram2024\timbre25\app\Controllers\Auth.php(149): CodeIgniter\Email\Email->send()
+#5 C:\xampp\htdocs\juanxiomaram2024\timbre25\app\Controllers\Auth.php(124): App\Controllers\Auth->sendRecoveryEmail('juanmarquez@alu...', 'a053ddb830d0de4...')
+#6 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\CodeIgniter.php(933): App\Controllers\Auth->enviar_recuperacion()
+#7 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#8 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\juanxiomaram2024\timbre25\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+ERROR - 2024-10-01 19:31:34 --> Email: Unable to send email using PHP mail(). Your server might not be configured to send mail using this method.
+ERROR - 2024-10-01 19:31:34 --> 
+ERROR - 2024-10-01 19:31:34 --> Error al enviar el correo de recuperación: Unable to send email using PHP mail(). Your server might not be configured to send mail using this method.<br><pre>Date: Tue, 1 Oct 2024 19:31:32 +0000
+From: =?UTF-8?Q?Soporte=20de=20Timbre=20Autom=C3=A1tico?= &lt;timbreautomatico2025@gmail.com&gt;
+Return-Path: &lt;timbreautomatico2025@gmail.com&gt;
+Reply-To: &lt;timbreautomatico2025@gmail.com&gt;
+User-Agent: CodeIgniter
+X-Sender: timbreautomatico2025@gmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;66fc4e1422c431.00659090@gmail.com&gt;
+Mime-Version: 1.0
+Content-Type: multipart/alternative; boundary=&quot;B_ALT_66fc4e1422c548.78182213&quot;
+</pre>
+INFO - 2024-10-01 19:31:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 19:31:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 19:31:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 19:31:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-10-01 19:32:49 --> Email: sendWithMail throwed ErrorException: mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Email\Email.php:1762
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mail(): Failed ...', 'C:\\xampp\\htdocs...', 1762)
+#1 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Email\Email.php(1762): mail('xiomaramondino@...', '=?UTF-8?Q?Recup...', 'This is a multi...', 'Date: Tue, 1 Oc...', '-f timbreautoma...')
+#2 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithMail()
+#3 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#4 C:\xampp\htdocs\juanxiomaram2024\timbre25\app\Controllers\Auth.php(149): CodeIgniter\Email\Email->send()
+#5 C:\xampp\htdocs\juanxiomaram2024\timbre25\app\Controllers\Auth.php(124): App\Controllers\Auth->sendRecoveryEmail('xiomaramondino@...', '548ea5f266ad9b8...')
+#6 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\CodeIgniter.php(933): App\Controllers\Auth->enviar_recuperacion()
+#7 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#8 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\juanxiomaram2024\timbre25\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+ERROR - 2024-10-01 19:32:49 --> Email: Unable to send email using PHP mail(). Your server might not be configured to send mail using this method.
+ERROR - 2024-10-01 19:32:49 --> 
+ERROR - 2024-10-01 19:32:49 --> Error al enviar el correo de recuperación: Unable to send email using PHP mail(). Your server might not be configured to send mail using this method.<br><pre>Date: Tue, 1 Oct 2024 19:32:47 +0000
+From: =?UTF-8?Q?Soporte=20de=20Timbre=20Autom=C3=A1tico?= &lt;timbreautomatico2025@gmail.com&gt;
+Return-Path: &lt;timbreautomatico2025@gmail.com&gt;
+Reply-To: &lt;timbreautomatico2025@gmail.com&gt;
+User-Agent: CodeIgniter
+X-Sender: timbreautomatico2025@gmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;66fc4e5f85f2a3.20012384@gmail.com&gt;
+Mime-Version: 1.0
+Content-Type: multipart/alternative; boundary=&quot;B_ALT_66fc4e5f85f364.44778863&quot;
+</pre>
+INFO - 2024-10-01 19:32:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 19:32:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-10-01 19:34:13 --> Email: sendWithMail throwed ErrorException: mail(): Failed to connect to mailserver at &quot;localhost&quot; port 25, verify your &quot;SMTP&quot; and &quot;smtp_port&quot; setting in php.ini or use ini_set() in C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Email\Email.php:1762
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'mail(): Failed ...', 'C:\\xampp\\htdocs...', 1762)
+#1 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Email\Email.php(1762): mail('xiomaramondino@...', '=?UTF-8?Q?Recup...', 'This is a multi...', 'Date: Tue, 1 Oc...', '-f timbreautoma...')
+#2 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithMail()
+#3 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#4 C:\xampp\htdocs\juanxiomaram2024\timbre25\app\Controllers\Auth.php(149): CodeIgniter\Email\Email->send()
+#5 C:\xampp\htdocs\juanxiomaram2024\timbre25\app\Controllers\Auth.php(124): App\Controllers\Auth->sendRecoveryEmail('xiomaramondino@...', 'f3c4f9c8986f3eb...')
+#6 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\CodeIgniter.php(933): App\Controllers\Auth->enviar_recuperacion()
+#7 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+#8 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#9 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#10 C:\xampp\htdocs\juanxiomaram2024\timbre25\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#11 C:\xampp\htdocs\juanxiomaram2024\timbre25\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#12 {main}
+ERROR - 2024-10-01 19:34:13 --> Email: Unable to send email using PHP mail(). Your server might not be configured to send mail using this method.
+ERROR - 2024-10-01 19:34:13 --> 
+ERROR - 2024-10-01 19:34:13 --> Error al enviar el correo de recuperación: Unable to send email using PHP mail(). Your server might not be configured to send mail using this method.<br><pre>Date: Tue, 1 Oct 2024 19:34:11 +0000
+From: =?UTF-8?Q?Soporte=20de=20Timbre=20Autom=C3=A1tico?= &lt;timbreautomatico2025@gmail.com&gt;
+Return-Path: &lt;timbreautomatico2025@gmail.com&gt;
+Reply-To: &lt;timbreautomatico2025@gmail.com&gt;
+User-Agent: CodeIgniter
+X-Sender: timbreautomatico2025@gmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;66fc4eb3e66101.95747257@gmail.com&gt;
+Mime-Version: 1.0
+Content-Type: multipart/alternative; boundary=&quot;B_ALT_66fc4eb3e661c8.89414596&quot;
+</pre>
+INFO - 2024-10-01 19:34:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 19:34:14 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 19:36:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+ERROR - 2024-10-01 19:36:13 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2024-10-01 19:36:13 --> You did not specify a SMTP hostname.
+ERROR - 2024-10-01 19:36:13 --> Error al enviar el correo de recuperación: You did not specify a SMTP hostname.<br>Unable to send email using SMTP. Your server might not be configured to send mail using this method.<br><pre>Date: Tue, 1 Oct 2024 19:36:13 +0000
+From: =?UTF-8?Q?Soporte=20de=20Timbre=20Autom=C3=A1tico?= &lt;timbreautomatico2025@gmail.com&gt;
+Return-Path: &lt;timbreautomatico2025@gmail.com&gt;
+To: xiomaramondino@alumnos.itr3.edu.ar
+Subject: =?UTF-8?Q?Recuperaci=C3=B3n=20de=20contrase=C3=B1a?=
+Reply-To: &lt;timbreautomatico2025@gmail.com&gt;
+User-Agent: CodeIgniter
+X-Sender: timbreautomatico2025@gmail.com
+X-Mailer: CodeIgniter
+X-Priority: 3 (Normal)
+Message-ID: &lt;66fc4f2d5ae2a8.38486647@gmail.com&gt;
+Mime-Version: 1.0
+
+</pre>
+INFO - 2024-10-01 19:36:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 19:36:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 19:37:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 19:37:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 19:37:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-10-01 20:15:43 --> ErrorException: Undefined array key "id"
+[Method: POST, Route: procesar_resetear_contrasena]
+in APPPATH\Controllers\Auth.php on line 172.
+ 1 APPPATH\Controllers\Auth.php(172): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Controllers\\Auth.php', 172)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->procesar_resetear_contrasena()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-10-01 20:16:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:16:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:16:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:16:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:16:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:16:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:16:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:16:58 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:17:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:17:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:17:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:17:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:20:57 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:21:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:21:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:30:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:31:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:31:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:32:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:32:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:32:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:32:33 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:32:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:33:12 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:33:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:33:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:33:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:34:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:34:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:34:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:34:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:35:09 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:36:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:37:17 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:37:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:37:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:38:01 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:39:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:39:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:39:32 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:40:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:40:11 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:40:34 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:41:04 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:41:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:41:16 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:41:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:43:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:43:45 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:43:53 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:43:56 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:44:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:45:42 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:45:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:46:29 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:46:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:47:07 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:49:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:49:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:49:50 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:50:19 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:50:20 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:50:21 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:50:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 20:50:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:06:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:06:22 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:06:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:06:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:06:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:06:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:06:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:06:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:06:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:06:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:06:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:06:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:06:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:06:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:06:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:06:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:06:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:06:27 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:42:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:42:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:42:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:42:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:42:41 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:42:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:43:15 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:43:18 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-10-01 21:43:23 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.

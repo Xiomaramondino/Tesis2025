@@ -1,0 +1,480 @@
+INFO - 2024-09-13 17:10:24 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-09-13 17:19:46 --> ParseError: syntax error, unexpected token "public", expecting end of file
+[Method: GET, Route: horarios]
+in APPPATH\Controllers\Horarios.php on line 31.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Controllers\\Horarios.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Horarios')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Horarios')
+ 4 SYSTEMPATH\CodeIgniter.php(887): class_exists('\\App\\Controllers\\Horarios', true)
+ 5 SYSTEMPATH\CodeIgniter.php(496): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-13 17:19:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-09-13 17:19:54 --> ParseError: syntax error, unexpected token "public", expecting end of file
+[Method: GET, Route: horarios]
+in APPPATH\Controllers\Horarios.php on line 31.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Controllers\\Horarios.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Horarios')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Horarios')
+ 4 SYSTEMPATH\CodeIgniter.php(887): class_exists('\\App\\Controllers\\Horarios', true)
+ 5 SYSTEMPATH\CodeIgniter.php(496): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-13 17:25:13 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-13 17:25:28 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-13 17:25:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-13 17:32:37 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-13 17:32:38 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-13 17:32:39 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-13 17:32:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-13 17:32:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-13 17:32:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-13 17:32:40 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-13 17:32:43 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-13 17:32:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-13 17:32:44 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-13 17:32:46 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-13 17:32:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-13 17:32:47 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-13 17:32:48 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-13 17:32:49 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-09-13 17:40:47 --> ErrorException: Undefined property: App\Controllers\Horarios::$HorariosModel
+[Method: GET, Route: horarios/modificar/7]
+in APPPATH\Controllers\Horarios.php on line 74.
+ 1 APPPATH\Controllers\Horarios.php(74): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Horarios::$HorariosModel', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Controllers\\Horarios.php', 74)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->modificar('7')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2024-09-13 17:43:23 --> [DEPRECATED] Creation of dynamic property App\Controllers\Horarios::$HorariosModel is deprecated in APPPATH\Controllers\Horarios.php on line 14.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Horarios->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2024-09-13 17:43:23 --> [DEPRECATED] Creation of dynamic property App\Controllers\Horarios::$HorariosModel is deprecated in APPPATH\Controllers\Horarios.php on line 14.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Horarios->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2024-09-13 17:43:25 --> [DEPRECATED] Creation of dynamic property App\Controllers\Horarios::$HorariosModel is deprecated in APPPATH\Controllers\Horarios.php on line 14.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Horarios->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-13 17:43:25 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Connection::where()
+[Method: GET, Route: horarios/modificar/11]
+in APPPATH\Models\HorariosModel.php on line 22.
+ 1 APPPATH\Controllers\Horarios.php(78): App\Models\HorariosModel->getHorario('11')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->modificar('11')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2024-09-13 17:46:29 --> [DEPRECATED] Creation of dynamic property App\Controllers\Horarios::$HorariosModel is deprecated in APPPATH\Controllers\Horarios.php on line 14.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Horarios->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2024-09-13 17:46:30 --> [DEPRECATED] Creation of dynamic property App\Controllers\Horarios::$HorariosModel is deprecated in APPPATH\Controllers\Horarios.php on line 14.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Horarios->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2024-09-13 17:46:31 --> [DEPRECATED] Creation of dynamic property App\Controllers\Horarios::$HorariosModel is deprecated in APPPATH\Controllers\Horarios.php on line 14.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Horarios->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-13 17:46:31 --> Error: Call to undefined method CodeIgniter\Database\MySQLi\Result::row()
+[Method: GET, Route: horarios/modificar/14]
+in APPPATH\Models\HorariosModel.php on line 24.
+ 1 APPPATH\Controllers\Horarios.php(78): App\Models\HorariosModel->getHorario('14')
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->modificar('14')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2024-09-13 17:47:55 --> [DEPRECATED] Creation of dynamic property App\Controllers\Horarios::$HorariosModel is deprecated in APPPATH\Controllers\Horarios.php on line 14.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Horarios->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2024-09-13 17:47:55 --> [DEPRECATED] Creation of dynamic property App\Controllers\Horarios::$HorariosModel is deprecated in APPPATH\Controllers\Horarios.php on line 14.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Horarios->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2024-09-13 17:47:57 --> [DEPRECATED] Creation of dynamic property App\Controllers\Horarios::$HorariosModel is deprecated in APPPATH\Controllers\Horarios.php on line 14.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Horarios->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-13 17:47:57 --> ErrorException: Undefined property: App\Controllers\Horarios::$load
+[Method: GET, Route: horarios/modificar/12]
+in APPPATH\Controllers\Horarios.php on line 80.
+ 1 APPPATH\Controllers\Horarios.php(80): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Horarios::$load', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Controllers\\Horarios.php', 80)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->modificar('12')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2024-09-13 17:50:04 --> [DEPRECATED] Creation of dynamic property App\Controllers\Horarios::$HorariosModel is deprecated in APPPATH\Controllers\Horarios.php on line 14.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Horarios->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2024-09-13 17:50:06 --> [DEPRECATED] Creation of dynamic property App\Controllers\Horarios::$HorariosModel is deprecated in APPPATH\Controllers\Horarios.php on line 14.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Horarios->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2024-09-13 17:50:07 --> [DEPRECATED] Creation of dynamic property App\Controllers\Horarios::$HorariosModel is deprecated in APPPATH\Controllers\Horarios.php on line 14.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Horarios->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-13 17:50:07 --> ErrorException: Undefined variable $horario
+[Method: GET, Route: horarios/modificar/12]
+in APPPATH\Views\horarios_modificar.php on line 6.
+ 1 APPPATH\Views\horarios_modificar.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $horario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php', 6)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_modificar', [], true)
+ 5 APPPATH\Controllers\Horarios.php(80): view('horarios_modificar', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->modificar('12')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2024-09-13 17:52:47 --> [DEPRECATED] Creation of dynamic property App\Controllers\Horarios::$HorariosModel is deprecated in APPPATH\Controllers\Horarios.php on line 14.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Horarios->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2024-09-13 17:52:48 --> [DEPRECATED] Creation of dynamic property App\Controllers\Horarios::$HorariosModel is deprecated in APPPATH\Controllers\Horarios.php on line 14.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Horarios->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2024-09-13 17:52:49 --> [DEPRECATED] Creation of dynamic property App\Controllers\Horarios::$HorariosModel is deprecated in APPPATH\Controllers\Horarios.php on line 14.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Horarios->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2024-09-13 17:53:03 --> [DEPRECATED] Creation of dynamic property App\Controllers\Horarios::$HorariosModel is deprecated in APPPATH\Controllers\Horarios.php on line 14.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Horarios->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-13 17:53:03 --> ErrorException: Undefined property: App\Controllers\Horarios::$input
+[Method: POST, Route: horarios/update]
+in APPPATH\Controllers\Horarios.php on line 85.
+ 1 APPPATH\Controllers\Horarios.php(85): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Horarios::$input', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Controllers\\Horarios.php', 85)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->update()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2024-09-13 17:55:49 --> [DEPRECATED] Creation of dynamic property App\Controllers\Horarios::$HorariosModel is deprecated in APPPATH\Controllers\Horarios.php on line 14.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Horarios->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2024-09-13 17:55:50 --> [DEPRECATED] Creation of dynamic property App\Controllers\Horarios::$HorariosModel is deprecated in APPPATH\Controllers\Horarios.php on line 14.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Horarios->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+WARNING - 2024-09-13 17:56:03 --> [DEPRECATED] Creation of dynamic property App\Controllers\Horarios::$HorariosModel is deprecated in APPPATH\Controllers\Horarios.php on line 14.
+ 1 SYSTEMPATH\CodeIgniter.php(903): App\Controllers\Horarios->__construct()
+ 2 SYSTEMPATH\CodeIgniter.php(500): CodeIgniter\CodeIgniter->createController()
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-13 17:56:03 --> ErrorException: Undefined property: App\Controllers\Horarios::$input
+[Method: POST, Route: horarios/update]
+in APPPATH\Controllers\Horarios.php on line 87.
+ 1 APPPATH\Controllers\Horarios.php(87): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\Horarios::$input', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Controllers\\Horarios.php', 87)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->update()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-13 18:20:48 --> ErrorException: Undefined variable $idhorario
+[Method: GET, Route: horarios/modificar/14]
+in APPPATH\Views\horarios_modificar.php on line 6.
+ 1 APPPATH\Views\horarios_modificar.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $idhorario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php', 6)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_modificar', [], true)
+ 5 APPPATH\Controllers\Horarios.php(38): view('horarios_modificar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->modificar('14')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-13 23:03:45 --> ErrorException: Undefined variable $totalTime
+[Method: GET, Route: /]
+in SYSTEMPATH\Debug\Toolbar\Views\toolbar.tpl.php on line 46.
+ 1 SYSTEMPATH\Debug\Toolbar\Views\toolbar.tpl.php(46): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalTime', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\system\\Debug\\Toolbar\\Views\\toolbar.tpl.php', 46)
+ 2 SYSTEMPATH\Debug\Toolbar.php(534): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\system\\Debug\\Toolbar\\Views\\toolbar.tpl.php')
+ 3 SYSTEMPATH\Debug\Toolbar.php(497): CodeIgniter\Debug\Toolbar->format([...], 'html')
+ 4 APPPATH\Config\Events.php(47): CodeIgniter\Debug\Toolbar->respond()
+ 5 SYSTEMPATH\Events\Events.php(155): CodeIgniter\Events\Events::Config\{closure}()
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\Events\Events::trigger('pre_system')
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-13 23:03:59 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-09-13 23:04:01 --> ErrorException: Undefined variable $idhorario
+[Method: GET, Route: horarios/modificar/14]
+in APPPATH\Views\horarios_modificar.php on line 6.
+ 1 APPPATH\Views\horarios_modificar.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $idhorario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php', 6)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_modificar', [], true)
+ 5 APPPATH\Controllers\Horarios.php(38): view('horarios_modificar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->modificar('14')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-13 23:05:28 --> ArgumentCountError: Too few arguments to function App\Controllers\Horarios::modi(), 0 passed in C:\xampp\htdocs\juanxiomaram2024\timbre25\system\CodeIgniter.php on line 933 and exactly 1 expected
+[Method: POST, Route: horarios/modi]
+in APPPATH\Controllers\Horarios.php on line 40.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->modi()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-13 23:07:24 --> ArgumentCountError: Too few arguments to function App\Controllers\Horarios::modi(), 0 passed in C:\xampp\htdocs\juanxiomaram2024\timbre25\system\CodeIgniter.php on line 933 and exactly 1 expected
+[Method: POST, Route: horarios/modi]
+in APPPATH\Controllers\Horarios.php on line 40.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->modi()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-13 23:13:16 --> ErrorException: Undefined variable $idhorario
+[Method: GET, Route: horarios/modificar/14]
+in APPPATH\Views\horarios_modificar.php on line 6.
+ 1 APPPATH\Views\horarios_modificar.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $idhorario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php', 6)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_modificar', [], true)
+ 5 APPPATH\Controllers\Horarios.php(38): view('horarios_modificar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->modificar('14')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-13 23:13:21 --> ErrorException: Undefined variable $idhorario
+[Method: GET, Route: horarios/modificar/7]
+in APPPATH\Views\horarios_modificar.php on line 6.
+ 1 APPPATH\Views\horarios_modificar.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $idhorario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php', 6)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_modificar', [], true)
+ 5 APPPATH\Controllers\Horarios.php(38): view('horarios_modificar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->modificar('7')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-13 23:16:09 --> ErrorException: Undefined variable $idhorario
+[Method: GET, Route: horarios/modificar/7]
+in APPPATH\Views\horarios_modificar.php on line 6.
+ 1 APPPATH\Views\horarios_modificar.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $idhorario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php', 6)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_modificar', [], true)
+ 5 APPPATH\Controllers\Horarios.php(38): view('horarios_modificar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->modificar('7')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-13 23:20:00 --> ErrorException: Undefined variable $horario
+[Method: GET, Route: horarios]
+in APPPATH\Views\horarios.php on line 21.
+ 1 APPPATH\Views\horarios.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $horario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios.php', 21)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios', [], true)
+ 5 APPPATH\Controllers\Horarios.php(35): view('horarios', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-13 23:20:05 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-09-13 23:20:05 --> ErrorException: Undefined variable $horario
+[Method: GET, Route: horarios]
+in APPPATH\Views\horarios.php on line 21.
+ 1 APPPATH\Views\horarios.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $horario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios.php', 21)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios', [], true)
+ 5 APPPATH\Controllers\Horarios.php(35): view('horarios', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-13 23:20:23 --> ErrorException: Undefined variable $horario
+[Method: GET, Route: horarios]
+in APPPATH\Views\horarios.php on line 21.
+ 1 APPPATH\Views\horarios.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $horario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios.php', 21)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios', [], true)
+ 5 APPPATH\Controllers\Horarios.php(35): view('horarios', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-13 23:20:23 --> ErrorException: Undefined variable $horario
+[Method: GET, Route: horarios]
+in APPPATH\Views\horarios.php on line 21.
+ 1 APPPATH\Views\horarios.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $horario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios.php', 21)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios', [], true)
+ 5 APPPATH\Controllers\Horarios.php(35): view('horarios', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-13 23:20:24 --> ErrorException: Undefined variable $horario
+[Method: GET, Route: horarios]
+in APPPATH\Views\horarios.php on line 21.
+ 1 APPPATH\Views\horarios.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $horario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios.php', 21)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios', [], true)
+ 5 APPPATH\Controllers\Horarios.php(35): view('horarios', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-13 23:20:24 --> ErrorException: Undefined variable $horario
+[Method: GET, Route: horarios]
+in APPPATH\Views\horarios.php on line 21.
+ 1 APPPATH\Views\horarios.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $horario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios.php', 21)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios', [], true)
+ 5 APPPATH\Controllers\Horarios.php(35): view('horarios', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-13 23:20:31 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-09-13 23:20:31 --> ErrorException: Undefined variable $horario
+[Method: GET, Route: horarios]
+in APPPATH\Views\horarios.php on line 21.
+ 1 APPPATH\Views\horarios.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $horario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios.php', 21)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios', [], true)
+ 5 APPPATH\Controllers\Horarios.php(35): view('horarios', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-13 23:24:12 --> ErrorException: Undefined variable $idhorario
+[Method: GET, Route: horarios/modificar/7]
+in APPPATH\Views\horarios_modificar.php on line 6.
+ 1 APPPATH\Views\horarios_modificar.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $idhorario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php', 6)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_modificar', [], true)
+ 5 APPPATH\Controllers\Horarios.php(38): view('horarios_modificar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->modificar('7')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-13 23:26:43 --> ErrorException: Undefined variable $idhorario
+[Method: GET, Route: horarios/modificar/7]
+in APPPATH\Views\horarios_modificar.php on line 6.
+ 1 APPPATH\Views\horarios_modificar.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $idhorario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php', 6)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_modificar', [], true)
+ 5 APPPATH\Controllers\Horarios.php(38): view('horarios_modificar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->modificar('7')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

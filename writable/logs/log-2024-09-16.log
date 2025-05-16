@@ -1,0 +1,256 @@
+INFO - 2024-09-16 21:06:26 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-09-16 21:06:33 --> ErrorException: Undefined variable $idhorario
+[Method: GET, Route: horarios/modificar/7]
+in APPPATH\Views\horarios_modificar.php on line 6.
+ 1 APPPATH\Views\horarios_modificar.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $idhorario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php', 6)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_modificar', [], true)
+ 5 APPPATH\Controllers\Horarios.php(38): view('horarios_modificar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->modificar('7')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-16 21:08:05 --> ErrorException: Undefined variable $idhorario
+[Method: GET, Route: horarios/modificar/7]
+in APPPATH\Views\horarios_modificar.php on line 6.
+ 1 APPPATH\Views\horarios_modificar.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $idhorario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php', 6)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_modificar', [], true)
+ 5 APPPATH\Controllers\Horarios.php(38): view('horarios_modificar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->modificar('7')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-16 21:14:23 --> ParseError: syntax error, unexpected token "echo"
+[Method: GET, Route: horarios]
+in APPPATH\Views\horarios.php on line 17.
+ 1 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios', [], true)
+ 3 APPPATH\Controllers\Horarios.php(35): view('horarios', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->index()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-16 21:15:25 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-09-16 21:16:24 --> ErrorException: Undefined variable $idhorario
+[Method: GET, Route: horarios/modificar/7]
+in APPPATH\Views\horarios_modificar.php on line 6.
+ 1 APPPATH\Views\horarios_modificar.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $idhorario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php', 6)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_modificar', [], true)
+ 5 APPPATH\Controllers\Horarios.php(38): view('horarios_modificar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->modificar('7')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-16 21:17:22 --> ErrorException: Undefined variable $idhorario
+[Method: GET, Route: horarios/modificar/7]
+in APPPATH\Views\horarios_modificar.php on line 6.
+ 1 APPPATH\Views\horarios_modificar.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $idhorario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php', 6)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_modificar', [], true)
+ 5 APPPATH\Controllers\Horarios.php(38): view('horarios_modificar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->modificar('7')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-16 21:17:44 --> ErrorException: Undefined variable $idhorario
+[Method: GET, Route: horarios/modificar/7]
+in APPPATH\Views\horarios_modificar.php on line 6.
+ 1 APPPATH\Views\horarios_modificar.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $idhorario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php', 6)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_modificar', [], true)
+ 5 APPPATH\Controllers\Horarios.php(38): view('horarios_modificar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->modificar('7')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-16 21:21:19 --> ErrorException: Undefined variable $idhorario
+[Method: GET, Route: horarios/modificar/7]
+in APPPATH\Views\horarios_modificar.php on line 6.
+ 1 APPPATH\Views\horarios_modificar.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $idhorario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php', 6)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_modificar', [], true)
+ 5 APPPATH\Controllers\Horarios.php(39): view('horarios_modificar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->modificar('7')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-16 21:25:07 --> ErrorException: Undefined variable $idhorario
+[Method: GET, Route: horarios/modificar/7]
+in APPPATH\Views\horarios_modificar.php on line 6.
+ 1 APPPATH\Views\horarios_modificar.php(6): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $idhorario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php', 6)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios_modificar.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_modificar', [], true)
+ 5 APPPATH\Controllers\Horarios.php(39): view('horarios_modificar')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->modificar('7')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-16 21:50:58 --> ParseError: syntax error, unexpected token "public", expecting end of file
+[Method: GET, Route: horarios]
+in APPPATH\Controllers\Horarios.php on line 70.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Controllers\\Horarios.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Horarios')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Horarios')
+ 4 SYSTEMPATH\CodeIgniter.php(887): class_exists('\\App\\Controllers\\Horarios', true)
+ 5 SYSTEMPATH\CodeIgniter.php(496): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-16 21:50:59 --> ParseError: syntax error, unexpected token "public", expecting end of file
+[Method: GET, Route: horarios/agregar]
+in APPPATH\Controllers\Horarios.php on line 70.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Controllers\\Horarios.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Horarios')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Horarios')
+ 4 SYSTEMPATH\CodeIgniter.php(887): class_exists('\\App\\Controllers\\Horarios', true)
+ 5 SYSTEMPATH\CodeIgniter.php(496): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-16 21:51:00 --> ParseError: syntax error, unexpected token "public", expecting end of file
+[Method: GET, Route: horarios]
+in APPPATH\Controllers\Horarios.php on line 70.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Controllers\\Horarios.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Horarios')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Horarios')
+ 4 SYSTEMPATH\CodeIgniter.php(887): class_exists('\\App\\Controllers\\Horarios', true)
+ 5 SYSTEMPATH\CodeIgniter.php(496): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-16 21:51:10 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-09-16 21:51:10 --> ParseError: syntax error, unexpected token "public", expecting end of file
+[Method: GET, Route: horarios]
+in APPPATH\Controllers\Horarios.php on line 70.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Controllers\\Horarios.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Horarios')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Horarios')
+ 4 SYSTEMPATH\CodeIgniter.php(887): class_exists('\\App\\Controllers\\Horarios', true)
+ 5 SYSTEMPATH\CodeIgniter.php(496): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-16 21:51:54 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-09-16 21:51:54 --> ErrorException: Undefined variable $horario
+[Method: GET, Route: horarios]
+in APPPATH\Views\horarios.php on line 21.
+ 1 APPPATH\Views\horarios.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $horario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios.php', 21)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios', [], true)
+ 5 APPPATH\Controllers\Horarios.php(35): view('horarios', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-16 21:52:48 --> ErrorException: Undefined variable $horario
+[Method: GET, Route: horarios]
+in APPPATH\Views\horarios.php on line 21.
+ 1 APPPATH\Views\horarios.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $horario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios.php', 21)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios', [], true)
+ 5 APPPATH\Controllers\Horarios.php(35): view('horarios', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-16 21:52:49 --> ErrorException: Undefined variable $horario
+[Method: GET, Route: horarios]
+in APPPATH\Views\horarios.php on line 21.
+ 1 APPPATH\Views\horarios.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $horario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios.php', 21)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios', [], true)
+ 5 APPPATH\Controllers\Horarios.php(35): view('horarios', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-16 21:52:49 --> ErrorException: Undefined variable $horario
+[Method: GET, Route: horarios]
+in APPPATH\Views\horarios.php on line 21.
+ 1 APPPATH\Views\horarios.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $horario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios.php', 21)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Views\\horarios.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios', [], true)
+ 5 APPPATH\Controllers\Horarios.php(35): view('horarios', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2024-09-16 21:54:58 --> BadMethodCallException: Call to undefined method App\Models\HorariosModel::getHorario
+[Method: GET, Route: horarios/editar/14]
+in SYSTEMPATH\Model.php on line 932.
+ 1 APPPATH\Controllers\Horarios.php(46): CodeIgniter\Model->__call('getHorario', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->editar('14')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-16 22:00:35 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-16 22:00:51 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-09-16 22:08:16 --> ParseError: syntax error, unexpected token "return"
+[Method: GET, Route: registro]
+in APPPATH\Controllers\Auth.php on line 91.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Controllers\\Auth.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Auth')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Auth')
+ 4 SYSTEMPATH\CodeIgniter.php(887): class_exists('\\App\\Controllers\\Auth', true)
+ 5 SYSTEMPATH\CodeIgniter.php(496): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+INFO - 2024-09-16 22:09:06 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+INFO - 2024-09-16 22:11:30 --> Session: Class initialized using 'CodeIgniter\Session\Handlers\FileHandler' driver.
+CRITICAL - 2024-09-16 22:18:14 --> ParseError: Unmatched '}'
+[Method: POST, Route: registro]
+in APPPATH\Controllers\Auth.php on line 118.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\juanxiomaram2024\\timbre25\\app\\Controllers\\Auth.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\Auth')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\Auth')
+ 4 SYSTEMPATH\CodeIgniter.php(887): class_exists('\\App\\Controllers\\Auth', true)
+ 5 SYSTEMPATH\CodeIgniter.php(496): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

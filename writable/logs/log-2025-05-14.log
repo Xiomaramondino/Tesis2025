@@ -1,0 +1,326 @@
+CRITICAL - 2025-05-14 11:44:18 --> ErrorException: Undefined variable $totalTime
+[Method: GET, Route: /]
+in SYSTEMPATH\Debug\Toolbar\Views\toolbar.tpl.php on line 46.
+ 1 SYSTEMPATH\Debug\Toolbar\Views\toolbar.tpl.php(46): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $totalTime', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\system\\Debug\\Toolbar\\Views\\toolbar.tpl.php', 46)
+ 2 SYSTEMPATH\Debug\Toolbar.php(534): include('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\system\\Debug\\Toolbar\\Views\\toolbar.tpl.php')
+ 3 SYSTEMPATH\Debug\Toolbar.php(497): CodeIgniter\Debug\Toolbar->format([...], 'html')
+ 4 APPPATH\Config\Events.php(47): CodeIgniter\Debug\Toolbar->respond()
+ 5 SYSTEMPATH\Events\Events.php(155): CodeIgniter\Events\Events::Config\{closure}()
+ 6 SYSTEMPATH\CodeIgniter.php(340): CodeIgniter\Events\Events::trigger('pre_system')
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-05-14 09:00:26 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-05-14 09:00:26 --> 220 smtp.gmail.com ESMTP ada2fe7eead31-4dea857f6b6sm8232519137.6 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [181.228.71.105]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+starttls: 220 2.0.0 Ready to start TLS
+
+hello: 250-smtp.gmail.com at your service, [181.228.71.105]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+from: 250 2.1.0 OK ada2fe7eead31-4dea857f6b6sm8232519137.6 - gsmtp
+
+to: 250 2.1.5 OK ada2fe7eead31-4dea857f6b6sm8232519137.6 - gsmtp
+
+data: 
+The following SMTP error was encountered: 
+quit: 
+The following SMTP error was encountered: 
+ERROR - 2025-05-14 09:00:26 --> Error al enviar el correo de bienvenida con enlace de recuperación a ariadnagomez@alumnos.itr3.edu.ar
+CRITICAL - 2025-05-14 12:56:58 --> ErrorException: Undefined variable $lectores
+[Method: GET, Route: vista_admin]
+in APPPATH\Views\vista_admin.php on line 280.
+ 1 APPPATH\Views\vista_admin.php(280): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $lectores', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\vista_admin.php', 280)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\vista_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('vista_admin', [], true)
+ 5 APPPATH\Controllers\AdminController.php(27): view('vista_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-14 12:58:35 --> ParseError: syntax error, unexpected end of file
+[Method: GET, Route: vista_admin]
+in APPPATH\Views\vista_admin.php on line 306.
+ 1 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 2 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('vista_admin', [], true)
+ 3 APPPATH\Controllers\AdminController.php(27): view('vista_admin', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->index()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-14 12:59:31 --> ErrorException: Undefined variable $lectores
+[Method: GET, Route: vista_admin]
+in APPPATH\Views\vista_admin.php on line 279.
+ 1 APPPATH\Views\vista_admin.php(279): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $lectores', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\vista_admin.php', 279)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\vista_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('vista_admin', [], true)
+ 5 APPPATH\Controllers\AdminController.php(27): view('vista_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-14 12:59:32 --> ErrorException: Undefined variable $lectores
+[Method: GET, Route: vista_admin]
+in APPPATH\Views\vista_admin.php on line 279.
+ 1 APPPATH\Views\vista_admin.php(279): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $lectores', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\vista_admin.php', 279)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\vista_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('vista_admin', [], true)
+ 5 APPPATH\Controllers\AdminController.php(27): view('vista_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-14 13:00:48 --> ErrorException: Undefined variable $lectores
+[Method: GET, Route: vista_admin]
+in APPPATH\Views\vista_admin.php on line 279.
+ 1 APPPATH\Views\vista_admin.php(279): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $lectores', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\vista_admin.php', 279)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\vista_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('vista_admin', [], true)
+ 5 APPPATH\Controllers\AdminController.php(27): view('vista_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-14 13:04:41 --> ErrorException: Undefined variable $lectores
+[Method: GET, Route: vista_admin]
+in APPPATH\Views\vista_admin.php on line 279.
+ 1 APPPATH\Views\vista_admin.php(279): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $lectores', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\vista_admin.php', 279)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\vista_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('vista_admin', [], true)
+ 5 APPPATH\Controllers\AdminController.php(27): view('vista_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->index()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-05-14 10:22:48 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-05-14 10:22:48 --> 220 smtp.gmail.com ESMTP ada2fe7eead31-4dea857f6b6sm8353087137.6 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [181.228.71.105]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+starttls: 220 2.0.0 Ready to start TLS
+
+hello: 250-smtp.gmail.com at your service, [181.228.71.105]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+Failed to authenticate password. Error: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials ada2fe7eead31-4dea857f6b6sm8353087137.6 - gsmtp
+
+ERROR - 2025-05-14 10:22:48 --> Error al enviar el correo de bienvenida con enlace de recuperación a juanmarquez@alumnos.itr3.edu.ar
+ERROR - 2025-05-14 10:29:50 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-05-14 10:29:50 --> 220 smtp.gmail.com ESMTP a1e0cc1a2514c-879f613b5d0sm8565159241.6 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [181.228.71.105]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+starttls: 220 2.0.0 Ready to start TLS
+
+hello: 250-smtp.gmail.com at your service, [181.228.71.105]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+Failed to authenticate password. Error: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials a1e0cc1a2514c-879f613b5d0sm8565159241.6 - gsmtp
+
+ERROR - 2025-05-14 10:29:50 --> Error al enviar el correo de bienvenida con enlace de recuperación a ariadnagomez@alumnos.itr3.edu.ar
+ERROR - 2025-05-14 10:33:59 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-05-14 10:33:59 --> 220 smtp.gmail.com ESMTP 71dfb90a1353d-52c5372b3f1sm9361787e0c.17 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [181.228.71.105]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+starttls: 220 2.0.0 Ready to start TLS
+
+hello: 250-smtp.gmail.com at your service, [181.228.71.105]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+Failed to authenticate password. Error: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 71dfb90a1353d-52c5372b3f1sm9361787e0c.17 - gsmtp
+
+ERROR - 2025-05-14 10:33:59 --> Error al enviar el correo de bienvenida con enlace de recuperación a juanmarquez@alumnos.itr3.edu.ar
+ERROR - 2025-05-14 10:35:29 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-05-14 10:35:29 --> 220 smtp.gmail.com ESMTP ada2fe7eead31-4deb203a52fsm8186982137.25 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [181.228.71.105]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+starttls: 220 2.0.0 Ready to start TLS
+
+hello: 250-smtp.gmail.com at your service, [181.228.71.105]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+Failed to authenticate password. Error: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials ada2fe7eead31-4deb203a52fsm8186982137.25 - gsmtp
+
+ERROR - 2025-05-14 10:35:29 --> Error al enviar el correo de bienvenida con enlace de recuperación a juanmarquez@alumnos.itr3.edu.ar
+ERROR - 2025-05-14 14:08:55 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-05-14 14:08:55 --> 220 smtp.gmail.com ESMTP 71dfb90a1353d-52c53725edasm9815602e0c.15 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [181.228.71.105]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+starttls: 220 2.0.0 Ready to start TLS
+
+hello: 250-smtp.gmail.com at your service, [181.228.71.105]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+Failed to authenticate password. Error: 535-5.7.8 Username and Password not accepted. For more information, go to
+535 5.7.8  https://support.google.com/mail/?p=BadCredentials 71dfb90a1353d-52c53725edasm9815602e0c.15 - gsmtp
+
+ERROR - 2025-05-14 14:08:55 --> Error al enviar el correo de bienvenida con enlace de recuperación a juanmarquez@alumnos.itr3.edu.ar
+CRITICAL - 2025-05-14 17:21:47 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: gestionar_usuarios]
+in APPPATH\Controllers\DirectivoController.php on line 21.
+ 1 APPPATH\Controllers\DirectivoController.php(21): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\DirectivoController.php', 21)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DirectivoController->gestionarUsuarios()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DirectivoController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-14 17:22:11 --> TypeError: Cannot access offset of type string on string
+[Method: GET, Route: gestionar_usuarios]
+in APPPATH\Controllers\DirectivoController.php on line 21.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DirectivoController->gestionarUsuarios()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DirectivoController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-14 17:23:34 --> ErrorException: Trying to access array offset on value of type null
+[Method: GET, Route: gestionar_usuarios]
+in APPPATH\Controllers\DirectivoController.php on line 18.
+ 1 APPPATH\Controllers\DirectivoController.php(18): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Trying to access array offset on value of type null', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\DirectivoController.php', 18)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DirectivoController->gestionarUsuarios()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DirectivoController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-05-14 17:45:00 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-05-14 17:45:00 --> 220 smtp.gmail.com ESMTP ada2fe7eead31-4dea85baebcsm8540113137.11 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [181.228.71.105]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+starttls: 220 2.0.0 Ready to start TLS
+
+hello: 250-smtp.gmail.com at your service, [181.228.71.105]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+from: 250 2.1.0 OK ada2fe7eead31-4dea85baebcsm8540113137.11 - gsmtp
+
+to: 250 2.1.5 OK ada2fe7eead31-4dea85baebcsm8540113137.11 - gsmtp
+
+data: 354 Go ahead ada2fe7eead31-4dea85baebcsm8540113137.11 - gsmtp
+
+
+quit: 250 2.0.0 OK  1747244700 ada2fe7eead31-4dea85baebcsm8540113137.11 - gsmtp
+
+The following SMTP error was encountered: 250 2.0.0 OK  1747244700 ada2fe7eead31-4dea85baebcsm8540113137.11 - gsmtp
+
+The following SMTP error was encountered: 
+ERROR - 2025-05-14 17:45:00 --> Error al enviar el correo de bienvenida con enlace de recuperación a pruebaaalumno@gmail.com

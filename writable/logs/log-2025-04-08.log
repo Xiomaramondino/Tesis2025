@@ -1,0 +1,153 @@
+ERROR - 2025-04-08 10:54:43 --> Intento fallido
+ERROR - 2025-04-08 10:56:18 --> Intento fallido
+CRITICAL - 2025-04-08 11:11:39 --> ParseError: syntax error, unexpected single-quoted string "password", expecting "]"
+[Method: GET, Route: admin/eliminar_directivo/72]
+in APPPATH\Controllers\AdminController.php on line 58.
+ 1 SYSTEMPATH\Autoloader\Autoloader.php(296): CodeIgniter\Autoloader\Autoloader->includeFile('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\AdminController.php')
+ 2 SYSTEMPATH\Autoloader\Autoloader.php(272): CodeIgniter\Autoloader\Autoloader->loadInNamespace('App\\Controllers\\AdminController')
+ 3 [internal function]: CodeIgniter\Autoloader\Autoloader->loadClass('App\\Controllers\\AdminController')
+ 4 SYSTEMPATH\CodeIgniter.php(887): class_exists('\\App\\Controllers\\AdminController', true)
+ 5 SYSTEMPATH\CodeIgniter.php(496): CodeIgniter\CodeIgniter->startController()
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-08 11:42:18 --> CodeIgniter\HTTP\Exceptions\BadRequestException: The URI you submitted has disallowed characters: "anVhbm1hcnF1ZXpAYWx1bW5vcy5pdHIzLmVkdS5hcg=="
+[Method: GET, Route: admin/cambiarContrasena/anVhbm1hcnF1ZXpAYWx1bW5vcy5pdHIzLmVkdS5hcg==]
+in SYSTEMPATH\Router\Router.php on line 737.
+ 1 SYSTEMPATH\Router\Router.php(204): CodeIgniter\Router\Router->checkDisallowedChars('admin/cambiarContrasena/anVhbm1hcnF1ZXpAYWx1bW5vcy5pdHIzLmVkdS5hcg==')
+ 2 SYSTEMPATH\CodeIgniter.php(834): CodeIgniter\Router\Router->handle('admin/cambiarContrasena/anVhbm1hcnF1ZXpAYWx1bW5vcy5pdHIzLmVkdS5hcg==')
+ 3 SYSTEMPATH\CodeIgniter.php(457): CodeIgniter\CodeIgniter->tryToRouteIt(Object(CodeIgniter\Router\RouteCollection))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-04-08 11:59:57 --> Intento fallido
+ERROR - 2025-04-08 12:01:04 --> Intento fallido
+ERROR - 2025-04-08 12:04:28 --> Intento fallido
+ERROR - 2025-04-08 16:11:40 --> Intento fallido
+ERROR - 2025-04-08 16:11:49 --> Intento fallido
+CRITICAL - 2025-04-08 16:17:04 --> ErrorException: Undefined array key "id"
+[Method: GET, Route: gestionar_usuarios]
+in APPPATH\Views\gestionar_usuarios.php on line 56.
+ 1 APPPATH\Views\gestionar_usuarios.php(56): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\gestionar_usuarios.php', 56)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\gestionar_usuarios.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('gestionar_usuarios', [], true)
+ 5 APPPATH\Controllers\DirectivoController.php(21): view('gestionar_usuarios', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DirectivoController->gestionarUsuarios()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DirectivoController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-04-08 16:20:57 --> Intento fallido
+ERROR - 2025-04-08 16:21:03 --> Intento fallido
+CRITICAL - 2025-04-08 16:21:53 --> ErrorException: Undefined variable $email
+[Method: POST, Route: directivo/agregarUsuario]
+in APPPATH\Controllers\DirectivoController.php on line 41.
+ 1 APPPATH\Controllers\DirectivoController.php(41): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $email', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\DirectivoController.php', 41)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DirectivoController->agregarUsuario()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DirectivoController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-08 16:23:36 --> Error: Call to undefined method App\Controllers\DirectivoController::_enviarCorreoNuevoLector()
+[Method: POST, Route: directivo/agregarUsuario]
+in APPPATH\Controllers\DirectivoController.php on line 41.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DirectivoController->agregarUsuario()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DirectivoController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-08 16:28:20 --> ErrorException: Undefined variable $usuario
+[Method: GET, Route: gestionar_usuarios]
+in APPPATH\Views\gestionar_usuarios.php on line 56.
+ 1 APPPATH\Views\gestionar_usuarios.php(56): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\gestionar_usuarios.php', 56)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\gestionar_usuarios.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('gestionar_usuarios', [], true)
+ 5 APPPATH\Controllers\DirectivoController.php(21): view('gestionar_usuarios', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DirectivoController->gestionarUsuarios()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DirectivoController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-08 16:28:20 --> ErrorException: Undefined variable $usuario
+[Method: GET, Route: gestionar_usuarios]
+in APPPATH\Views\gestionar_usuarios.php on line 56.
+ 1 APPPATH\Views\gestionar_usuarios.php(56): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $usuario', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\gestionar_usuarios.php', 56)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\gestionar_usuarios.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('gestionar_usuarios', [], true)
+ 5 APPPATH\Controllers\DirectivoController.php(21): view('gestionar_usuarios', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DirectivoController->gestionarUsuarios()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DirectivoController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-08 16:31:38 --> TypeError: str_contains(): Argument #1 ($haystack) must be of type string, CodeIgniter\Email\Email given
+[Method: POST, Route: directivo/agregarUsuario]
+in SYSTEMPATH\Email\Email.php on line 753.
+ 1 SYSTEMPATH\Email\Email.php(753): str_contains(Object(CodeIgniter\Email\Email), ',')
+ 2 SYSTEMPATH\Email\Email.php(556): CodeIgniter\Email\Email->stringToArray(Object(CodeIgniter\Email\Email))
+ 3 APPPATH\Controllers\DirectivoController.php(74): CodeIgniter\Email\Email->setTo(Object(CodeIgniter\Email\Email))
+ 4 APPPATH\Controllers\DirectivoController.php(40): App\Controllers\DirectivoController->enviarCorreoBienvenida(Object(CodeIgniter\Email\Email), 'juannn', 'Timbre2025')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DirectivoController->agregarUsuario()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DirectivoController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-08 16:36:30 --> TypeError: str_contains(): Argument #1 ($haystack) must be of type string, CodeIgniter\Email\Email given
+[Method: POST, Route: directivo/agregarUsuario]
+in SYSTEMPATH\Email\Email.php on line 753.
+ 1 SYSTEMPATH\Email\Email.php(753): str_contains(Object(CodeIgniter\Email\Email), ',')
+ 2 SYSTEMPATH\Email\Email.php(556): CodeIgniter\Email\Email->stringToArray(Object(CodeIgniter\Email\Email))
+ 3 APPPATH\Controllers\DirectivoController.php(85): CodeIgniter\Email\Email->setTo(Object(CodeIgniter\Email\Email))
+ 4 APPPATH\Controllers\DirectivoController.php(52): App\Controllers\DirectivoController->enviarCorreoBienvenida(Object(CodeIgniter\Email\Email), 'juuanjiii', 'timbre2025')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DirectivoController->agregarUsuario()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DirectivoController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-08 16:36:48 --> TypeError: str_contains(): Argument #1 ($haystack) must be of type string, CodeIgniter\Email\Email given
+[Method: POST, Route: directivo/agregarUsuario]
+in SYSTEMPATH\Email\Email.php on line 753.
+ 1 SYSTEMPATH\Email\Email.php(753): str_contains(Object(CodeIgniter\Email\Email), ',')
+ 2 SYSTEMPATH\Email\Email.php(556): CodeIgniter\Email\Email->stringToArray(Object(CodeIgniter\Email\Email))
+ 3 APPPATH\Controllers\DirectivoController.php(85): CodeIgniter\Email\Email->setTo(Object(CodeIgniter\Email\Email))
+ 4 APPPATH\Controllers\DirectivoController.php(52): App\Controllers\DirectivoController->enviarCorreoBienvenida(Object(CodeIgniter\Email\Email), 'juuanjiii', 'timbre2025')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DirectivoController->agregarUsuario()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DirectivoController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-08 16:38:01 --> TypeError: str_contains(): Argument #1 ($haystack) must be of type string, CodeIgniter\Email\Email given
+[Method: POST, Route: directivo/agregarUsuario]
+in SYSTEMPATH\Email\Email.php on line 753.
+ 1 SYSTEMPATH\Email\Email.php(753): str_contains(Object(CodeIgniter\Email\Email), ',')
+ 2 SYSTEMPATH\Email\Email.php(556): CodeIgniter\Email\Email->stringToArray(Object(CodeIgniter\Email\Email))
+ 3 APPPATH\Controllers\DirectivoController.php(83): CodeIgniter\Email\Email->setTo(Object(CodeIgniter\Email\Email))
+ 4 APPPATH\Controllers\DirectivoController.php(49): App\Controllers\DirectivoController->enviarCorreoBienvenida(Object(CodeIgniter\Email\Email), 'Juanjo', 'timbre2025')
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DirectivoController->agregarUsuario()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DirectivoController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-04-08 16:38:41 --> Error: Call to undefined method App\Controllers\DirectivoController::enviarCorreoBienvenida()
+[Method: POST, Route: directivo/agregarUsuario]
+in APPPATH\Controllers\DirectivoController.php on line 40.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DirectivoController->agregarUsuario()
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DirectivoController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
