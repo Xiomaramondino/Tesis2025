@@ -151,7 +151,7 @@
 
         /* Pie de página */
         .footer {
-        
+            text-align: center;
             padding: 1.5rem;
             background-color: #4a045a;
             font-weight: bold;
@@ -299,9 +299,9 @@
     
     <!-- Pie de página -->
     <footer class="footer">
-        <p>Tesis timbre automático 2025 <br>
+        <center><p>Tesis timbre automático 2025 <br>
             Marquez Juan - Mondino Xiomara
-        </p>
+        </p></center>
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <!-- Select2 JS -->
@@ -309,12 +309,10 @@
 
 <script>
     $(document).ready(function() {
-        
         $('#idcolegio').select2({
             placeholder: "Seleccione una institución",
             allowClear: true,
-            width: '400px'
-        
+            width: '100%'
         });
     });
 </script>
