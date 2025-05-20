@@ -253,7 +253,7 @@
     <option value="31">I.E.S. Instituto de Enseñanza Superior Río Tercero</option>
     <option value="32">Instituto Privado Jesús, María y José</option>
     <option value="33">I.S.D.E. Instituto Superior para el Desarrollo Educativo</option>
-</optgroup>
+</optgroup> 
 </select>
                             <div class="form-group">
                                 <label for="usuario"></label>
@@ -304,17 +304,5 @@
         </p></center>
     </footer>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<!-- Select2 JS -->
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-
-<script>
-    $(document).ready(function() {
-        $('#idcolegio').select2({
-            placeholder: "Seleccione una institución",
-            allowClear: true,
-            width: '100%'
-        });
-    });
-</script>
 </body>
 </html>

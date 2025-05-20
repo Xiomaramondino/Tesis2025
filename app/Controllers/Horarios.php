@@ -202,7 +202,7 @@ class Horarios extends Controller
         $model = new \App\Models\HorariosModel();
         $builder = $model->builder();
     
-        $builder->where('idcolegio', $idcolegio); /
+        $builder->where('idcolegio', $idcolegio); 
         $builder->orderBy('hora', 'ASC'); 
     
         $query = $builder->get();

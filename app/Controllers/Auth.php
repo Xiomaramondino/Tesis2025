@@ -157,96 +157,110 @@ class Auth extends Controller
     public function enviar_recuperacion()
     {
         $email = $this->request->getPost('email');
-        $idusuario = $this->request->getPost('idusuario');
+        $idcolegio = $this->request->getPost('idcolegio');
         $usuarioModel = new Usuario();
-
-        $user = $usuarioModel->where('email', $email)->first();
-
+    
+        // Buscar usuario con email + idcolegio
+        $user = $usuarioModel
+                    ->where('email', $email)
+                    ->where('idcolegio', $idcolegio)
+                    ->first();
+    
         if ($user) {
             $token = bin2hex(random_bytes(50));
             $usuarioModel->update($user['idusuario'], ['token' => $token]);
-
-            $this->sendRecoveryEmail($email, $token);
+    
+            $this->sendRecoveryEmail($email, $token, $idcolegio); // pasa idcolegio
             session()->setFlashdata('success', 'Se ha enviado un enlace de recuperación a tu correo.');
         } else {
-            session()->setFlashdata('error', 'El correo no está registrado.');
+            session()->setFlashdata('error', 'No se encontró un usuario con ese correo e institución.');
         }
-
+    
         return redirect()->to('recuperar_contrasena');
     }
+    
 
-    private function sendRecoveryEmail($email, $token)
-    {
-        $emailService = \Config\Services::email();
+    private function sendRecoveryEmail($email, $token, $idcolegio)
+{
+    $emailService = \Config\Services::email();
 
-        $emailService->setFrom('timbreautomatico2025@gmail.com', 'Soporte de Timbre Automático');
-        $emailService->setTo($email);
-        $emailService->setSubject('Recuperación de contraseña');
+    $emailService->setFrom('timbreautomatico2025@gmail.com', 'Soporte de Timbre Automático');
+    $emailService->setTo($email);
+    $emailService->setSubject('Recuperación de contraseña');
 
-        $link = base_url("resetear_contrasena?token=$token");
-        $message = "Hola, <br> Para recuperar tu contraseña, haz clic en el siguiente enlace: <br><br>";
-        $message .= "<a href='$link'>Recuperar contraseña</a><br><br>";
-        $message .= "Si no solicitaste esta recuperación, ignora este correo.";
+    $link = base_url("resetear_contrasena?token=$token&idcolegio=$idcolegio");
 
-        $emailService->setMessage($message);
-        $emailService->setMailType('html');
+    $message = "Hola, <br> Para recuperar tu contraseña, haz clic en el siguiente enlace: <br><br>";
+    $message .= "<a href='$link'>Recuperar contraseña</a><br><br>";
+    $message .= "Si no solicitaste esta recuperación, ignora este correo.";
 
-        if ($emailService->send()) {
-            // Si el correo se envía correctamente
-            log_message('info', 'Correo de recuperación enviado con éxito a ' . $email);
-        } else {
-            // Si hubo un error al enviar el correo
-            log_message('error', 'Error al enviar correo de recuperación a ' . $email . ': ' . $emailService->printDebugger());
-        }
+    $emailService->setMessage($message);
+    $emailService->setMailType('html');
 
+    if ($emailService->send()) {
+        log_message('info', 'Correo de recuperación enviado con éxito a ' . $email);
+    } else {
+        log_message('error', 'Error al enviar correo: ' . $emailService->printDebugger());
+    }
+}
+
+
+public function resetear_contrasena()
+{
+    $token = $this->request->getGet('token');
+    $idcolegio = $this->request->getGet('idcolegio');
+
+    $usuarioModel = new Usuario();
+    $user = $usuarioModel
+                ->where('token', $token)
+                ->where('idcolegio', $idcolegio)
+                ->first();
+
+    if (!$user) {
+        return redirect()->to('resetear_contrasena')->with('error', 'Token inválido o expirado.');
     }
 
-    public function resetear_contrasena()
-    {
-        $token = $this->request->getGet('token');
-        $usuarioModel = new Usuario();
-        $user = $usuarioModel->where('token', $token)->first();
+    return view('resetear_contrasena', [
+        'token' => $token,
+        'idcolegio' => $idcolegio,
+        'usuario' => $user['usuario'],
+        'email' => $user['email']
+    ]);
+}
+
     
-        if (!$user) {
-            return redirect()->to('resetear_contrasena')->with('error', 'Token inválido o expirado.');
-        }
-    
-        return view('resetear_contrasena', [
-            'token' => $token,
-            'usuario' => $user['usuario'],
-            'email' => $user['email']
+
+public function procesar_resetear_contrasena()
+{
+    $token = $this->request->getPost('token');
+    $idcolegio = $this->request->getPost('idcolegio');
+    $nuevaContrasenia = $this->request->getPost('nueva_contrasenia');
+
+    if (strlen($nuevaContrasenia) < 6 || !preg_match('/[A-Z]/', $nuevaContrasenia) || !preg_match('/[!@#$%*]/', $nuevaContrasenia)) {
+        session()->setFlashdata('password_error', 'La nueva contraseña debe tener al menos 6 caracteres, una letra mayúscula y un símbolo (!@#$%).');
+        return redirect()->to('resetear_contrasena?token=' . $token . '&idcolegio=' . $idcolegio);
+    }
+
+    $usuarioModel = new Usuario();
+    $user = $usuarioModel
+                ->where('token', $token)
+                ->where('idcolegio', $idcolegio)
+                ->first();
+
+    if ($user) {
+        $usuarioModel->update($user['idusuario'], [
+            'password' => password_hash($nuevaContrasenia, PASSWORD_DEFAULT),
+            'token' => null
         ]);
-    }
-    
-    
 
-    public function procesar_resetear_contrasena()
-    {
-        $token = $this->request->getPost('token');
-        $nuevaContrasenia = $this->request->getPost('nueva_contrasenia');
-       
-        // Validar que la nueva contraseña tenga al menos 6 caracteres, una mayúscula y un símbolo
-        if (strlen($nuevaContrasenia) < 6 || !preg_match('/[A-Z]/', $nuevaContrasenia) || !preg_match('/[!@#$%*]/', $nuevaContrasenia)) {
-            session()->setFlashdata('password_error', 'La nueva contraseña debe tener al menos 6 caracteres, una letra mayúscula y un símbolo (!@#$%).');
-            return redirect()->to('resetear_contrasena?token=' . $token);
-        }
-    
-        $usuarioModel = new Usuario();
-        $user = $usuarioModel->where('token', $token)->first();
-    
-        if ($user) {
-            $usuarioModel->update($user['idusuario'], [
-                'password' => password_hash($nuevaContrasenia, PASSWORD_DEFAULT),
-                'token' => null
-            ]);
-           
-            session()->setFlashdata('success', 'Tu contraseña ha sido actualizada.');
-            return redirect()->to('login');
-        } else {
-            session()->setFlashdata('error', 'El token es inválido o ha expirado.');
-            return redirect()->to('recuperar_contrasena');
-        }
+        session()->setFlashdata('success', 'Tu contraseña ha sido actualizada.');
+        return redirect()->to('login');
+    } else {
+        session()->setFlashdata('error', 'Token inválido o expirado.');
+        return redirect()->to('recuperar_contrasena');
     }
+}
+
 }
 
 ?>
