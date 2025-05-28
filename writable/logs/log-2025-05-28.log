@@ -126,3 +126,27 @@ in APPPATH\Controllers\Auth.php on line 49.
  5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
  6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-28 14:54:28 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/registrar_dispositivo.php"
+[Method: GET, Route: admin/registrar_dispositivo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/registrar_dispositivo.php')
+ 2 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('admin/registrar_dispositivo', [], true)
+ 3 APPPATH\Controllers\AdminController.php(199): view('admin/registrar_dispositivo')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->registrar_dispositivo()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-28 14:58:11 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/registrar_dispositivo.php"
+[Method: GET, Route: admin/registrar_dispositivo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/registrar_dispositivo.php')
+ 2 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('admin/registrar_dispositivo', [], true)
+ 3 APPPATH\Controllers\AdminController.php(186): view('admin/registrar_dispositivo')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->registrar_dispositivo()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
