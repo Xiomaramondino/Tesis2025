@@ -1,0 +1,128 @@
+CRITICAL - 2025-05-28 12:54:44 --> ErrorException: Undefined variable $rolSeleccionado
+[Method: POST, Route: autenticar]
+in APPPATH\Controllers\Auth.php on line 44.
+ 1 APPPATH\Controllers\Auth.php(44): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $rolSeleccionado', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\Auth.php', 44)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->autenticar()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-28 13:05:03 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/registrar_dispositivo.php"
+[Method: GET, Route: admin/registrar_dispositivo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/registrar_dispositivo.php')
+ 2 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('admin/registrar_dispositivo', [], true)
+ 3 APPPATH\Controllers\AdminController.php(199): view('admin/registrar_dispositivo')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->formRegistrarDispositivo()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-28 13:06:29 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/registrar_dispositivo.php"
+[Method: GET, Route: admin/registrar_dispositivo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/registrar_dispositivo.php')
+ 2 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('admin/registrar_dispositivo', [], true)
+ 3 APPPATH\Controllers\AdminController.php(199): view('admin/registrar_dispositivo')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->formRegistrarDispositivo()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-28 13:06:30 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/registrar_dispositivo.php"
+[Method: GET, Route: admin/registrar_dispositivo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/registrar_dispositivo.php')
+ 2 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('admin/registrar_dispositivo', [], true)
+ 3 APPPATH\Controllers\AdminController.php(199): view('admin/registrar_dispositivo')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->formRegistrarDispositivo()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-28 13:06:31 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/registrar_dispositivo.php"
+[Method: GET, Route: admin/registrar_dispositivo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/registrar_dispositivo.php')
+ 2 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('admin/registrar_dispositivo', [], true)
+ 3 APPPATH\Controllers\AdminController.php(199): view('admin/registrar_dispositivo')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->formRegistrarDispositivo()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-28 13:06:31 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/registrar_dispositivo.php"
+[Method: GET, Route: admin/registrar_dispositivo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/registrar_dispositivo.php')
+ 2 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('admin/registrar_dispositivo', [], true)
+ 3 APPPATH\Controllers\AdminController.php(199): view('admin/registrar_dispositivo')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->formRegistrarDispositivo()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-28 13:07:03 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/registrar_dispositivo.php"
+[Method: GET, Route: admin/registrar_dispositivo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/registrar_dispositivo.php')
+ 2 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('admin/registrar_dispositivo', [], true)
+ 3 APPPATH\Controllers\AdminController.php(199): view('admin/registrar_dispositivo')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->formRegistrarDispositivo()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-28 13:07:05 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/registrar_dispositivo.php"
+[Method: GET, Route: admin/registrar_dispositivo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/registrar_dispositivo.php')
+ 2 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('admin/registrar_dispositivo', [], true)
+ 3 APPPATH\Controllers\AdminController.php(199): view('admin/registrar_dispositivo')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->formRegistrarDispositivo()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-28 13:14:05 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/registrar_dispositivo.php"
+[Method: GET, Route: admin/registrar_dispositivo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/registrar_dispositivo.php')
+ 2 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('admin/registrar_dispositivo', [], true)
+ 3 APPPATH\Controllers\AdminController.php(199): view('admin/registrar_dispositivo')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->formRegistrarDispositivo()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-28 13:17:55 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "admin/registrar_dispositivo.php"
+[Method: GET, Route: admin/registrar_dispositivo]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('admin/registrar_dispositivo.php')
+ 2 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('admin/registrar_dispositivo', [], true)
+ 3 APPPATH\Controllers\AdminController.php(199): view('admin/registrar_dispositivo')
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->registrarDispositivo()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-05-28 14:17:02 --> ErrorException: Undefined variable $contrasenia
+[Method: POST, Route: autenticar]
+in APPPATH\Controllers\Auth.php on line 49.
+ 1 APPPATH\Controllers\Auth.php(49): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $contrasenia', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\Auth.php', 49)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->autenticar()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

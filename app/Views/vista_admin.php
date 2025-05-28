@@ -111,7 +111,8 @@
             <a href="<?= base_url('/horarios'); ?>" class="btn btn-sm cerrar-btn">Visualizar horarios</a>
             <form action="<?= base_url('/logout'); ?>" method="post">
                 <?= csrf_field(); ?>
-                <button type="submit" class="btn btn-sm cerrar-btn">Cerrar sesión</button>
+                <button type="submit" class="btn btn-sm cerrar-btn">Cerrar sesión</button> <br>
+             
             </form>
         </div>
     </nav>

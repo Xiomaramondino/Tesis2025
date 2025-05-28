@@ -29,49 +29,46 @@ class Auth extends Controller
     }
 
     public function autenticar()
-    {
-        $session = session();
-        $Usuario = new Usuario();
-        
-        $email = $this->request->getPost('email');
-        $username = $this->request->getPost('usuario');
-        $contrasenia = $this->request->getPost('password');
-        $colegioSeleccionado = $this->request->getPost('idcolegio'); // Nuevo: lo que seleccionó el usuario
-    
-        // Buscar al usuario por nombre de usuario
-        $user = $Usuario->where('usuario', $username)->first();
-        
-        if ($user && password_verify($contrasenia, $user['password'])) {
-    
-            // VALIDACIÓN DE COLEGIO
-            if ($user['idcolegio'] != $colegioSeleccionado) {
-                session()->set('error', 'El colegio seleccionado no coincide con el de registro');
-                return redirect()->to('/login');
-            }
-    
-            // Establecer datos de sesión si el colegio coincide
-            session()->set([
-                'username' => $user['usuario'],
-                'logged_in' => true,
-                'idrol' => $user['idrol'],
-                'idturno' => $user['idturno'],
-                'curso' => $user['curso'],
-                'idcolegio' => $user['idcolegio'],
-            ]);
-    
-            // Redirigir según el rol
-            if ($user['idrol'] === '1') {
-                return redirect()->to('/vista_admin');
-            } elseif ($user['idrol'] === '2') {
-                return redirect()->to('/gestionar_usuarios');
-            } else {
-                return redirect()->to('/horarios_lector');
-            }
-        } else {
-            session()->set('error', 'Correo electrónico o contraseña incorrecta');
-            return redirect()->to('/login');
-        }
+{
+    $session = session();
+    $Usuario = new Usuario();
+
+    $username = $this->request->getPost('usuario');
+    $contrasenia = $this->request->getPost('password'); 
+    $colegioSeleccionado = $this->request->getPost('idcolegio');
+
+    $user = $Usuario->where('usuario', $username)
+                    ->where('idcolegio', $colegioSeleccionado)
+                    ->first();
+
+    if (!$user) {
+        session()->setFlashdata('error', 'Usuario no encontrado con ese nombre y colegio.');
+        return redirect()->to('/login');
     }
+
+    if (!password_verify($contrasenia, $user['password'])) {
+        session()->setFlashdata('error', 'Contraseña incorrecta');
+        return redirect()->to('/login');
+    }
+
+    session()->set([
+        'username'   => $user['usuario'],
+        'logged_in'  => true,
+        'idrol'      => $user['idrol'],
+        'idturno'    => $user['idturno'],
+        'curso'      => $user['curso'],
+        'idcolegio'  => $user['idcolegio'],
+    ]);
+
+    // Redirigir según el rol
+     if ($user['idrol'] === '1') {
+        return redirect()->to('/vista_admin');
+    } elseif ($user['idrol'] === '2') {
+        return redirect()->to('/gestionar_usuarios');
+    } else {
+        return redirect()->to('/horarios_lector');
+    }
+}
 
     public function registro()
     {
@@ -204,7 +201,6 @@ class Auth extends Controller
     }
 }
 
-
 public function resetear_contrasena()
 {
     $token = $this->request->getGet('token');
@@ -227,8 +223,6 @@ public function resetear_contrasena()
         'email' => $user['email']
     ]);
 }
-
-    
 
 public function procesar_resetear_contrasena()
 {

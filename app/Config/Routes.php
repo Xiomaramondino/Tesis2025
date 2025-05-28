@@ -48,5 +48,3 @@ $routes->get('/admin/horarios', 'Horarios::horariosAdmin');
 
 $routes->get('/directivo/editarUsuario/(:num)', 'DirectivoController::editarUsuario/$1');
 $routes->post('/directivo/actualizarUsuario', 'DirectivoController::actualizarUsuario');
-
-
