@@ -12,31 +12,16 @@ class Horarios extends Controller
     public function index()
     {
         $session = session();
-        $idturno = $session->get('idturno');  // Obtenemos el turno desde la sesión
-        $idcolegio = $session->get('idcolegio'); // Obtenemos el colegio del usuario
-
+        $idcolegio = $session->get('idcolegio'); // Obtenemos solo el colegio
+    
         $model = new \App\Models\HorariosModel();
-        $builder = $model->builder(); // Usamos query builder para filtrar
-
-        $builder->where('idcolegio', $idcolegio);
     
-        // Aplicamos el filtro según el turno del usuario
-        if ($idturno === '1') {
-            $builder->where('hora >=', '07:00:00')->where('hora <', '13:00:00');
-        } elseif ($idturno === '2') {
-            $builder->where('hora >=', '13:00:00')->where('hora <=', '22:00:00');
-        } elseif ($idturno === '3') {
-            // No filtramos, mostramos todo
-        } else {
-            // Turno no definido o inválido, puedes redirigir o mostrar mensaje
-            
-        }
-    
-        $query = $builder->get();
-        $data = $query->getResult(); // Resultado filtrado según el turno
+        // Filtramos directamente usando el modelo
+        $data = $model->where('idcolegio', $idcolegio)->findAll();
     
         return view('horarios', ['data' => $data]);
     }
+    
     
 
     public function editar($idhorario = null)
@@ -70,15 +55,6 @@ class Horarios extends Controller
         return redirect()->to('/horarios/editar/' . $idhorario);
     }
 
-    $horaSolo = date_format($horaParsed, 'H:i:s');
-    if ($idturno === '1' && ($horaSolo < '07:00:00' || $horaSolo >= '13:00:00')) {
-        session()->setFlashdata('error', 'Solo puedes modificar horarios matutinos (07:00 a 13:00).');
-        return redirect()->to('/horarios/editar/' . $idhorario);
-    }
-    if ($idturno === '2' && ($horaSolo < '13:00:00' || $horaSolo > '22:00:00')) {
-        session()->setFlashdata('error', 'No puedes modificar a un horario matutino. Solo entre 13:00 y 22:00.');
-        return redirect()->to('/horarios/editar/' . $idhorario);
-    }
 
     // Verificar si existe la misma hora en el mismo colegio pero en un horario diferente
     $existe = $model
@@ -125,15 +101,6 @@ class Horarios extends Controller
             return redirect()->to(base_url('horarios/agregar'));
         }
     
-        $horaSolo = date_format($horaParsed, 'H:i:s');
-        if ($idturno === '1' && ($horaSolo < '07:00:00' || $horaSolo >= '13:00:00')) {
-            session()->setFlashdata('error', 'Solo puedes agregar horarios matutinos (07:00 a 13:00).');
-            return redirect()->to(base_url('horarios/agregar'));
-        }
-        if ($idturno === '2' && ($horaSolo < '13:00:00' || $horaSolo > '22:00:00')) {
-            session()->setFlashdata('error', 'No puedes agregar horarios matutinos. Solo entre 13:00 y 22:00.');
-            return redirect()->to(base_url('horarios/agregar'));
-        }
     
         $existingHorario = $horariosModel
         ->where('hora', $hora)

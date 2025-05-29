@@ -15,9 +15,8 @@ body {
 .navbar {
     width: 100%;
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    background-color: #540466;
+    background-color: #4a045a;
     padding: 1rem 2rem;
     position: fixed;
     z-index: 1000;
@@ -78,7 +77,6 @@ body {
 }
 
 .form-card h2 {
-    font-family: 'Cursive', serif;
     text-align: center;
     margin-bottom: 20px;
 }
@@ -146,8 +144,10 @@ body {
 <body>
 <!-- Barra de navegación -->
 <nav class="navbar sticky-top">
-    <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/DINGDONG.jpg" width="60px" alt="Logo">
-    <div class="logo">RingMind</div>
+    <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
+    <div class="logo" style="margin-left: 89px;">RingMind</div>
+
+
     <div class="navbar-buttons">
         <a href="<?= base_url('/horarios'); ?>" class="btn btn-sm gestion-btn">Gestión de timbres</a>
         <form action="<?= base_url('/logout'); ?>" method="post">

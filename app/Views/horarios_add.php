@@ -39,7 +39,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: #540466;
+      background-color:#4a045a;
       padding: 1rem 2rem;
       position: fixed; /* Mantiene la navbar fija en la parte superior */
       top: 0;
@@ -99,7 +99,7 @@
   
 
   <nav class="navbar sticky-top">
-<img src="http://localhost/juanxiomaram2024/tesina2025/fondo/DINGDONG.jpg" width="60px" alt="Logo">
+<img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
     <div class="logo" style="padding-right: -600px;">RingMind</div>
 
     <div class="navbar-buttons">

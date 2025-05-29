@@ -36,7 +36,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #540466;
+            background-color: #4a045a;
             padding: 1rem 2rem;
             position: fixed; /* Fija la barra en la parte superior */
             top: 0; /* Coloca la barra en la parte superior */
@@ -65,7 +65,7 @@
         }
     </style>
      <nav class="navbar">
-        <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/DINGDONG.jpg" width="60px" alt="Logo">
+        <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
        <center> <div class="logo" style="padding-right: 540px;">RingMind</div></center>
     </nav>
      <div class="card" style="width: 30rem;">

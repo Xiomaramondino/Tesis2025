@@ -18,7 +18,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #540466;
+            background-color: #4a045a;
             padding: 1rem 2rem;
             position: fixed;
             top: 0;
@@ -85,13 +85,14 @@
         }
 
         .form-control {
-            width: 100%;
-            padding: 0.4rem;
+            width: 95%;
+            padding: 0.6rem;
             border: 1px solid #ddd;
-            border-radius: 7px;
-            margin-bottom: 0.8rem;
+            border-radius: 5px;
+            margin-bottom: 0.7rem;
+            display: block;        /* Cambia el tipo de display a block */
+            margin-left:0.5px;     /* Centra el campo horizontalmente */
         }
-
         button {
             padding: 0.4rem 1.7rem;
             font-size: 1.1rem;
@@ -133,6 +134,7 @@
       font-weight: bold;
         color: white;
         }
+        
     </style>
 </head>
 <body>
@@ -140,8 +142,8 @@
 
 <!-- Barra de navegación sticky -->
 <nav class="navbar sticky-top">
-<img src="http://localhost/juanxiomaram2024/tesina2025/fondo/DINGDONG.jpg" width="60px" alt="Logo">
-    <div class="logo" style="padding-right: -600px;">RingMind</div>
+<img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
+    <div class="logo" style="padding-right: 50px;">RingMind</div>
 
     <div class="navbar-buttons">
         <form action="<?= base_url('/vista_admin'); ?>" method="get">

@@ -93,7 +93,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color: #540466;
+        background-color: #4a045a;
         padding: 1rem 2rem;
     }
     .navbar .logo {
@@ -135,7 +135,7 @@
 
 <!-- Barra de navegación -->
 <nav class="navbar">
-    <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/DINGDONG.jpg" width="60px" alt="Logo">
+    <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
     <center><div class="logo" style="padding-right: -540px;">RingMind</div></center>
     <div class="navbar-buttons">
         <form action="<?= base_url('/'); ?>" method="get">
@@ -150,7 +150,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12">
-                    <h3 class="text-center mb-4"><em>𝓒𝓸𝓶𝓹𝓻𝓪𝓻 𝓹𝓻𝓸𝓭𝓾𝓬𝓽𝓸</em></h3>
+                    <h3 class="text-center mb-4">Comprar producto</h3>
                     <form id="registerForm" action="<?= base_url('registro') ?>" method="post"> 
                         <?php if (session()->get('error')) : ?>
                             <div class="alert alert-danger"><?= session()->get('error'); ?> </div>

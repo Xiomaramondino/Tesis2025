@@ -53,7 +53,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #540466;
+            background-color: #4a045a;
             padding: 1rem 2rem;
             position: fixed;
             z-index: 1000;
@@ -111,7 +111,7 @@
     </style>
 
     <nav class="navbar sticky-top">
-        <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/DINGDONG.jpg" width="60px" alt="Logo">
+        <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
         <div class="logo" style="padding-left: 80px;">RingMind</div>
         <div class="navbar-buttons">
             <a href="<?= base_url('/admin/horarios'); ?>" class="btn btn-sm cerrar-btn">Visualizar horarios</a>
@@ -156,15 +156,6 @@
                         <input type="email" id="email" name="email" class="form-control" placeholder="Correo electrónico" required>
                     </div>
 
-                    <div class="mb-3">
-                        <select id="idturno" name="idturno" class="form-select" required>
-                            <option value="" disabled selected>Selecciona turno</option>
-                            <option value="1">Mañana</option>
-                            <option value="2">Tarde</option>
-                            <option value="3">Mixto</option>
-                        </select>
-                    </div>
-
                     <div style="margin-top:10px; background: #f1f1f1; padding:10px; border-left: 5px solid #2196F3;">
                         ⚠️ <strong>Nota:</strong> El sistema generará una contraseña automática y enviará un correo al usuario con un enlace para que cree su propia contraseña.
                     </div>
@@ -189,8 +180,6 @@
                         <tr>
                             <th>Nombre</th>
                             <th>Correo Electrónico</th>
-                            <th>IdRol</th>
-                            <th>IdTurno</th>
                             <th>Acción</th>
                             <th>Editar</th>
                         </tr>
@@ -200,8 +189,7 @@
                             <tr>
                                 <td><?= esc($usuario['usuario']) ?></td>
                                 <td><?= esc($usuario['email']) ?></td>
-                                <td><?= esc($usuario['idrol']) ?></td>
-                                <td><?= esc($usuario['idturno']) ?></td>
+                                
                                 <td>
                                 <a href="<?= base_url('admin/eliminar_directivo/' . $usuario['idusuario']) ?>" 
    class="text-decoration-none" 

@@ -29,7 +29,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #540466;
+            background-color: #4a045a;
             padding: 1rem 2rem;
         }
 
@@ -165,7 +165,7 @@
 
     <!-- Barra de navegación -->
     <nav class="navbar">
-        <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/DINGDONG.jpg" width="60px" alt="Logo">
+        <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
         <center><div class="logo" style="padding-right: -540px;">RingMind</div></center>
         <div class="navbar-buttons">
         <form action="<?= base_url('/'); ?>" method="get">
@@ -181,7 +181,7 @@
             <div class="container text-center">
                 <div class="row justify-content-md-center">
                     <div class="col-md-10">
-                        <h3><em>𝓐𝓬𝓬𝓮𝓭𝓮𝓻 𝓪 𝓶𝓲 𝓬𝓾𝓮𝓷𝓽𝓪</em></h3>
+                        <h3>Acceder a mi cuenta</h3>
                         <form action="<?= base_url('autenticar') ?>" method="post">
                             
                             <!-- Mensajes de éxito o error -->

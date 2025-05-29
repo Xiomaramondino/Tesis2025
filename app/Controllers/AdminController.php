@@ -56,9 +56,9 @@ class AdminController extends Controller
 
         $usuario = $this->request->getPost('usuario');
         $email = $this->request->getPost('email');
-        $idturno = $this->request->getPost('idturno');
+        
 
-        if (empty($usuario) || empty($email) || empty($idturno)) {
+        if (empty($usuario) || empty($email)) {
             session()->setFlashdata('error', 'Todos los campos son obligatorios');
             return redirect()->to('/vista_admin');
         }
@@ -81,7 +81,6 @@ class AdminController extends Controller
             'email' => $email,
             'password' => $hashedPassword,
             'idrol' => '2',
-            'idturno' => $idturno,
             'fecha_registro' => date('Y-m-d H:i:s'),
             'token' => $token,
             'idcolegio' => $idcolegio,
@@ -133,7 +132,6 @@ class AdminController extends Controller
         $idusuario = $this->request->getPost('idusuario');
         $usuario = $this->request->getPost('usuario');
         $email = $this->request->getPost('email');
-        $idturno = $this->request->getPost('idturno');
 
         if (empty($usuario) || empty($email)) {
             session()->setFlashdata('error', 'Todos los campos son obligatorios.');
@@ -143,7 +141,6 @@ class AdminController extends Controller
         $data = [
             'usuario' => $usuario,
             'email' => $email,
-            'idturno' => $idturno,
         ];
 
         if (!$usuarioModel->update($idusuario, $data)) {
@@ -195,7 +192,7 @@ public function guardar_dispositivo()
     if (!preg_match('/^([0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2}$/', $mac)) {
         return redirect()->back()->with('error', 'La dirección MAC no tiene un formato válido.');
     }
-    
+
     // Validación de duplicado
     $dispositivoModel = new \App\Models\DispositivoModel();
     $existe = $dispositivoModel
