@@ -30,7 +30,7 @@
         }
 
         .btn-form {
-            background-color: #550055;
+            background-color:  #4a045a;
             color: white;
             border: none;
             width: 100%;
@@ -101,6 +101,12 @@
             position: relative;
             bottom: 0;
         }
+        .btn-ancho-custom {
+        width: 250px; 
+        max-width: 100%;
+        background-color: #4a045a;
+        border-radius: 13px;
+}
 
     </style>
 
@@ -112,20 +118,21 @@
             <form action="<?= base_url('/logout'); ?>" method="post">
                 <?= csrf_field(); ?>
                 <button type="submit" class="btn btn-sm cerrar-btn">Cerrar sesión</button> <br>
-
-             
             </form>
         </div>
     </nav>
 </head>
-<body>
-    <!-- Card para el formulario de agregar usuario -->
+<body> <br>
+<div class="text-center mb-3">
+    <form action="<?= base_url('registrar_dispositivo') ?>" method="get">
+        <button type="submit" class="btn btn-form btn-ancho-custom">Registrar Dispositivo</button>
+    </form>
+</div>
+
     <div class="container mt-4">
         <div class="col-md-6 mx-auto">
             <div class="form-card">
                 <h2>𝓐𝓰𝓻𝓮𝓰𝓪𝓻 𝓾𝓼𝓾𝓪𝓻𝓲𝓸 𝓭𝓲𝓻𝓮𝓬𝓽𝓲𝓿𝓸</h2>
-
-                <!-- Mensajes de alerta dentro de la card -->
                 <?php if (session()->get('error')): ?>
                     <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
                         <?= session()->get('error'); ?>
@@ -167,8 +174,8 @@
                 </form>
             </div>
         </div>
-    </div>
-
+    </div> 
+    
     <hr class="my-5">
     <!-- Card para la tabla de usuarios directivos -->
     <div class="container">

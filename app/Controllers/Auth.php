@@ -52,6 +52,7 @@ class Auth extends Controller
     }
 
     session()->set([
+        'idusuario'  => $user['idusuario'],
         'username'   => $user['usuario'],
         'logged_in'  => true,
         'idrol'      => $user['idrol'],

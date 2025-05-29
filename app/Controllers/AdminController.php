@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use App\Models\Usuario;
+use App\Models\DispositivoModel; 
 
 class AdminController extends Controller
 {
@@ -179,4 +180,40 @@ class AdminController extends Controller
             log_message('error', 'Error al enviar el correo de bienvenida con enlace de recuperación a ' . $email);
         }
     }
+    public function registrar_dispositivo()
+{
+    return view('registrar_dispositivo');
+}
+
+public function guardar_dispositivo()
+{
+    $mac = $this->request->getPost('mac');
+    $idusuario = session()->get('idusuario');
+    $idcolegio = session()->get('idcolegio');
+
+
+    if (!preg_match('/^([0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2}$/', $mac)) {
+        return redirect()->back()->with('error', 'La dirección MAC no tiene un formato válido.');
+    }
+    
+    // Validación de duplicado
+    $dispositivoModel = new \App\Models\DispositivoModel();
+    $existe = $dispositivoModel
+                ->where('mac', $mac)
+                ->where('idusuario', $idusuario)
+                ->where('idcolegio', $idcolegio)
+                ->first();
+
+    if ($existe) {
+        return redirect()->back()->with('error', 'Esta MAC ya está registrada para tu usuario y colegio.');
+    }
+
+    $dispositivoModel->insert([
+        'mac' => $mac,
+        'idusuario' => $idusuario,
+        'idcolegio' => $idcolegio
+    ]);
+
+    return redirect()->to('registrar_dispositivo')->with('success', 'Dispositivo registrado con éxito.');
+}
 }
