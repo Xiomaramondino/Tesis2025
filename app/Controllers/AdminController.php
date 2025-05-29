@@ -55,17 +55,16 @@ class AdminController extends Controller
         }
 
         $usuario = $this->request->getPost('usuario');
-        $email = $this->request->getPost('email');
+        $email = strtolower(trim($this->request->getPost('email')));
         
-
         if (empty($usuario) || empty($email)) {
             session()->setFlashdata('error', 'Todos los campos son obligatorios');
             return redirect()->to('/vista_admin');
         }
-
+        
         $model = new \App\Models\Usuario();
         $usuarioExistente = $model->where('email', $email)->first();
-
+        
         if ($usuarioExistente) {
             session()->setFlashdata('error', 'El email ingresado ya está en uso por otro usuario.');
             return redirect()->to('/vista_admin');
@@ -87,7 +86,7 @@ class AdminController extends Controller
         ];
 
         if ($model->insertarUsuario($data)) {
-            $this->_enviarCorreoRecuperacionInicial($email, $usuario, $token);
+            $this->_enviarCorreoRecuperacionInicial($email, $usuario, $token, $idcolegio);
             session()->setFlashdata('success', 'Usuario creado correctamente y se envió el correo.');
         } else {
             session()->setFlashdata('error', 'Ocurrió un error al agregar el usuario.');
@@ -150,33 +149,39 @@ class AdminController extends Controller
         return redirect()->to('/vista_admin');
     }
 
-    private function _enviarCorreoRecuperacionInicial($email, $usuario, $token)
+    private function _enviarCorreoRecuperacionInicial($email, $usuario, $token, $idcolegio)
     {
         $emailService = \Config\Services::email();
-
+    
+        $colegioModel = new \App\Models\ColegioModel();
+        $colegio = $colegioModel->find($idcolegio);
+        $nombreColegio = $colegio ? $colegio['nombre'] : 'Tu colegio';
+    
         $emailService->setFrom('timbreautomatico2025@gmail.com', 'Sistema de Gestión de Timbres');
         $emailService->setTo($email);
         $emailService->setSubject('Bienvenido - Establece tu contraseña');
-
+    
         $link = base_url("resetear_contrasena?token=$token");
-
+    
         $mensaje = "
             <h2>Hola $usuario,</h2>
-            <p>Se ha creado una cuenta para vos en el <strong>Sistema de Gestión de Timbres</strong>.</p>
+            <p>Se ha creado una cuenta para vos en el <strong>Sistema de Gestión de Timbres</p>
+            <p>Colegio:$nombreColegio</p>
             <p>Tu nombre de usuario es: $usuario </p>
             <p>Para activar tu cuenta y establecer una nueva contraseña, hacé clic en el siguiente enlace:</p>
             <p><a href='$link'>Establecer contraseña</a></p>
             <p>Si no solicitaste esto, podés ignorar este mensaje.</p>
             <br><p>Saludos,<br>Sistema de Gestión de Timbres</p>
         ";
-
+    
         $emailService->setMessage($mensaje);
         $emailService->setMailType('html');
-
+    
         if (!$emailService->send()) {
             log_message('error', 'Error al enviar el correo de bienvenida con enlace de recuperación a ' . $email);
         }
     }
+    
     public function registrar_dispositivo()
 {
     return view('registrar_dispositivo');

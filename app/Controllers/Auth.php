@@ -213,9 +213,11 @@ public function resetear_contrasena()
                 ->where('idcolegio', $idcolegio)
                 ->first();
 
-    if (!$user) {
-        return redirect()->to('resetear_contrasena')->with('error', 'Token inválido o expirado.');
-    }
+                if (!$user) {
+                    session()->setFlashdata('error', 'Token inválido o expirado.');
+                    return redirect()->to('recuperar_contrasena');
+                }
+            
 
     return view('resetear_contrasena', [
         'token' => $token,
