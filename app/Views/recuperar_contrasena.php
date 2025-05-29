@@ -93,7 +93,7 @@
     <!-- Barra de navegación -->
     <nav class="navbar">
         <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/DINGDONG.jpg" width="60px" alt="Logo">
-        <center> <div class="logo" style="padding-right: 545px;">DING DONG PRO</div></center>
+        <center> <div class="logo" style="padding-right: 545px;">RingMind</div></center>
     </nav>
 
     <!-- Card para recuperar contraseña -->
@@ -102,7 +102,7 @@
             <div class="container text-center">
                 <div class="row justify-content-md-center">
                     <div class="col-md-10">
-                        <h3><em>𝓡𝓮𝓬𝓾𝓹𝓮𝓻𝓪𝓻 𝓹𝓪𝓼𝓼𝓼𝔀𝓸𝓻𝓭</em></h3>
+                        <h3>Recuperar Password</h3>
 
                         <form action="<?= base_url('enviar_recuperacion') ?>" method="post">
                             <!-- Mensajes de error -->

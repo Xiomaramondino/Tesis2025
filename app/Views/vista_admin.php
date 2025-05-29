@@ -19,7 +19,7 @@
         }
 
         .form-card h2 {
-            font-family: 'Cursive', serif;
+            
             text-align: center;
             margin-bottom: 20px;
         }
@@ -112,9 +112,9 @@
 
     <nav class="navbar sticky-top">
         <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/DINGDONG.jpg" width="60px" alt="Logo">
-        <div class="logo">DING DONG PRO</div>
+        <div class="logo" style="padding-left: 80px;">RingMind</div>
         <div class="navbar-buttons">
-            <a href="<?= base_url('/horarios'); ?>" class="btn btn-sm cerrar-btn">Visualizar horarios</a>
+            <a href="<?= base_url('/admin/horarios'); ?>" class="btn btn-sm cerrar-btn">Visualizar horarios</a>
             <form action="<?= base_url('/logout'); ?>" method="post">
                 <?= csrf_field(); ?>
                 <button type="submit" class="btn btn-sm cerrar-btn">Cerrar sesión</button> <br>
@@ -132,7 +132,7 @@
     <div class="container mt-4">
         <div class="col-md-6 mx-auto">
             <div class="form-card">
-                <h2>𝓐𝓰𝓻𝓮𝓰𝓪𝓻 𝓾𝓼𝓾𝓪𝓻𝓲𝓸 𝓭𝓲𝓻𝓮𝓬𝓽𝓲𝓿𝓸</h2>
+                <h2>Agregar usuario directivo</h2>
                 <?php if (session()->get('error')): ?>
                     <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
                         <?= session()->get('error'); ?>
@@ -181,7 +181,7 @@
     <div class="container">
         <div class="card">
             <div class="card-header">
-                <h2>𝓤𝓼𝓾𝓪𝓻𝓲𝓸𝓼 𝓓𝓲𝓻𝓮𝓬𝓽𝓲𝓿𝓸𝓼</h2>
+                <h2>Usuarios directivos</h2>
             </div>
             <div class="card-body">
                 <table class="table table-bordered">

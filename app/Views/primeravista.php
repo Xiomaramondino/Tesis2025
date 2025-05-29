@@ -159,7 +159,7 @@
 <!-- Barra de navegación -->
 <nav class="navbar">
     <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/DINGDONG.jpg" width="60px" alt="Logo">
-    <div class="logo">DING DONG PRO</div>
+    <div class="logo">RingMind</div>
     <ul class="icon-links">
     <li>
         <a href="https://www.instagram.com/empresa" target="_blank">

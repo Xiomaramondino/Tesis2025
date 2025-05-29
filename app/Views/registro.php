@@ -136,7 +136,7 @@
 <!-- Barra de navegación -->
 <nav class="navbar">
     <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/DINGDONG.jpg" width="60px" alt="Logo">
-    <center><div class="logo" style="padding-right: -540px;">DING DONG PRO</div></center>
+    <center><div class="logo" style="padding-right: -540px;">RingMind</div></center>
     <div class="navbar-buttons">
         <form action="<?= base_url('/'); ?>" method="get">
             <button type="submit" class="btn btn-sm volver-btn">Volver</button>

@@ -107,7 +107,7 @@
 <!-- Barra de navegación -->
 <nav class="navbar sticky-top">
     <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/DINGDONG.jpg" width="60px" alt="Logo">
-    <div class="logo" style="padding-right: -600px;">DING DONG PRO</div>
+    <div class="logo" style="padding-right: -600px;">RingMind</div>
 
     <div class="navbar-buttons">
         <form action="<?= base_url('/horarios'); ?>" method="get">
@@ -131,7 +131,7 @@
         <div class="container text-center">
             <div class="row justify-content-md-center">
                 <div class="col-md-10">
-                    <h3><em>𝓜𝓸𝓭𝓲𝓯𝓲𝓬𝓪𝓻 𝓗𝓸𝓻𝓪𝓻𝓲𝓸𝓼</em></h3>
+                    <h3><em>Modificar horarios</em></h3>
                     <form action="<?= site_url('horarios/actualizar') ?>" method="post">
                         <input type="hidden" name="idhorario" class="form-control" value="<?= esc($horario['idhorario']) ?>">
                         <label for="evento">Evento:</label>

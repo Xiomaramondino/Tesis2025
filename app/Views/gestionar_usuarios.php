@@ -147,7 +147,7 @@ body {
 <!-- Barra de navegación -->
 <nav class="navbar sticky-top">
     <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/DINGDONG.jpg" width="60px" alt="Logo">
-    <div class="logo">DING DONG PRO</div>
+    <div class="logo">RingMind</div>
     <div class="navbar-buttons">
         <a href="<?= base_url('/horarios'); ?>" class="btn btn-sm gestion-btn">Gestión de timbres</a>
         <form action="<?= base_url('/logout'); ?>" method="post">
@@ -160,7 +160,7 @@ body {
 <div class="container mt-4">
     <div class="col-md-6 mx-auto">
         <div class="form-card">
-            <h2>𝓐𝓰𝓻𝓮𝓰𝓪𝓻 𝓪𝓵𝓾𝓶𝓷𝓸𝓼</h2>
+            <h2>Agregar alumnos</h2>
 
             <!-- Mensajes dentro del formulario -->
             <?php if (session()->getFlashdata('success')): ?>
@@ -201,7 +201,7 @@ body {
 <div class="container mt-4">
     <div class="card">
         <div class="card-body">
-            <center><h2>𝓤𝓼𝓾𝓪𝓻𝓲𝓸𝓼 𝓔𝔁𝓲𝓼𝓽𝓮𝓷𝓽𝓮𝓼</h2></center>
+            <center><h2>Usuarios existentes</h2></center>
             <table class="table table-bordered">
                 <thead>
                     <tr>

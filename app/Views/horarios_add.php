@@ -100,7 +100,7 @@
 
   <nav class="navbar sticky-top">
 <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/DINGDONG.jpg" width="60px" alt="Logo">
-    <div class="logo" style="padding-right: -600px;">DING DONG PRO</div>
+    <div class="logo" style="padding-right: -600px;">RingMind</div>
 
     <div class="navbar-buttons">
         <form action="<?= base_url('/horarios'); ?>" method="get">
@@ -122,7 +122,7 @@
 
          <div class="row justify-content-md-center">
            <div class="col-md-8">
-             <h3><em>𝓐𝓰𝓻𝓮𝓰𝓪𝓻 𝓱𝓸𝓻𝓪𝓻𝓲𝓸𝓼</em></h3>
+             <h3>Agregar horarios</h3>
              <form action="<?= base_url('horarios/add') ?>" method="post">
                <label for="evento">Evento:</label>
                <input type="text" name="evento" class="form-control" required>

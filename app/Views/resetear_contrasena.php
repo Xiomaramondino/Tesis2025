@@ -66,14 +66,14 @@
     </style>
      <nav class="navbar">
         <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/DINGDONG.jpg" width="60px" alt="Logo">
-       <center> <div class="logo" style="padding-right: 540px;">DING DONG PRO</div></center>
+       <center> <div class="logo" style="padding-right: 540px;">RingMind</div></center>
     </nav>
      <div class="card" style="width: 30rem;">
   <div class="card-body">
     <div class="container text-center">
         <div class="row justify-content-md-center">
             <div class="col-md-10">
-                <h4><em>𝓡𝓮𝓼𝓽𝓪𝓫𝓵𝓮𝓬𝓮𝓻 𝓹𝓪𝓼𝓼𝔀𝓸𝓻𝓭</em></h4>
+                <h4>Restablecer password</h4>
                 <?php if (session()->get('password_error')) : ?>
                         <div class="alert alert-danger"><?= session()->get('password_error'); ?></div>
                         <?php session()-> remove('password_error'); ?>

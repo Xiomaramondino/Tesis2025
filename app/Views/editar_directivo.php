@@ -103,7 +103,7 @@
     </style>
     <nav class="navbar">
       <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/DINGDONG.jpg" width="60px" alt="Logo">
-      <div class="logo" style="padding-right: -540px;">DING DONG PRO</div>
+      <div class="logo" style="padding-right: -540px;">RingMind</div>
       <div class="navbar-buttons">
         <form action="<?= base_url('/vista_admin'); ?>" method="get">
             <button type="submit" class="btn btn-sm volver-btn">Volver</button>
@@ -115,7 +115,7 @@
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="col-md-6">
             <div class="form-card">
-              <center><h3>𝓔𝓭𝓲𝓽𝓪𝓻 𝓓𝓲𝓻𝓮𝓬𝓽𝓲𝓿𝓸</h3></center>
+              <center><h3>Editar directivo</h3></center>
 
                 <!-- Mensajes -->
                 <?php if (session()->get('error')): ?>

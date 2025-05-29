@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DING DONG</title>
+    <title>Visualizar Horarios</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
@@ -95,7 +95,7 @@
 <!-- Barra de navegación sticky -->
 <nav class="navbar sticky-top">
 <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/DINGDONG.jpg" width="60px" alt="Logo">
-    <div class="logo" style="padding-right: -600px;">DING DONG PRO</div>
+    <div class="logo" style="padding-right: -600px;">RingMind</div>
 
     <div class="navbar-buttons">
     
@@ -111,7 +111,7 @@
 <div class="container card-container">
     <div class="card">
         <div class="card-body">
-            <h1 class="card-title text-center"><em>𝓗𝓸𝓻𝓪𝓻𝓲𝓸𝓼</em></h1>
+            <h1 class="card-title text-center">Horarios</h1>
             <table class="table table-bordered">
                 <thead>
                     <tr>

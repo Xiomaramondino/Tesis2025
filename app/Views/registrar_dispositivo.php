@@ -141,7 +141,7 @@
 <!-- Barra de navegación sticky -->
 <nav class="navbar sticky-top">
 <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/DINGDONG.jpg" width="60px" alt="Logo">
-    <div class="logo" style="padding-right: -600px;">DING DONG PRO</div>
+    <div class="logo" style="padding-right: -600px;">RingMind</div>
 
     <div class="navbar-buttons">
         <form action="<?= base_url('/vista_admin'); ?>" method="get">
