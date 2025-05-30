@@ -161,7 +161,8 @@ class AdminController extends Controller
         $emailService->setTo($email);
         $emailService->setSubject('Bienvenido - Establece tu contraseña');
     
-        $link = base_url("resetear_contrasena?token=$token");
+        $link = base_url("resetear_contrasena?token=$token&idcolegio=$idcolegio");
+
     
         $mensaje = "
             <h2>Hola $usuario,</h2>

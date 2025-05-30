@@ -56,7 +56,6 @@ class Auth extends Controller
         'username'   => $user['usuario'],
         'logged_in'  => true,
         'idrol'      => $user['idrol'],
-        'idturno'    => $user['idturno'],
         'curso'      => $user['curso'],
         'idcolegio'  => $user['idcolegio'],
     ]);

@@ -217,7 +217,7 @@
 <!-- Sección principal -->
 <header class="hero-section">
     <div class="hero-text">
-        <h1>Bienvenido/a a nuestra gestión de timbres</h1>
+        <h1>Bienvenido/a a SoniTek gestión de timbres</h1>
         <div class="hero-images">
             <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/bus.png" width="150px" alt="bus">
             <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/lcd.png" width="150px" alt="lcd">
