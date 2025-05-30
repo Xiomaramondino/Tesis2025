@@ -50,3 +50,5 @@ $routes->post('/directivo/actualizarUsuario', 'DirectivoController::actualizarUs
 
 $routes->get('registrar_dispositivo', 'AdminController::registrar_dispositivo');
 $routes->post('guardar_dispositivo', 'AdminController::guardar_dispositivo');
+
+$routes->get('dispositivo/registerMac', 'Dispositivo::registerMac');

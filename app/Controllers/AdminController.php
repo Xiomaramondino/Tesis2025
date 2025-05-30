@@ -188,35 +188,39 @@ class AdminController extends Controller
     return view('registrar_dispositivo');
 }
 
-public function guardar_dispositivo()
-{
+public function guardar_dispositivo() {
     $mac = $this->request->getPost('mac');
     $idusuario = session()->get('idusuario');
     $idcolegio = session()->get('idcolegio');
-
 
     if (!preg_match('/^([0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2}$/', $mac)) {
         return redirect()->back()->with('error', 'La dirección MAC no tiene un formato válido.');
     }
 
-    // Validación de duplicado
     $dispositivoModel = new \App\Models\DispositivoModel();
-    $existe = $dispositivoModel
-                ->where('mac', $mac)
-                ->where('idusuario', $idusuario)
-                ->where('idcolegio', $idcolegio)
-                ->first();
 
-    if ($existe) {
-        return redirect()->back()->with('error', 'Esta MAC ya está registrada para tu usuario y colegio.');
+    // Verificar si la MAC existe en la base de datos
+    $dispositivoExistente = $dispositivoModel
+        ->where('mac', $mac)
+        ->first();
+
+    if (!$dispositivoExistente) {
+        // No se permite registrar MACs que no existen en la base de datos
+        return redirect()->back()->with('error', 'Esta MAC no está autorizada para ser registrada.');
     }
 
-    $dispositivoModel->insert([
-        'mac' => $mac,
+    if (!is_null($dispositivoExistente['idusuario']) || !is_null($dispositivoExistente['idcolegio'])) {
+        // Ya está asociada a alguien, no se puede volver a usar
+        return redirect()->back()->with('error', 'Esta MAC ya está registrada y asociada a un usuario y colegio.');
+    }
+
+    // Actualizar la entrada existente con los datos del usuario y colegio
+    $dispositivoModel->update($dispositivoExistente['iddispositivo'], [
         'idusuario' => $idusuario,
         'idcolegio' => $idcolegio
     ]);
 
     return redirect()->to('registrar_dispositivo')->with('success', 'Dispositivo registrado con éxito.');
 }
+
 }
