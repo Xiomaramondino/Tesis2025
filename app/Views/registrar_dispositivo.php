@@ -142,7 +142,7 @@
 
 <!-- Barra de navegación sticky -->
 <nav class="navbar sticky-top">
-<img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
+    <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
     <div class="logo" style="padding-right: 50px;">RingMind</div>
 
     <div class="navbar-buttons">
@@ -170,8 +170,46 @@
                 <label for="mac">Dirección MAC:</label>
                 <input type="text" name="mac" class="form-control" placeholder="AA:BB:CC:DD:EE:FF" required>
             </div>
-            <button type="submit">Registrar</button>
+            <button type="submit" class="btn btn-primary mt-2">Registrar</button>
         </form>
+    </div>
+
+    <hr class="my-5">
+
+    <!-- Tabla de dispositivos registrados -->
+    <div class="card mt-4">
+        <div class="card-header">
+            <h2>Mis Dispositivos</h2>
+        </div>
+        <div class="card-body">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th>Nombre del Dispositivo</th>
+                        <th>Dirección MAC</th>
+                        <th>Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if (!empty($mis_dispositivos)): ?>
+                        <?php foreach ($mis_dispositivos as $dispositivo): ?>
+                            <tr>
+                                <td><?= esc($dispositivo['nombre_dispositivo'] ?? 'Sin nombre') ?></td>
+                                <td><?= esc($dispositivo['mac']) ?></td>
+                                <td>
+                                    <a href="<?= base_url('/dispositivos/editar/' . esc($dispositivo['id'])) ?>" class="btn btn-sm btn-primary">Editar</a>
+                                    <a href="<?= base_url('/dispositivos/eliminar/' . esc($dispositivo['id'])) ?>" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar este dispositivo?')">Eliminar</a>
+                                </td>
+                            </tr>
+                        <?php endforeach; ?>
+                    <?php else: ?>
+                        <tr>
+                            <td colspan="3" class="text-center">No tienes dispositivos registrados.</td>
+                        </tr>
+                    <?php endif; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
 
