@@ -5,20 +5,19 @@ FROM node:18-alpine
 WORKDIR /app
 
 # Copy package.json and package-lock.json from the 'frontend' directory
-# IMPORTANT: Replace 'frontend' with the actual name of the folder containing package.json
+# This brings only the necessary files for npm install into /app
 COPY frontend/package*.json ./
 
 # Install any dependencies
 RUN npm install
 
-# Copy the rest of the application code from the 'frontend' directory
-# This copies the contents of your 'frontend' folder into '/app' in the container
+# Copy the rest of the application code from the 'frontend' directory into /app
+# This should copy all other files/folders from 'frontend' into the root of /app
 COPY frontend/. ./
 
 # Expose port 3000 (adjust if your app listens on a different port)
 EXPOSE 3000
 
 # Define the command to run your application
-# IMPORTANT: Adjust this path if your main entry file is different or within another sub-folder of 'frontend'
-# Example: if your server file is in frontend/src/server.js, it would be 'node src/server.js' here
+# Assumes your main server file is directly in the 'frontend' directory
 CMD [ "node", "server.js" ]
