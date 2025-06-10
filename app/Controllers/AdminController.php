@@ -184,9 +184,45 @@ class AdminController extends Controller
     }
     
     public function registrar_dispositivo()
-{
-    return view('registrar_dispositivo');
-}
+    {
+        $session = session();
+        $idusuario = $session->get('idusuario');
+    
+        if (!$idusuario) {
+            return redirect()->to('/login')->with('error', 'Sesión no iniciada.');
+        }
+    
+        $usuarioModel = new Usuario();
+        $usuario = $usuarioModel->find($idusuario);
+    
+        if (!$usuario) {
+            return redirect()->back()->with('error', 'Usuario no encontrado');
+        }
+    
+        $dispositivoModel = new DispositivoModel();
+        $mis_dispositivos = $dispositivoModel->getDispositivosUsuario($usuario['usuario']);
+    
+        return view('registrar_dispositivo', [
+            'mis_dispositivos' => $mis_dispositivos
+        ]);
+    }
+
+    public function eliminar_dispositivo($iddispositivo)
+    {
+        $dispositivoModel = new DispositivoModel();
+    
+        // Verificar si el dispositivo existe
+        $dispositivo = $dispositivoModel->find($iddispositivo);
+    
+        if (!$dispositivo) {
+            return redirect()->back()->with('error', 'Dispositivo no encontrado.');
+        }
+    
+        // Eliminar
+        $dispositivoModel->delete($iddispositivo);
+    
+        return redirect()->to('/registrar_dispositivo')->with('success', 'Dispositivo eliminado correctamente.');
+    }
 
 public function guardar_dispositivo() {
     $mac = $this->request->getPost('mac');

@@ -182,10 +182,9 @@
             <h2>Mis Dispositivos</h2>
         </div>
         <div class="card-body">
-            <table class="table table-bordered">
+             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th>Nombre del Dispositivo</th>
                         <th>Dirección MAC</th>
                         <th>Acción</th>
                     </tr>
@@ -194,11 +193,10 @@
                     <?php if (!empty($mis_dispositivos)): ?>
                         <?php foreach ($mis_dispositivos as $dispositivo): ?>
                             <tr>
-                                <td><?= esc($dispositivo['nombre_dispositivo'] ?? 'Sin nombre') ?></td>
                                 <td><?= esc($dispositivo['mac']) ?></td>
                                 <td>
-                                    <a href="<?= base_url('/dispositivos/editar/' . esc($dispositivo['id'])) ?>" class="btn btn-sm btn-primary">Editar</a>
-                                    <a href="<?= base_url('/dispositivos/eliminar/' . esc($dispositivo['id'])) ?>" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar este dispositivo?')">Eliminar</a>
+                                    
+                                    <a href="<?= base_url('/dispositivos/eliminar/' . esc($dispositivo['iddispositivo'])) ?>" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar este dispositivo?')">Eliminar</a>
                                 </td>
                             </tr>
                         <?php endforeach; ?>

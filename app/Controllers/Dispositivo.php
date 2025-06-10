@@ -2,10 +2,13 @@
 namespace App\Controllers;
 
 use CodeIgniter\RESTful\ResourceController;
+use App\Models\Usuario;
+use App\Models\DispositivoModel;
+
 
 class Dispositivo extends ResourceController
 {
-    protected $modelName = 'App\Models\DispositivoModel';
+    
     protected $format    = 'json';
     
     public function registerMac()
@@ -31,4 +34,24 @@ class Dispositivo extends ResourceController
 
         return $this->respond(['status' => 'ok', 'message' => 'MAC registrada correctamente']);
     }
+    public function vistaDispositivos()
+{
+    $session = session();
+    $idusuario = $session->get('idusuario');
+
+    // Obtener el nombre del usuario actual
+    $usuarioModel = new UsuarioModel();
+    $usuario = $usuarioModel->find($idusuario);
+
+    if (!$usuario) {
+        return redirect()->back()->with('error', 'Usuario no encontrado');
+    }
+
+    // Obtener dispositivos asociados a ese nombre de usuario
+    $dispositivoModel = new DispositivoModel();
+    $mis_dispositivos = $dispositivoModel->getDispositivosUsuario($usuario['nombre']);
+
+    return view('registrar_dispositivo', ['mis_dispositivos' => $mis_dispositivos]);
+}
+
 }
