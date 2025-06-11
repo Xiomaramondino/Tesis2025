@@ -1,24 +1,22 @@
-# Use an official Node.js runtime as a parent image
+# Usa un entorno de ejecución oficial de Node.js como imagen base
 FROM node:18-alpine
 
-# Set the working directory in the container
-# All subsequent commands will run from /app inside the container.
+# Establece el directorio de trabajo dentro del contenedor
+# Todos los comandos subsiguientes se ejecutarán desde /app dentro del contenedor.
 WORKDIR /app
 
-# Copy the entire contents of your 'frontend' directory
-# from your GitHub repository into the /app directory in the container.
-# THIS IS THE CRITICAL LINE THAT NEEDS THE SOURCE PATH TO BE CORRECT.
-COPY frontend/ .
+# Copia todo el contenido del directorio actual de tu repositorio (la raíz donde está el Dockerfile)
+# al directorio /app dentro del contenedor.
+COPY . .
 
-# Install Node.js dependencies
-# This assumes your package.json is now at /app/package.json
+# Instala las dependencias de Node.js
+# Esto asume que tu package.json ahora está en /app/package.json
 RUN npm install
 
-# Expose the port your application listens on
-# Common for Node.js apps, adjust if yours uses a different port.
+# Expone el puerto en el que escucha tu aplicación
+# Render detectará automáticamente este puerto o puedes configurarlo en sus settings.
 EXPOSE 3000
 
-# Define the command to run your application when the container starts.
-# This assumes your main server file is directly in the 'frontend' folder
-# (which is now copied to /app in the container).
+# Define el comando para ejecutar tu aplicación cuando el contenedor se inicie.
+# Esto asume que tu archivo principal del servidor es 'server.js' en la raíz.
 CMD [ "node", "server.js" ]
