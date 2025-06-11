@@ -80,4 +80,8 @@ EXPOSE 80
 
 # Comando para iniciar Supervisor cuando el contenedor se inicie.
 # Supervisor se encargará de mantener Nginx y PHP-FPM en funcionamiento.
+<<<<<<< HEAD
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+=======
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+>>>>>>> 8563c0328b22411901a417a7c00cf22f285bd4d6
