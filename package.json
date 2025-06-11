@@ -1,16 +1,18 @@
 {
-  "name": "mi-aplicacion-node",
+  "name": "mi-proyecto-codeigniter",
   "version": "1.0.0",
-  "description": "Una aplicación Node.js básica para Render",
-  "main": "server.js",
+  "description": "Aplicación web con CodeIgniter 4 y assets de frontend.",
   "scripts": {
-    "start": "node server.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npm run development",
+    "development": "mix",
+    "watch": "mix watch",
+    "prod": "npm run production",
+    "production": "mix --production"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "express": "^4.19.2"
+  "devDependencies": {
+    "laravel-mix": "^6.0.49",
+    "postcss": "^8.4.31",
+    "sass": "^1.69.5",
+    "sass-loader": "^13.3.2"
   }
 }
