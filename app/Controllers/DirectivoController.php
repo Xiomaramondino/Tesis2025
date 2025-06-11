@@ -21,7 +21,6 @@ class DirectivoController extends BaseController
         $lectores = $this->Usuario
                          ->where('idrol', 3)
                          ->where('idcolegio', $idcolegio)
-                         ->orderBy('curso', 'ASC')
                          ->orderBy('usuario', 'ASC')
                          ->findAll();
     
