@@ -231,3 +231,13 @@ in APPPATH\Views\registrar_dispositivo.php on line 199.
  9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-10 16:21:54 --> ErrorException: Undefined array key "curso"
+[Method: POST, Route: autenticar]
+in APPPATH\Controllers\Auth.php on line 59.
+ 1 APPPATH\Controllers\Auth.php(59): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "curso"', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\Auth.php', 59)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->autenticar()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
