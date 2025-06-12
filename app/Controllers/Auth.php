@@ -89,28 +89,26 @@ class Auth extends Controller
         $idcolegio = $this->request->getPost('idcolegio');
 
 
-        // 1. Verificar que el pago se haya completado
+        
         if ($paymentStatus !== 'completed' || empty($paypalOrderId)) {
             session()->set('error', 'Debes completar el proceso de pago primero');
             return redirect()->to('registro');
         }
 
 
-        // Validación: Comprobar si algún campo está vacío
         if (empty($usuario) || empty($email) || empty($password)) {
             session()->set('error', 'Todos los campos son obligatorios');
             return redirect()->to('registro');
         }
     
-        // Validación de usuario completo (solo letras)
         if (!preg_match('/^[a-zA-Z\s]+$/', $usuario)) {
             session()->set('error', 'El usuario solo puede contener letras.');
             return redirect()->to('registro');
         } 
         
-        // Validar que la contraseña tenga al menos 6 caracteres, una mayúscula y un símbolo
+       
         if (strlen($password) < 6 || !preg_match('/[A-Z]/', $password) || !preg_match('/[!@#$%*]/', $password)) {
-            // Redirige a la vista para cambiar la contraseña
+      
             session()->set('password_error', 'La  contraseña debe tener al menos 6 caracteres, una letra mayúscula y un símbolo (!@#$%).');
             return redirect()->to('registro');
         }

@@ -137,14 +137,6 @@
                         <input type="email" id="email" name="email" class="form-control" value="<?= esc($usuario['email']) ?>" placeholder="Correo electrónico" required>
                     </div>
 
-
-
-                    <div class="mb-3">
-                        <select id="idturno" name="idturno" class="form-select" required>
-                            <option value="1" <?= esc($usuario['idturno']) == '1' ? 'selected' : '' ?>>Mañana</option>
-                            <option value="2" <?= esc($usuario['idturno']) == '2' ? 'selected' : '' ?>>Tarde</option>
-                            <option value="3" <?= esc($usuario['idturno']) == '3' ? 'selected' : '' ?>>Mixto</option>
-                        </select>
                     </div>
 
                     <button type="submit" class="btn btn-form">Actualizar Usuario</button>

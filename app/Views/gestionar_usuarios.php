@@ -184,9 +184,6 @@ body {
                 <div class="mb-3">
                     <input type="email" name="email" class="form-control" placeholder="Correo Electrónico" required>
                 </div>
-                <div class="mb-3">
-    <input type="text" name="curso" class="form-control" placeholder="Curso" required>
-</div>
                 <div style="margin-top:10px; background: #f1f1f1; padding:10px; border-left: 5px solid #2196F3;">
                         ⚠️ <strong>Nota:</strong> El sistema generará una contraseña automática y enviará un correo al usuario con un enlace para que cree su propia contraseña.
                     </div>
@@ -207,7 +204,6 @@ body {
                     <tr>
                         <th>Nombre de Usuario</th>
                         <th>Correo Electrónico</th>
-                        <th>Curso</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -216,7 +212,6 @@ body {
                         <tr>
                             <td><?= esc($lector['usuario']) ?></td>
                             <td><?= esc($lector['email']) ?></td>
-                            <td><?= esc($lector['curso']) ?></td>
                             <td>
                                 
                             <a href="<?= base_url('/directivo/editarUsuario/' . $lector['idusuario']) ?>" class="text-decoration-none" style="color: black; margin-right: 10px;">Editar</a>

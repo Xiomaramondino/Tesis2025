@@ -69,7 +69,6 @@ class DirectivoController extends BaseController
             'usuario' => $data['usuario'],
             'email' => $email,
             'password' => $hashedPassword,
-            'curso' => $data['curso'],
             'idrol' => '3',
             'token' => $token,
             'idcolegio' => $idcolegio,  // Asignar el idcolegio del admin al nuevo usuario
@@ -81,7 +80,7 @@ class DirectivoController extends BaseController
     
         // Insertar usuario y enviar correo
         if ($this->Usuario->insert($usuarioData)) {
-            $this->_enviarCorreoRecuperacionInicial($email, $data['usuario'], $token);
+            $this->_enviarCorreoRecuperacionInicial($email, $data['usuario'], $token, $idcolegio);
             session()->setFlashdata('success', 'Usuario creado correctamente. Se envió el correo.');
         } else {
             session()->setFlashdata('error', 'No se pudo agregar el usuario.');
@@ -107,29 +106,35 @@ class DirectivoController extends BaseController
     }
 
     // Método privado para enviar el correo
-    private function _enviarCorreoRecuperacionInicial($email, $usuario, $token)
+    private function _enviarCorreoRecuperacionInicial($email, $usuario, $token, $idcolegio)
     {
         $emailService = \Config\Services::email();
-
+    
+        $colegioModel = new \App\Models\ColegioModel();
+        $colegio = $colegioModel->find($idcolegio);
+        $nombreColegio = $colegio ? $colegio['nombre'] : 'Tu colegio';
+    
         $emailService->setFrom('timbreautomatico2025@gmail.com', 'Sistema de Gestión de Timbres');
         $emailService->setTo($email);
         $emailService->setSubject('Bienvenido - Establece tu contraseña');
+    
+        $link = base_url("resetear_contrasena?token=$token&idcolegio=$idcolegio");
 
-        $link = base_url("resetear_contrasena?token=$token");
-
+    
         $mensaje = "
             <h2>Hola $usuario,</h2>
-            <p>Se ha creado una cuenta para vos en el <strong>Sistema de Gestión de Timbres</strong>.</p>
-            <p>Tu nombre de usuario es: <strong>$usuario</strong></p>
+            <p>Se ha creado una cuenta para vos en el <strong>Sistema de Gestión de Timbres</p>
+            <p>Colegio:$nombreColegio</p>
+            <p>Tu nombre de usuario es: $usuario </p>
             <p>Para activar tu cuenta y establecer una nueva contraseña, hacé clic en el siguiente enlace:</p>
             <p><a href='$link'>Establecer contraseña</a></p>
             <p>Si no solicitaste esto, podés ignorar este mensaje.</p>
             <br><p>Saludos,<br>Sistema de Gestión de Timbres</p>
         ";
-
+    
         $emailService->setMessage($mensaje);
         $emailService->setMailType('html');
-
+    
         if (!$emailService->send()) {
             log_message('error', 'Error al enviar el correo de bienvenida con enlace de recuperación a ' . $email);
         }
@@ -163,7 +168,6 @@ public function actualizarUsuario()
     $actualizado = [
         'usuario' => $data['usuario'],
         'email' => $data['email'],
-        'curso' => $data['curso'],
     ];
 
     if ($this->Usuario->update($id, $actualizado)) {

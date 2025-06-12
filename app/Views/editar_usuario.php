@@ -142,17 +142,7 @@
                     <div class="mb-3">
                         <input type="email" id="email" name="email" class="form-control" value="<?= esc($usuario['email']) ?>" placeholder="Correo electrónico" required>
                     </div>
-                    <div class="mb-3"> 
-                   <input 
-        type="text" 
-        id="curso" 
-        name="curso" 
-        class="form-control" 
-        placeholder="Curso " 
-        value="<?= esc($usuario['curso']) ?>" 
-        required
-    >
-</div>
+                    
 
                     <button type="submit" class="btn btn-form">Actualizar Usuario</button>
                 </form>
