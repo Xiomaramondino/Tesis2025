@@ -82,7 +82,7 @@
 
     .footer {
         text-align: center;
-        padding: 1.5rem;
+        padding: 0.5rem;
         background-color: #4a045a;
         font-weight: bold;
         color: white;
@@ -124,7 +124,8 @@
                     <td><?= htmlspecialchars($row['hora']) ?></td>
 
                         <td>
-                        <a href="<?= base_url('horarios/delete/' . $row['idhorario']) ?>">Eliminar</a>
+                        <a href="<?= base_url('horarios/delete/' . $row['idhorario']) ?>" onclick="return confirm('¿Estás seguro de eliminar este horario?')">Eliminar</a>
+
                         <a href="<?= base_url('horarios/editar/' . $row['idhorario']) ?>">Modificar</a>
 
 

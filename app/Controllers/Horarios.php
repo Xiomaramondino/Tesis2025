@@ -139,22 +139,40 @@ class Horarios extends Controller
 
     public function checkTime() {
         $horaActual = $this->request->getVar('hora');
+        $mac = $this->request->getVar('mac');
+    
         error_log("Hora recibida: " . $horaActual); 
+        error_log("MAC recibida: " . $mac);
     
-      
         $db = \Config\Database::connect();
-        $query = $db->query("SELECT * FROM horarios WHERE hora = ?", [$horaActual]);
-        $result = $query->getResult();
     
-        if (count($result) > 0) {
-            error_log("Coincidencia encontrada para: " . $horaActual); 
+        // Buscar el dispositivo por MAC
+        $builderDispositivo = $db->table('dispositivo');
+        $builderDispositivo->where('mac', $mac);
+        $dispositivo = $builderDispositivo->get()->getRow();
+    
+        if (!$dispositivo) {
+            error_log("Dispositivo con MAC no encontrado");
+            return $this->response->setBody("no");
+        }
+    
+        $idcolegio = $dispositivo->idcolegio;
+    
+        // Buscar horarios coincidentes para ese colegio
+        $builderHorarios = $db->table('horarios');
+        $builderHorarios->where('hora', $horaActual);
+        $builderHorarios->where('idcolegio', $idcolegio);
+        $horarios = $builderHorarios->get()->getResult();
+    
+        if (count($horarios) > 0) {
+            error_log("Coincidencia encontrada para: " . $horaActual . " en colegio ID: " . $idcolegio); 
             return $this->response->setBody("si");
-        } 
-        else {
-            error_log("No hay coincidencias para: " . $horaActual); 
+        } else {
+            error_log("No hay coincidencias para: " . $horaActual . " en colegio ID: " . $idcolegio); 
             return $this->response->setBody("no");
         }
     }
+    
 
     public function horariosLector() 
     {

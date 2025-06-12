@@ -63,12 +63,7 @@ class AdminController extends Controller
         }
         
         $model = new \App\Models\Usuario();
-        $usuarioExistente = $model->where('email', $email)->first();
-        
-        if ($usuarioExistente) {
-            session()->setFlashdata('error', 'El email ingresado ya está en uso por otro usuario.');
-            return redirect()->to('/vista_admin');
-        }
+    
 
         $passwordTemporal = bin2hex(random_bytes(4));
         $hashedPassword = password_hash($passwordTemporal, PASSWORD_DEFAULT);

@@ -42,12 +42,12 @@ class Auth extends Controller
                     ->first();
 
     if (!$user) {
-        session()->setFlashdata('error', 'Usuario no encontrado con ese nombre y colegio.');
+        session()->setFlashdata('error', 'Alguno de los datos ingresados no es correcto.');
         return redirect()->to('/login');
     }
 
     if (!password_verify($contrasenia, $user['password'])) {
-        session()->setFlashdata('error', 'Contraseña incorrecta');
+        session()->setFlashdata('error', 'Alguno de los datos ingresados no es correcto.');
         return redirect()->to('/login');
     }
 

@@ -10,8 +10,13 @@ class Dispositivo extends ResourceController
 {
     
     protected $format    = 'json';
+
+    public function __construct()
+    {
+        $this->model = new DispositivoModel();
+    }
     
-    public function registerMac()
+  public function registerMac()
     {
         $mac = $this->request->getGet('mac');
         if (!$mac) {
@@ -33,7 +38,7 @@ class Dispositivo extends ResourceController
         $this->model->insert(['mac' => $mac, 'estado' => 'no asociado']);
 
         return $this->respond(['status' => 'ok', 'message' => 'MAC registrada correctamente']);
-    }
+    }  
     public function vistaDispositivos()
 {
     $session = session();
