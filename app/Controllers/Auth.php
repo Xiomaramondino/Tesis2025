@@ -29,45 +29,66 @@ class Auth extends Controller
     }
 
     public function autenticar()
+    {
+        $session = session();
+        $Usuario = new Usuario();
+    
+        $username = $this->request->getPost('usuario');
+        $contrasenia = $this->request->getPost('password');
+    
+        $user = $Usuario->where('usuario', $username)->first();
+    
+        if (!$user || !password_verify($contrasenia, $user['password'])) {
+            session()->setFlashdata('error', 'Usuario o contraseña incorrectos.');
+            return redirect()->to('/login');
+        }
+    
+        // Guardar sesión básica sin contexto aún
+        $session->set([
+            'idusuario' => $user['idusuario'],
+            'username'  => $user['usuario'],
+            'logged_in' => true
+        ]);
+    
+        // Buscar colegios y roles del usuario
+        $db = \Config\Database::connect();
+        $builder = $db->table('usuario_colegio uc');
+        $builder->select('uc.idcolegio, uc.idrol, c.nombre as colegio, r.tipo as rol');
+        $builder->join('colegios c', 'c.idcolegio = uc.idcolegio');
+        $builder->join('rol r', 'r.idrol = uc.idrol');
+        $builder->where('uc.idusuario', $user['idusuario']);
+        $result = $builder->get()->getResultArray();
+    
+        // Siempre mostrar pantalla de selección, aunque haya solo una opción
+        return view('seleccionar_colegio', ['opciones' => $result]);
+    }
+
+    private function redirigirPorRol($idrol)
 {
-    $session = session();
-    $Usuario = new Usuario();
-
-    $username = $this->request->getPost('usuario');
-    $contrasenia = $this->request->getPost('password'); 
-    $colegioSeleccionado = $this->request->getPost('idcolegio');
-
-    $user = $Usuario->where('usuario', $username)
-                    ->where('idcolegio', $colegioSeleccionado)
-                    ->first();
-
-    if (!$user) {
-        session()->setFlashdata('error', 'Alguno de los datos ingresados no es correcto.');
-        return redirect()->to('/login');
-    }
-
-    if (!password_verify($contrasenia, $user['password'])) {
-        session()->setFlashdata('error', 'Alguno de los datos ingresados no es correcto.');
-        return redirect()->to('/login');
-    }
-
-    session()->set([
-        'idusuario'  => $user['idusuario'],
-        'username'   => $user['usuario'],
-        'logged_in'  => true,
-        'idrol'      => $user['idrol'],
-        'idcolegio'  => $user['idcolegio'],
-    ]);
-
-    // Redirigir según el rol
-     if ($user['idrol'] === '1') {
+    if ($idrol == 1) {
         return redirect()->to('/vista_admin');
-    } elseif ($user['idrol'] === '2') {
+    } elseif ($idrol == 2) {
         return redirect()->to('/gestionar_usuarios');
     } else {
         return redirect()->to('/horarios_lector');
     }
 }
+
+    public function seleccionarContexto()
+{
+    $session = session();
+    $valor = $this->request->getPost('idcolegio');
+
+    list($idcolegio, $idrol) = explode('-', $valor);
+
+    $session->set([
+        'idcolegio' => $idcolegio,
+        'idrol'     => $idrol
+    ]);
+
+    return $this->redirigirPorRol($idrol);
+}
+
 
     public function registro()
     {

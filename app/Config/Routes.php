@@ -54,3 +54,4 @@ $routes->post('guardar_dispositivo', 'AdminController::guardar_dispositivo');
 $routes->get('dispositivo/registerMac', 'Dispositivo::registerMac');
 $routes->get('dispositivos/eliminar/(:num)', 'AdminController::eliminar_dispositivo/$1');
 
+$routes->post('/seleccionar-contexto', 'Auth::seleccionarContexto');

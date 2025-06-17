@@ -210,7 +210,7 @@
                           
                            
     <div class="form-group">
-    <select name="idcolegio" class="form-control" id="idcolegio" required>
+   <!-- <select name="idcolegio" class="form-control" id="idcolegio" required>
     <option value="" disabled selected>Seleccione una institución</option>
 
     <optgroup label="Escuelas Primarias">
@@ -254,7 +254,7 @@
     <option value="32">Instituto Privado Jesús, María y José</option>
     <option value="33">I.S.D.E. Instituto Superior para el Desarrollo Educativo</option>
 </optgroup> 
-</select>
+</select> -->
                             <div class="form-group">
                                 <label for="usuario"></label>
                                 <input type="text" class="form-control" name="usuario" required placeholder="Introduce tu usuario">
