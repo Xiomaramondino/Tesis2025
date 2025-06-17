@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use App\Models\Usuario;
+use App\Models\UsuarioColegioModel;
 use App\Models\DispositivoModel; 
 
 class AdminController extends Controller
@@ -38,57 +39,89 @@ class AdminController extends Controller
         ]);
     }
 
-    public function guardarUsuario()
-    {
+    public function guardarUsuario() {
         date_default_timezone_set('America/Argentina/Buenos_Aires');
-
-        // Verificar que el usuario tenga el rol de admin
+    
+        // Verificar rol de admin
         if (session()->get('idrol') !== '1') {
             return redirect()->to('/login');
         }
-
+    
         $idcolegio = session()->get('idcolegio');
         if (empty($idcolegio)) {
             log_message('error', 'ID del colegio no disponible en sesión en guardarUsuario.');
             session()->setFlashdata('error', 'El ID del colegio no está disponible.');
             return redirect()->to('/vista_admin');
         }
-
+    
         $usuario = $this->request->getPost('usuario');
         $email = strtolower(trim($this->request->getPost('email')));
-        
+    
         if (empty($usuario) || empty($email)) {
             session()->setFlashdata('error', 'Todos los campos son obligatorios');
             return redirect()->to('/vista_admin');
         }
-        
-        $model = new \App\Models\Usuario();
     
-
-        $passwordTemporal = bin2hex(random_bytes(4));
-        $hashedPassword = password_hash($passwordTemporal, PASSWORD_DEFAULT);
-
-        $token = bin2hex(random_bytes(50));
-
-        $data = [
-            'usuario' => $usuario,
-            'email' => $email,
-            'password' => $hashedPassword,
-            'idrol' => '2',
-            'fecha_registro' => date('Y-m-d H:i:s'),
-            'token' => $token,
-            'idcolegio' => $idcolegio,
-        ];
-
-        if ($model->insertarUsuario($data)) {
-            $this->_enviarCorreoRecuperacionInicial($email, $usuario, $token, $idcolegio);
-            session()->setFlashdata('success', 'Usuario creado correctamente y se envió el correo.');
+        $usuarioModel = new \App\Models\Usuario();
+        $usuarioColegioModel = new \App\Models\UsuarioColegioModel();
+    
+        // Buscar si ya existe un usuario con ese email
+        $usuarioExistente = $usuarioModel->where('email', $email)->first();
+    
+        if ($usuarioExistente) {
+            $idusuario = $usuarioExistente['idusuario'];
+    
+            // Verificar si ya está vinculado con este colegio
+            $vinculoExistente = $usuarioColegioModel->where([
+                'idusuario' => $idusuario,
+                'idcolegio' => $idcolegio
+            ])->first();
+    
+            if ($vinculoExistente) {
+                session()->setFlashdata('info', 'El usuario ya existe y ya está vinculado a este colegio.');
+            } else {
+                // Agregar vínculo nuevo
+                $usuarioColegioModel->insert([
+                    'idusuario' => $idusuario,
+                    'idcolegio' => $idcolegio,
+                    'idrol' => 2 // Rol directivo
+                ]);
+                session()->setFlashdata('success', 'Usuario ya existente vinculado correctamente al colegio.');
+            }
         } else {
-            session()->setFlashdata('error', 'Ocurrió un error al agregar el usuario.');
+            // Crear nuevo usuario
+            $passwordTemporal = bin2hex(random_bytes(4));
+            $hashedPassword = password_hash($passwordTemporal, PASSWORD_DEFAULT);
+            $token = bin2hex(random_bytes(50));
+    
+            $dataUsuario = [
+                'usuario' => $usuario,
+                'email' => $email,
+                'password' => $hashedPassword,
+                'fecha_registro' => date('Y-m-d H:i:s'),
+                'token' => $token
+            ];
+    
+            if ($usuarioModel->insert($dataUsuario)) {
+                $idusuario = $usuarioModel->getInsertID();
+    
+                // Insertar relación en tabla intermedia
+                $usuarioColegioModel->insert([
+                    'idusuario' => $idusuario,
+                    'idcolegio' => $idcolegio,
+                    'idrol' => 2
+                ]);
+    
+                $this->_enviarCorreoRecuperacionInicial($email, $usuario, $token, $idcolegio);
+                session()->setFlashdata('success', 'Usuario creado correctamente y vinculado al colegio.');
+            } else {
+                session()->setFlashdata('error', 'Ocurrió un error al agregar el usuario.');
+            }
         }
-
+    
         return redirect()->to('/vista_admin');
     }
+    
 
     public function eliminarDirectivo($idusuario)
     {

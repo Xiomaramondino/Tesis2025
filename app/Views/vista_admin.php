@@ -147,6 +147,12 @@
                     </div>
                 <?php endif; ?>
 
+                <?php if (session()->get('info')): ?>
+                    <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
+                        <?= session()->get('info'); ?>
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+                    </div>
+                <?php endif; ?>
                 <form action="<?= base_url('admin/guardarUsuario') ?>" method="post">
                     <div class="mb-3">
                         <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Nombre de usuario" required>

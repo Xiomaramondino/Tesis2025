@@ -33,13 +33,13 @@ class Auth extends Controller
         $session = session();
         $Usuario = new Usuario();
     
-        $username = $this->request->getPost('usuario');
+        $email = strtolower(trim($this->request->getPost('email')));
         $contrasenia = $this->request->getPost('password');
     
-        $user = $Usuario->where('usuario', $username)->first();
+        $user = $Usuario->where('email', $email)->first();
     
         if (!$user || !password_verify($contrasenia, $user['password'])) {
-            session()->setFlashdata('error', 'Usuario o contraseña incorrectos.');
+            session()->setFlashdata('error', 'Alguno de los datos ingresados no es correcto.');
             return redirect()->to('/login');
         }
     
