@@ -16,6 +16,12 @@ class DispositivoModel extends Model
                 ->where('usuarios.usuario', $nombreUsuario)
                 ->findAll();
 }
-
+public function getDispositivosConColegio($idusuario)
+{
+    return $this->select('dispositivo.*, colegios.nombre AS nombre_colegio')
+        ->join('colegios', 'colegios.idcolegio = dispositivo.idcolegio')
+        ->where('dispositivo.idusuario', $idusuario)
+        ->findAll();
+}
 }
 ?>

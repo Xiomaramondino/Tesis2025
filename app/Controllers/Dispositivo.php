@@ -55,6 +55,7 @@ class Dispositivo extends ResourceController
             'mis_dispositivos' => $mis_dispositivos
         ]);
     }
-    
+
+     
 
 }

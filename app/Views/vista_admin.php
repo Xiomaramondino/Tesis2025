@@ -125,7 +125,7 @@
 <body> <br>
 <div class="text-center mb-3">
     <form action="<?= base_url('registrar_dispositivo') ?>" method="get">
-        <button type="submit" class="btn btn-form btn-ancho-custom">Registrar Dispositivo</button>
+        <button type="submit" class="btn btn-form btn-ancho-custom">Registrar y ver mis Dispositivos</button>
     </form>
 </div>
 

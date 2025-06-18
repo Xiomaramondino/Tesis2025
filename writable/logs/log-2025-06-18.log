@@ -37,3 +37,185 @@ in APPPATH\Controllers\AdminController.php on line 232.
  5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
  6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-18 13:30:18 --> BadMethodCallException: Call to undefined method App\Models\DispositivoModel::getDispositivosConColegio
+[Method: GET, Route: registrar_dispositivo]
+in SYSTEMPATH\Model.php on line 932.
+ 1 APPPATH\Controllers\AdminController.php(274): CodeIgniter\Model->__call('getDispositivosConColegio', [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->registrar_dispositivo()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-06-18 13:31:36 --> mysqli_sql_exception: Unknown table 'timbre2025.dispositivos' in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `disposi...', 0)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `disposi...')
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `disposi...')
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `disposi...', Array, false)
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Models\DispositivoModel.php(24): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(274): App\Models\DispositivoModel->getDispositivosConColegio('177')
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\AdminController->registrar_dispositivo()
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-06-18 13:31:36 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown table 'timbre2025.dispositivos'
+[Method: GET, Route: registrar_dispositivo]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `dispositivos`.*, `colegios`.`nombre` AS `nombre_colegio`
+FROM `dispositivo`
+JOIN `colegios` ON `colegios`.`idcolegio` = `dispositivos`.`idcolegio`
+WHERE `dispositivos`.`idusuario` = :dispositivos.idusuario:', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\DispositivoModel.php(24): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\AdminController.php(274): App\Models\DispositivoModel->getDispositivosConColegio('177')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->registrar_dispositivo()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-18 13:31:36 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown table 'timbre2025.dispositivos'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `dispositivos`.*, `colegios`.`nombre` AS `nombre_colegio`
+FROM `dispositivo`
+JOIN `colegios` ON `colegios`.`idcolegio` = `dispositivos`.`idcolegio`
+WHERE `dispositivos`.`idusuario` = \'177\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `dispositivos`.*, `colegios`.`nombre` AS `nombre_colegio`
+FROM `dispositivo`
+JOIN `colegios` ON `colegios`.`idcolegio` = `dispositivos`.`idcolegio`
+WHERE `dispositivos`.`idusuario` = \'177\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `dispositivos`.*, `colegios`.`nombre` AS `nombre_colegio`
+FROM `dispositivo`
+JOIN `colegios` ON `colegios`.`idcolegio` = `dispositivos`.`idcolegio`
+WHERE `dispositivos`.`idusuario` = :dispositivos.idusuario:', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\DispositivoModel.php(24): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\AdminController.php(274): App\Models\DispositivoModel->getDispositivosConColegio('177')
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->registrar_dispositivo()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-18 13:31:36 --> [Caused by] mysqli_sql_exception: Unknown table 'timbre2025.dispositivos'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `dispositivos`.*, `colegios`.`nombre` AS `nombre_colegio`
+FROM `dispositivo`
+JOIN `colegios` ON `colegios`.`idcolegio` = `dispositivos`.`idcolegio`
+WHERE `dispositivos`.`idusuario` = \'177\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `dispositivos`.*, `colegios`.`nombre` AS `nombre_colegio`
+FROM `dispositivo`
+JOIN `colegios` ON `colegios`.`idcolegio` = `dispositivos`.`idcolegio`
+WHERE `dispositivos`.`idusuario` = \'177\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `dispositivos`.*, `colegios`.`nombre` AS `nombre_colegio`
+FROM `dispositivo`
+JOIN `colegios` ON `colegios`.`idcolegio` = `dispositivos`.`idcolegio`
+WHERE `dispositivos`.`idusuario` = \'177\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `dispositivos`.*, `colegios`.`nombre` AS `nombre_colegio`
+FROM `dispositivo`
+JOIN `colegios` ON `colegios`.`idcolegio` = `dispositivos`.`idcolegio`
+WHERE `dispositivos`.`idusuario` = :dispositivos.idusuario:', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\DispositivoModel.php(24): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\AdminController.php(274): App\Models\DispositivoModel->getDispositivosConColegio('177')
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->registrar_dispositivo()
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-06-18 13:31:49 --> mysqli_sql_exception: Unknown column 'dispositivos.idusuario' in 'where clause' in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `disposi...', 0)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `disposi...')
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `disposi...')
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `disposi...', Array, false)
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Models\DispositivoModel.php(24): CodeIgniter\BaseModel->findAll()
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(274): App\Models\DispositivoModel->getDispositivosConColegio('177')
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\AdminController->registrar_dispositivo()
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-06-18 13:31:49 --> CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'dispositivos.idusuario' in 'where clause'
+[Method: GET, Route: registrar_dispositivo]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `dispositivo`.*, `colegios`.`nombre` AS `nombre_colegio`
+FROM `dispositivo`
+JOIN `colegios` ON `colegios`.`idcolegio` = `dispositivos`.`idcolegio`
+WHERE `dispositivos`.`idusuario` = :dispositivos.idusuario:', [...], false)
+ 2 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 4 APPPATH\Models\DispositivoModel.php(24): CodeIgniter\BaseModel->findAll()
+ 5 APPPATH\Controllers\AdminController.php(274): App\Models\DispositivoModel->getDispositivosConColegio('177')
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->registrar_dispositivo()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-18 13:31:49 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Unknown column 'dispositivos.idusuario' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `dispositivo`.*, `colegios`.`nombre` AS `nombre_colegio`
+FROM `dispositivo`
+JOIN `colegios` ON `colegios`.`idcolegio` = `dispositivos`.`idcolegio`
+WHERE `dispositivos`.`idusuario` = \'177\'')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `dispositivo`.*, `colegios`.`nombre` AS `nombre_colegio`
+FROM `dispositivo`
+JOIN `colegios` ON `colegios`.`idcolegio` = `dispositivos`.`idcolegio`
+WHERE `dispositivos`.`idusuario` = \'177\'')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `dispositivo`.*, `colegios`.`nombre` AS `nombre_colegio`
+FROM `dispositivo`
+JOIN `colegios` ON `colegios`.`idcolegio` = `dispositivos`.`idcolegio`
+WHERE `dispositivos`.`idusuario` = :dispositivos.idusuario:', [...], false)
+ 4 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 6 APPPATH\Models\DispositivoModel.php(24): CodeIgniter\BaseModel->findAll()
+ 7 APPPATH\Controllers\AdminController.php(274): App\Models\DispositivoModel->getDispositivosConColegio('177')
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->registrar_dispositivo()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-18 13:31:49 --> [Caused by] mysqli_sql_exception: Unknown column 'dispositivos.idusuario' in 'where clause'
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `dispositivo`.*, `colegios`.`nombre` AS `nombre_colegio`
+FROM `dispositivo`
+JOIN `colegios` ON `colegios`.`idcolegio` = `dispositivos`.`idcolegio`
+WHERE `dispositivos`.`idusuario` = \'177\'', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `dispositivo`.*, `colegios`.`nombre` AS `nombre_colegio`
+FROM `dispositivo`
+JOIN `colegios` ON `colegios`.`idcolegio` = `dispositivos`.`idcolegio`
+WHERE `dispositivos`.`idusuario` = \'177\'')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `dispositivo`.*, `colegios`.`nombre` AS `nombre_colegio`
+FROM `dispositivo`
+JOIN `colegios` ON `colegios`.`idcolegio` = `dispositivos`.`idcolegio`
+WHERE `dispositivos`.`idusuario` = \'177\'')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `dispositivo`.*, `colegios`.`nombre` AS `nombre_colegio`
+FROM `dispositivo`
+JOIN `colegios` ON `colegios`.`idcolegio` = `dispositivos`.`idcolegio`
+WHERE `dispositivos`.`idusuario` = :dispositivos.idusuario:', [...], false)
+ 5 SYSTEMPATH\Model.php(286): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(676): CodeIgniter\Model->doFindAll(0, 0)
+ 7 APPPATH\Models\DispositivoModel.php(24): CodeIgniter\BaseModel->findAll()
+ 8 APPPATH\Controllers\AdminController.php(274): App\Models\DispositivoModel->getDispositivosConColegio('177')
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->registrar_dispositivo()
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

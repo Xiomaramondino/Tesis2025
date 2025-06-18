@@ -186,6 +186,7 @@
                 <thead>
                     <tr>
                         <th>Dirección MAC</th>
+                        <th>Colegio</th>
                         <th>Acción</th>
                     </tr>
                 </thead>
@@ -194,6 +195,7 @@
                         <?php foreach ($mis_dispositivos as $dispositivo): ?>
                             <tr>
                                 <td><?= esc($dispositivo['mac']) ?></td>
+                                <td><?= esc($dispositivo['nombre_colegio']) ?></td>
                                 <td>
                                     
                                     <a href="<?= base_url('/dispositivos/eliminar/' . esc($dispositivo['iddispositivo'])) ?>" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar este dispositivo?')">Eliminar</a>

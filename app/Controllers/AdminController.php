@@ -261,29 +261,23 @@ class AdminController extends Controller
     $emailService->send(); // Podés agregar manejo de errores si querés
 }
 
-    public function registrar_dispositivo()
-    {
-        $session = session();
-        $idusuario = $session->get('idusuario');
-    
-        if (!$idusuario) {
-            return redirect()->to('/login')->with('error', 'Sesión no iniciada.');
-        }
-    
-        $usuarioModel = new Usuario();
-        $usuario = $usuarioModel->find($idusuario);
-    
-        if (!$usuario) {
-            return redirect()->back()->with('error', 'Usuario no encontrado');
-        }
-    
-        $dispositivoModel = new DispositivoModel();
-        $mis_dispositivos = $dispositivoModel->getDispositivosUsuario($usuario['usuario']);
-    
-        return view('registrar_dispositivo', [
-            'mis_dispositivos' => $mis_dispositivos
-        ]);
+public function registrar_dispositivo()
+{
+    $session = session();
+    $idusuario = $session->get('idusuario');
+
+    if (!$idusuario) {
+        return redirect()->to('/login')->with('error', 'Sesión no iniciada.');
     }
+
+    $dispositivoModel = new DispositivoModel();
+    $mis_dispositivos = $dispositivoModel->getDispositivosConColegio($idusuario);
+
+    return view('registrar_dispositivo', [
+        'mis_dispositivos' => $mis_dispositivos
+    ]);
+}
+
 
     public function eliminar_dispositivo($iddispositivo)
     {
