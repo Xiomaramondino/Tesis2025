@@ -163,7 +163,7 @@
                     </div>
 
                     <div style="margin-top:10px; background: #f1f1f1; padding:10px; border-left: 5px solid #2196F3;">
-                        ⚠️ <strong>Nota:</strong> El sistema generará una contraseña automática y enviará un correo al usuario con un enlace para que cree su propia contraseña.
+                        ⚠️ <strong>Nota:</strong> En caso de no contar con una cuenta, el sistema generará una contraseña automáticamente y enviará un correo al usuario con un enlace para que cree su propia contraseña.
                     </div>
                     <br>
 
@@ -200,7 +200,7 @@
                                 <a href="<?= base_url('admin/eliminar_directivo/' . $usuario['idusuario']) ?>" 
    class="text-decoration-none" 
    style="color: black;" 
-   onclick="return confirm('¿Estás seguro de eliminar al directivo?');">Eliminar</a>
+   onclick="return confirm('¿Estás seguro de eliminar de este colegio a este directivo?');">Desvincular</a>
 
                                 </td>
                                 <td>

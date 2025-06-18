@@ -15,34 +15,31 @@ class AdminController extends Controller
         if (session()->get('idrol') !== '1') {
             return redirect()->to('/login');
         }
-
-        $idcolegio = session()->get('idcolegio'); // Obtener el colegio del admin
-
-        // Obtener usuarios directivos del mismo colegio
-        $usuarioModel = new Usuario();
-        $usuarios_directivos = $usuarioModel
-            ->where('idrol', '2')
-            ->where('idcolegio', $idcolegio)
-            ->orderBy('usuario', 'ASC')
-            ->findAll();
-
-        // Obtener lectores del mismo colegio
-        $lectores = $usuarioModel
-            ->where('idrol', '3')
-            ->where('idcolegio', $idcolegio)
-            ->orderBy('usuario', 'ASC')
-            ->findAll();
-
+    
+        $idcolegio = session()->get('idcolegio'); // Colegio del admin
+    
+        $db = \Config\Database::connect();
+    
+        // Obtener directivos asociados al colegio desde la tabla intermedia
+        $queryDirectivos = $db->table('usuario_colegio uc')
+            ->select('u.idusuario, u.usuario, u.email')
+            ->join('usuarios u', 'u.idusuario = uc.idusuario')
+            ->where('uc.idcolegio', $idcolegio)
+            ->where('uc.idrol', 2) // Rol de directivo
+            ->orderBy('u.usuario', 'ASC')
+            ->get();
+    
+        $usuarios_directivos = $queryDirectivos->getResultArray();
+    
         return view('vista_admin', [
-            'usuarios_directivos' => $usuarios_directivos,
-            'lectores' => $lectores
+            'usuarios_directivos' => $usuarios_directivos
         ]);
     }
+    
 
     public function guardarUsuario() {
         date_default_timezone_set('America/Argentina/Buenos_Aires');
     
-        // Verificar rol de admin
         if (session()->get('idrol') !== '1') {
             return redirect()->to('/login');
         }
@@ -63,38 +60,33 @@ class AdminController extends Controller
         }
     
         $usuarioModel = new \App\Models\Usuario();
-        $usuarioColegioModel = new \App\Models\UsuarioColegioModel();
-    
-        // Buscar si ya existe un usuario con ese email
+        $intermedioModel = new \App\Models\UsuarioColegioModel(); 
+        $idrol = 2; 
+ 
         $usuarioExistente = $usuarioModel->where('email', $email)->first();
     
         if ($usuarioExistente) {
             $idusuario = $usuarioExistente['idusuario'];
     
-            // Verificar si ya está vinculado con este colegio
-            $vinculoExistente = $usuarioColegioModel->where([
-                'idusuario' => $idusuario,
-                'idcolegio' => $idcolegio
-            ])->first();
+            // Verificar si ya existe la asociación
+            $existeAsociacion = $intermedioModel
+                ->where('idusuario', $idusuario)
+                ->where('idcolegio', $idcolegio)
+                ->where('idrol', $idrol)
+                ->first();
     
-            if ($vinculoExistente) {
-                session()->setFlashdata('info', 'El usuario ya existe y ya está vinculado a este colegio.');
-            } else {
-                // Agregar vínculo nuevo
-                $usuarioColegioModel->insert([
-                    'idusuario' => $idusuario,
-                    'idcolegio' => $idcolegio,
-                    'idrol' => 2 // Rol directivo
-                ]);
-                session()->setFlashdata('success', 'Usuario ya existente vinculado correctamente al colegio.');
+            if ($existeAsociacion) {
+                session()->setFlashdata('error', 'Este usuario ya está asociado a este colegio con este rol.');
+                return redirect()->to('/vista_admin');
             }
+    
         } else {
             // Crear nuevo usuario
             $passwordTemporal = bin2hex(random_bytes(4));
             $hashedPassword = password_hash($passwordTemporal, PASSWORD_DEFAULT);
             $token = bin2hex(random_bytes(50));
     
-            $dataUsuario = [
+            $nuevoUsuario = [
                 'usuario' => $usuario,
                 'email' => $email,
                 'password' => $hashedPassword,
@@ -102,42 +94,67 @@ class AdminController extends Controller
                 'token' => $token
             ];
     
-            if ($usuarioModel->insert($dataUsuario)) {
-                $idusuario = $usuarioModel->getInsertID();
-    
-                // Insertar relación en tabla intermedia
-                $usuarioColegioModel->insert([
-                    'idusuario' => $idusuario,
-                    'idcolegio' => $idcolegio,
-                    'idrol' => 2
-                ]);
-    
-                $this->_enviarCorreoRecuperacionInicial($email, $usuario, $token, $idcolegio);
-                session()->setFlashdata('success', 'Usuario creado correctamente y vinculado al colegio.');
-            } else {
-                session()->setFlashdata('error', 'Ocurrió un error al agregar el usuario.');
+            if (!$usuarioModel->insert($nuevoUsuario)) {
+                session()->setFlashdata('error', 'Error al crear el nuevo usuario.');
+                return redirect()->to('/vista_admin');
             }
+    
+            $idusuario = $usuarioModel->insertID();
+    
+            // Enviar correo solo si es usuario nuevo
+            $this->_enviarCorreoRecuperacionInicial($email, $usuario, $token, $idcolegio);
         }
     
-        return redirect()->to('/vista_admin');
+        // Insertar en tabla intermedia
+        $datosIntermedios = [
+            'idusuario' => $idusuario,
+            'idcolegio' => $idcolegio,
+            'idrol' => $idrol,
+        ];
+    
+        if (!$intermedioModel->insert($datosIntermedios)) {
+            session()->setFlashdata('error', 'Error al asociar el usuario con el colegio.');
+            return redirect()->to('/vista_admin');
+        }
+       // Enviar correo informativo (usuario ya existía)
+       $this->_enviarCorreoAsociacionExistente($email, $usuario, $idcolegio);
+
+       session()->setFlashdata('success', 'Usuario existente asociado correctamente y se envió un correo de notificación.');
+       return redirect()->to('/vista_admin');
     }
+    
     
 
     public function eliminarDirectivo($idusuario)
     {
-        $usuarioModel = new Usuario();
-
-        $usuario = $usuarioModel->find($idusuario);
-        if ($usuario && $usuario['idrol'] === '2') {
-            if (!$usuarioModel->delete($idusuario)) {
-                session()->setFlashdata('error', 'Hubo un error al eliminar al directivo.');
+        $idcolegio = session()->get('idcolegio');
+        if (empty($idcolegio)) {
+            session()->setFlashdata('error', 'ID del colegio no disponible.');
+            return redirect()->to('/vista_admin');
+        }
+    
+        $intermedioModel = new \App\Models\UsuarioColegioModel();
+    
+        // Buscar si existe la asociación
+        $asociacion = $intermedioModel
+            ->where('idusuario', $idusuario)
+            ->where('idcolegio', $idcolegio)
+            ->where('idrol', 2) // Directivo
+            ->first();
+    
+        if ($asociacion) {
+            if (!$intermedioModel->delete($asociacion['idusuario_colegio'])) {
+                session()->setFlashdata('error', 'Hubo un error al eliminar la asociación del directivo.');
+            } else {
+                session()->setFlashdata('success', 'Directivo eliminado correctamente del colegio.');
             }
         } else {
-            session()->setFlashdata('error', 'El usuario no es un directivo o no existe.');
+            session()->setFlashdata('error', 'No se encontró la asociación del directivo con este colegio.');
         }
-
+    
         return redirect()->to('/vista_admin');
     }
+    
 
     public function editarDirectivo($idusuario)
     {
@@ -210,7 +227,40 @@ class AdminController extends Controller
             log_message('error', 'Error al enviar el correo de bienvenida con enlace de recuperación a ' . $email);
         }
     }
-    
+    private function _enviarCorreoAsociacionExistente($email, $usuario, $idcolegio)
+{
+    $colegioModel = new \App\Models\ColegioModel();
+    $colegio = $colegioModel->find($idcolegio);
+
+    $nombreColegio = $colegio ? $colegio['nombre'] : 'un colegio';
+
+    $emailService = \Config\Services::email();
+
+    $emailService->setTo($email);
+    $emailService->setSubject('Nueva asociacion a un colegio');
+
+    $mensaje = "
+    <h2>Hola {$usuario},</h2>
+
+    <p>Te informamos que tu cuenta ha sido vinculada al siguiente colegio:</p>
+
+    <p><strong>Colegio:</strong> {$nombreColegio}<br>
+    <strong>Rol:</strong> Directivo</p>
+
+    <p>A partir de ahora podés acceder con tu email a este colegio con ese rol desde el sistema.</p>
+
+    <p>Si esta acción no fue solicitada por vos o tenés alguna duda, por favor comunicate con el administrador del sistema.</p>
+
+    <br>
+    <p>Saludos,<br>
+    <strong>Sistema de Gestión de Timbres</strong></p>
+";
+
+    $emailService->setMessage($mensaje);
+
+    $emailService->send(); // Podés agregar manejo de errores si querés
+}
+
     public function registrar_dispositivo()
     {
         $session = session();
