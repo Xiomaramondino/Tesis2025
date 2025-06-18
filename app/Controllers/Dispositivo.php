@@ -40,23 +40,21 @@ class Dispositivo extends ResourceController
         return $this->respond(['status' => 'ok', 'message' => 'MAC registrada correctamente']);
     }  
     public function vistaDispositivos()
-{
-    $session = session();
-    $idusuario = $session->get('idusuario');
-
-    // Obtener el nombre del usuario actual
-    $usuarioModel = new UsuarioModel();
-    $usuario = $usuarioModel->find($idusuario);
-
-    if (!$usuario) {
-        return redirect()->back()->with('error', 'Usuario no encontrado');
+    {
+        $session = session();
+        $idusuario = $session->get('idusuario');
+    
+        if (!$idusuario) {
+            return redirect()->to('/login')->with('error', 'Sesión no iniciada.');
+        }
+    
+        // Obtener dispositivos por idusuario
+        $mis_dispositivos = $this->where('idusuario', $idusuario)->findAll();
+    
+        return view('registrar_dispositivo', [
+            'mis_dispositivos' => $mis_dispositivos
+        ]);
     }
-
-    // Obtener dispositivos asociados a ese nombre de usuario
-    $dispositivoModel = new DispositivoModel();
-    $mis_dispositivos = $dispositivoModel->getDispositivosUsuario($usuario['nombre']);
-
-    return view('registrar_dispositivo', ['mis_dispositivos' => $mis_dispositivos]);
-}
+    
 
 }
