@@ -59,7 +59,7 @@ class Auth extends Controller
         $builder->where('uc.idusuario', $user['idusuario']);
         $result = $builder->get()->getResultArray();
     
-        // Siempre mostrar pantalla de selección, aunque haya solo una opción
+        
         return view('seleccionar_colegio', ['opciones' => $result]);
     }
 
