@@ -14,15 +14,18 @@ class DirectivoController extends BaseController
 
     public function gestionarUsuarios()
     {
-        // Obtener directamente el idcolegio desde la sesión
         $idcolegio = session()->get('idcolegio');
     
-        // Buscar usuarios lectores (idrol = 3) del mismo colegio
-        $lectores = $this->Usuario
-                         ->where('idrol', 3)
-                         ->where('idcolegio', $idcolegio)
-                         ->orderBy('usuario', 'ASC')
-                         ->findAll();
+        $db = \Config\Database::connect();
+    
+        $lectores = $db->table('usuario_colegio uc')
+            ->select('u.idusuario, u.usuario, u.email')
+            ->join('usuarios u', 'u.idusuario = uc.idusuario')
+            ->where('uc.idcolegio', $idcolegio)
+            ->where('uc.idrol', 3)
+            ->orderBy('u.usuario', 'ASC')
+            ->get()
+            ->getResultArray();
     
         return view('gestionar_usuarios', ['lectores' => $lectores]);
     }
@@ -33,13 +36,8 @@ class DirectivoController extends BaseController
     public function agregarUsuario()
     {
         $data = $this->request->getPost();
-        $email = $data['email'];
-    
-        // Verificar si el correo ya está registrado
-        if ($this->Usuario->existenteEmail($email)) {
-            session()->setFlashdata('error', 'El correo electrónico ya está registrado.');
-            return redirect()->to('/gestionar_usuarios');
-        }
+        $email = strtolower(trim($data['email']));
+        $usuario = $data['usuario'];
     
         // Verificar si el usuario está autenticado
         if (!session()->get('logged_in')) {
@@ -47,63 +45,119 @@ class DirectivoController extends BaseController
             return redirect()->to('/login');
         }
     
-        // Obtener el idcolegio de la sesión (que corresponde al admin que está creando el usuario)
-        $idcolegio = session()->get('idcolegio');  // Aquí estamos obteniendo el idcolegio de la sesión
-        
-        // Verificar si el idcolegio es válido (no vacío)
+        $idcolegio = session()->get('idcolegio');
+    
         if (empty($idcolegio)) {
             log_message('error', 'ID del colegio no encontrado en la sesión.');
             session()->setFlashdata('error', 'El ID del colegio no está disponible.');
             return redirect()->to('/gestionar_usuarios');
         }
     
-        // Generar contraseña temporal
-        $passwordTemporal = bin2hex(random_bytes(4)); // 8 caracteres
-        $hashedPassword = password_hash($passwordTemporal, PASSWORD_DEFAULT);
+        $usuarioModel = new \App\Models\Usuario();
+        $intermedioModel = new \App\Models\UsuarioColegioModel();
+        $idrol = 3; // Lector
     
-        // Generar token de recuperación
-        $token = bin2hex(random_bytes(50));
+        // Buscar si ya existe un usuario con ese email
+        $usuarioExistente = $usuarioModel->where('email', $email)->first();
     
-        // Datos del nuevo usuario
-        $usuarioData = [
-            'usuario' => $data['usuario'],
-            'email' => $email,
-            'password' => $hashedPassword,
-            'idrol' => '3',
-            'token' => $token,
-            'idcolegio' => $idcolegio,  // Asignar el idcolegio del admin al nuevo usuario
-            'fecha_registro' => date('Y-m-d H:i:s'),
-        ];
+        if ($usuarioExistente) {
+            $idusuario = $usuarioExistente['idusuario'];
     
-        // Log para verificar los datos antes de la inserción
-        log_message('info', 'Datos a insertar en el usuario: ' . json_encode($usuarioData));
+            // Verificar si ya está asociado al colegio con el rol
+            $yaAsociado = $intermedioModel
+                ->where('idusuario', $idusuario)
+                ->where('idcolegio', $idcolegio)
+                ->where('idrol', $idrol)
+                ->first();
     
-        // Insertar usuario y enviar correo
-        if ($this->Usuario->insert($usuarioData)) {
-            $this->_enviarCorreoRecuperacionInicial($email, $data['usuario'], $token, $idcolegio);
-            session()->setFlashdata('success', 'Usuario creado correctamente. Se envió el correo.');
+            if ($yaAsociado) {
+                session()->setFlashdata('error', 'Este usuario ya está asociado a este colegio como lector.');
+                return redirect()->to('/gestionar_usuarios');
+            }
+    
+            // Asociar usuario existente al colegio
+            $intermedioModel->insert([
+                'idusuario' => $idusuario,
+                'idcolegio' => $idcolegio,
+                'idrol' => $idrol
+            ]);
+    
+            // Enviar correo notificando que fue asociado como lector
+            $this->_enviarCorreoAsociacionExistente($email, $usuario, $idcolegio);
+    
+            session()->setFlashdata('success', 'Usuario existente asociado correctamente al colegio como lector.');
+            return redirect()->to('/gestionar_usuarios');
+    
         } else {
-            session()->setFlashdata('error', 'No se pudo agregar el usuario.');
-        }
+            // Crear nuevo usuario
+            $passwordTemporal = bin2hex(random_bytes(4));
+            $hashedPassword = password_hash($passwordTemporal, PASSWORD_DEFAULT);
+            $token = bin2hex(random_bytes(50));
     
-        return redirect()->to('/gestionar_usuarios');
+            $nuevoUsuario = [
+                'usuario' => $usuario,
+                'email' => $email,
+                'password' => $hashedPassword,
+                'token' => $token,
+                'fecha_registro' => date('Y-m-d H:i:s')
+            ];
+    
+            if (!$usuarioModel->insert($nuevoUsuario)) {
+                session()->setFlashdata('error', 'No se pudo crear el nuevo usuario.');
+                return redirect()->to('/gestionar_usuarios');
+            }
+    
+            $idusuario = $usuarioModel->insertID();
+    
+            // Asociar nuevo usuario al colegio
+            $intermedioModel->insert([
+                'idusuario' => $idusuario,
+                'idcolegio' => $idcolegio,
+                'idrol' => $idrol
+            ]);
+    
+            // Enviar correo para establecer contraseña
+            $this->_enviarCorreoRecuperacionInicial($email, $usuario, $token, $idcolegio);
+    
+            session()->setFlashdata('success', 'Usuario creado correctamente y asociado como lector. Se envió el correo.');
+            return redirect()->to('/gestionar_usuarios');
+        }
     }
+    
     
 
     
     // Eliminar usuario
     public function eliminarUsuario($idusuario)
     {
-        $usuario = $this->Usuario->find($idusuario);
-
-        if ($usuario) {
-            $this->Usuario->delete($idusuario);
-        } else {
-            session()->setFlashdata('error', 'El usuario no existe.');
+        $idcolegio = session()->get('idcolegio');
+        if (empty($idcolegio)) {
+            session()->setFlashdata('error', 'El ID del colegio no está disponible.');
+            return redirect()->to('/gestionar_usuarios');
         }
-
+    
+        $intermedioModel = new \App\Models\UsuarioColegioModel();
+    
+        // Buscar la asociación con rol lector (idrol = 3)
+        $asociacion = $intermedioModel
+            ->where('idusuario', $idusuario)
+            ->where('idcolegio', $idcolegio)
+            ->where('idrol', 3)
+            ->first();
+    
+        if ($asociacion) {
+            if (!$intermedioModel->delete($asociacion['idusuario_colegio'])) {
+                session()->setFlashdata('error', 'No se pudo desasociar al usuario del colegio.');
+            } else {
+                session()->setFlashdata('success', 'Usuario desasociado correctamente del colegio.');
+            }
+        } else {
+            session()->setFlashdata('error', 'No se encontró una asociación válida con este colegio.');
+        }
+    
         return redirect()->to('/gestionar_usuarios');
     }
+    
 
     // Método privado para enviar el correo
     private function _enviarCorreoRecuperacionInicial($email, $usuario, $token, $idcolegio)
@@ -139,7 +193,41 @@ class DirectivoController extends BaseController
             log_message('error', 'Error al enviar el correo de bienvenida con enlace de recuperación a ' . $email);
         }
     }
-    // Vista de edición de usuario
+
+    private function _enviarCorreoAsociacionExistente($email, $usuario, $idcolegio)
+    {
+        $colegioModel = new \App\Models\ColegioModel();
+        $colegio = $colegioModel->find($idcolegio);
+    
+        $nombreColegio = $colegio ? $colegio['nombre'] : 'un colegio';
+    
+        $emailService = \Config\Services::email();
+    
+        $emailService->setTo($email);
+        $emailService->setSubject('Nueva asociacion a un colegio');
+    
+        $mensaje = "
+        <h2>Hola {$usuario},</h2>
+    
+        <p>Te informamos que tu cuenta ha sido vinculada al siguiente colegio:</p>
+    
+        <p><strong>Colegio:</strong> {$nombreColegio}<br>
+        <strong>Rol:</strong> Lector</p>
+    
+        <p>A partir de ahora podés acceder con tu email a este colegio con ese rol desde el sistema.</p>
+    
+        <p>Si esta acción no fue solicitada por vos o tenés alguna duda, por favor comunicate con el administrador del sistema.</p>
+    
+        <br>
+        <p>Saludos,<br>
+        <strong>Sistema de Gestión de Timbres</strong></p>
+    ";
+    
+        $emailService->setMessage($mensaje);
+    
+        $emailService->send(); 
+    }
+ 
 public function editarUsuario($idusuario)
 {
     $usuario = $this->Usuario->find($idusuario);
@@ -152,7 +240,7 @@ public function editarUsuario($idusuario)
     return view('editar_usuario', ['usuario' => $usuario]);
 }
 
-// Guardar cambios del usuario
+
 public function actualizarUsuario()
 {
     $data = $this->request->getPost();

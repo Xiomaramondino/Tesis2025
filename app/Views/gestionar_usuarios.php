@@ -185,7 +185,7 @@ body {
                     <input type="email" name="email" class="form-control" placeholder="Correo Electrónico" required>
                 </div>
                 <div style="margin-top:10px; background: #f1f1f1; padding:10px; border-left: 5px solid #2196F3;">
-                        ⚠️ <strong>Nota:</strong> El sistema generará una contraseña automática y enviará un correo al usuario con un enlace para que cree su propia contraseña.
+                        ⚠️ <strong>Nota:</strong> Si el alumno no posee una cuenta en el sistema, el mismo le generará una, junto a una contraseña aleatoria y le enviará un correo con un enlace para que pueda cambiarla.
                     </div>
                     <br>
                 <button type="submit" class="btn btn-form">Agregar Usuario</button>
@@ -219,8 +219,8 @@ body {
     <a href="<?= base_url('/directivo/eliminarUsuario/' . $lector['idusuario']) ?>" 
        class="text-decoration-none" 
        style="color: black;" 
-       onclick="return confirm('¿Estás seguro de que querés eliminar este usuario?');">
-        Eliminar
+       onclick="return confirm('¿Estás seguro de que querés eliminar este alumno de este colegio?');">
+        Desvincular 
     </a>
 
 
