@@ -89,6 +89,40 @@ class Auth extends Controller
     return $this->redirigirPorRol($idrol);
 }
 
+public function mostrarOpcionesCambio()
+{
+    $session = session();
+    if (!$session->has('idusuario')) {
+        return redirect()->to('/login'); // seguridad
+    }
+
+    $idusuario = $session->get('idusuario');
+
+    $db = \Config\Database::connect();
+    $builder = $db->table('usuario_colegio uc');
+    $builder->select('uc.idcolegio, uc.idrol, c.nombre as colegio, r.tipo as rol');
+    $builder->join('colegios c', 'c.idcolegio = uc.idcolegio');
+    $builder->join('rol r', 'r.idrol = uc.idrol');
+    $builder->where('uc.idusuario', $idusuario);
+    $result = $builder->get()->getResultArray();
+
+    return view('cambiar_colegio', ['opciones' => $result]);
+}
+
+public function cambiarContexto()
+{
+    $session = session();
+    $valor = $this->request->getPost('idcolegio');
+    list($idcolegio, $idrol) = explode('-', $valor);
+
+    $session->set([
+        'idcolegio' => $idcolegio,
+        'idrol'     => $idrol
+    ]);
+
+    return $this->redirigirPorRol($idrol);
+}
+
 
     public function registro()
     {

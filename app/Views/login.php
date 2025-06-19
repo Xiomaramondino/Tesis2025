@@ -163,7 +163,7 @@
 </head>
 <body>
 
-    <!-- Barra de navegación -->
+    
     <nav class="navbar">
         <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
         <center><div class="logo" style="padding-right: -540px;">RingMind</div></center>
@@ -174,7 +174,7 @@
     </div>
     </nav>
 
-    <!-- Formulario de inicio de sesión -->
+   
     <center>
     <div class="card" style="width: 30rem;">
         <div class="card-body">
@@ -184,7 +184,7 @@
                         <h3>Acceder a mi cuenta</h3>
                         <form action="<?= base_url('autenticar') ?>" method="post">
                             
-                            <!-- Mensajes de éxito o error -->
+                       
                             <?php if (session()->getFlashdata('success')): ?>
                                 <div class="alert alert-success">
                                     <?= session()->getFlashdata('success'); ?>
@@ -207,54 +207,7 @@
                                 </div>
                                 <?php session()->remove('exito'); ?>
                             <?php endif ?>
-                          
-                           
     <div class="form-group">
-   <!-- <select name="idcolegio" class="form-control" id="idcolegio" required>
-    <option value="" disabled selected>Seleccione una institución</option>
-
-    <optgroup label="Escuelas Primarias">
-    <option value="1">Presidente Mitre</option>
-    <option value="2">Modesto Acuña</option>
-    <option value="3">Remedios de Escalada de San Martín</option>
-    <option value="4">Berta Biondo de Zerega</option>
-    <option value="5">Manuel Nicolás Savio</option>
-    <option value="6">Martín Miguel de Güemes</option>
-    <option value="7">José Matías Zapiola</option>
-    <option value="8">General Manuel Belgrano</option>
-    <option value="9">Angélica Prado</option>
-    <option value="10">Domingo Faustino Sarmiento</option>
-    <option value="11">Gregoria Ignacia Perez</option>
-    <option value="12">Armando Rótulo</option>
-    <option value="13">Instituto Privado Doctor Alexis Carrel</option>
-    <option value="14">Instituto Privado Carlos Saavedra Lamas</option>
-    <option value="15">Instituto Privado Jesús, María y José</option>
-    <option value="16">Instituto Privado Arte Nuevo</option>
-</optgroup>
-
-<optgroup label="Escuelas Secundarias">
-    <option value="17">I.P.E.M. Nº 98 "Luis de Tejeda"</option>
-    <option value="18">Escuela Superior de Comercio</option>
-    <option value="19">I.P.E.M. Nº 288 "José Hernández"</option>
-    <option value="20">C.E.N.M.A. "Centro de Enseñanza de Nivel Medio para Adultos"</option>
-    <option value="21">I.P.E.M. Nº 266 ex ENET Nº1 "General Manuel Nicolás Savio"</option>
-    <option value="22">C.E.D.E.R. Río Tercero</option>
-    <option value="23">Instituto Privado Carlos Saavedra Lamas</option>
-    <option value="24">Instituto Privado Doctor Alexis Carrel</option>
-    <option value="25">Instituto Privado Arte Nuevo</option>
-    <option value="26">Instituto Privado Jesús, María y José</option>
-    <option value="27">Instituto Privado Nivel Medio Río Tercero (ex I.T.T.)</option>
-</optgroup>
-
-<optgroup label="Escuelas Terciarias">
-    <option value="28">Escuela Superior de Comercio</option>
-    <option value="29">Instituto Privado Carlos Saavedra Lamas</option>
-    <option value="30">Instituto Privado Doctor Alexis Carrel</option>
-    <option value="31">I.E.S. Instituto de Enseñanza Superior Río Tercero</option>
-    <option value="32">Instituto Privado Jesús, María y José</option>
-    <option value="33">I.S.D.E. Instituto Superior para el Desarrollo Educativo</option>
-</optgroup> 
-</select> -->
                             <div class="form-group">
                                 <label for="usuario"></label>
                                 <input type="text" class="form-control" name="usuario" required placeholder="Introduce tu usuario">

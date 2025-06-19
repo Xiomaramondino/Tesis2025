@@ -314,7 +314,7 @@
             return actions.order.create({
                 purchase_units: [{
                     amount: {
-                        value: (precio / 4000).toFixed(2), // Convertir a USD (aproximadamente)
+                        value: (precio).toFixed(2), // Convertir a USD (aproximadamente)
                         currency_code: "USD"
                     },
                     description: descripcion,

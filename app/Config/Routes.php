@@ -55,3 +55,6 @@ $routes->get('dispositivo/registerMac', 'Dispositivo::registerMac');
 $routes->get('dispositivos/eliminar/(:num)', 'AdminController::eliminar_dispositivo/$1');
 
 $routes->post('/seleccionar-contexto', 'Auth::seleccionarContexto');
+$routes->get('/cambiar-colegio', 'Auth::mostrarOpcionesCambio');
+$routes->post('/cambiar-contexto', 'Auth::cambiarContexto');
+

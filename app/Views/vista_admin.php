@@ -115,6 +115,7 @@
         <div class="logo" style="padding-left: 80px;">RingMind</div>
         <div class="navbar-buttons">
             <a href="<?= base_url('/admin/horarios'); ?>" class="btn btn-sm cerrar-btn">Visualizar horarios</a>
+            
             <form action="<?= base_url('/logout'); ?>" method="post">
                 <?= csrf_field(); ?>
                 <button type="submit" class="btn btn-sm cerrar-btn">Cerrar sesión</button> <br>
@@ -127,6 +128,12 @@
     <form action="<?= base_url('registrar_dispositivo') ?>" method="get">
         <button type="submit" class="btn btn-form btn-ancho-custom">Registrar y ver mis Dispositivos</button>
     </form>
+</div>
+<div class="text-center mb-3">
+<form action="<?= base_url('/cambiar-colegio') ?>" method="get">
+    <button type="submit" class="btn btn-form btn-ancho-custom">Cambiar de colegio</button>
+</form>
+
 </div>
 
     <div class="container mt-4">

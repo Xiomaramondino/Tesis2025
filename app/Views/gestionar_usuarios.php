@@ -139,6 +139,12 @@ body {
     margin-right: -30px; 
     margin-top: -5px;
 }
+.btn-ancho-custom {
+        width: 250px; 
+        max-width: 100%;
+        background-color: #4a045a;
+        border-radius: 13px;
+}
 </style>
 
 <body>
@@ -155,8 +161,13 @@ body {
         </form>
     </div>
 </nav>
+<br>
+<div class="text-center mb-3">
+<form action="<?= base_url('/cambiar-colegio') ?>" method="get">
+    <button type="submit" class="btn btn-form btn-ancho-custom">Cambiar de colegio</button>
+</form>
 
-<!-- Formulario para agregar nuevo usuario -->
+</div>
 <div class="container mt-4">
     <div class="col-md-6 mx-auto">
         <div class="form-card">
