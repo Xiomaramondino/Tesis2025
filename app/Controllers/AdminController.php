@@ -37,9 +37,11 @@ class AdminController extends Controller
     }
     
 
-    public function guardarUsuario() {
+    public function guardarUsuario()
+    {
         date_default_timezone_set('America/Argentina/Buenos_Aires');
     
+        // Verificar que el usuario logueado sea administrador
         if (session()->get('idrol') !== '1') {
             return redirect()->to('/login');
         }
@@ -61,14 +63,16 @@ class AdminController extends Controller
     
         $usuarioModel = new \App\Models\Usuario();
         $intermedioModel = new \App\Models\UsuarioColegioModel(); 
-        $idrol = 2; 
- 
+        $idrol = 2; // Rol predeterminado del usuario (por ejemplo, profesor)
+        
+        $esUsuarioNuevo = false; // Indicador para saber si el usuario es nuevo o ya existía
+    
         $usuarioExistente = $usuarioModel->where('email', $email)->first();
     
         if ($usuarioExistente) {
             $idusuario = $usuarioExistente['idusuario'];
     
-            // Verificar si ya existe la asociación
+            // Verificar si ya existe la asociación con este colegio y rol
             $existeAsociacion = $intermedioModel
                 ->where('idusuario', $idusuario)
                 ->where('idcolegio', $idcolegio)
@@ -82,9 +86,9 @@ class AdminController extends Controller
     
         } else {
             // Crear nuevo usuario
-            $passwordTemporal = bin2hex(random_bytes(4));
+            $passwordTemporal = bin2hex(random_bytes(4)); // Contraseña temporal
             $hashedPassword = password_hash($passwordTemporal, PASSWORD_DEFAULT);
-            $token = bin2hex(random_bytes(50));
+            $token = bin2hex(random_bytes(50)); // Token para recuperación o activación
     
             $nuevoUsuario = [
                 'usuario' => $usuario,
@@ -100,12 +104,13 @@ class AdminController extends Controller
             }
     
             $idusuario = $usuarioModel->insertID();
+            $esUsuarioNuevo = true;
     
-            // Enviar correo solo si es usuario nuevo
+            // Enviar correo de recuperación o activación inicial
             $this->_enviarCorreoRecuperacionInicial($email, $usuario, $token, $idcolegio);
         }
     
-        // Insertar en tabla intermedia
+        // Insertar en la tabla intermedia (usuario-colegio)
         $datosIntermedios = [
             'idusuario' => $idusuario,
             'idcolegio' => $idcolegio,
@@ -116,12 +121,16 @@ class AdminController extends Controller
             session()->setFlashdata('error', 'Error al asociar el usuario con el colegio.');
             return redirect()->to('/vista_admin');
         }
-       // Enviar correo informativo (usuario ya existía)
-       $this->_enviarCorreoAsociacionExistente($email, $usuario, $idcolegio);
-
-       session()->setFlashdata('success', 'Usuario existente asociado correctamente y se envió un correo de notificación.');
-       return redirect()->to('/vista_admin');
+    
+        // Enviar correo solo si el usuario ya existía
+        if (!$esUsuarioNuevo) {
+            $this->_enviarCorreoAsociacionExistente($email, $usuario, $idcolegio);
+        }
+    
+        session()->setFlashdata('success', 'Usuario asociado correctamente.');
+        return redirect()->to('/vista_admin');
     }
+    
     
     
 
@@ -258,7 +267,7 @@ class AdminController extends Controller
 
     $emailService->setMessage($mensaje);
 
-    $emailService->send(); // Podés agregar manejo de errores si querés
+    $emailService->send(); 
 }
 
 public function registrar_dispositivo()

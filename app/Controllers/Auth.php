@@ -99,7 +99,8 @@ class Auth extends Controller
     public function guardarRegistro()
     {
         $session = \Config\Services::session();
-        $usuarioModel = new Usuario();
+        $usuarioModel = new \App\Models\Usuario();
+        $usuarioColegioModel = new \App\Models\UsuarioColegioModel();
     
         $usuario = $this->request->getPost('usuario');
         $email = $this->request->getPost('email');
@@ -108,55 +109,88 @@ class Auth extends Controller
         $paypalOrderId = $this->request->getPost('paypal_order_id');
         $producto = $this->request->getPost('producto');
         $idcolegio = $this->request->getPost('idcolegio');
-
-
-        
+        $idrol = 1; // Siempre se guarda en la tabla intermedia
+    
+        // Validaciones
         if ($paymentStatus !== 'completed' || empty($paypalOrderId)) {
-            session()->set('error', 'Debes completar el proceso de pago primero');
+            session()->set('error', 'Debes completar el proceso de pago primero.');
             return redirect()->to('registro');
         }
-
-
+    
         if (empty($usuario) || empty($email) || empty($password)) {
-            session()->set('error', 'Todos los campos son obligatorios');
+            session()->set('error', 'Todos los campos son obligatorios.');
             return redirect()->to('registro');
         }
     
         if (!preg_match('/^[a-zA-Z\s]+$/', $usuario)) {
-            session()->set('error', 'El usuario solo puede contener letras.');
-            return redirect()->to('registro');
-        } 
-        
-       
-        if (strlen($password) < 6 || !preg_match('/[A-Z]/', $password) || !preg_match('/[!@#$%*]/', $password)) {
-      
-            session()->set('password_error', 'La  contraseña debe tener al menos 6 caracteres, una letra mayúscula y un símbolo (!@#$%).');
+            session()->set('error', 'El nombre de usuario solo puede contener letras.');
             return redirect()->to('registro');
         }
-        
-        $array = [
-            'usuario' => $usuario,
-            'email' => $email,
-            'password' => password_hash($password, PASSWORD_DEFAULT),
-            'payment_status' => $paymentStatus,
-            'paypal_order_id' => $paypalOrderId,
-            'producto' => $producto,
-            'idcolegio' => $idcolegio,
-            'idrol' => '1',  
-            'fecha_registro' => date('Y-m-d H:i:s')
-        ];
     
-        if ($usuarioModel->insertarUsuario($array)) {
-           
-            
-            session()->set('exito', '¡Registro y compra completados con éxito!');     
-            return redirect()->to('login');   
-        } else {
-            session()->set('error', 'Ocurrió un error al registrar. Por favor intenta nuevamente.');
+        if (strlen($password) < 6 || !preg_match('/[A-Z]/', $password) || !preg_match('/[!@#$%*]/', $password)) {
+            session()->set('password_error', 'La contraseña debe tener al menos 6 caracteres, una letra mayúscula y un símbolo (!@#$%).');
             return redirect()->to('registro');
         }
-
+    
+        // Buscar usuario por email
+        $usuarioExistente = $usuarioModel->where('email', $email)->first();
+    
+        if ($usuarioExistente) {
+            $idusuario = $usuarioExistente['idusuario'];
+    
+            // Verificar si ya está asociado con ese colegio y ese mismo rol
+            $yaAsociado = $usuarioColegioModel
+                ->where('idusuario', $idusuario)
+                ->where('idcolegio', $idcolegio)
+                ->where('idrol', $idrol)
+                ->first();
+    
+            if ($yaAsociado) {
+                session()->set('error', 'Este correo ya tiene una cuenta registrada en esta institución con ese rol. Iniciá sesión con tu cuenta.');
+                return redirect()->to('login');
+            } else {
+                // Asociar nuevo colegio y rol
+                $usuarioColegioModel->insert([
+                    'idusuario' => $idusuario,
+                    'idcolegio' => $idcolegio,
+                    'idrol' => $idrol
+                ]);
+    
+                session()->setFlashdata('success', 'Ya tenías una cuenta y ahora también estás asociado a esta institución con el nuevo rol.');
+                return redirect()->to('login');
+            }
+        } else {
+            // Crear nuevo usuario
+            $nuevoUsuario = [
+                'usuario' => $usuario,
+                'email' => $email,
+                'password' => password_hash($password, PASSWORD_DEFAULT),
+                'payment_status' => $paymentStatus,
+                'paypal_order_id' => $paypalOrderId,
+                'producto' => $producto,
+                'idrol' => $idrol, // por compatibilidad, aunque el rol real va en la intermedia
+                'fecha_registro' => date('Y-m-d H:i:s')
+            ];
+    
+            if ($usuarioModel->insert($nuevoUsuario)) {
+                $idusuario = $usuarioModel->insertID();
+    
+                // Crear la asociación en usuario_colegio
+                $usuarioColegioModel->insert([
+                    'idusuario' => $idusuario,
+                    'idcolegio' => $idcolegio,
+                    'idrol' => $idrol
+                ]);
+    
+                session()->set('exito', '¡Registro y compra completados con éxito!');
+                return redirect()->to('login');
+            } else {
+                session()->set('error', 'Ocurrió un error al registrar el usuario. Intenta nuevamente.');
+                return redirect()->to('registro');
+            }
+        }
     }
+    
     public function logout()
     {
         $session = \Config\Services::session();
