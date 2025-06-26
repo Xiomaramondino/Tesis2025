@@ -105,8 +105,8 @@
 </nav>
 
 <!-- Contenido principal con card -->
-<div class="container card-container">
-    <div class="card">
+<div class="container card-container" >
+    <div class="card"  style=" border-radius: 1.5rem;">
         <div class="card-body">
             <h1 class="card-title text-center">Horarios</h1>
             <table class="table table-bordered">

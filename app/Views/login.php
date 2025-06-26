@@ -68,9 +68,10 @@
         .card {
             background-color: #ebdef0;
             padding: 20px;
-            border-radius: 10px;
+            border-radius: 1.5rem;
             box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
             margin-top: 55px; 
+            border-radius: 1.5rem;
         }
 
         .password-container img {

@@ -120,7 +120,7 @@
 <body>
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="col-md-6">
-            <div class="form-card">
+            <div class="form-card"  style=" border-radius: 1.5rem;">
                 <center><h3>Editar usuario</h3></center>
 
                 <!-- Mensajes -->

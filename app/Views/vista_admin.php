@@ -13,7 +13,7 @@
 
         .form-card {
             background-color: #eddcf5;
-            border-radius: 20px;
+            border-radius: 2rem;
             box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
             padding: 30px;
         }

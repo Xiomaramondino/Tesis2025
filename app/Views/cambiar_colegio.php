@@ -34,6 +34,7 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        border-radius: 1.5rem;
     }
     button {
         background-color: #4a045a;

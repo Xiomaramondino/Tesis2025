@@ -78,6 +78,7 @@
             border-radius: 10px;
             box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
             margin-bottom: 30px; /* Espacio entre tarjetas */
+            border-radius: 1.5rem;
         }
 
         .card h2 {
@@ -289,8 +290,8 @@
 
     <hr class="my-5">
 
-    <div class="card mt-4">
-        <div class="card-header">
+    <div class="card mt-4"  style=" border-radius: 1.5rem;">
+        <div class="card-header" >
             <h2>Mis Dispositivos</h2>
         </div>
         <div class="card-body">

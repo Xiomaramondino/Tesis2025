@@ -22,7 +22,7 @@
     }
     .card {
         background-color: #ebdef0;
-       
+        border-radius: 1.5rem;
         margin-top: 30px;  /* Añadido margen superior */
     }
     .navbar {

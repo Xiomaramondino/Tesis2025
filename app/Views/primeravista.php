@@ -102,10 +102,11 @@
 
     .card {
         padding: 2rem;
-        border-radius: 8px;
+        border-radius: 1.5rem;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         width: 30%;
         background-color: white;
+        border-radius: 1.5rem;
     }
 
     .card h3 {

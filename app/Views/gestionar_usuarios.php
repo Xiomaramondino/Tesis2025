@@ -74,6 +74,7 @@ body {
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
     padding: 30px;
     margin-top: 20px;
+    border-radius: 2rem;
 }
 
 .form-card h2 {
@@ -170,7 +171,7 @@ body {
 </div>
 <div class="container mt-4">
     <div class="col-md-6 mx-auto">
-        <div class="form-card">
+        <div class="form-card" >
             <h2>Agregar alumnos</h2>
 
             <!-- Mensajes dentro del formulario -->
@@ -207,10 +208,10 @@ body {
 
 <!-- Tabla de usuarios existentes -->
 <div class="container mt-4">
-    <div class="card">
+    <div class="card"  style=" border-radius: 1.5rem;">
         <div class="card-body">
             <center><h2>Usuarios existentes</h2></center>
-            <table class="table table-bordered">
+            <table class="table table-bordered" >
                 <thead>
                     <tr>
                         <th>Nombre de Usuario</th>

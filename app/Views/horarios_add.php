@@ -30,6 +30,7 @@
       height: auto; /* Ajusta la altura según el contenido */
       margin-top: 150px; /* Separar la card de la navbar */
       margin-left: 400px;
+       border-radius: 1.5rem;
     }
     .card-body{
       margin-top: -60px;

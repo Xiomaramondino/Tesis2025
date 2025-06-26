@@ -52,6 +52,7 @@
     table {
         width: 100%;
         border-collapse: collapse;
+        
     }
 
     th, td {
@@ -144,7 +145,7 @@
 <h2>Elegí un colegio</h2>
 
 <form class="seleccion" action="<?= base_url('/seleccionar-contexto') ?>" method="post">
-    <table>
+    <table >
         <thead>
             <tr>
                 <th>Colegio</th>

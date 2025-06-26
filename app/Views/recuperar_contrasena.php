@@ -25,6 +25,7 @@
             display: flex;
             margin-left: 443px;
             margin-top: 90px;
+            border-radius: 1.5rem;
         }
 
         /* Barra de navegación */

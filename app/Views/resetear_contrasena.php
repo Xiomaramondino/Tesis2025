@@ -30,6 +30,7 @@
         }
         .card{
             background-color: #ebdef0 ;
+            border-radius: 1.5rem;
         }
         .navbar {
             width: 100%; /* Hace que la barra de navegación ocupe todo el ancho */
@@ -66,7 +67,7 @@
     </style>
      <nav class="navbar">
         <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
-       <center> <div class="logo" style="padding-right: 540px;">RingMind</div></center>
+       <center> <div class="logo" style="padding-right: 590px;">RingMind</div></center>
     </nav>
      <div class="card" style="width: 30rem;">
   <div class="card-body">

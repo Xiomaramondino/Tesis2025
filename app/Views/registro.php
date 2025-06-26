@@ -33,6 +33,7 @@
         padding: 2rem;
         margin-left: 30%;
         margin-top: 55px;
+        border-radius: 1.5rem;
     }
     .section-title {
         color: #540466;

@@ -69,15 +69,16 @@
     outline: none;
 }
     
-    /* Estilos para la card */
+   
     .card-container {
-        width: 80%; /* Ajusta el tamaño de la tarjeta */
-        max-width: 900px; /* Limita el ancho máximo */
-        flex-grow: 1; /* Permite que el contenido crezca y empuje al footer */
-        margin-top: 100px; /* Espacio entre la navbar y la tarjeta */
+        width: 80%; 
+        max-width: 900px; 
+        flex-grow: 1; 
+        margin-top: 100px; 
         flex-direction: column;
-        justify-content: flex-start; /* Asegura que el contenido se expanda desde arriba */
-        padding-bottom: 60px; /* Espacio entre la tabla y el footer */
+        justify-content: flex-start; 
+        padding-bottom: 60px; 
+        
     }
 
     .footer {
@@ -109,7 +110,7 @@
 
 <!-- Contenido principal con card -->
 <div class="container card-container">
-    <div class="card">
+    <div class="card" style=" border-radius: 1.5rem;">
         <div class="card-body">
             <h1 class="card-title text-center">Horarios</h1>
             <table class="table table-bordered">
