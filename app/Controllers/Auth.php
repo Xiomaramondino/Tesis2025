@@ -233,37 +233,34 @@ public function cambiarContexto()
     }
 
     public function recuperar_contrasena()
-    {
-        return view('recuperar_contrasena');
+{
+    return view('recuperar_contrasena');
+}
+
+public function enviar_recuperacion()
+{
+    $email = $this->request->getPost('email');
+    $usuarioModel = new Usuario();
+
+    // Buscar usuario solo por email
+    $user = $usuarioModel
+                ->where('email', $email)
+                ->first();
+
+    if ($user) {
+        $token = bin2hex(random_bytes(50));
+        $usuarioModel->update($user['idusuario'], ['token' => $token]);
+
+        $this->sendRecoveryEmail($email, $token); // ya no pasa idcolegio
+        session()->setFlashdata('success', 'Se ha enviado un enlace de recuperación a tu correo.');
+    } else {
+        session()->setFlashdata('error', 'No se encontró un usuario con ese correo.');
     }
 
-    public function enviar_recuperacion()
-    {
-        $email = $this->request->getPost('email');
-        $idcolegio = $this->request->getPost('idcolegio');
-        $usuarioModel = new Usuario();
-    
-        // Buscar usuario con email + idcolegio
-        $user = $usuarioModel
-                    ->where('email', $email)
-                    ->where('idcolegio', $idcolegio)
-                    ->first();
-    
-        if ($user) {
-            $token = bin2hex(random_bytes(50));
-            $usuarioModel->update($user['idusuario'], ['token' => $token]);
-    
-            $this->sendRecoveryEmail($email, $token, $idcolegio); // pasa idcolegio
-            session()->setFlashdata('success', 'Se ha enviado un enlace de recuperación a tu correo.');
-        } else {
-            session()->setFlashdata('error', 'No se encontró un usuario con ese correo e institución.');
-        }
-    
-        return redirect()->to('recuperar_contrasena');
-    }
-    
+    return redirect()->to('recuperar_contrasena');
+}
 
-    private function sendRecoveryEmail($email, $token, $idcolegio)
+private function sendRecoveryEmail($email, $token)
 {
     $emailService = \Config\Services::email();
 
@@ -271,7 +268,7 @@ public function cambiarContexto()
     $emailService->setTo($email);
     $emailService->setSubject('Recuperación de contraseña');
 
-    $link = base_url("resetear_contrasena?token=$token&idcolegio=$idcolegio");
+    $link = base_url("resetear_contrasena?token=$token");
 
     $message = "Hola, <br> Para recuperar tu contraseña, haz clic en el siguiente enlace: <br><br>";
     $message .= "<a href='$link'>Recuperar contraseña</a><br><br>";
@@ -290,23 +287,19 @@ public function cambiarContexto()
 public function resetear_contrasena()
 {
     $token = $this->request->getGet('token');
-    $idcolegio = $this->request->getGet('idcolegio');
 
     $usuarioModel = new Usuario();
     $user = $usuarioModel
                 ->where('token', $token)
-                ->where('idcolegio', $idcolegio)
                 ->first();
 
-                if (!$user) {
-                    session()->setFlashdata('error', 'Token inválido o expirado.');
-                    return redirect()->to('recuperar_contrasena');
-                }
-            
+    if (!$user) {
+        session()->setFlashdata('error', 'Token inválido o expirado.');
+        return redirect()->to('recuperar_contrasena');
+    }
 
     return view('resetear_contrasena', [
         'token' => $token,
-        'idcolegio' => $idcolegio,
         'usuario' => $user['usuario'],
         'email' => $user['email']
     ]);
@@ -315,18 +308,16 @@ public function resetear_contrasena()
 public function procesar_resetear_contrasena()
 {
     $token = $this->request->getPost('token');
-    $idcolegio = $this->request->getPost('idcolegio');
     $nuevaContrasenia = $this->request->getPost('nueva_contrasenia');
 
     if (strlen($nuevaContrasenia) < 6 || !preg_match('/[A-Z]/', $nuevaContrasenia) || !preg_match('/[!@#$%*]/', $nuevaContrasenia)) {
         session()->setFlashdata('password_error', 'La nueva contraseña debe tener al menos 6 caracteres, una letra mayúscula y un símbolo (!@#$%).');
-        return redirect()->to('resetear_contrasena?token=' . $token . '&idcolegio=' . $idcolegio);
+        return redirect()->to('resetear_contrasena?token=' . $token);
     }
 
     $usuarioModel = new Usuario();
     $user = $usuarioModel
                 ->where('token', $token)
-                ->where('idcolegio', $idcolegio)
                 ->first();
 
     if ($user) {
@@ -342,7 +333,6 @@ public function procesar_resetear_contrasena()
         return redirect()->to('recuperar_contrasena');
     }
 }
-
 }
 
 ?>

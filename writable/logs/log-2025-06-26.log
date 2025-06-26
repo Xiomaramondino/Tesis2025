@@ -1,0 +1,28 @@
+CRITICAL - 2025-06-26 11:33:38 --> ErrorException: Undefined variable $idcolegio
+[Method: GET, Route: resetear_contrasena]
+in APPPATH\Views\resetear_contrasena.php on line 83.
+ 1 APPPATH\Views\resetear_contrasena.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $idcolegio', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\resetear_contrasena.php', 83)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\resetear_contrasena.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('resetear_contrasena', [], true)
+ 5 APPPATH\Controllers\Auth.php(301): view('resetear_contrasena', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->resetear_contrasena()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-26 11:34:06 --> ErrorException: Undefined variable $idcolegio
+[Method: GET, Route: resetear_contrasena]
+in APPPATH\Views\resetear_contrasena.php on line 83.
+ 1 APPPATH\Views\resetear_contrasena.php(83): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $idcolegio', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\resetear_contrasena.php', 83)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\resetear_contrasena.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('resetear_contrasena', [], true)
+ 5 APPPATH\Controllers\Auth.php(301): view('resetear_contrasena', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Auth->resetear_contrasena()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Auth))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

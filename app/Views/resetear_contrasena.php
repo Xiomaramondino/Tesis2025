@@ -80,7 +80,7 @@
                     <?php endif; ?>
                 <form action="<?= base_url('procesar_resetear_contrasena') ?>" method="post">
                     <input type="hidden" name="token" value="<?= $token ?>">
-                    <input type="hidden" name="idcolegio" value="<?= $idcolegio ?>">
+                    
 
                     <div class="mb-3">
                     <div class="mb-3">
