@@ -237,17 +237,11 @@
         .footer {
             margin-top: 50px;
             text-align: center;
-            padding: 1.5rem;
+            padding: 0.1rem;
             background-color: #4a045a;
             font-weight: bold;
             color: white;
-            box-shadow: 0 -2px 5px rgba(0,0,0,0.2);
-        }
-
-        /* Animaciones */
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+           
         }
 
     </style>

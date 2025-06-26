@@ -5,117 +5,119 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Directivo</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
     <style>
         body {
-            background-color: #c7a7da; /* mismo tono violeta de fondo */
+            background-color: #c7a7da;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .form-card {
             background-color: #f2dff6;
-            border-radius: 12px;
+            border-radius: 1.5rem;
             padding: 30px;
             box-shadow: 0 4px 12px rgba(0,0,0,0.2);
         }
 
-        .form-card h1 {
+        .form-card h3 {
             text-align: center;
-            font-family: 'Brush Script MT', cursive;
             font-weight: bold;
             margin-bottom: 25px;
         }
 
         .form-control,
         .form-select {
-            border-radius: 8px;
+            border-radius: 10px;
         }
 
         .btn-form {
-            background-color: #5c0066;
+            background-color: #4a045a;
             color: white;
-            border-radius: 8px;
-            width: 100%;
+            border: none;
+            padding: 10px;
+            border-radius: 10px;
         }
 
         .btn-form:hover {
-            background-color: #45004d;
+            background-color: #3d003d;
         }
+
+        .btn-ancho-custom {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 13px;
+        }
+
         .navbar {
-      width: 100%; /* La barra de navegación ocupa el 100% del ancho */
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color:#4a045a;
-      padding: 1rem 2rem;
-      position: fixed; /* Mantiene la navbar fija en la parte superior */
-      top: 0;
-      left: 0;
-      z-index: 9999; /* Asegura que la navbar esté por encima de otros elementos */
-    }
-    .navbar .logo {
-      color: white;
-      font-size: 1.8rem;
-      font-weight: bold;
-      display: flex;
-    }
-    .footer {
-    position: absolute; /* Esto asegura que el footer se quede al final */
-    bottom: 0;
-    width: 100%; /* Hace que el footer ocupe todo el ancho */
-    text-align: center;
-    padding: 0.4rem;
-    background-color: #4a045a;
-    font-weight: bold;
-    color: white;
-    }
-   .password-container img{
-    margin-left: 450px;
-    padding-left: 15px;
-    width: 35px;
-    cursor: pointer;
-    transform: translateY(-160%);
-    }
-    .navbar-buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;
-    }
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #4a045a;
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 9999;
+        }
 
-    .volver-btn {
-        background-color: transparent;
-        color: white;
-        border: none;
-        padding: 0.3rem 0.8rem;
-        font-size: 1rem;
-        text-align: left;
-        cursor: pointer;
-        text-decoration: none;
-    }
+        .navbar .logo {
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
 
-    .volver-btn:hover,
-    .volver-btn:active,
-    .volver-btn:focus {
-        background-color: transparent;
-        color: white; 
-        outline: none;
-    }
+        .navbar-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .volver-btn {
+            background-color: transparent;
+            color: white;
+            border: none;
+            padding: 0.3rem 0.8rem;
+            font-size: 1rem;
+            text-align: left;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .volver-btn:hover,
+        .volver-btn:active,
+        .volver-btn:focus {
+            background-color: transparent;
+            color: white;
+            outline: none;
+        }
+
+        .footer {
+            text-align: center;
+            padding: 0.4rem;
+            background-color: #4a045a;
+            font-weight: bold;
+            color: white;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
     </style>
+
     <nav class="navbar">
-      <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
-      <div class="logo" style="padding-right: -540px;">RingMind</div>
-      <div class="navbar-buttons">
-        <form action="<?= base_url('/vista_admin'); ?>" method="get">
-            <button type="submit" class="btn btn-sm volver-btn">Volver</button>
-        </form>
-    </div>
-   </nav>
+        <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
+        <div class="logo">RingMind</div>
+        <div class="navbar-buttons">
+            <form action="<?= base_url('/vista_admin'); ?>" method="get">
+                <button type="submit" class="btn btn-sm volver-btn">Volver</button>
+            </form>
+        </div>
+    </nav>
 </head>
 <body>
     <div class="container d-flex justify-content-center align-items-center min-vh-100">
         <div class="col-md-6">
-            <div class="form-card"  style=" border-radius: 1.5rem;">
-              <center><h3>Editar directivo</h3></center>
+            <div class="form-card">
+                <h3>Editar directivo</h3>
 
                 <!-- Mensajes -->
                 <?php if (session()->get('error')): ?>
@@ -130,25 +132,22 @@
                     <input type="hidden" name="idusuario" value="<?= esc($usuario['idusuario']) ?>">
 
                     <div class="mb-3">
-                        <input type="text" id="usuario" name="usuario" class="form-control" value="<?= esc($usuario['usuario']) ?>" placeholder="Nombre de usuario" required>
-                    </div>
-
-                    <div class="mb-3">
                         <input type="email" id="email" name="email" class="form-control" value="<?= esc($usuario['email']) ?>" placeholder="Correo electrónico" required>
                     </div>
 
-                    </div>
-
-                    <button type="submit" class="btn btn-form">Actualizar Usuario</button>
+                    <!-- Botón igual al de agregar directivo -->
+                    <button type="submit" class="btn btn-form btn-ancho-custom">Actualizar Usuario</button>
                 </form>
             </div>
         </div>
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
     <footer class="footer">
-    <p>Tesis timbre automático 2025 <br>
-        Marquez Juan - Mondino Xiomara
-    </p>
-</footer>
+        <p>Tesis timbre automático 2025 <br>
+            Marquez Juan - Mondino Xiomara
+        </p>
+    </footer>
 </body>
 </html>

@@ -183,16 +183,15 @@ class AdminController extends Controller
         $usuarioModel = new Usuario();
 
         $idusuario = $this->request->getPost('idusuario');
-        $usuario = $this->request->getPost('usuario');
+        
         $email = $this->request->getPost('email');
 
-        if (empty($usuario) || empty($email)) {
+        if (empty($email)) {
             session()->setFlashdata('error', 'Todos los campos son obligatorios.');
             return redirect()->to('admin/editarDirectivo/' . $idusuario);
         }
 
         $data = [
-            'usuario' => $usuario,
             'email' => $email,
         ];
 

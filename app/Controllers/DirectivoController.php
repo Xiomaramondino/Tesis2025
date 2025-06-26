@@ -254,7 +254,7 @@ public function actualizarUsuario()
     }
 
     $actualizado = [
-        'usuario' => $data['usuario'],
+       
         'email' => $data['email'],
     ];
 

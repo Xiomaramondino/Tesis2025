@@ -28,12 +28,13 @@
         width: 80%;
         max-width: 900px;
         background: white;
-        border-radius: 8px;
+        border-radius: 1.5rem;
         padding: 20px;
         box-shadow: 0 0 15px rgba(0,0,0,0.2);
         display: flex;
         flex-direction: column;
         align-items: center;
+        
     }
     button {
         background-color: #4a045a;
@@ -142,7 +143,7 @@
     </div>
 </nav>
 
-<h2>Elegí un colegio</h2>
+<h2>Seleccionar un colegio</h2>
 
 <form class="seleccion" action="<?= base_url('/seleccionar-contexto') ?>" method="post">
     <table >

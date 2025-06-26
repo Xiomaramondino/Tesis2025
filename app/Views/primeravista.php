@@ -43,22 +43,22 @@
     }
 
     .icon-links {
-    display: flex;
-    list-style: none;
-    gap: 15px;
-    margin: 0;
-    padding: 0;
-}
+        display: flex;
+        list-style: none;
+        gap: 15px;
+        margin: 0;
+        padding: 0;
+    }
 
-.icon-links li a {
-    font-size: 20px;
-    color: white; /* Cambia según el fondo de tu navbar */
-    transition: color 0.3s;
-}
+    .icon-links li a {
+        font-size: 20px;
+        color: white;
+        transition: color 0.3s;
+    }
 
-.icon-links li a:hover {
-    color: #ccc;
-}
+    .icon-links li a:hover {
+        color: #ccc;
+    }
 
     .hero-section {
         height: 100vh;
@@ -107,6 +107,7 @@
         width: 30%;
         background-color: white;
         border-radius: 1.5rem;
+        transition: transform 0.3s ease;
     }
 
     .card h3 {
@@ -116,6 +117,10 @@
 
     .card p {
         font-size: 1.1rem;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
     }
 
     .footer {
@@ -155,6 +160,20 @@
     .hero-images img {
         margin-right: 10px;
     }
+
+    /* 💡 Animaciones agregadas */
+    section, img {
+        transition: transform 0.3s ease;
+    }
+
+    section:hover {
+        transform: translateY(-5px);
+    }
+
+    img:hover {
+        transform: scale(1.05);
+    }
+
 </style>
 
 <!-- Barra de navegación -->
@@ -162,22 +181,22 @@
     <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
     <div class="logo">RingMind</div>
     <ul class="icon-links">
-    <li>
-        <a href="https://www.instagram.com/empresa" target="_blank">
-            <i class="fab fa-instagram"></i>
-        </a>
-    </li>
-    <li>
-        <a href="https://mail.google.com/mail/?view=cm&to=timbreautomatico2025@gmail.com" target="_blank">
-            <i class="fas fa-envelope"></i>
-        </a>
-    </li>
-    <li>
-        <a href="https://www.google.com/maps?q=2 de abril 1175 Rio tercero cordoba" target="_blank">
-            <i class="fas fa-map-marker-alt"></i>
-        </a>
-    </li>
-</ul>
+        <li>
+            <a href="https://www.instagram.com/empresa" target="_blank">
+                <i class="fab fa-instagram"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://mail.google.com/mail/?view=cm&to=timbreautomatico2025@gmail.com" target="_blank">
+                <i class="fas fa-envelope"></i>
+            </a>
+        </li>
+        <li>
+            <a href="https://www.google.com/maps?q=2 de abril 1175 Rio tercero cordoba" target="_blank">
+                <i class="fas fa-map-marker-alt"></i>
+            </a>
+        </li>
+    </ul>
 </nav>
 
 <script>
@@ -229,11 +248,9 @@
             <button>Ir al inicio de sesión</button>
         </a>
 
-        <!-- Lógica corregida para el botón "Comprar producto" -->
-        
-            <a href="<?= base_url('/registro'); ?>">
-                <button>Comprar producto</button>
-            </a>
+        <a href="<?= base_url('/registro'); ?>">
+            <button>Comprar producto</button>
+        </a>
     </div>
 </header>
 

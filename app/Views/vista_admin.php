@@ -183,7 +183,7 @@
     <hr class="my-5">
     <!-- Card para la tabla de usuarios directivos -->
     <div class="container">
-        <div class="card">
+        <div class="card" style="border-radius: 1.5rem;">
             <div class="card-header">
                 <h2>Usuarios directivos</h2>
             </div>
