@@ -132,6 +132,16 @@
     #submit-btn {
         display: none; /* Ocultamos el botón de submit inicialmente */
     }
+    .footer {
+        text-align: center;
+        padding: 0.5rem;
+        background-color: #4a045a;
+        font-weight: bold;
+        color: white;
+        width: 100%;
+        position: relative;
+        bottom: 0;
+    }
 </style>
 
 <!-- Barra de navegación -->
@@ -146,7 +156,7 @@
     </nav>
 </nav>
 
-<div class="card" style="width: 35rem;">
+<div class="card" style="width: 35rem; margin-bottom: 30px;">
     <div class="card-body">
         <div class="container">
             <div class="row justify-content-center">
@@ -392,6 +402,10 @@
     });
   });
 </script>
-
+<footer class="footer">
+    <p>Tesis timbre automático 2025 <br>
+        Marquez Juan - Mondino Xiomara
+    </p>
+</footer>
 </body>
 </html>
