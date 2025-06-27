@@ -31,7 +31,9 @@ $routes->get('admin/eliminar_directivo/(:num)', 'AdminController::eliminarDirect
 
 $routes->get('admin/editarDirectivo/(:num)', 'AdminController::editarDirectivo/$1');
 $routes->post('admin/guardarEdicionDirectivo', 'AdminController::guardarEdicionDirectivo');
+$routes->get('/admin/confirmarAsociacion/(:alphanum)/(:alpha)', 'AdminController::confirmarAsociacion/$1/$2');
 
+$routes->get('/admin/eliminarSolicitudesExpiradas', 'AdminController::eliminarSolicitudesExpiradas');
 
 $routes->get('/gestionar_usuarios', 'DirectivoController::gestionarUsuarios');
 
