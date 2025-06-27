@@ -138,6 +138,7 @@ class AdminController extends Controller
     }
 
     // ✉️ Crear solicitud de asociación (se confirmará luego)
+    $db = \Config\Database::connect();
     $db->table('solicitudes_asociacion')->insert([
         'idusuario' => $idusuario,
         'idcolegio' => $idcolegio,
@@ -239,7 +240,8 @@ private function _enviarCorreoSolicitudAsociacion($email, $usuario, $token, $idc
                 'idrol' => $solicitud->idrol,
             ]);
     
-            $db->table('solicitudes_asociacion')->where('id', $solicitud->id)->update(['estado' => 'aceptada']);
+            // Borrar la solicitud ya procesada
+            $db->table('solicitudes_asociacion')->where('id', $solicitud->id)->delete();
     
             if (empty($usuario['token'])) {
                 $this->_enviarCorreoAsociacionExistente($usuario['email'], $usuario['usuario'], $solicitud->idcolegio);
@@ -259,8 +261,13 @@ private function _enviarCorreoSolicitudAsociacion($email, $usuario, $token, $idc
                 ]);
             }
         } else {
-            $db->table('solicitudes_asociacion')->where('id', $solicitud->id)->update(['estado' => 'rechazada']);
-            return view('mensaje', ['mensaje' => 'Rechazaste la asociación. La solicitud fue eliminada.']);
+            // También eliminar si se rechaza
+            $db->table('solicitudes_asociacion')->where('id', $solicitud->id)->delete();
+            return view('mensaje', [
+                'mensaje' => 'Rechazaste la asociación. La solicitud fue eliminada.',
+                'rechazado' => true,
+                'email' => $usuario['email']
+            ]);
         }
     }
 
