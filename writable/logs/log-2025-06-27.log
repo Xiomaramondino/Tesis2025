@@ -1395,3 +1395,861 @@ in APPPATH\Controllers\AdminController.php on line 96.
  4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
  5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-06-27 11:53:55 --> mysqli_sql_exception: Column 'idcolegio' in where clause is ambiguous in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `usuario...', 0)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usuario...')
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usuario...')
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuario...', Array, false)
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-06-27 11:53:55 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'idcolegio' in where clause is ambiguous
+[Method: POST, Route: admin/guardarUsuario]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = :email:
+AND `idcolegio` = :idcolegio:
+AND `idrol` = :idrol:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-27 11:53:55 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'idcolegio' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = :email:
+AND `idcolegio` = :idcolegio:
+AND `idrol` = :idrol:
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-27 11:53:55 --> [Caused by] mysqli_sql_exception: Column 'idcolegio' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = :email:
+AND `idcolegio` = :idcolegio:
+AND `idrol` = :idrol:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-06-27 11:55:04 --> mysqli_sql_exception: Column 'idcolegio' in where clause is ambiguous in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `usuario...', 0)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usuario...')
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usuario...')
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuario...', Array, false)
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-06-27 11:55:04 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'idcolegio' in where clause is ambiguous
+[Method: POST, Route: admin/guardarUsuario]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = :email:
+AND `idcolegio` = :idcolegio:
+AND `idrol` = :idrol:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-27 11:55:04 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'idcolegio' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = :email:
+AND `idcolegio` = :idcolegio:
+AND `idrol` = :idrol:
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-27 11:55:04 --> [Caused by] mysqli_sql_exception: Column 'idcolegio' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = :email:
+AND `idcolegio` = :idcolegio:
+AND `idrol` = :idrol:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-06-27 11:55:27 --> mysqli_sql_exception: Column 'idcolegio' in where clause is ambiguous in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `usuario...', 0)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usuario...')
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usuario...')
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuario...', Array, false)
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-06-27 11:55:27 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'idcolegio' in where clause is ambiguous
+[Method: POST, Route: admin/guardarUsuario]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = :email:
+AND `idcolegio` = :idcolegio:
+AND `idrol` = :idrol:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-27 11:55:27 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'idcolegio' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = :email:
+AND `idcolegio` = :idcolegio:
+AND `idrol` = :idrol:
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-27 11:55:27 --> [Caused by] mysqli_sql_exception: Column 'idcolegio' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = :email:
+AND `idcolegio` = :idcolegio:
+AND `idrol` = :idrol:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-06-27 11:55:30 --> mysqli_sql_exception: Column 'idcolegio' in where clause is ambiguous in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `usuario...', 0)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usuario...')
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usuario...')
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuario...', Array, false)
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-06-27 11:55:30 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'idcolegio' in where clause is ambiguous
+[Method: POST, Route: admin/guardarUsuario]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = :email:
+AND `idcolegio` = :idcolegio:
+AND `idrol` = :idrol:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-27 11:55:30 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'idcolegio' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = :email:
+AND `idcolegio` = :idcolegio:
+AND `idrol` = :idrol:
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-27 11:55:30 --> [Caused by] mysqli_sql_exception: Column 'idcolegio' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = :email:
+AND `idcolegio` = :idcolegio:
+AND `idrol` = :idrol:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-06-27 11:56:01 --> mysqli_sql_exception: Column 'idcolegio' in where clause is ambiguous in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `usuario...', 0)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usuario...')
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usuario...')
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuario...', Array, false)
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-06-27 11:56:01 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'idcolegio' in where clause is ambiguous
+[Method: POST, Route: admin/guardarUsuario]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = :email:
+AND `idcolegio` = :idcolegio:
+AND `idrol` = :idrol:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-27 11:56:01 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'idcolegio' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = :email:
+AND `idcolegio` = :idcolegio:
+AND `idrol` = :idrol:
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-27 11:56:01 --> [Caused by] mysqli_sql_exception: Column 'idcolegio' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = :email:
+AND `idcolegio` = :idcolegio:
+AND `idrol` = :idrol:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-06-27 11:57:05 --> mysqli_sql_exception: Column 'idcolegio' in where clause is ambiguous in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `usuario...', 0)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usuario...')
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usuario...')
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuario...', Array, false)
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-06-27 11:57:05 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'idcolegio' in where clause is ambiguous
+[Method: POST, Route: admin/guardarUsuario]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = :email:
+AND `idcolegio` = :idcolegio:
+AND `idrol` = :idrol:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-27 11:57:05 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'idcolegio' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = :email:
+AND `idcolegio` = :idcolegio:
+AND `idrol` = :idrol:
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-27 11:57:05 --> [Caused by] mysqli_sql_exception: Column 'idcolegio' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = :email:
+AND `idcolegio` = :idcolegio:
+AND `idrol` = :idrol:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-06-27 11:57:53 --> mysqli_sql_exception: Column 'idcolegio' in where clause is ambiguous in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `usuario...', 0)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usuario...')
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usuario...')
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuario...', Array, false)
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-06-27 11:57:53 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'idcolegio' in where clause is ambiguous
+[Method: POST, Route: admin/guardarUsuario]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = :email:
+AND `idcolegio` = :idcolegio:
+AND `idrol` = :idrol:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-27 11:57:53 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'idcolegio' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = :email:
+AND `idcolegio` = :idcolegio:
+AND `idrol` = :idrol:
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-27 11:57:53 --> [Caused by] mysqli_sql_exception: Column 'idcolegio' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = :email:
+AND `idcolegio` = :idcolegio:
+AND `idrol` = :idrol:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-06-27 11:58:00 --> mysqli_sql_exception: Column 'idcolegio' in where clause is ambiguous in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `usuario...', 0)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usuario...')
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usuario...')
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuario...', Array, false)
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\BaseModel.php(714): CodeIgniter\Model->doFirst()
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+CRITICAL - 2025-06-27 11:58:00 --> CodeIgniter\Database\Exceptions\DatabaseException: Column 'idcolegio' in where clause is ambiguous
+[Method: POST, Route: admin/guardarUsuario]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = :email:
+AND `idcolegio` = :idcolegio:
+AND `idrol` = :idrol:
+ LIMIT 1', [...], false)
+ 2 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 4 APPPATH\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-27 11:58:00 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Column 'idcolegio' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = :email:
+AND `idcolegio` = :idcolegio:
+AND `idrol` = :idrol:
+ LIMIT 1', [...], false)
+ 4 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 6 APPPATH\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+ 7 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 8 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 9 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+10 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+11 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+12 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-27 11:58:00 --> [Caused by] mysqli_sql_exception: Column 'idcolegio' in where clause is ambiguous
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = \'xiomimondino@gmail.com\'
+AND `idcolegio` = \'1\'
+AND `idrol` = 2
+ LIMIT 1')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT `usuarios`.`idusuario`
+FROM `usuarios`
+JOIN `usuario_colegio` ON `usuarios`.`idusuario` = `usuario_colegio`.`idusuario`
+WHERE `email` = :email:
+AND `idcolegio` = :idcolegio:
+AND `idrol` = :idrol:
+ LIMIT 1', [...], false)
+ 5 SYSTEMPATH\Model.php(330): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\BaseModel.php(714): CodeIgniter\Model->doFirst()
+ 7 APPPATH\Controllers\AdminController.php(108): CodeIgniter\BaseModel->first()
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-06-27 11:59:39 --> ErrorException: Undefined variable $db
+[Method: POST, Route: admin/guardarUsuario]
+in APPPATH\Controllers\AdminController.php on line 136.
+ 1 APPPATH\Controllers\AdminController.php(136): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $db', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\AdminController.php', 136)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

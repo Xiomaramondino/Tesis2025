@@ -101,11 +101,11 @@ class AdminController extends Controller
 
     // ⚠️ Antes de crear nuevo usuario, asegurarse que NO haya asociación previa con ese email
     $usuarioConAsociacion = $usuarioModel->select('usuarios.idusuario')
-        ->join('usuario_colegio', 'usuarios.idusuario = usuario_colegio.idusuario')
-        ->where('email', $email)
-        ->where('idcolegio', $idcolegio)
-        ->where('idrol', $idrol)
-        ->first();
+    ->join('usuario_colegio', 'usuarios.idusuario = usuario_colegio.idusuario')
+    ->where('usuarios.email', $email)
+    ->where('usuario_colegio.idcolegio', $idcolegio)
+    ->where('usuario_colegio.idrol', $idrol)
+    ->first();
 
     if ($usuarioConAsociacion) {
         session()->setFlashdata('error', 'Ya existe un usuario con este correo asociado a este colegio con este rol.');
@@ -129,8 +129,13 @@ class AdminController extends Controller
         session()->setFlashdata('error', 'Error al crear el nuevo usuario.');
         return redirect()->to('/vista_admin');
     }
-
+    
     $idusuario = $usuarioModel->insertID();
+    
+    if (!$idusuario) {
+        session()->setFlashdata('error', 'No se pudo obtener el ID del nuevo usuario.');
+        return redirect()->to('/vista_admin');
+    }
 
     // ✉️ Crear solicitud de asociación (se confirmará luego)
     $db->table('solicitudes_asociacion')->insert([
@@ -258,7 +263,6 @@ private function _enviarCorreoSolicitudAsociacion($email, $usuario, $token, $idc
             return view('mensaje', ['mensaje' => 'Rechazaste la asociación. La solicitud fue eliminada.']);
         }
     }
-    
 
     public function eliminarSolicitudesExpiradas()
     {
