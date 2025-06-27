@@ -37,79 +37,153 @@ class AdminController extends Controller
         ]);
     }
     
-
     public function guardarUsuario()
-    {
-        date_default_timezone_set('America/Argentina/Buenos_Aires');
+{
+    date_default_timezone_set('America/Argentina/Buenos_Aires');
 
-        if (session()->get('idrol') !== '1') {
-            return redirect()->to('/login');
-        }
+    if (session()->get('idrol') !== '1') {
+        return redirect()->to('/login');
+    }
 
-        $idcolegio = session()->get('idcolegio');
-        if (empty($idcolegio)) {
-            session()->setFlashdata('error', 'El ID del colegio no está disponible.');
+    $idcolegio = session()->get('idcolegio');
+    if (empty($idcolegio)) {
+        session()->setFlashdata('error', 'El ID del colegio no está disponible.');
+        return redirect()->to('/vista_admin');
+    }
+
+    $usuario = $this->request->getPost('usuario');
+    $email = strtolower(trim($this->request->getPost('email')));
+
+    if (empty($usuario) || empty($email)) {
+        session()->setFlashdata('error', 'Todos los campos son obligatorios');
+        return redirect()->to('/vista_admin');
+    }
+
+    $usuarioModel = new \App\Models\Usuario();
+    $intermedioModel = new \App\Models\UsuarioColegioModel(); 
+    $idrol = 2; // Directivo
+
+    $usuarioExistente = $usuarioModel->where('email', $email)->first();
+
+    if ($usuarioExistente) {
+        $idusuario = $usuarioExistente['idusuario'];
+
+        // 💡 Verificar si ya está asociado con ese colegio y rol
+        $existeAsociacion = $intermedioModel
+            ->where('idusuario', $idusuario)
+            ->where('idcolegio', $idcolegio)
+            ->where('idrol', $idrol)
+            ->first();
+
+        if ($existeAsociacion) {
+            session()->setFlashdata('error', 'Este usuario ya está asociado a este colegio con este rol.');
             return redirect()->to('/vista_admin');
         }
 
-        $usuario = $this->request->getPost('usuario');
-        $email = strtolower(trim($this->request->getPost('email')));
-
-        if (empty($usuario) || empty($email)) {
-            session()->setFlashdata('error', 'Todos los campos son obligatorios');
-            return redirect()->to('/vista_admin');
-        }
-
-        $usuarioModel = new Usuario();
-        $intermedioModel = new UsuarioColegioModel();
-        $idrol = 2;
-        $esUsuarioNuevo = false;
-
-        $usuarioExistente = $usuarioModel->where('email', $email)->first();
-
-        if ($usuarioExistente) {
-            $idusuario = $usuarioExistente['idusuario'];
-        } else {
-            $passwordTemporal = bin2hex(random_bytes(4));
-            $hashedPassword = password_hash($passwordTemporal, PASSWORD_DEFAULT);
-            $token = bin2hex(random_bytes(50));
-
-            $nuevoUsuario = [
-                'usuario' => $usuario,
-                'email' => $email,
-                'password' => $hashedPassword,
-                'fecha_registro' => date('Y-m-d H:i:s'),
-                'token' => $token
-            ];
-
-            if (!$usuarioModel->insert($nuevoUsuario)) {
-                session()->setFlashdata('error', 'Error al crear el nuevo usuario.');
-                return redirect()->to('/vista_admin');
-            }
-
-            $idusuario = $usuarioModel->insertID();
-            $esUsuarioNuevo = true;
-        }
-
-        // Crear solicitud de asociación pendiente
-        $tokenAsociacion = bin2hex(random_bytes(32));
-        $fechaSolicitud = date('Y-m-d H:i:s');
+        // 🔁 Verificación completa, enviar solicitud de asociación
+        $token = bin2hex(random_bytes(32));
 
         $db = \Config\Database::connect();
         $db->table('solicitudes_asociacion')->insert([
             'idusuario' => $idusuario,
             'idcolegio' => $idcolegio,
             'idrol' => $idrol,
-            'token' => $tokenAsociacion,
-            'fecha_creacion' => $fechaSolicitud
+            'token' => $token,
+            'estado' => 'pendiente',
+            'fecha_creacion' => date('Y-m-d H:i:s'),
         ]);
 
-        $this->_enviarCorreoConfirmacionAsociacion($email, $usuario, $tokenAsociacion, $idcolegio, $esUsuarioNuevo);
+        $this->_enviarCorreoSolicitudAsociacion($email, $usuarioExistente['usuario'], $token, $idcolegio);
 
-        session()->setFlashdata('success', 'Se envió una solicitud de asociación al usuario.');
+        session()->setFlashdata('success', 'Solicitud de asociación enviada al correo del usuario.');
         return redirect()->to('/vista_admin');
     }
 
+    // ⚠️ Antes de crear nuevo usuario, asegurarse que NO haya asociación previa con ese email
+    $usuarioConAsociacion = $usuarioModel->select('usuarios.idusuario')
+        ->join('usuario_colegio', 'usuarios.idusuario = usuario_colegio.idusuario')
+        ->where('email', $email)
+        ->where('idcolegio', $idcolegio)
+        ->where('idrol', $idrol)
+        ->first();
+
+    if ($usuarioConAsociacion) {
+        session()->setFlashdata('error', 'Ya existe un usuario con este correo asociado a este colegio con este rol.');
+        return redirect()->to('/vista_admin');
+    }
+
+    // ✅ Crear nuevo usuario
+    $passwordTemporal = bin2hex(random_bytes(4));
+    $hashedPassword = password_hash($passwordTemporal, PASSWORD_DEFAULT);
+    $token = bin2hex(random_bytes(50));
+
+    $nuevoUsuario = [
+        'usuario' => $usuario,
+        'email' => $email,
+        'password' => $hashedPassword,
+        'fecha_registro' => date('Y-m-d H:i:s'),
+        'token' => $token
+    ];
+
+    if (!$usuarioModel->insert($nuevoUsuario)) {
+        session()->setFlashdata('error', 'Error al crear el nuevo usuario.');
+        return redirect()->to('/vista_admin');
+    }
+
+    $idusuario = $usuarioModel->insertID();
+
+    // ✉️ Crear solicitud de asociación (se confirmará luego)
+    $db->table('solicitudes_asociacion')->insert([
+        'idusuario' => $idusuario,
+        'idcolegio' => $idcolegio,
+        'idrol' => $idrol,
+        'token' => $token,
+        'estado' => 'pendiente',
+        'fecha_creacion' => date('Y-m-d H:i:s'),
+    ]);
+
+    $this->_enviarCorreoSolicitudAsociacion($email, $usuario, $token, $idcolegio);
+
+    session()->setFlashdata('success', 'Usuario creado. Se envió una solicitud de asociación al correo.');
+    return redirect()->to('/vista_admin');
+}
+private function _enviarCorreoSolicitudAsociacion($email, $usuario, $token, $idcolegio)
+{
+    $colegioModel = new \App\Models\ColegioModel();
+    $colegio = $colegioModel->find($idcolegio);
+    $nombreColegio = $colegio ? $colegio['nombre'] : 'un colegio';
+
+    $emailService = \Config\Services::email();
+
+    $emailService->setFrom('timbreautomatico2025@gmail.com', 'Sistema de Gestión de Timbres');
+    $emailService->setTo($email);
+    $emailService->setSubject('Solicitud de asociación a un colegio');
+
+    $linkAceptar = base_url("admin/confirmarAsociacion/$token/aceptar");
+    $linkRechazar = base_url("admin/confirmarAsociacion/$token/rechazar");
+
+    $mensaje = "
+        <h2>Hola {$usuario},</h2>
+        <p>Te invitaron a asociarte como <strong>Directivo</strong> al siguiente colegio:</p>
+        <p><strong>Colegio:</strong> {$nombreColegio}</p>
+        <p>Por favor, confirmá si aceptás esta asociación:</p>
+        <p>
+            <a href='{$linkAceptar}' style='padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px;'>Aceptar</a>
+            &nbsp;
+            <a href='{$linkRechazar}' style='padding: 10px 20px; background: #dc3545; color: white; text-decoration: none; border-radius: 5px;'>Rechazar</a>
+        </p>
+        <p>Si no reconocés este colegio o no querés asociarte, simplemente rechazá la solicitud.</p>
+        <br>
+        <p>Saludos,<br>Equipo del Sistema de Gestión de Timbres</p>
+    ";
+
+    $emailService->setMessage($mensaje);
+    $emailService->setMailType('html');
+
+    if (!$emailService->send()) {
+        log_message('error', 'Error al enviar el correo de solicitud de asociación a ' . $email);
+    }
+}
     private function _enviarCorreoConfirmacionAsociacion($email, $usuario, $token, $idcolegio, $esUsuarioNuevo)
     {
         $colegioModel = new ColegioModel();
@@ -139,37 +213,52 @@ class AdminController extends Controller
     public function confirmarAsociacion($token, $accion)
     {
         $db = \Config\Database::connect();
-        $solicitud = $db->table('solicitudes_asociacion')->where('token', $token)->where('estado', 'pendiente')->get()->getRow();
-
+        $solicitud = $db->table('solicitudes_asociacion')
+                        ->where('token', $token)
+                        ->where('estado', 'pendiente')
+                        ->get()
+                        ->getRow();
+    
         if (!$solicitud) {
             return view('mensaje', ['mensaje' => 'Solicitud inválida o expirada.']);
         }
-
+    
         $usuarioModel = new Usuario();
         $usuario = $usuarioModel->find($solicitud->idusuario);
         $intermedioModel = new UsuarioColegioModel();
-
+    
         if ($accion === 'aceptar') {
             $intermedioModel->insert([
                 'idusuario' => $solicitud->idusuario,
                 'idcolegio' => $solicitud->idcolegio,
                 'idrol' => $solicitud->idrol,
             ]);
-
+    
             $db->table('solicitudes_asociacion')->where('id', $solicitud->id)->update(['estado' => 'aceptada']);
-
+    
             if (empty($usuario['token'])) {
                 $this->_enviarCorreoAsociacionExistente($usuario['email'], $usuario['usuario'], $solicitud->idcolegio);
+    
+                return view('mensaje', [
+                    'mensaje' => 'Asociación confirmada. Ya podés usar tu cuenta.',
+                    'esNuevo' => false,
+                    'email' => $usuario['email']
+                ]);
             } else {
                 $this->_enviarCorreoRecuperacionInicial($usuario['email'], $usuario['usuario'], $usuario['token'], $solicitud->idcolegio);
+    
+                return view('mensaje', [
+                    'mensaje' => 'Asociación confirmada. Te enviamos un correo para que establezcas tu contraseña.',
+                    'esNuevo' => true,
+                    'email' => $usuario['email']
+                ]);
             }
-
-            return view('mensaje', ['mensaje' => 'Asociación confirmada. Ya podés usar tu cuenta.']);
         } else {
             $db->table('solicitudes_asociacion')->where('id', $solicitud->id)->update(['estado' => 'rechazada']);
             return view('mensaje', ['mensaje' => 'Rechazaste la asociación. La solicitud fue eliminada.']);
         }
     }
+    
 
     public function eliminarSolicitudesExpiradas()
     {
@@ -181,7 +270,6 @@ class AdminController extends Controller
             ->where('fecha_solicitud <', $limite)
             ->delete();
     }
-    
     public function eliminarDirectivo($idusuario)
     {
         $idcolegio = session()->get('idcolegio');
