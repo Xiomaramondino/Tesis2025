@@ -136,7 +136,8 @@
     <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
     <div class="logo" style="padding-right: 580px;">RingMind</div>
 </nav>
-
+<br>
+<br>
 <h2>Cambiar de colegio</h2>
 
 <form class="seleccion" action="<?= base_url('/cambiar-contexto') ?>" method="post">
@@ -163,7 +164,6 @@
         </tbody>
     </table>
 </form>
-
 
 </body>
 </html>

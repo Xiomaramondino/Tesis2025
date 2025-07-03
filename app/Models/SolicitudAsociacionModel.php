@@ -9,7 +9,7 @@ class SolicitudAsociacionModel extends Model
     protected $primaryKey = 'id';
     protected $allowedFields = [
         'email', 'usuario', 'token', 'idcolegio', 'idrol',
-        'fecha_solicitud', 'confirmado'
+        'fecha_solicitud', 'confirmado', 'email_solicitante'
     ];
 }
 ?>

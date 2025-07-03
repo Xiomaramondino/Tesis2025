@@ -62,6 +62,7 @@ class AdminController extends Controller
     $usuarioModel = new \App\Models\Usuario();
     $intermedioModel = new \App\Models\UsuarioColegioModel(); 
     $idrol = 2; // Directivo
+    $emailSolicitante = session()->get('email'); 
 
     $usuarioExistente = $usuarioModel->where('email', $email)->first();
 
@@ -91,6 +92,7 @@ class AdminController extends Controller
             'token' => $token,
             'estado' => 'pendiente',
             'fecha_creacion' => date('Y-m-d H:i:s'),
+            'email_solicitante' => $emailSolicitante 
         ]);
 
         $this->_enviarCorreoSolicitudAsociacion($email, $usuarioExistente['usuario'], $token, $idcolegio);
@@ -137,6 +139,8 @@ class AdminController extends Controller
         return redirect()->to('/vista_admin');
     }
 
+    $emailSolicitante = session()->get('email'); // Asegura que lo extraés antes del insert
+
     // ✉️ Crear solicitud de asociación (se confirmará luego)
     $db = \Config\Database::connect();
     $db->table('solicitudes_asociacion')->insert([
@@ -146,6 +150,7 @@ class AdminController extends Controller
         'token' => $token,
         'estado' => 'pendiente',
         'fecha_creacion' => date('Y-m-d H:i:s'),
+        'email_solicitante' => $emailSolicitante
     ]);
 
     $this->_enviarCorreoSolicitudAsociacion($email, $usuario, $token, $idcolegio);
@@ -153,6 +158,7 @@ class AdminController extends Controller
     session()->setFlashdata('success', 'Usuario creado. Se envió una solicitud de asociación al correo.');
     return redirect()->to('/vista_admin');
 }
+
 private function _enviarCorreoSolicitudAsociacion($email, $usuario, $token, $idcolegio)
 {
     $colegioModel = new \App\Models\ColegioModel();
@@ -217,59 +223,88 @@ private function _enviarCorreoSolicitudAsociacion($email, $usuario, $token, $idc
     }
 
     public function confirmarAsociacion($token, $accion)
-    {
-        $db = \Config\Database::connect();
-        $solicitud = $db->table('solicitudes_asociacion')
-                        ->where('token', $token)
-                        ->where('estado', 'pendiente')
-                        ->get()
-                        ->getRow();
-    
-        if (!$solicitud) {
-            return view('mensaje', ['mensaje' => 'Solicitud inválida o expirada.']);
-        }
-    
-        $usuarioModel = new Usuario();
-        $usuario = $usuarioModel->find($solicitud->idusuario);
-        $intermedioModel = new UsuarioColegioModel();
-    
-        if ($accion === 'aceptar') {
-            $intermedioModel->insert([
-                'idusuario' => $solicitud->idusuario,
-                'idcolegio' => $solicitud->idcolegio,
-                'idrol' => $solicitud->idrol,
-            ]);
-    
-            // Borrar la solicitud ya procesada
-            $db->table('solicitudes_asociacion')->where('id', $solicitud->id)->delete();
-    
-            if (empty($usuario['token'])) {
-                $this->_enviarCorreoAsociacionExistente($usuario['email'], $usuario['usuario'], $solicitud->idcolegio);
-    
-                return view('mensaje', [
-                    'mensaje' => 'Asociación confirmada. Ya podés usar tu cuenta.',
-                    'esNuevo' => false,
-                    'email' => $usuario['email']
-                ]);
-            } else {
-                $this->_enviarCorreoRecuperacionInicial($usuario['email'], $usuario['usuario'], $usuario['token'], $solicitud->idcolegio);
-    
-                return view('mensaje', [
-                    'mensaje' => 'Asociación confirmada. Te enviamos un correo para que establezcas tu contraseña.',
-                    'esNuevo' => true,
-                    'email' => $usuario['email']
-                ]);
-            }
-        } else {
-            // También eliminar si se rechaza
-            $db->table('solicitudes_asociacion')->where('id', $solicitud->id)->delete();
+{
+    $db = \Config\Database::connect();
+    $solicitud = $db->table('solicitudes_asociacion')
+                    ->where('token', $token)
+                    ->where('estado', 'pendiente')
+                    ->get()
+                    ->getRow();
+
+    if (!$solicitud) {
+        return view('mensaje', ['mensaje' => 'Solicitud inválida o expirada.']);
+    }
+
+    $usuarioModel = new Usuario();
+    $usuario = $usuarioModel->find($solicitud->idusuario);
+    $intermedioModel = new UsuarioColegioModel();
+
+    $solicitanteEmail = $solicitud->email_solicitante; 
+
+    if ($accion === 'aceptar') {
+        // Asociar el usuario al colegio
+        $intermedioModel->insert([
+            'idusuario' => $solicitud->idusuario,
+            'idcolegio' => $solicitud->idcolegio,
+            'idrol' => $solicitud->idrol,
+        ]);
+
+        // Borrar la solicitud
+        $db->table('solicitudes_asociacion')->where('id', $solicitud->id)->delete();
+
+        // Notificar al solicitante
+        $this->_enviarCorreoNotificacionSolicitante($solicitanteEmail, $usuario['usuario'], true);
+
+        // Enviar correo al usuario según su estado (nuevo o existente)
+        if (empty($usuario['token'])) {
+            $this->_enviarCorreoAsociacionExistente($usuario['email'], $usuario['usuario'], $solicitud->idcolegio);
+
             return view('mensaje', [
-                'mensaje' => 'Rechazaste la asociación. La solicitud fue eliminada.',
-                'rechazado' => true,
+                'mensaje' => 'Asociación confirmada. Ya podés usar tu cuenta.',
+                'esNuevo' => false,
+                'email' => $usuario['email']
+            ]);
+        } else {
+            $this->_enviarCorreoRecuperacionInicial($usuario['email'], $usuario['usuario'], $usuario['token'], $solicitud->idcolegio);
+
+            return view('mensaje', [
+                'mensaje' => 'Asociación confirmada. Te enviamos un correo para que establezcas tu contraseña.',
+                'esNuevo' => true,
                 'email' => $usuario['email']
             ]);
         }
+
+    } else {
+        // Rechazada: eliminar solicitud y notificar al solicitante
+        $db->table('solicitudes_asociacion')->where('id', $solicitud->id)->delete();
+
+        $this->_enviarCorreoNotificacionSolicitante($solicitanteEmail, $usuario['usuario'], false);
+
+        return view('mensaje', [
+            'mensaje' => 'Rechazaste la asociación. La solicitud fue eliminada.',
+            'rechazado' => true,
+            'email' => $usuario['email']
+        ]);
     }
+}
+
+private function _enviarCorreoNotificacionSolicitante($emailSolicitante, $nombreUsuario, $aceptado)
+{
+    $email = \Config\Services::email();
+    $email->setTo($emailSolicitante);
+    $email->setSubject('Notificación sobre la solicitud de asociación');
+
+    if ($aceptado) {
+        $mensaje = "El usuario <strong>$nombreUsuario</strong> ha <strong>aceptado</strong> tu solicitud de asociación al colegio.";
+    } else {
+        $mensaje = "El usuario <strong>$nombreUsuario</strong> ha <strong>rechazado</strong> tu solicitud de asociación al colegio.";
+    }
+
+    $email->setMessage($mensaje);
+    $email->setMailType('html'); 
+    $email->send();
+}
+
 
     public function eliminarSolicitudesExpiradas()
     {

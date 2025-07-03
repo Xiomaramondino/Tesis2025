@@ -161,13 +161,19 @@ body {
             <button type="submit" class="btn btn-sm cerrar-btn">Cerrar sesión</button>
         </form>
     </div>
+ 
 </nav>
 <br>
 <div class="text-center mb-3">
-<form action="<?= base_url('/cambiar-colegio') ?>" method="get">
-    <button type="submit" class="btn btn-form btn-ancho-custom">Cambiar de colegio</button>
-</form>
+    <div class="d-flex justify-content-center align-items-center" style="gap: 15px;">
+        <form action="<?= base_url('/cambiar-colegio') ?>" method="get" style="margin: 0;">
+            <button type="submit" class="btn btn-form btn-ancho-custom">Cambiar de colegio</button>
+        </form>
 
+        <form action="<?= base_url('/sonar-timbre') ?>" method="post" style="margin: 0;">
+            <button type="submit" class="btn btn-form btn-ancho-custom">Sonar timbre</button>
+        </form>
+    </div>
 </div>
 <div class="container mt-4">
     <div class="col-md-6 mx-auto">

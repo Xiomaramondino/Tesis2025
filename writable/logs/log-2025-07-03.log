@@ -1,0 +1,115 @@
+ERROR - 2025-07-03 11:09:00 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-07-03 11:09:00 --> 220 smtp.gmail.com ESMTP d75a77b69052e-4a7fc57d7dcsm105887611cf.60 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [190.247.40.149]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+starttls: 220 2.0.0 Ready to start TLS
+
+hello: 250-smtp.gmail.com at your service, [190.247.40.149]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+from: 250 2.1.0 OK d75a77b69052e-4a7fc57d7dcsm105887611cf.60 - gsmtp
+
+to: 555-5.5.2 Syntax error, cannot decode response. For more information, go to
+555-5.5.2  https://support.google.com/a/answer/3221692 and review RFC 5321
+555 5.5.2 specifications. d75a77b69052e-4a7fc57d7dcsm105887611cf.60 - gsmtp
+
+The following SMTP error was encountered: 555-5.5.2 Syntax error, cannot decode response. For more information, go to
+555-5.5.2  https://support.google.com/a/answer/3221692 and review RFC 5321
+555 5.5.2 specifications. d75a77b69052e-4a7fc57d7dcsm105887611cf.60 - gsmtp
+
+quit: 221 2.0.0 closing connection d75a77b69052e-4a7fc57d7dcsm105887611cf.60 - gsmtp
+
+ERROR - 2025-07-03 11:16:36 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-07-03 11:16:36 --> 220 smtp.gmail.com ESMTP af79cd13be357-7d44c9bd742sm913580285a.29 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [190.247.40.149]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+starttls: 220 2.0.0 Ready to start TLS
+
+hello: 250-smtp.gmail.com at your service, [190.247.40.149]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+from: 250 2.1.0 OK af79cd13be357-7d44c9bd742sm913580285a.29 - gsmtp
+
+to: 555-5.5.2 Syntax error, cannot decode response. For more information, go to
+555-5.5.2  https://support.google.com/a/answer/3221692 and review RFC 5321
+555 5.5.2 specifications. af79cd13be357-7d44c9bd742sm913580285a.29 - gsmtp
+
+The following SMTP error was encountered: 555-5.5.2 Syntax error, cannot decode response. For more information, go to
+555-5.5.2  https://support.google.com/a/answer/3221692 and review RFC 5321
+555 5.5.2 specifications. af79cd13be357-7d44c9bd742sm913580285a.29 - gsmtp
+
+quit: 221 2.0.0 closing connection af79cd13be357-7d44c9bd742sm913580285a.29 - gsmtp
+
+ERROR - 2025-07-03 11:22:27 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-07-03 11:22:27 --> 220 smtp.gmail.com ESMTP d75a77b69052e-4a7fc592986sm105810281cf.74 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [190.247.40.149]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+starttls: 220 2.0.0 Ready to start TLS
+
+hello: 250-smtp.gmail.com at your service, [190.247.40.149]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+from: 250 2.1.0 OK d75a77b69052e-4a7fc592986sm105810281cf.74 - gsmtp
+
+to: 555-5.5.2 Syntax error, cannot decode response. For more information, go to
+555-5.5.2  https://support.google.com/a/answer/3221692 and review RFC 5321
+555 5.5.2 specifications. d75a77b69052e-4a7fc592986sm105810281cf.74 - gsmtp
+
+The following SMTP error was encountered: 555-5.5.2 Syntax error, cannot decode response. For more information, go to
+555-5.5.2  https://support.google.com/a/answer/3221692 and review RFC 5321
+555 5.5.2 specifications. d75a77b69052e-4a7fc592986sm105810281cf.74 - gsmtp
+
+quit: 221 2.0.0 closing connection d75a77b69052e-4a7fc592986sm105810281cf.74 - gsmtp
+
+CRITICAL - 2025-07-03 08:32:27 --> ErrorException: Undefined variable $emailSolicitante
+[Method: POST, Route: admin/guardarUsuario]
+in APPPATH\Controllers\AdminController.php on line 94.
+ 1 APPPATH\Controllers\AdminController.php(94): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $emailSolicitante', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\AdminController.php', 94)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

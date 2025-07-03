@@ -93,7 +93,7 @@
 
         /* Estilo para el botón Cambiar de colegio */
         .btn-form {
-            background-color: #a675d1; /* lilita */
+            background-color:#4a045a; 
             color: white;
             padding: 0.5rem 1.5rem;
             font-size: 1rem;
@@ -101,12 +101,11 @@
             border-radius: 0.5rem;
             margin: 0;
             cursor: pointer;
-            transition: background-color 0.3s ease;
             display: inline-block;
         }
 
         .btn-form:hover {
-            background-color: #8f5bb8; /* tono más oscuro */
+            background-color: #4a045a; /* tono más oscuro */
             color: white;
         }
     </style>
