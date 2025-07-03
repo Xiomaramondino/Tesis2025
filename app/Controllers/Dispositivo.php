@@ -56,6 +56,32 @@ class Dispositivo extends ResourceController
         ]);
     }
 
-     
+    public function checkManualRing()
+    {
+        $mac = $this->request->getGet('mac');
+    
+        if (!$mac) {
+            return $this->response->setBody("no");
+        }
+    
+        $timbre = $this->timbreManualModel
+            ->where('mac', $mac)
+            ->where('pendiente', 1)
+            ->orderBy('timestamp', 'DESC')
+            ->first();
+    
+        if ($timbre) {
+            // Marcar como no pendiente
+            $this->timbreManualModel
+                ->where('id', $timbre['id'])
+                ->set(['pendiente' => 0])
+                ->update();
+    
+            return $this->response->setBody("si");
+        }
+    
+        return $this->response->setBody("no");
+    }
+         
 
 }
