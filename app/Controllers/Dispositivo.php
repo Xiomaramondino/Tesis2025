@@ -4,6 +4,8 @@ namespace App\Controllers;
 use CodeIgniter\RESTful\ResourceController;
 use App\Models\Usuario;
 use App\Models\DispositivoModel;
+use App\Models\TimbreManualModel;
+
 
 
 class Dispositivo extends ResourceController
@@ -64,15 +66,16 @@ class Dispositivo extends ResourceController
             return $this->response->setBody("no");
         }
     
-        $timbre = $this->timbreManualModel
+        $timbreManualModel = new TimbreManualModel();
+    
+        $timbre = $timbreManualModel
             ->where('mac', $mac)
             ->where('pendiente', 1)
             ->orderBy('timestamp', 'DESC')
             ->first();
     
         if ($timbre) {
-            // Marcar como no pendiente
-            $this->timbreManualModel
+            $timbreManualModel
                 ->where('id', $timbre['id'])
                 ->set(['pendiente' => 0])
                 ->update();
