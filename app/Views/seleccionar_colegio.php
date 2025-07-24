@@ -142,7 +142,7 @@
         </form>
     </div>
 </nav>
-
+<br>
 <h2>Seleccionar un colegio</h2>
 
 <form class="seleccion" action="<?= base_url('/seleccionar-contexto') ?>" method="post">

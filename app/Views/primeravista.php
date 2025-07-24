@@ -257,16 +257,16 @@
 <!-- Sección de contenido -->
 <section class="content">
     <div class="card">
-        <h3>Gestión de timbres</h3>
-        <p>Permite la configuración personalizada de los horarios de timbrado, adaptándolos a las necesidades específicas de la institución.</p>
+        <br><h3>Gestión de timbres</h3>
+        <p><br>Permite la configuración personalizada de los horarios de timbrado, adaptándolos a las necesidades específicas de la institución.</p>
     </div>
     <div class="card">
-        <h3>Modificaciones Horarias</h3>
-        <p>Informa de manera oportuna sobre cualquier alteración en el horario habitual, tales como ingresos diferidos o retiros anticipados.</p>
+        <h3>Gestión Unificada de Instituciones</h3>
+        <p> Podrá alternar entre sus cuentas activas, cada una vinculada a un establecimiento distinto, y gestionarlas fácilmente desde una misma interfaz.</p>
     </div>
     <div class="card">
-        <h3>Control Manual de Activación y Desactivación</h3>
-        <p>Ofrece la posibilidad de activar o desactivar el timbre de forma manual.</p>
+        <h3>Programación Dinámica del Timbre</h3>
+        <p>Ofrece un botón para activar manualmente el timbre en cualquier momento, junto con un calendario integrado que permite programar fechas en las que el sistema permanecerá inactivo.</p>
     </div>
 </section>
 

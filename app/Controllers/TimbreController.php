@@ -45,7 +45,8 @@ class TimbreController extends BaseController
             ]);
         }
 
-        return redirect()->back()->with('success', 'El timbre fue activado con éxito.');
+        return redirect()->back();
+
     }
 }
 

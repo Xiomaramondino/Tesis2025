@@ -75,16 +75,15 @@ class Dispositivo extends ResourceController
             ->first();
     
         if ($timbre) {
+            // Eliminar el registro ya que el timbre fue activado
             $timbreManualModel
                 ->where('id', $timbre['id'])
-                ->set(['pendiente' => 0])
-                ->update();
+                ->delete();
     
             return $this->response->setBody("si");
         }
     
         return $this->response->setBody("no");
     }
-         
-
+    
 }
