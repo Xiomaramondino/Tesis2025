@@ -114,17 +114,20 @@
                     <tr>
                         <th>Evento</th>
                         <th>Hora</th>
+                        <th>Dia</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <?php foreach ($data as $row) { ?>
-                    <tr>
-                    <td><?= htmlspecialchars($row->evento) ?></td>
-                    <td><?= htmlspecialchars($row->hora) ?></td>
-
-                    
-                    </tr>
-                    <?php } ?>
+                <?php 
+$dias = [1 => 'Lunes', 2 => 'Martes', 3 => 'Miércoles', 4 => 'Jueves', 5 => 'Viernes', 6 => 'Sábado', 7 => 'Domingo']; 
+foreach ($data as $row) { 
+?>
+<tr>
+    <td><?= htmlspecialchars($row->evento) ?></td>
+    <td><?= htmlspecialchars($row->hora) ?></td>
+    <td><?= $dias[$row->iddia] ?? 'Desconocido' ?></td>
+</tr>
+<?php } ?>
                 </tbody>
             </table>
             

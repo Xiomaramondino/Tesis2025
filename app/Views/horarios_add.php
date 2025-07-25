@@ -129,7 +129,17 @@
                <input type="text" name="evento" class="form-control" required>
                <label for="hora">Hora:</label>
                <input type="time" name="hora" class="form-control" required>
-               <br>
+               <label for="iddia">Día de la semana:</label>
+  <select name="iddia" class="form-control" required>
+    <option value="">-- Seleccionar día --</option>
+    <option value="1">Lunes</option>
+    <option value="2">Martes</option>
+    <option value="3">Miércoles</option>
+    <option value="4">Jueves</option>
+    <option value="5">Viernes</option>
+    <option value="6">Sábado</option>
+    <option value="7">Domingo</option>
+  </select> <br>
                <input class="btn btn-sm" style="background-color: #540466; color:white;" type="submit" value="Agregar">
              </form>
            </div>

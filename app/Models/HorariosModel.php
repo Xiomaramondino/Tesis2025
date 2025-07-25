@@ -9,7 +9,7 @@ use CodeIgniter\Model;
 class HorariosModel extends Model
 {
     protected $table = 'horarios';
-    protected $allowedFields = ['evento','hora','idcolegio']; 
+    protected $allowedFields = ['evento','hora','idcolegio','iddia']; 
     protected $defaults = ['hora' => '00:00:00']; 
     protected $primaryKey = 'idhorario';
     

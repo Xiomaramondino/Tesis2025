@@ -114,6 +114,7 @@
                     <tr>
                         <th>Evento</th>
                         <th>Hora</th>
+                        <th>Dia</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -122,6 +123,20 @@
                     <tr>
                     <td><?= htmlspecialchars($row['evento']) ?></td>
                     <td><?= htmlspecialchars($row['hora']) ?></td>
+                    <td>
+    <?php
+        $dias = [
+            1 => 'Lunes',
+            2 => 'Martes',
+            3 => 'Miércoles',
+            4 => 'Jueves',
+            5 => 'Viernes',
+            6 => 'Sábado',
+            7 => 'Domingo'
+        ];
+        echo $dias[$row['iddia']] ?? 'Desconocido';
+    ?>
+</td>
 
                         <td>
                         <a href="<?= base_url('horarios/delete/' . $row['idhorario']) ?>" onclick="return confirm('¿Estás seguro de eliminar este horario?')">Eliminar</a>

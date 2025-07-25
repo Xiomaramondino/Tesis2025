@@ -135,9 +135,23 @@
                     <form action="<?= site_url('horarios/actualizar') ?>" method="post">
                         <input type="hidden" name="idhorario" class="form-control" value="<?= esc($horario['idhorario']) ?>">
                         <label for="evento">Evento:</label>
-                        <input type="text" name="evento" class="form-control" value="<?= esc($horario['evento']) ?>" required>
-                        <label for="hora">Hora:</label>
-                        <input type="text" name="hora" class="form-control" value="<?= esc($horario['hora']) ?>" required><br>
+<input type="text" name="evento" class="form-control" value="<?= esc($horario['evento']) ?>" required>
+
+<label for="hora">Hora:</label>
+<input type="time" name="hora" class="form-control" value="<?= esc($horario['hora']) ?>" required>
+
+<label for="iddia">Día de la semana:</label>
+<select name="iddia" class="form-control" required>
+    <option value="1" <?= $horario['iddia'] == 1 ? 'selected' : '' ?>>Lunes</option>
+    <option value="2" <?= $horario['iddia'] == 2 ? 'selected' : '' ?>>Martes</option>
+    <option value="3" <?= $horario['iddia'] == 3 ? 'selected' : '' ?>>Miércoles</option>
+    <option value="4" <?= $horario['iddia'] == 4 ? 'selected' : '' ?>>Jueves</option>
+    <option value="5" <?= $horario['iddia'] == 5 ? 'selected' : '' ?>>Viernes</option>
+    <option value="6" <?= $horario['iddia'] == 6 ? 'selected' : '' ?>>Sábado</option>
+    <option value="7" <?= $horario['iddia'] == 7 ? 'selected' : '' ?>>Domingo</option>
+</select>
+<br>
+
                         <button class="btn btn-sm" style="background-color: #540466; color:white;" type="submit">Actualizar</button>
                     </form>
                 </div>

@@ -22,8 +22,6 @@ class Horarios extends Controller
         return view('horarios', ['data' => $data]);
     }
     
-    
-
     public function editar($idhorario = null)
     {
         $model = new HorariosModel();
@@ -39,45 +37,56 @@ class Horarios extends Controller
     }
 
     public function actualizar()
-{
-    $session = session();
-    $idturno = $session->get('idturno');
-    $idcolegio = $session->get('idcolegio'); // Obtenemos el colegio desde la sesión
-
-    $model = new HorariosModel();
-    $idhorario = $this->request->getPost('idhorario');
-    $nuevaHora = $this->request->getPost('hora');
-    $evento = $this->request->getPost('evento');
-
-    $horaParsed = date_create($nuevaHora);
-    if (!$horaParsed || date_format($horaParsed, 's') !== '00') {
-        session()->setFlashdata('error', 'La hora debe ser precisa.');
-        return redirect()->to('/horarios/editar/' . $idhorario);
+    {
+        $session = session();
+        $idturno = $session->get('idturno');
+        $idcolegio = $session->get('idcolegio'); // Obtenemos el colegio desde la sesión
+    
+        $model = new HorariosModel();
+        $idhorario = $this->request->getPost('idhorario');
+        $nuevaHora = $this->request->getPost('hora');
+        $evento = $this->request->getPost('evento');
+        $iddia = $this->request->getPost('iddia'); // Nuevo campo
+    
+        // Validar hora
+        $horaParsed = date_create($nuevaHora);
+        if (!$horaParsed || date_format($horaParsed, 's') !== '00') {
+            session()->setFlashdata('error', 'La hora debe ser precisa.');
+            return redirect()->to('/horarios/editar/' . $idhorario);
+        }
+    
+        // Validar día
+        if (!in_array($iddia, ['1', '2', '3', '4', '5', '6', '7'])) {
+            session()->setFlashdata('error', 'Seleccioná un día válido.');
+            return redirect()->to('/horarios/editar/' . $idhorario);
+        }
+    
+        // Verificar si ya existe esa hora para ese día en otro horario
+        $existe = $model
+            ->where('hora', $nuevaHora)
+            ->where('idcolegio', $idcolegio)
+            ->where('iddia', $iddia)
+            ->where('idhorario !=', $idhorario)
+            ->first();
+    
+        if ($existe) {
+            session()->setFlashdata('error', 'Esa hora ya está registrada para ese día en este colegio.');
+            return redirect()->to('/horarios/editar/' . $idhorario);
+        }
+    
+        // Actualizar horario
+        $data = [
+            'evento' => $evento,
+            'hora'   => $nuevaHora,
+            'iddia'  => $iddia
+        ];
+    
+        $model->update($idhorario, $data);
+    
+        session()->setFlashdata('success', 'Horario actualizado correctamente.');
+        return redirect()->to('/horarios');
     }
-
-
-    // Verificar si existe la misma hora en el mismo colegio pero en un horario diferente
-    $existe = $model
-        ->where('hora', $nuevaHora)
-        ->where('idcolegio', $idcolegio)
-        ->where('idhorario !=', $idhorario)
-        ->first();
-
-    if ($existe) {
-        session()->setFlashdata('error', 'Esa hora ya está registrada para otro evento en este colegio.');
-        return redirect()->to('/horarios/editar/' . $idhorario);
-    }
-
-    $data = [
-        'evento' => $evento,
-        'hora' => $nuevaHora,
-    ];
-
-    $model->update($idhorario, $data);
-
-    session()->setFlashdata('success', 'Horario actualizado correctamente.');
-    return redirect()->to('/horarios');
-}
+    
 
 
     public function agregar()
@@ -89,34 +98,45 @@ class Horarios extends Controller
     {
         $session = session();
         $idturno = $session->get('idturno');
-        $idcolegio = $session->get('idcolegio'); // Obtenemos el colegio
+        $idcolegio = $session->get('idcolegio'); // Obtenemos el colegio desde la sesión
     
         $horariosModel = new HorariosModel();
         $evento = $this->request->getVar('evento');
         $hora = $this->request->getVar('hora');
+        $iddia = $this->request->getVar('iddia');
     
+        // Validar formato de hora (segundos en 00)
         $horaParsed = date_create($hora);
         if (!$horaParsed || date_format($horaParsed, 's') !== '00') {
             session()->setFlashdata('error', 'La hora debe ser precisa.');
             return redirect()->to(base_url('horarios/agregar'));
         }
     
+        // Validar selección del día
+        if (!in_array($iddia, ['1', '2', '3', '4', '5', '6', '7'])) {
+            session()->setFlashdata('error', 'Seleccioná un día válido.');
+            return redirect()->to(base_url('horarios/agregar'));
+        }
     
+        // Verificar que no exista la misma hora en ese colegio y ese día
         $existingHorario = $horariosModel
-        ->where('hora', $hora)
-        ->where('idcolegio', $idcolegio)
-        ->first();
+            ->where('hora', $hora)
+            ->where('idcolegio', $idcolegio)
+            ->where('iddia', $iddia)
+            ->first();
     
-    if ($existingHorario) {
-        session()->setFlashdata('error', 'La hora ya está registrada en este colegio.');
-        return redirect()->to(base_url('horarios/agregar'));
-    }
+        if ($existingHorario) {
+            session()->setFlashdata('error', 'La hora ya está registrada para ese día en este colegio.');
+            return redirect()->to(base_url('horarios/agregar'));
+        }
     
+        // Guardar el nuevo horario
         $data = [
-            'evento' => $evento,
-            'hora' => $hora,
-            'idcolegio' => $idcolegio, 
-            'idturno' => $idturno,    
+            'evento'    => $evento,
+            'hora'      => $hora,
+            'idcolegio' => $idcolegio,
+            'idturno'   => $idturno,
+            'iddia'     => $iddia
         ];
     
         $horariosModel->insert($data);
@@ -137,43 +157,50 @@ class Horarios extends Controller
         return redirect()->to(base_url('horarios'));
     }
 
-    public function checkTime() {
-        $horaActual = $this->request->getVar('hora');
+    public function checkTime()
+    {
         $mac = $this->request->getVar('mac');
+        $response = ['tocar' => false]; // Valor por defecto
     
-        error_log("Hora recibida: " . $horaActual); 
-        error_log("MAC recibida: " . $mac);
+        if (!$mac) {
+            return $this->response->setJSON($response);
+        }
     
         $db = \Config\Database::connect();
     
-        // Buscar el dispositivo por MAC
-        $builderDispositivo = $db->table('dispositivo');
-        $builderDispositivo->where('mac', $mac);
-        $dispositivo = $builderDispositivo->get()->getRow();
+        // Buscar dispositivo por MAC
+        $dispositivo = $db->table('dispositivo')
+                          ->where('mac', $mac)
+                          //->where('estado', 1) // ❗Descomentar si querés usar el estado
+                          ->get()
+                          ->getRow();
     
         if (!$dispositivo) {
-            error_log("Dispositivo con MAC no encontrado");
-            return $this->response->setBody("no");
+            return $this->response->setJSON($response);
         }
     
         $idcolegio = $dispositivo->idcolegio;
     
-        // Buscar horarios coincidentes para ese colegio
-        $builderHorarios = $db->table('horarios');
-        $builderHorarios->where('hora', $horaActual);
-        $builderHorarios->where('idcolegio', $idcolegio);
-        $horarios = $builderHorarios->get()->getResult();
+        // Obtener hora y día actual del servidor
+        date_default_timezone_set('America/Argentina/Buenos_Aires'); // Asegurate de ajustar según tu zona
+        $horaActual = date('H:i:00'); // formato HH:MM:00 para coincidir con campo TIME
+        $diaSemana = date('N'); // 1 (Lunes) a 7 (Domingo)
     
-        if (count($horarios) > 0) {
-            error_log("Coincidencia encontrada para: " . $horaActual . " en colegio ID: " . $idcolegio); 
-            return $this->response->setBody("si");
-        } else {
-            error_log("No hay coincidencias para: " . $horaActual . " en colegio ID: " . $idcolegio); 
-            return $this->response->setBody("no");
+        // Buscar coincidencia en horarios
+        $horario = $db->table('horarios')
+                      ->where('idcolegio', $idcolegio)
+                      ->where('hora', $horaActual)
+                      ->where('iddia', $diaSemana)
+                      ->get()
+                      ->getRow();
+    
+        if ($horario) {
+            $response['tocar'] = true;
         }
+    
+        return $this->response->setJSON($response);
     }
     
-
     public function horariosLector() 
     {
         $session = session();
