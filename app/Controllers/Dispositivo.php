@@ -18,72 +18,45 @@ class Dispositivo extends ResourceController
         $this->model = new DispositivoModel();
     }
     
-  public function registerMac()
-    {
-        $mac = $this->request->getGet('mac');
-        if (!$mac) {
-            return $this->respond(['status' => 'error', 'message' => 'MAC no recibida'], 400);
-        }
+    public function registerMac()
+{
+    $mac = $this->request->getGet('mac');
+    $ip = $this->request->getGet('ip');
 
-        // Validar MAC (opcional)
-        if (!preg_match('/^([0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2}$/', $mac)) {
-            return $this->respond(['status' => 'error', 'message' => 'MAC inválida'], 400);
-        }
-
-        // Verificar si ya existe la MAC
-        $existing = $this->model->where('mac', $mac)->first();
-        if ($existing) {
-            return $this->respond(['status' => 'ok', 'message' => 'MAC ya registrada']);
-        }
-
-        // Insertar nueva MAC
-        $this->model->insert(['mac' => $mac, 'estado' => 'no asociado']);
-
-        return $this->respond(['status' => 'ok', 'message' => 'MAC registrada correctamente']);
-    }  
-    public function vistaDispositivos()
-    {
-        $session = session();
-        $idusuario = $session->get('idusuario');
-    
-        if (!$idusuario) {
-            return redirect()->to('/login')->with('error', 'Sesión no iniciada.');
-        }
-    
-        // Obtener dispositivos por idusuario
-        $mis_dispositivos = $this->where('idusuario', $idusuario)->findAll();
-    
-        return view('registrar_dispositivo', [
-            'mis_dispositivos' => $mis_dispositivos
-        ]);
+    if (!$mac) {
+        return $this->respond(['status' => 'error', 'message' => 'MAC no recibida'], 400);
     }
 
-    public function checkManualRing()
-    {
-        $mac = $this->request->getGet('mac');
-    
-        if (!$mac) {
-            return $this->response->setBody("no");
-        }
-    
-        $timbreManualModel = new TimbreManualModel();
-    
-        $timbre = $timbreManualModel
-            ->where('mac', $mac)
-            ->where('pendiente', 1)
-            ->orderBy('timestamp', 'DESC')
-            ->first();
-    
-        if ($timbre) {
-            // Eliminar el registro ya que el timbre fue activado
-            $timbreManualModel
-                ->where('id', $timbre['id'])
-                ->delete();
-    
-            return $this->response->setBody("si");
-        }
-    
-        return $this->response->setBody("no");
+    // Validar formato de MAC
+    if (!preg_match('/^([0-9A-Fa-f]{2}:){5}[0-9A-Fa-f]{2}$/', $mac)) {
+        return $this->respond(['status' => 'error', 'message' => 'MAC inválida'], 400);
     }
+
+    // Validar IP (opcional, pero recomendable)
+    if ($ip && !filter_var($ip, FILTER_VALIDATE_IP)) {
+        return $this->respond(['status' => 'error', 'message' => 'IP inválida'], 400);
+    }
+
+    // Buscar si ya existe la MAC
+    $existing = $this->model->where('mac', $mac)->first();
+
+    if ($existing) {
+        // Actualizar IP si cambia o si se pasa
+        if ($existing['ip'] !== $ip) {
+            $this->model->update($existing['iddispositivo'], ['ip' => $ip]);
+        }
+        return $this->respond(['status' => 'ok', 'message' => 'MAC ya registrada, IP actualizada']);
+    }
+
+    // Insertar nueva MAC e IP
+    $this->model->insert([
+        'mac' => $mac,
+        'ip' => $ip,
+        'estado' => 'no asociado'
+    ]);
+
+    return $this->respond(['status' => 'ok', 'message' => 'MAC registrada correctamente']);
+}
+
     
 }

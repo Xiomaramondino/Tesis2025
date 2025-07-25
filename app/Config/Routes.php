@@ -60,5 +60,4 @@ $routes->post('/seleccionar-contexto', 'Auth::seleccionarContexto');
 $routes->get('/cambiar-colegio', 'Auth::mostrarOpcionesCambio');
 $routes->post('/cambiar-contexto', 'Auth::cambiarContexto');
 
-$routes->post('/sonar-timbre', 'TimbreController::sonarTimbre');
-$routes->get('/dispositivo/checkManualRing', 'Dispositivo::checkManualRing');
+$routes->post('/sonar-timbre', 'TimbreController::activarTimbreManual');

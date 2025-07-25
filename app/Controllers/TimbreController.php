@@ -3,50 +3,48 @@
 namespace App\Controllers;
 
 use App\Models\DispositivoModel;
-use App\Models\TimbreManualModel;
 
 class TimbreController extends BaseController
 {
     protected $dispositivoModel;
-    protected $timbreManualModel;
 
     public function __construct()
     {
         $this->dispositivoModel = new DispositivoModel();
-        $this->timbreManualModel = new TimbreManualModel();
     }
 
-    /**
-     * Maneja el POST del botón "Sonar timbre"
-     * Solo activa el timbre de dispositivos asociados al colegio actual.
-     */
-    public function sonarTimbre()
+    public function activarTimbreManual()
     {
         $idColegio = session()->get('idcolegio');
-
         if (!$idColegio) {
-            return redirect()->back()->with('error', 'Sesión inválida. Iniciá sesión nuevamente.');
+            return redirect()->back()->with('error', 'Sesión inválida. Por favor, inicia sesión nuevamente.');
         }
 
-        // Obtener dispositivos vinculados a este colegio
+        // Obtener dispositivos asociados al colegio con IP válida
         $dispositivos = $this->dispositivoModel
             ->where('idcolegio', $idColegio)
+            ->where('ip IS NOT NULL')    // si quieres asegurarte que la IP no sea nula
+            ->where('ip !=', '')         // y que no sea cadena vacía
             ->findAll();
 
         if (empty($dispositivos)) {
-            return redirect()->back()->with('error', 'No hay dispositivos asociados a este colegio.');
+            return redirect()->back()->with('error', 'No hay dispositivos con IP registrada para este colegio.');
         }
 
-        // Registrar una orden de timbre manual para cada dispositivo del colegio
+        // Crear cliente cURL (Config Services)
+        $client = \Config\Services::curlrequest();
+
         foreach ($dispositivos as $disp) {
-            $this->timbreManualModel->insert([
-                'mac' => $disp['mac'],
-                'pendiente' => 1
-            ]);
+            $url = 'http://' . $disp['ip'] . '/tocar';
+
+            try {
+                $client->get($url, ['timeout' => 2]); // timeout opcional para no esperar mucho
+            } catch (\Exception $e) {
+                log_message('error', 'Error al tocar timbre en IP ' . $disp['ip'] . ': ' . $e->getMessage());
+            }
         }
 
         return redirect()->back();
-
     }
 }
 
