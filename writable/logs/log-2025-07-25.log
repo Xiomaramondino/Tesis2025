@@ -37,3 +37,11 @@ in APPPATH\Views\horarios_lector.php on line 162.
  9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 10 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
 ERROR - 2025-07-25 13:34:52 --> Error al tocar timbre en IP 192.168.2.102: 28 : Operation timed out after 2012 milliseconds with 0 bytes received
+ERROR - 2025-07-25 15:47:19 --> Error al tocar timbre en IP 192.168.2.102: 28 : Connection timed out after 2013 milliseconds
+ERROR - 2025-07-25 15:47:21 --> Error al tocar timbre en IP 192.168.2.102: 28 : Connection timed out after 2015 milliseconds
+ERROR - 2025-07-25 15:47:25 --> Error al tocar timbre en IP 192.168.2.102: 28 : Operation timed out after 2008 milliseconds with 0 bytes received
+ERROR - 2025-07-25 15:47:28 --> Error al tocar timbre en IP 192.168.2.102: 28 : Operation timed out after 2008 milliseconds with 0 bytes received
+ERROR - 2025-07-25 15:47:30 --> Error al tocar timbre en IP 192.168.2.102: 28 : Operation timed out after 2005 milliseconds with 0 bytes received
+ERROR - 2025-07-25 15:53:50 --> Error al tocar timbre en IP 192.168.2.102: 28 : Operation timed out after 2011 milliseconds with 0 bytes received
+ERROR - 2025-07-25 15:53:57 --> Error al tocar timbre en IP 192.168.2.102: 28 : Operation timed out after 2013 milliseconds with 0 bytes received
+ERROR - 2025-07-25 15:54:56 --> Error al tocar timbre en IP 192.168.2.102: 28 : Operation timed out after 2007 milliseconds with 0 bytes received
