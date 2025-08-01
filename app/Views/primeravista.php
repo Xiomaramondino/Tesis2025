@@ -24,14 +24,14 @@
         background-size: cover;
         background-position: right;
         background-attachment: fixed;
-        background-color: #b6a0d7;
+        background-color: #091342;
     }
 
     .navbar {
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color: #4a045a;
+        background-color: #081136;
         padding: 1rem 2rem;
     }
 
@@ -65,7 +65,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        color: black;
+        color: white;
         text-align: center;
         padding: 0 2rem;
     }
@@ -83,7 +83,7 @@
     .hero-section button {
         padding: 0.8rem 2rem;
         font-size: 1.1rem;
-        background-color: #540466;
+        background-color: #070F2E;
         border: none;
         color: white;
         cursor: pointer;
@@ -91,7 +91,7 @@
     }
 
     .hero-section button:hover {
-        background-color: black;
+        background-color: #666565;
     }
 
     .content {
@@ -105,7 +105,7 @@
         border-radius: 1.5rem;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         width: 30%;
-        background-color: white;
+        background-color: #545454;
         border-radius: 1.5rem;
         transition: transform 0.3s ease;
     }
@@ -113,10 +113,12 @@
     .card h3 {
         font-size: 1.6rem;
         margin-bottom: 1rem;
+        color: white;
     }
 
     .card p {
         font-size: 1.1rem;
+        color: white;
     }
 
     .card:hover {
@@ -126,7 +128,7 @@
     .footer {
         text-align: center;
         padding: 1.5rem;
-        background-color: #4a045a;
+        background-color: #081136;
         font-weight: bold;
         color: white;
         margin-top: 3rem;
@@ -157,10 +159,6 @@
         justify-content: center;
     }
 
-    .hero-images img {
-        margin-right: 10px;
-    }
-
     /* 💡 Animaciones agregadas */
     section, img {
         transition: transform 0.3s ease;
@@ -178,7 +176,7 @@
 
 <!-- Barra de navegación -->
 <nav class="navbar">
-    <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
+    <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" width="60px" alt="Logo">
     <div class="logo">RingMind</div>
     <ul class="icon-links">
         <li>
@@ -239,8 +237,8 @@
     <div class="hero-text">
         <h1>Bienvenido/a a SoniTek gestión de timbres</h1>
         <div class="hero-images">
-            <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/bus.png" width="150px" alt="bus">
-            <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/lcd.png" width="150px" alt="lcd">
+            <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/st.png" width="170px" alt="bus">
+    
         </div>
         <br>
 

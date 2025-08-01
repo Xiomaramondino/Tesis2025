@@ -21,7 +21,7 @@
             flex-direction: column; /* Asegura que los elementos se apilen en columna */
             justify-content: center; /* Centra verticalmente el contenido */
             align-items: center; /* Centra horizontalmente */
-            background-color: #b6a0d7; 
+            background-color:  #091342; 
         }
         
         .navbar {
@@ -29,7 +29,7 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #4a045a;
+            background-color: #081136;
             padding: 1rem 2rem;
         }
 
@@ -57,22 +57,17 @@
     text-decoration: none;
 }
 
-/* Sin efectos visuales */
-.volver-btn:hover,
-.volver-btn:active,
-.volver-btn:focus {
-    background-color: transparent;
-    color: white; 
-    outline: none;
+.card {
+    background: #081136; /* Azul oscuro translúcido */
+    backdrop-filter: blur(12px);       /* Difumina el fondo detrás */
+    -webkit-backdrop-filter: blur(12px);
+    padding: 30px;
+    border-radius: 1.5rem;
+    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+    margin-top: 55px;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
-        .card {
-            background-color: #ebdef0;
-            padding: 20px;
-            border-radius: 1.5rem;
-            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
-            margin-top: 55px; 
-            border-radius: 1.5rem;
-        }
 
         .password-container img {
             margin-right: -380px;
@@ -84,7 +79,7 @@
         button {
             padding: 0.4rem 1.7rem;
             font-size: 1.1rem;
-            background-color: #540466;
+            background-color: #070F2E;
             border: none;
             color: white;
             cursor: pointer;
@@ -92,7 +87,7 @@
         }
 
         button:hover {
-            background-color: black;
+            background-color:#666565;
         }
         .form-group {
             margin-bottom: 0.3rem;
@@ -104,15 +99,28 @@
             font-weight: 500;
         }
         .form-control {
-            width: 140%;
-            padding: 0.4rem;
-            border: 1px solid #ddd;
-            border-radius: 7px;
-            margin-bottom: 0.3rem;
-            display: block;        /* Cambia el tipo de display a block */
-            margin-left:-60px;     /* Centra el campo horizontalmente */
-        }
-        
+    width: 100%;
+    padding: 0.6rem 1rem;
+    background-color: rgba(255, 255, 255, 0.05); /* fondo sutil semitransparente */
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    color: #fff;
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    transition: all 0.3s ease;
+}
+
+.form-control::placeholder {
+    color: #bbb;
+}
+
+.form-control:focus {
+    outline: none;
+    border: 1px solid #6f42c1; /* morado suave */
+    background-color: rgba(255, 255, 255, 0.08);
+    box-shadow: 0 0 5px #6f42c1;
+}
+
         /* Estilos para las alertas */
         .alert {
     margin-top: 10px;
@@ -153,11 +161,11 @@
         /* Pie de página */
         .footer {
             text-align: center;
-            padding: 1.5rem;
-            background-color: #4a045a;
+            background-color: #081136;
             font-weight: bold;
             color: white;
-            margin-top: 3rem;
+            margin-top: 4.6rem;
+            padding: 0.3rem;
         }
         
     </style>
@@ -166,7 +174,7 @@
 
     
     <nav class="navbar">
-        <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
+        <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" width="60px" alt="Logo">
         <center><div class="logo" style="padding-right: -540px;">RingMind</div></center>
         <div class="navbar-buttons">
         <form action="<?= base_url('/'); ?>" method="get">
