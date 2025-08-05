@@ -9,23 +9,17 @@
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <style>
-        * { 
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
         body {
             height: 100vh;
             width: 100%;
-            flex-direction: column; /* Asegura que los elementos se apilen en columna */
-            justify-content: center; /* Centra verticalmente el contenido */
-            align-items: center; /* Centra horizontalmente */
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
             background-color:  #091342; 
         }
         
         .navbar {
-            width: 100%; /* Hace que la barra de navegación ocupe todo el ancho */
+            width: 100%; 
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -35,46 +29,36 @@
 
         .navbar .logo {
             color: white;
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             font-weight: bold;
-            display: flex;
         }
-        .navbar-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
 
-/* Estilo común para el botón "Volver" plano */
 .volver-btn {
-    background-color: transparent;
     color: white;
-    border: none;
     padding: 0.3rem 0.8rem;
     font-size: 1rem;
-    text-align: left;
-    cursor: pointer;
-    text-decoration: none;
 }
-
+img:hover {
+        transform: scale(1.05);
+    }
 .card {
-    background: #081136; /* Azul oscuro translúcido */
-    backdrop-filter: blur(12px);       /* Difumina el fondo detrás */
-    -webkit-backdrop-filter: blur(12px);
+    max-width: 550px;
+    width: 100%;
+    background: #081136;
+    backdrop-filter: blur(12px);  
     padding: 30px;
     border-radius: 1.5rem;
-    box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.5);
     margin-top: 55px;
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
-
         .password-container img {
             margin-right: -380px;
             padding-left: 15px;
             width: 35px;
             cursor: pointer;
-            transform: translateY(-180%);
+            transform: translateY(-242%);
         }
         button {
             padding: 0.4rem 1.7rem;
@@ -85,7 +69,7 @@
             cursor: pointer;
             border-radius: 5px;
         }
-
+        
         button:hover {
             background-color:#666565;
         }
@@ -94,20 +78,21 @@
         }
         .form-group label {
             display: block;
-            margin-bottom: 0.3rem;
-            color: #333;
-            font-weight: 500;
+            margin-bottom: 0.9rem;
         }
         .form-control {
-    width: 100%;
+    width: 120%; 
     padding: 0.6rem 1rem;
-    background-color: rgba(255, 255, 255, 0.05); /* fondo sutil semitransparente */
+    background-color: transparent;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
-    color: #fff;
+    border-radius: 12px;
+    color: white;
     font-size: 1rem;
     margin-bottom: 0.8rem;
     transition: all 0.3s ease;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .form-control::placeholder {
@@ -115,51 +100,46 @@
 }
 
 .form-control:focus {
-    outline: none;
-    border: 1px solid #6f42c1; /* morado suave */
     background-color: rgba(255, 255, 255, 0.08);
-    box-shadow: 0 0 5px #6f42c1;
+    color: #bbb ;
+    border: 1px solid #6f42c1 ;
+    box-shadow: 0 0 10px #6f42c1 ;
+    caret-color: #bbb;
 }
-
-        /* Estilos para las alertas */
-        .alert {
-    margin-top: 10px;
+        
+.alert {
+    margin-top: 20px;
+    padding: 0.1rem;
+    border-radius: 1rem; /* Coincide con el .card */
     text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3); 
+    transition: all 0.3s ease;
+}
+
+.alert-success {
+    background-color: transparent; 
+    color: green; 
+    border: 1px solid #a3d9a540; 
+}
+
+.alert-danger {
+    background-color: transparent; 
+    color: red; 
+    border: 1px solid #bbb; 
 }
 
 .alert .close-btn {
     background: none;
     border: none;
-    color: inherit;
-    font-size: 1.5rem;
-    font-weight: bold;
-    line-height: 1;
     cursor: pointer;
-    float: right;
-    margin-right: -30px; 
-    margin-top: -5px;
+    padding: 10px;
+    margin-left: 2rem;
 }
-
-        .alert-success {
-            background-color: #d4edda;
-            color: #155724;
-        }
-
-        .alert-danger {
-            background-color: #f8d7da;
-            color: #721c24;
-        }
-
-        .alert .close-btn:hover {
-            color: #1c1c1c; /* Cambia el color de la X cuando se pase el mouse */
-        }
-
-        /* Pie de página */
-        .footer {
+    .footer {
             text-align: center;
             background-color: #081136;
             font-weight: bold;
@@ -167,7 +147,24 @@
             margin-top: 4.6rem;
             padding: 0.3rem;
         }
-        
+        #eyeicon {
+    filter: invert(1) brightness(2);
+    transition: filter 0.3s ease;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active {
+    -webkit-text-fill-color: #fff ;
+    transition: background-color 9999s ease-in-out 0s ;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset;
+    caret-color: #fff;
+}
+input:-moz-autofill {
+    box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset ;
+    -moz-text-fill-color: #fff;
+    caret-color: #fff;
+}
     </style>
 </head>
 <body>
@@ -182,10 +179,9 @@
         </form>
     </div>
     </nav>
-
    
     <center>
-    <div class="card" style="width: 30rem;">
+    <div class="card">
         <div class="card-body">
             <div class="container text-center">
                 <div class="row justify-content-md-center">
@@ -233,7 +229,7 @@
 
                             <a href="<?= base_url('/horarios'); ?>"><button>Iniciar sesión</button></a>
                             <br>
-                            <a href="<?= base_url('recuperar_contrasena') ?>" style="color: #540466;">Olvidaste tu contraseña?</a>
+                            <a href="<?= base_url('recuperar_contrasena') ?>" style="color: #FFFFFF;">Olvidaste tu contraseña?</a>
                         </form>
                     </div>
                 </div>
