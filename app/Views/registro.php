@@ -13,71 +13,91 @@
 </head>
 <body>
 <style>
-    *{ 
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+
     body {
-        height: 100vh;
-        width: 100%;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-color: #b6a0d7; 
-    }
+            height: 100vh;
+            width: 100%;
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            background-color:  #091342; 
+        }
     .card{
-        background-color: #ebdef0;
-        max-height: 90vh;
-        overflow-y: auto;
-        padding: 2rem;
-        margin-left: 30%;
-        margin-top: 55px;
-        border-radius: 1.5rem;
+    margin-left: 30%;
+    max-width: 550px;
+    background: #081136;
+    padding: 30px;
+    border-radius: 1.5rem;
+    box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.5);
+    margin-top: 55px;
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.05);
     }
+    
     .section-title {
-        color: #540466;
+        color: white;
         margin: 25px 0 15px 0;
         font-weight: bold;
         text-align: center;
     }
-    .form-group {
-        margin-bottom: 1.2rem;
-    }
+
     .form-group label {
-        display: block;
-        margin-bottom: 0.5rem;
-        color: #333;
+        color: white;
         font-weight: 500;
     }
+
     .form-control {
-        width: 100%;
-        padding: 0.6rem;
-        border: 1px solid #ddd;
-        border-radius: 4px;
-        margin-bottom: 0.5rem;
+    border-radius: 8px;
+    width: 100%; 
+    padding: 0.6rem 1rem;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    transition: all 0.3s ease;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
     }
+
+    .form-control::placeholder {
+    color: #bbb;
+}
+.form-control:focus {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #bbb ;
+    border: 1px solid #6f42c1 ;
+    box-shadow: 0 0 10px #6f42c1 ;
+    caret-color: #bbb;
+}
+    
     .password-container {
-        position: relative;
-        margin-bottom: 1.2rem;
-    }
-    .password-container img {
-        position: absolute;
-        right: 10px;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 25px;
-        cursor: pointer;
-    }
+    position: relative;
+    margin-bottom: 1.2rem;
+}
+
+.password-container img {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-50%);
+    width: 20px;
+    height: auto;
+    cursor: pointer;
+    filter: invert(1) brightness(2);
+    transition: filter 0.3s ease;
+}
+
     .btn-primary {
         width: 100%;
         padding: 0.8rem;
         margin-top: 1.5rem;
-        background-color: #540466;
+        background-color: #070F2E;
         border: none;
     }
     .btn-primary:hover {
-        background-color: #4a045a;
+        background-color: #666565;
     }
     .login-link {
         text-align: center;
@@ -89,27 +109,22 @@
         color: #4a045a;
         text-decoration: underline;
     }  
+   
     .navbar {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #4a045a;
-        padding: 1rem 2rem;
-    }
-    .navbar .logo {
-        color: white;
-        font-size: 1.8rem;
-        font-weight: bold;
-        display: flex;
-    }
-    .navbar-buttons {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
+            width: 100%; 
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #081136;
+            padding: 1rem 2rem;
+        }
 
-/* Estilo común para el botón "Volver" plano */
+        .navbar .logo {
+            color: white;
+            font-size: 1.9rem;
+            font-weight: bold;
+        }
+
 .volver-btn {
     background-color: transparent;
     color: white;
@@ -121,7 +136,6 @@
     text-decoration: none;
 }
 
-/* Sin efectos visuales */
 .volver-btn:hover,
 .volver-btn:active,
 .volver-btn:focus {
@@ -130,23 +144,35 @@
     outline: none;
 }
     #submit-btn {
-        display: none; /* Ocultamos el botón de submit inicialmente */
+        display: none; 
     }
     .footer {
-        text-align: center;
-        padding: 0.5rem;
-        background-color: #4a045a;
-        font-weight: bold;
-        color: white;
-        width: 100%;
-        position: relative;
-        bottom: 0;
-    }
+            text-align: center;
+            background-color: #081136;
+            font-weight: bold;
+            color: white;
+            margin-top: 4.6rem;
+            padding: 0.3rem;
+        }
+        input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active {
+    -webkit-text-fill-color: #fff ;
+    transition: background-color 9999s ease-in-out 0s ;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset;
+    caret-color: #fff;
+}
+input:-moz-autofill {
+    box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset ;
+    -moz-text-fill-color: #fff;
+    caret-color: #fff;
+}
 </style>
 
 <!-- Barra de navegación -->
 <nav class="navbar">
-    <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
+    <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" width="60px" alt="Logo">
     <center><div class="logo" style="padding-right: -540px;">RingMind</div></center>
     <div class="navbar-buttons">
         <form action="<?= base_url('/'); ?>" method="get">

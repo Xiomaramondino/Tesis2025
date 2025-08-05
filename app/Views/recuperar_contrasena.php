@@ -6,86 +6,105 @@
     <title>Recuperar Contraseña</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
+    
+    body {
             height: 100vh;
             width: 100%;
-            align-items: center;
-            flex-direction: column;
-            justify-content: center;
-            background-color: #b6a0d7;
+            flex-direction: column; 
+            justify-content: center; 
+            align-items: center; 
+            background-color:  #091342; 
         }
-
+        
         .card {
-            background-color: #ebdef0;
-            display: flex;
-            margin-left: 443px;
-            margin-top: 90px;
-            border-radius: 1.5rem;
-        }
+         display: flex;
+        margin-left: 443px;
+        margin-top: 90px;
+        border-radius: 1.5rem;
+    max-width: 550px;
+    background: #081136;
+    box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.5);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+.form-control {
+    width: 120%; 
+    padding: 0.6rem 1rem;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+    transition: all 0.3s ease;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
 
-        /* Barra de navegación */
+.form-control::placeholder {
+    color: #bbb;
+}
+
+.form-control:focus {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #bbb ;
+    border: 1px solid #6f42c1 ;
+    box-shadow: 0 0 10px #6f42c1 ;
+    caret-color: #bbb;
+}
         .navbar {
+            width: 100%; 
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #4a045a;
+            background-color: #081136;
             padding: 1rem 2rem;
         }
 
         .navbar .logo {
             color: white;
-            font-size: 1.8rem;
+            font-size: 1.9rem;
             font-weight: bold;
-            display: flex;
         }
 
-        /* Estilos para las alertas */
         .alert {
             position: relative;
             padding: 10px 15px;
             border-radius: 5px;
             margin-bottom: 10px;
+    
         }
 
         .alert .close-btn {
             position: absolute;
             top: 50%;
-            right: 10px; /* Ajusta esto para mover la "X" más a la derecha */
-            transform: translateY(-50%); /* Centra la "X" verticalmente */
+            right: -3px; 
+            transform: translateY(-20px); 
             background: none;
             border: none;
-            color: #721c24; /* Asegura que la X sea visible sobre el fondo */
+            color: red; 
             font-size: 1.5rem;
             cursor: pointer;
         }
 
         .alert-success {
-            background-color: #d4edda;
-            color: #155724;
+            background-color: transparent;
+            color: green;
         }
 
         .alert-danger {
-            background-color: #f8d7da;
-            color: #721c24;
+            background-color: transparent;
+            color: red;
         }
 
-        .alert .close-btn:hover {
-            color: #1c1c1c; /* Cambia el color de la X cuando se pase el mouse */
-        }
-
-        /* Pie de página */
         .footer {
             text-align: center;
-            padding: 1.5rem;
-            background-color: #4a045a;
-            font-weight: bold;
             color: white;
-            margin-top: 9rem;
+            margin-top: 10rem;
+            background-color: #081136;
+            font-weight: bold;;
+            padding: 0.3rem;
         }
 
     </style>
@@ -93,7 +112,7 @@
 <body>
     <!-- Barra de navegación -->
     <nav class="navbar">
-        <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
+        <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" width="60px" alt="Logo">
         <center> <div class="logo" style="padding-right: 579px;">RingMind</div></center>
     </nav>
 

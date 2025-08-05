@@ -44,8 +44,7 @@ img:hover {
 .card {
     max-width: 550px;
     width: 100%;
-    background: #081136;
-    backdrop-filter: blur(12px);  
+    background: #081136; 
     padding: 30px;
     border-radius: 1.5rem;
     box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.5);
@@ -85,7 +84,7 @@ img:hover {
     padding: 0.6rem 1rem;
     background-color: transparent;
     border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 12px;
+    border-radius: 8px;
     color: white;
     font-size: 1rem;
     margin-bottom: 0.8rem;
