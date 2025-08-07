@@ -8,41 +8,48 @@
 </head>
 <body>
     <style>
-             *{ 
-             margin: 0;
-            padding: 0;
-        }
       body{
             height: 100vh;
             width: 100%;
             flex-direction: column;
             display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #b6a0d7; 
+            justify-content: center; 
+            align-items: center; 
+            background-color:  #091342; 
         }
-          .password-container img{
-            margin-right: -300px;
-            padding-left: 15px;
-            width: 35px;
-            cursor: pointer;
-            transform: translateY(-160%);
+        .password-container img{
+        margin-right: -305px;
+        padding-left: 16px;
+        width: 35px;
+        cursor: pointer;
+        transform: translateY(-16%);
         }
-        .card{
-            background-color: #ebdef0 ;
-            border-radius: 1.5rem;
-        }
+        .card {
+    display: flex;
+    border-radius: 1.5rem;
+    max-width: 550px;
+    background: #081136;
+    box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.5);
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
         .navbar {
-            width: 100%; /* Hace que la barra de navegación ocupe todo el ancho */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #4a045a;
-            padding: 1rem 2rem;
-            position: fixed; /* Fija la barra en la parte superior */
-            top: 0; /* Coloca la barra en la parte superior */
-            left: 0; /* Asegura que se extienda a lo largo de toda la pantalla */
-            z-index: 1000; /* Asegura que la barra esté por encima de otros elementos */
+    display: flex;
+    position: fixed; 
+    top: 0;
+    left: 0; 
+    z-index: 1000; 
+    width: 100%; 
+    justify-content: space-between;
+    align-items: center;
+    background-color: #081136;
+    padding: 1rem 2rem;
+        }
+
+    .navbar .logo {
+    color: white;
+    font-size: 1.9rem;
+    font-weight: bold;
         }
 
         .navbar .logo {

@@ -16,11 +16,11 @@
             background-color:  #091342; 
         }
         
-        .card {
-         display: flex;
-        margin-left: 443px;
-        margin-top: 90px;
-        border-radius: 1.5rem;
+    .card {
+    display: flex;
+    margin-left: 443px;
+    margin-top: 90px;
+    border-radius: 1.5rem;
     max-width: 550px;
     background: #081136;
     box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.5);
@@ -53,40 +53,38 @@
     box-shadow: 0 0 10px #6f42c1 ;
     caret-color: #bbb;
 }
-        .navbar {
-            width: 100%; 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #081136;
-            padding: 1rem 2rem;
+    .navbar {
+    width: 100%; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #081136;
+    padding: 1rem 2rem;
         }
 
-        .navbar .logo {
-            color: white;
-            font-size: 1.9rem;
-            font-weight: bold;
+    .navbar .logo {
+    color: white;
+    font-size: 1.9rem;
+    font-weight: bold;
         }
 
-        .alert {
-            position: relative;
-            padding: 10px 15px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-    
-        }
+    .alert {
+    position: relative;
+    padding: 10px 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    }
 
-        .alert .close-btn {
-            position: absolute;
-            top: 50%;
-            right: -3px; 
-            transform: translateY(-20px); 
-            background: none;
-            border: none;
-            color: red; 
-            font-size: 1.5rem;
-            cursor: pointer;
-        }
+    .alert .close-btn {
+    position: absolute;
+    top: 50%;
+    right: -20px; 
+    transform: translateY(-26px); 
+    background: none;
+    border: none;
+    color: #bbb; 
+    font-size: 1.5rem;
+    }
 
         .alert-success {
             background-color: transparent;
@@ -106,7 +104,33 @@
             font-weight: bold;;
             padding: 0.3rem;
         }
-
+        button {
+            padding: 0.4rem 1.7rem;
+            font-size: 1.1rem;
+            background-color: #070F2E;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        
+        button:hover {
+            background-color:#666565;
+        }
+input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active {
+    -webkit-text-fill-color: #fff ;
+    transition: background-color 9999s ease-in-out 0s ;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset;
+    caret-color: #fff;
+}
+input:-moz-autofill {
+    box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset ;
+    -moz-text-fill-color: #fff;
+    caret-color: #fff;
+}
     </style>
 </head>
 <body>
@@ -147,9 +171,9 @@
                             <label for="email"></label> 
                            <input type="email" name="email" class="form-control" required placeholder="Introduce tu correo">
                            </div> <br>
-                            <input class="btn btn-sm btn-primary" type="submit" value="Enviar enlace de recuperación" style="background-color: #4a045a; border-color: #4a045a;">
+                           <button type="submit"> Enviar enlace de recuperación</button>
                         </form>
-                        <a href="<?= base_url('login') ?>" style="color: #4a045a;">Regresar al inicio de sesión</a>
+                        <a href="<?= base_url('login') ?>" style="color: white;">Regresar al inicio de sesión</a>
                     </div>
                 </div>
             </div>
