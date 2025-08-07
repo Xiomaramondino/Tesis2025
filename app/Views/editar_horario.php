@@ -88,19 +88,37 @@
         
     }
 
-    /* Estilo para el mensaje de error */
     .alert {
-    position: fixed;
-    top: 100px;  /* Ajustado para dar espacio entre navbar y mensaje */
-    left: 50%;
-    transform: translateX(-50%);
-    max-width: 56%;
-    width: 500px;
+    margin-top: 20px;
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 20px;  /* Espacio adicional debajo del mensaje */
+    width: 100%;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+    font-weight: 100;
+    font-size: 1rem;
 }
+
+.alert-danger {
+    background-color: rgba(220, 38, 38, 0.15);
+    border: 1.5px solid rgba(220, 38, 38, 0.6);
+    color: #dc2626;
+}
+
+.alert .close-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 1rem;
+    line-height: 1;
+}
+
 
 </style>
 
