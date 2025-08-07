@@ -102,38 +102,46 @@ img:hover {
     box-shadow: 0 0 10px #6f42c1 ;
     caret-color: #bbb;
 }
-        
 .alert {
     margin-top: 20px;
-    padding: 0.1rem;
-    border-radius: 1rem; /* Coincide con el .card */
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
     text-align: center;
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3); 
-    transition: all 0.3s ease;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+    font-weight: 100;
+    font-size: 1rem;
 }
 
 .alert-success {
-    background-color: transparent; 
-    color: green; 
-    border: 1px solid #a3d9a540; 
+    background-color: rgba(72, 187, 120, 0.15);
+    border: 1.5px solid rgba(72, 187, 120, 0.6);
+    color: #48bb78;
 }
 
 .alert-danger {
-    background-color: transparent; 
-    color: red; 
-    border: 1px solid #bbb; 
+    background-color: rgba(220, 38, 38, 0.15);
+    border: 1.5px solid rgba(220, 38, 38, 0.6);
+    color: #dc2626;
 }
 
+.alert-info {
+    background-color: rgba(59, 130, 246, 0.15);
+    border: 1.5px solid rgba(59, 130, 246, 0.6);
+    color: #3b82f6;
+}
 .alert .close-btn {
     background: none;
     border: none;
+    color: inherit;
+    font-size: 1.2rem;
     cursor: pointer;
-    padding: 10px;
-    margin-left: 2rem;
+    padding: 0;
+    margin-left: 1rem;
+    line-height: 1;
 }
     .footer {
             text-align: center;
