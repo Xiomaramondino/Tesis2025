@@ -5,136 +5,112 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Elegí un colegio</title>
 <style>
-    body {
-        padding-top: 5px; /* espacio para navbar fija */
-        min-height: 100vh;
-        height: 100vh;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-color: #b6a0d7;
-        font-family: Arial, sans-serif;
-        margin: 0;
-    }
+body {
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding-top: 70px; 
+    background-color: #091342;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
-    h2 {
-        color: #4a045a;
-        margin-bottom: 20px;
-    }
+.navbar {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #081136;
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+}
 
-    form.seleccion {
-        width: 80%;
-        max-width: 900px;
-        background: white;
-        border-radius: 1.5rem;
-        padding: 20px;
-        box-shadow: 0 0 15px rgba(0,0,0,0.2);
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        
-    }
-    button {
-        background-color: #4a045a;
-        border: none;
-        color: white;
-        padding: 8px 16px;
-        font-size: 1rem;
-        border-radius: 4px;
-        cursor: pointer;
-        transition: background-color 0.3s ease;
-    }
+.navbar .logo {
+    color: white;
+    font-size: 1.9rem;
+    font-weight: bold;
+}
 
-    button:hover {
-        background-color: #6a0c85;
-    }
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        
-    }
+.volver-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+    padding: 0.3rem 0.8rem;
+}
 
-    th, td {
-        padding: 12px 15px;
-        text-align: left;
-        border-bottom: 1px solid #ddd;
-    }
+.volver-btn:hover {
+    color: #d4b8e0;
+}
+form.seleccion {
+    width: 90%;
+    max-width: 950px;
+    background: #081136;
+    border-radius: 1.5rem;
+    padding: 30px;
+    box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+h2 {
+    color: white;
+}
 
-    th {
-        background-color: #4a045a;
-        color: white;
-    }
+button {
+    padding: 0.6rem 1.5rem;
+    font-size: 1rem;
+    background-color: #070F2E;
+    border: none;
+    color: white;
+    border-radius: 5px;
+}
 
-    tr:hover {
-        background-color: #f2e9f7;
-    }
+button:hover {
+    background-color: #666565;
+}
 
-    /* Navbar fija arriba */
-    .navbar {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #4a045a;
-        padding: 1rem 2rem;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 1000;
-        box-sizing: border-box;
-    }
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+    color: white;
+}
 
-    .navbar .logo {
-        color: white;
-        font-size: 1.8rem;
-        font-weight: bold;
-        display: flex;
-    }
+th, td {
+    padding: 8px 8px;
+    text-align: left;
+}
 
-    .navbar-buttons {
-        display: flex;
-        flex-direction: column;
-    }
+th {
+    background-color: #070F2E;
+    color: #ffffff;
+    font-weight: bold;
+}
 
-    .navbar-buttons form {
-        margin: 0;
-        padding: 0;
-        background: none;
-        border: none;
-    }
+tr:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
 
-    .volver-btn {
-        background: transparent !important;
-        border: none !important;
-        color: white;
-        padding: 0;
-        font-size: 1rem;
-        cursor: pointer;
-        text-decoration: none;
-        font-family: inherit;
-        box-shadow: none;
-        outline: none;
-    }
-
-    .volver-btn:hover,
-    .volver-btn:focus,
-    .volver-btn:active {
-        background: transparent !important;
-        color: #d4b8e0;
-        text-decoration: none;
-        outline: none;
-        box-shadow: none;
-    }
-
-
+.footer {
+            text-align: center;
+            background-color: #081136;
+            font-weight: bold;
+            color: white;
+            margin-top: 4rem;
+            width: 100%;
+        }
 </style>
 </head>
 <body>
 
 <nav class="navbar">
-    <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
+    <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" width="60px" alt="Logo">
     <div class="logo">RingMind</div>
     <div class="navbar-buttons">
         <form action="<?= base_url('/login'); ?>" method="get">
@@ -169,7 +145,10 @@
         </tbody>
     </table>
 </form>
-
-
+<footer class="footer">
+        <center><p>Tesis timbre automático 2025 <br>
+            Marquez Juan - Mondino Xiomara
+        </p></center>
+    </footer>
 </body>
 </html>
