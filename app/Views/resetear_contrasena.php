@@ -17,23 +17,26 @@
             align-items: center; 
             background-color:  #091342; 
         }
-        .password-container img{
-        margin-right: -305px;
-        padding-left: 16px;
-        width: 35px;
-        cursor: pointer;
-        transform: translateY(-16%);
+        .password-container img {
+            margin-right: -440px;
+            padding-left: 16px;
+            width: 35px;
+            transform: translateY(-242%);
         }
-        .card {
+        #eyeicon {
+    filter: invert(1) brightness(2);
+    transition: filter 0.3s ease;
+}
+    .card {
     display: flex;
     border-radius: 1.5rem;
-    max-width: 550px;
+    max-width:550px;
     background: #081136;
     box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.5);
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.05);
 }
-        .navbar {
+    .navbar {
     display: flex;
     position: fixed; 
     top: 0;
@@ -46,37 +49,69 @@
     padding: 1rem 2rem;
         }
 
-    .navbar .logo {
-    color: white;
-    font-size: 1.9rem;
-    font-weight: bold;
-        }
-
-        .navbar .logo {
+.navbar .logo {
             color: white;
             font-size: 1.8rem;
             font-weight: bold;
             display: flex;
-        }
-        .footer {
+}
+.footer {
             text-align: center;
-            padding: 0.7rem;
-            background-color: #4a045a;
-            font-weight: bold;
             color: white;
-            margin-top: 2.5rem;
-            position: fixed; /* Fija el footer en la parte inferior */
-            bottom: 0; /* Colócalo en la parte inferior de la pantalla */
-            left: 0; /* Asegúrate de que se extienda a lo largo de la pantalla */
+            position: fixed; 
+            bottom: 0;
+            left: 0; 
             width: 100%;
-            z-index: 1000; /* Opcional, asegura que esté encima de otros elementos */
+            background-color: #081136;
+            font-weight: bold;
+            margin-top: 4.6rem;
+            padding: 0.3rem;
+}
+button {
+    padding: 0.4rem 1.7rem;
+    font-size: 1.1rem;
+    background-color: #070F2E;
+    border: none;
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+        button:hover {
+            background-color:#666565;
         }
+        .form-control {
+    width: 120%; 
+    padding: 0.6rem 1rem;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 0.8rem;
+    transition: all 0.3s ease;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.form-control::placeholder {
+    color: #bbb;
+}
+
+.form-control:focus {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #bbb ;
+    border: 1px solid #6f42c1 ;
+    box-shadow: 0 0 10px #6f42c1 ;
+    caret-color: #bbb;
+}
+        
     </style>
      <nav class="navbar">
-        <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
+        <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" width="60px" alt="Logo">
        <center> <div class="logo" style="padding-right: 590px;">RingMind</div></center>
     </nav>
-     <div class="card" style="width: 30rem;">
+     <div class="card" style="width: 40rem;">
   <div class="card-body">
     <div class="container text-center">
         <div class="row justify-content-md-center">
@@ -92,23 +127,20 @@
 
                     <div class="mb-3">
                     <div class="mb-3">
-    <label for="usuario" class="form-label">Tu usuario</label>
     <input type="text" class="form-control" id="usuario" value="<?= esc($usuario) ?>" readonly>
 </div>
 
 <div class="mb-3">
-    <label for="email" class="form-label">Tu email</label>
     <input type="text" class="form-control" id="email" value="<?= esc($email) ?>" readonly>
 </div>
+    <div class="password-container">
+    <input type="password" name="nueva_contrasenia" id="password" class="form-control" required placeholder="Introduce tu nueva contraseña">
+    <img src="https://static.thenounproject.com/png/1035969-200.png" id="eyeicon">
+    <div>
+  <button type="submit">Restablecer contraseña</button> </div>
 
-
-                    <label for="nueva_contrasenia"></label>
-                    <div class="password-container">
-                    <input type="password" name="nueva_contrasenia" id="password" class="form-control" required placeholder="Introduce tu nueva contraseña">
-                    <img src="https://static.thenounproject.com/png/1035969-200.png" id="eyeicon">
-                   <div> <input class="btn btn-sm" style="background-color: #540466; color: white;" type="submit" value="Restablecer contraseña"></div>
                 </form>
-                <a href="<?= base_url('login') ?>" style="color: #4a045a;">Regresar al inicio de sesión</a>
+                <a href="<?= base_url('login') ?>" style="color: white;">Regresar al inicio de sesión</a>
             </div>
         </div></div>
         </div></div></div>

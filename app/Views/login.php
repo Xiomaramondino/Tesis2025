@@ -43,7 +43,6 @@ img:hover {
     }
 .card {
     max-width: 550px;
-    width: 100%;
     background: #081136; 
     padding: 30px;
     border-radius: 1.5rem;
@@ -56,7 +55,6 @@ img:hover {
             margin-right: -380px;
             padding-left: 15px;
             width: 35px;
-            cursor: pointer;
             transform: translateY(-242%);
         }
         button {
@@ -65,7 +63,6 @@ img:hover {
             background-color: #070F2E;
             border: none;
             color: white;
-            cursor: pointer;
             border-radius: 5px;
         }
         
