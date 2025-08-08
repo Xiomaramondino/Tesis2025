@@ -8,35 +8,37 @@
 </head>
 <body>
 <style>
-    * { 
-        margin: 0;
-        padding: 0;
-    }
     body {
         height: 100vh;
         width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: #b6a0d7;
+        background-color:  #091342; 
     }
     .card {
-        background-color: #ebdef0;
+        background: #081136; 
         border-radius: 1.5rem;
-        margin-top: 30px;  /* Añadido margen superior */
+        margin-top: 30px;  
+        box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.5);
+        color: white;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        position: relative;
     }
+
     .navbar {
         width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color: #4a045a;
+        background-color: #081136;
         padding: 1rem 2rem;
         position: fixed;
         top: 0;
         left: 0;
         z-index: 9999;
     }
+
     .navbar .logo {
         color: white;
         font-size: 1.8rem;
@@ -47,6 +49,19 @@
         display: flex;
         flex-direction: column;
         gap: 0.5rem;
+    }
+
+    button {
+            padding: 0.4rem 1.7rem;
+            font-size: 1.1rem;
+            background-color: #070F2E;
+            border: none;
+            color: white;
+            border-radius: 5px;
+        }
+        
+    button:hover {
+        background-color:#666565;
     }
 
     .volver-btn {
@@ -69,7 +84,7 @@
     }
 
     .container {
-        padding-top: 80px;
+        padding-top: 45px;
     }
 
     .footer {
@@ -77,35 +92,58 @@
         bottom: 0;
         width: 100%;
         text-align: center;
-        padding: 0.8rem;
-        background-color: #4a045a;
+        padding: 0.3rem;
+        background-color: #081136;
         font-weight: bold;
         color: white;
     }
-
+    
     .card-body {
-        margin-top: -50px;
+        margin-top: -45px;
         
     }
+    .form-control {
+    width: 100%; 
+    padding: 0.6rem 1rem;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    color: white;
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+    transition: all 0.3s ease;
+    margin: 0 auto;
+}
 
-    .alert {
+.form-control::placeholder {
+    color: #bbb;
+}
+
+.form-control:focus {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #bbb ;
+    border: 1px solid #6f42c1 ;
+    box-shadow: 0 0 10px #6f42c1 ;
+    caret-color: #bbb;
+}
+.alert {
     margin-top: 20px;
     padding: 0.75rem 1rem;
     border-radius: 1rem;
-    text-align: center;
+    /* text-align: center;  <-- quitar */
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 100%;
     box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
     font-weight: 100;
+    /* position: absolute;  <-- eliminar o verificar contexto */
     font-size: 1rem;
 }
 
-.alert-danger {
-    background-color: rgba(220, 38, 38, 0.15);
-    border: 1.5px solid rgba(220, 38, 38, 0.6);
-    color: #dc2626;
+.alert > span {
+    flex-grow: 1; /* hace que el texto tome todo el espacio disponible */
+    text-align: left; /* asegura que el texto esté alineado a la izquierda */
 }
 
 .alert .close-btn {
@@ -115,16 +153,42 @@
     font-size: 1.2rem;
     cursor: pointer;
     padding: 0;
-    margin-left: 1rem;
+    margin-left: 20px;
     line-height: 1;
 }
 
 
+.alert-danger {
+    background-color: rgba(220, 38, 38, 0.15);
+    border: 1.5px solid rgba(220, 38, 38, 0.6);
+    color: #dc2626;
+}
+
+
+label {
+    text-align: left;
+    display: block;
+    margin-left: -30px;
+}
+input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active {
+    -webkit-text-fill-color: #fff ;
+    transition: background-color 9999s ease-in-out 0s ;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset;
+    caret-color: #fff;
+}
+input:-moz-autofill {
+    box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset ;
+    -moz-text-fill-color: #fff;
+    caret-color: #fff;
+}
 </style>
 
 <!-- Barra de navegación -->
 <nav class="navbar sticky-top">
-    <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
+    <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" width="60px" alt="Logo">
     <div class="logo" style="padding-right: -600px;">RingMind</div>
 
     <div class="navbar-buttons">
@@ -133,19 +197,16 @@
         </form>
     </div>
 </nav>
+<div class="card" style="width: 30rem;">
 
-<!-- Flash data de errores -->
-<!-- Flash data de error -->
 <?php if (session()->get('error')): ?>
     <div class="alert alert-danger" role="alert">
-        <?= session()->get('error'); ?>
-        
+        <span><?= session()->get('error'); ?></span>
+        <button type="button" class="close-btn" onclick="this.parentElement.style.display='none';">&times;</button>
     </div>
 <?php endif; ?>
 
-<!-- Contenido principal -->
-<div class="card" style="width: 30rem;">
-    <div class="card-body">
+<div class="card-body">
         <div class="container text-center">
             <div class="row justify-content-md-center">
                 <div class="col-md-10">
@@ -170,7 +231,7 @@
 </select>
 <br>
 
-                        <button class="btn btn-sm" style="background-color: #540466; color:white;" type="submit">Actualizar</button>
+                        <button type="submit">Actualizar</button>
                     </form>
                 </div>
             </div>
