@@ -47,11 +47,6 @@ RUN chmod -R 775 writable/ && \
     chmod -R 775 public/uploads && \
     chown -R www-data:www-data public/uploads
 
-# Configuración de Nginx
-COPY ./docker/nginx.conf /etc/nginx/nginx.conf
-COPY ./docker/supervisord.conf /etc/supervisord.conf
-COPY ./docker/nginx_site.conf /etc/nginx/conf.d/default.conf
-
 # Expone el puerto 80 para el servidor web
 EXPOSE 80
 
