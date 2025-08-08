@@ -1,168 +1,208 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestión de timbres</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-</head>
-<body>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gestión de timbres - Horarios</title>
 <style>
-    body {
-        padding-top: 80px; /* Ajuste el padding superior para dar espacio a la navbar sticky */
-        min-height: 100vh; /* Asegura que el cuerpo ocupe al menos toda la pantalla */
-        height: 100vh;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-size: cover;
-        background-position: center;
-        background-color: #b6a0d7;
-    }
-
-    /* Barra de navegación sticky */
-    .navbar {
-        width: 100%; /* Hace que la barra de navegación ocupe todo el ancho */
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color:#4a045a;
-        padding: 1rem 2rem;
-        margin-bottom: 0; /* Elimina el margen para que se quede pegada arriba */
-        position: fixed;
-        z-index: 1000; /* Asegura que esté por encima del contenido */
-    }
-
-    .navbar .logo {
-        color: white;
-        font-size: 1.8rem;
-        font-weight: bold;
-        display: flex;
-    }
-
-    .navbar-buttons {
+  body {
+    margin: 0;
+    padding-top: 70px;
+    background-color: #091342;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #e0e0e0;
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-}
+    align-items: center;
+    min-height: 100vh;
+  }
 
-/* Estilo común para el botón "Volver" plano */
-.volver-btn {
-    background-color: transparent;
+  /* Navbar */
+  .navbar {
+    width: 100%;
+    background-color: #081136;
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    z-index: 1000;
+  }
+  .navbar .logo {
     color: white;
+    font-size: 1.9rem;
+    font-weight: bold;
+  }
+  .volver-btn {
+    background: transparent;
     border: none;
-    padding: 0.3rem 0.8rem;
+    color: white;
     font-size: 1rem;
-    text-align: left;
     cursor: pointer;
     text-decoration: none;
-}
+    padding: 0.3rem 0.8rem;
+    transition: color 0.3s ease;
+  }
+  .volver-btn:hover {
+    color: #d4b8e0;
+  }
 
-/* Sin efectos visuales */
-.volver-btn:hover,
-.volver-btn:active,
-.volver-btn:focus {
-    background-color: transparent;
-    color: white; 
-    outline: none;
-}
-    
-    /* Estilos para la card */
-    .card-container {
-        width: 80%; /* Ajusta el tamaño de la tarjeta */
-        max-width: 900px; /* Limita el ancho máximo */
-        flex-grow: 1; /* Permite que el contenido crezca y empuje al footer */
-        margin-top: 100px; /* Espacio entre la navbar y la tarjeta */
-        flex-direction: column;
-        justify-content: flex-start; /* Asegura que el contenido se expanda desde arriba */
-        padding-bottom: 60px; /* Espacio entre la tabla y el footer */
-    }
+  .card {
+    background: #081136;
+    border-radius: 1.5rem;
+    padding: 2rem 2.5rem;
+    max-width: 700px;
+    margin: 2rem auto 4rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    width: 90%;
+  }
 
-    .footer {
-        text-align: center;
-        padding: 0.5rem;
-        background-color: #4a045a;
-        font-weight: bold;
-        color: white;
-        width: 100%;
-        position: relative;
-        bottom: 0;
-    }
+  .card-title {
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: white;
+ 
+  }
+
+  .horarios-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .horario-card {
+    background: #070f2e;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(163, 143, 193, 0.25);
+    padding: 1.2rem 1.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: white;
+  }
+  .horario-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(163, 143, 193, 0.6);
+  }
+
+  .horario-info p {
+    margin: 0.15rem 0;
+    font-size: 1.05rem;
+    line-height: 1.3;
+  }
+
+  .horario-actions a {
+    margin-left: 1rem;
+    padding: 0.4rem 1rem;
+    border-radius: 0.6rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    user-select: none;
+    text-decoration: none;
+    color: #f0eaff;
+    transition: background-color 0.25s ease;
+  }
+
+  .btn-edit {
+    background-color: #7158e2;
+  }
+  .btn-edit:hover {
+    background-color: #5534b8;
+  }
+
+  .btn-delete {
+    background-color: #e24363;
+  }
+  .btn-delete:hover {
+    background-color: #a7283f;
+  }
+  .btn-add {
+    margin-top: 2.5rem;
+    background-color: #070f2e;
+    color: white;
+    border: none;
+    border-radius: 1rem;
+    padding: 0.9rem 1.8rem;
+    font-size: 1.2rem;
+    font-weight: 500;
+    width: 100%;
+    max-width: 350px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .btn-add:hover {
+    background-color: #666565;
+  }
+
+
+  .footer {
+    text-align: center;
+    background-color: #081136;
+    font-weight: bold;
+    color: white;
+    padding: 0.8rem;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    margin-top: auto;
+    font-size: 0.95rem;
+  }
+
 </style>
+</head>
+<body>
 
-<!-- Barra de navegación sticky -->
 <nav class="navbar sticky-top">
-<img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
-    <div class="logo" style="padding-right: -600px;">RingMind</div>
+  <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" width="60px" alt="Logo">
+  <div class="logo">RingMind</div>
 
-    <div class="navbar-buttons">
-        <form action="<?= base_url('/gestionar_usuarios'); ?>" method="get">
-            <button type="submit" class="btn btn-sm volver-btn">Volver</button>
-        </form>
-    </div>
+  <form action="<?= base_url('/gestionar_usuarios'); ?>" method="get">
+    <button type="submit" class="volver-btn">Volver</button>
+  </form>
 </nav>
 
-<!-- Contenido principal con card -->
-<div class="container card-container">
-    <div class="card"  style=" border-radius: 1.5rem;">
-        <div class="card-body">
-            <h1 class="card-title text-center">Horarios</h1>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Evento</th>
-                        <th>Hora</th>
-                        <th>Dia</th>
-                        <th>Acciones</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php foreach ($data as $row) { ?>
-                    <tr>
-                    <td><?= htmlspecialchars($row['evento']) ?></td>
-                    <td><?= htmlspecialchars($row['hora']) ?></td>
-                    <td>
-    <?php
-        $dias = [
-            1 => 'Lunes',
-            2 => 'Martes',
-            3 => 'Miércoles',
-            4 => 'Jueves',
-            5 => 'Viernes',
-            6 => 'Sábado',
-            7 => 'Domingo'
-        ];
-        echo $dias[$row['iddia']] ?? 'Desconocido';
-    ?>
-</td>
+<div class="card" role="main" aria-label="Lista de horarios de timbre">
+  <h1 class="card-title">Horarios</h1>
 
-                        <td>
-                        <a href="<?= base_url('horarios/delete/' . $row['idhorario']) ?>" onclick="return confirm('¿Estás seguro de eliminar este horario?')">Eliminar</a>
-
-                        <a href="<?= base_url('horarios/editar/' . $row['idhorario']) ?>">Modificar</a>
-
-
-                        </td>
-                    </tr>
-                    <?php } ?>
-                </tbody>
-            </table>
-            <!-- Botón de agregar -->
-            <button class="btn btn-sm" style="background-color: #540466; color: white;" onclick="window.location.href='<?= base_url('horarios/agregar') ?>'">Agregar horario</button>
-
+  <div class="horarios-list">
+    <?php 
+      $dias = [
+          1 => 'Lunes',
+          2 => 'Martes',
+          3 => 'Miércoles',
+          4 => 'Jueves',
+          5 => 'Viernes',
+          6 => 'Sábado',
+          7 => 'Domingo'
+      ];
+      foreach ($data as $row) { ?>
+        <div class="horario-card">
+          <div class="horario-info">
+            <p><strong>Evento:</strong> <?= htmlspecialchars($row['evento']) ?></p>
+            <p><strong>Hora:</strong> <?= htmlspecialchars($row['hora']) ?></p>
+            <p><strong>Día:</strong> <?= $dias[$row['iddia']] ?? 'Desconocido' ?></p>
+          </div>
+          <div class="horario-actions">
+            <a href="<?= base_url('horarios/editar/' . $row['idhorario']) ?>" class="btn-edit" aria-label="Modificar horario <?= htmlspecialchars($row['evento']) ?>">Modificar</a>
+            <a href="<?= base_url('horarios/delete/' . $row['idhorario']) ?>" class="btn-delete" onclick="return confirm('¿Estás seguro de eliminar este horario?')" aria-label="Eliminar horario <?= htmlspecialchars($row['evento']) ?>">Eliminar</a>
+          </div>
         </div>
-    </div>
+    <?php } ?>
+  </div>
+
+  <button class="btn-add" onclick="window.location.href='<?= base_url('horarios/agregar') ?>'">Agregar horario</button>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-
-<!-- Pie de página -->
 <footer class="footer">
-    <p>Tesis timbre automático 2025 <br>
-        Marquez Juan - Mondino Xiomara
-    </p>
+  <p>Tesis timbre automático 2025 <br> Marquez Juan - Mondino Xiomara</p>
 </footer>
 
 </body>
