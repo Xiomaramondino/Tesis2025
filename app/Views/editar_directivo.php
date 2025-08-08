@@ -7,30 +7,52 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         body {
-            background-color: #c7a7da;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+        font-family: 'Arial', sans-serif;
+        line-height: 1.6;
+        background-color: #091342;
+        min-height: 100vh;
+    }
 
         .form-card {
-            background-color: #f2dff6;
+            background: #081136; 
             border-radius: 1.5rem;
             padding: 30px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.5); 
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color:white;
         }
 
         .form-card h3 {
             text-align: center;
             font-weight: bold;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
+        }
+        .form-control {
+            padding: 0.6rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: transparent;
+            color: white;
+            margin-bottom: 0.8rem;    
         }
 
-        .form-control,
-        .form-select {
-            border-radius: 10px;
+        .form-control::placeholder {
+            color: #bbb;
+        }
+        .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.08);
+            color: #bbb;
+            border: 1px solid #6f42c1;
+            box-shadow: 0 0 10px #6f42c1;
+            caret-color: #bbb;
         }
 
         .btn-form {
-            background-color: #4a045a;
+            background-color: #070f2e;
             color: white;
             border: none;
             padding: 10px;
@@ -38,50 +60,45 @@
         }
 
         .btn-form:hover {
-            background-color: #3d003d;
+            background-color: #666565;
         }
 
         .btn-ancho-custom {
             width: 100%;
-            max-width: 100%;
+            max-width: 40%;
             border-radius: 13px;
+            display: block;     
+            margin: 0 auto;  
         }
-
         .navbar {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #4a045a;
-            padding: 1rem 2rem;
-            position: fixed;
-            top: 0;
-            left: 0;
-            z-index: 9999;
-        }
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #081136;
+        padding: 1rem 2rem;
+    }
+    
+    .navbar .logo {
+        color: white;
+        font-size: 1.8rem;
+        font-weight: bold;
+        display: flex;
+    }
 
-        .navbar .logo {
-            color: white;
-            font-size: 1.8rem;
-            font-weight: bold;
-        }
-
-        .navbar-buttons {
+    .navbar-buttons {
             display: flex;
             flex-direction: column;
-            gap: 0.5rem;
-        }
+            gap: 0.10rem;
+     }
 
-        .volver-btn {
-            background-color: transparent;
-            color: white;
-            border: none;
-            padding: 0.3rem 0.8rem;
-            font-size: 1rem;
-            text-align: left;
-            cursor: pointer;
-            text-decoration: none;
-        }
+    .volver-btn {
+        background-color: transparent;
+        color: white;
+        border: none;
+        padding: 0.3rem 0.8rem;
+        font-size: 1rem;
+        text-align: left;
+     }
 
         .volver-btn:hover,
         .volver-btn:active,
@@ -93,18 +110,17 @@
 
         .footer {
             text-align: center;
-            padding: 0.4rem;
-            background-color: #4a045a;
+            padding: 0.1rem;
+            background-color: #081136;
             font-weight: bold;
             color: white;
-            position: relative;
-            bottom: 0;
-            width: 100%;
+            margin-top: 3rem;
         }
+
     </style>
 
     <nav class="navbar">
-        <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
+        <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" width="60px" alt="Logo">
         <div class="logo">RingMind</div>
         <div class="navbar-buttons">
             <form action="<?= base_url('/vista_admin'); ?>" method="get">

@@ -20,7 +20,6 @@
     body {
         font-family: 'Arial', sans-serif;
         line-height: 1.6;
-        color: #333;
         background-color: #091342;
     }
 
@@ -97,11 +96,12 @@
     .card {
         padding: 2rem;
         border-radius: 1.5rem;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         width: 30%;
         background-color: transparent;
         transition: transform 0.3s ease;
         text-align: center;
+        border: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .card h3 {
