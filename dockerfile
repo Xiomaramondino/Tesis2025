@@ -2,7 +2,8 @@
 FROM php:8.2-fpm-alpine
 
 # Instala extensiones de PHP comunes y herramientas necesarias
-# Se incluye 'php82-intl' que fue la extensión que generó el error en la compilación anterior
+# Se incluye 'php82-intl' para la extensión 'intl' requerida por composer.json
+# y 'supervisor' para gestionar Nginx y PHP-FPM
 RUN apk add --no-cache \
     nginx \
     php82-bcmath \
@@ -46,8 +47,11 @@ RUN chmod -R 775 writable/ && \
     chown -R www-data:www-data public/uploads \
     ;
 
-# Configuración de Nginx y PHP-FPM
+# --- Configuración de Nginx y PHP-FPM ---
+# Elimina la configuración predeterminada de Nginx
 RUN rm /etc/nginx/conf.d/default.conf
+
+# Copia los archivos de configuración personalizados
 COPY docker/nginx/nginx.conf /etc/nginx/conf.d/default.conf
 COPY docker/php-fpm/www.conf /etc/php82/php-fpm.d/www.conf
 COPY docker/supervisor/supervisord.conf /etc/supervisord.conf
