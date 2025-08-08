@@ -2,7 +2,9 @@
 FROM php:8.2-fpm-alpine
 
 # Instala extensiones de PHP comunes y herramientas necesarias
+# Se incluye 'php82-intl' que fue la extensión que generó el error en la compilación anterior
 RUN apk add --no-cache \
+    nginx \
     php82-bcmath \
     php82-mbstring \
     php82-pdo_mysql \
@@ -18,6 +20,7 @@ RUN apk add --no-cache \
     php82-opcache \
     php82-zip \
     php82-intl \
+    supervisor \
     curl \
     unzip \
     git \
@@ -43,8 +46,14 @@ RUN chmod -R 775 writable/ && \
     chown -R www-data:www-data public/uploads \
     ;
 
-# Expone el puerto 8080, que es el puerto predeterminado del servidor de desarrollo de CodeIgniter
-EXPOSE 8080
+# Configuración de Nginx y PHP-FPM
+RUN rm /etc/nginx/conf.d/default.conf
+COPY docker/nginx/nginx.conf /etc/nginx/conf.d/default.conf
+COPY docker/php-fpm/www.conf /etc/php82/php-fpm.d/www.conf
+COPY docker/supervisor/supervisord.conf /etc/supervisord.conf
 
-# Comando para iniciar el servidor de desarrollo de CodeIgniter
-CMD ["php", "spark", "serve", "--host=0.0.0.0", "--port=8080"]
+# Expone el puerto 80
+EXPOSE 80
+
+# Comando para iniciar Supervisor
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
