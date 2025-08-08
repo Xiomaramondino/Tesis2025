@@ -1,34 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Registrar Dispositivo</title>
-    <link rel="icon" href="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" type="image/png">
+    <link rel="icon" href="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" type="image/png" />
 
     <style>
         body {
-            background-color: #c6a9dc;
             margin: 0;
             font-family: sans-serif;
             line-height: 1.6;
-            color: #333;
+            background-color: #091342;
+            padding-top: 100px;
         }
 
-        /* Navbar */
         .navbar {
-            width: 97%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color: #4a045a;
-            padding: 1rem 2rem;
-            position: fixed;
             top: 0;
             z-index: 1000;
             box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            width: 97%;
+            background-color: #081136;
+            padding: 1rem 2rem;
+            position: fixed;
         }
-
         .navbar .logo {
             color: white;
             font-size: 1.8rem;
@@ -48,162 +46,138 @@
             background-color: transparent;
             color: white;
             border: none;
-            padding: 0.5rem 1rem;
+            padding: 0.3rem 1.7rem;
             font-size: 1rem;
             text-align: left;
             cursor: pointer;
             text-decoration: none;
-            transition: background-color 0.3s ease;
-            border-radius: 5px;
         }
-
         .volver-btn:hover,
         .volver-btn:active,
         .volver-btn:focus {
-            background-color: rgba(255, 255, 255, 0.1);
-            color: white;
+            background-color: transparent;
+            color: white; 
             outline: none;
         }
 
-        /* Contenedor principal */
         .container {
-            max-width: 900px; /* Aumentado para mejor visualización de la tabla */
-            margin: 120px auto 40px auto; /* Espacio para la navbar y el footer */
+            max-width: 900px; 
+            margin: 40px auto 40px auto; 
             padding: 20px;
         }
 
         .card {
-            background-color: #ebdef0;
+            background: #081136;
             padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.15); /* Sombra más pronunciada */
-            margin-bottom: 30px; /* Espacio entre tarjetas */
             border-radius: 1.5rem;
+            box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.5);
+            margin-bottom: 50px;
         }
-
         .card h2 {
             text-align: center;
-            margin-bottom: 1.5rem;
-            color: #4a045a; /* Color del texto de los títulos */
-            font-size: 1.8rem;
-        }
-
-        .form-group {
             margin-bottom: 1rem;
+            color: white; 
+            font-size: 1.8rem;
         }
 
         .form-group label {
             display: block;
             margin-bottom: 0.5rem;
-            color: #333;
-            font-weight: 600; /* Un poco más de peso a las etiquetas */
+            color: white;
+            font-weight: 600; 
         }
 
         .form-control {
-            width: calc(100% - 20px); /* Ajuste para el padding */
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            box-sizing: border-box; /* Incluye padding y border en el ancho */
+            width: calc(100% - 20px);
+            padding: 0.6rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            box-sizing: border-box;
             font-size: 1rem;
-            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.3s ease;
+            background-color: transparent;
+            color: white;
+            margin-bottom: 0.8rem;    
         }
 
+        .form-control::placeholder {
+            color: #bbb;
+        }
         .form-control:focus {
-            border-color: #540466;
-            box-shadow: 0 0 0 3px rgba(84, 4, 102, 0.2);
-            outline: none;
+            background-color: rgba(255, 255, 255, 0.08);
+            color: #bbb;
+            border: 1px solid #6f42c1;
+            box-shadow: 0 0 10px #6f42c1;
+            caret-color: #bbb;
         }
 
         button {
-            padding: 12px 25px;
+            padding: 12px 30px;
             font-size: 1.1rem;
-            background-color: #540466;
+            background-color:#070f2e;
             border: none;
-            color: white;
+            color:white;
             cursor: pointer;
             border-radius: 5px;
-            width: 100%;
+            width: 40%;
             transition: background-color 0.3s ease, transform 0.2s ease;
-            margin-top: 15px; /* Espacio superior para el botón */
+            margin-top: 15px;
+            margin: 13px auto 0 auto; 
+            display: block;
         }
 
         button:hover {
-            background-color: #33023e; /* Tono más oscuro al pasar el mouse */
-            transform: translateY(-2px); /* Ligero efecto de elevación */
+            background-color:#666565; 
         }
 
         .alert {
-            margin-top: 20px;
-            text-align: center;
-            padding: 10px 15px;
-            border-radius: 5px;
-            font-weight: 500;
-            animation: fadeIn 0.5s ease-out; /* Animación para alertas */
-        }
-
-        .alert-success {
-            background-color: #d4edda;
-            color: #155724;
-            border: 1px solid #c3e6cb;
-        }
-
-        .alert-danger {
-            background-color: #f8d7da;
-            color: #721c24;
-            border: 1px solid #f5c6cb;
-        }
-
-        /* Tabla */
-        .table {
+    margin: 20px auto 0 auto; 
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    width: 60%;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+    font-size: 1rem;
+  
+}
+.alert-success {
+    background-color: rgba(72, 187, 120, 0.15);
+    border: 1.5px solid rgba(72, 187, 120, 0.6);
+    color: #48bb78;
+}
+.alert-danger {
+    background-color: rgba(220, 38, 38, 0.15);
+    border: 1.5px solid rgba(220, 38, 38, 0.6);
+    color: #dc2626;
+}
+        table {
             width: 100%;
-            border-collapse: collapse; /* Elimina el espacio entre celdas */
-            margin-top: 20px;
-            background-color: #fff; /* Fondo blanco para las tablas */
-            border-radius: 8px;
-            overflow: hidden; /* Asegura que las esquinas redondeadas se apliquen a todo */
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-
-        .table thead {
-            background-color: #4a045a; /* Color de cabecera de la tabla */
+            border-collapse: collapse;
+            margin-top: 10px;
             color: white;
         }
 
-        .table th,
-        .table td {
-            padding: 12px 15px;
+        th, td {
+            padding: 8px 8px;
             text-align: left;
-            border-bottom: 1px solid #e0e0e0; /* Límite sutil entre filas */
         }
 
-        .table th {
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            letter-spacing: 0.5px;
+        th {
+            background-color: #070F2E;
+            color: #ffffff;
+            font-weight: bold;
         }
 
-        .table tbody tr:nth-child(even) {
-            background-color: #f9f9f9; /* Rayas para facilitar la lectura */
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.05);
         }
 
-        .table tbody tr:hover {
-            background-color: #f0e6f3; /* Efecto hover en las filas */
-            transition: background-color 0.3s ease;
-        }
-
-        .table td:last-child {
-            text-align: center; /* Centra el botón de acción */
-        }
-
-        /* Botones de acción en la tabla */
         .btn-sm {
             padding: 6px 12px;
             font-size: 0.85rem;
             border-radius: 4px;
             text-decoration: none;
-            display: inline-block; /* Para que el margin funcione correctamente */
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
@@ -219,39 +193,35 @@
             transform: translateY(-1px);
         }
 
-        .text-center {
-            text-align: center;
-            font-style: italic;
-            color: #666;
-        }
-
-        /* Separador */
-        .my-5 {
-            margin-top: 50px;
-            margin-bottom: 50px;
-            border: 0;
-            border-top: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        /* Footer */
         .footer {
-            margin-top: 50px;
             text-align: center;
             padding: 0.1rem;
-            background-color: #4a045a;
+            background-color: #081136;
             font-weight: bold;
             color: white;
-           
+            margin-top: 3rem;
         }
-
+        input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active {
+    -webkit-text-fill-color: #fff ;
+    transition: background-color 9999s ease-in-out 0s ;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset;
+    caret-color: #fff;
+}
+input:-moz-autofill {
+    box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset ;
+    -moz-text-fill-color: #fff;
+    caret-color: #fff;
+}
     </style>
 </head>
 <body>
 
-
 <nav class="navbar sticky-top">
     <div class="logo">
-        <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="50px" alt="Logo" style="padding-right: 510px;"> RingMind
+        <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" width="50px" alt="Logo" style="padding-right: 510px;"> RingMind
     </div>
     <div class="navbar-buttons">
         <form action="<?= base_url('/vista_admin'); ?>" method="get">
@@ -282,9 +252,7 @@
         </form>
     </div>
 
-    <hr class="my-5">
-
-    <div class="card mt-4"  style=" border-radius: 1.5rem;">
+    <div class="card mt-4" >
         <div class="card-header" >
             <h2>Mis Dispositivos</h2>
         </div>
