@@ -1,54 +1,60 @@
-# Usa una imagen base de PHP con FPM (FastCGI Process Manager)
+# Imagen base con PHP 8.2 y FPM (Alpine para tamaño reducido)
 FROM php:8.2-fpm-alpine
 
-# Instala extensiones de PHP y otras herramientas necesarias
-# Se han combinado todas las instalaciones en un solo comando para optimizar
-# el tamaño de la imagen y la velocidad de construcción.
+# 1. Instala dependencias del sistema y extensiones PHP esenciales para CI4
 RUN apk add --no-cache \
     nginx \
-    php82-bcmath \
-    php82-mbstring \
-    php82-pdo_mysql \
-    php82-mysqli \
-    php82-dom \
-    php82-xml \
-    php82-ctype \
-    php82-fileinfo \
-    php82-session \
-    php82-json \
-    php82-tokenizer \
-    php82-gd \
-    php82-opcache \
-    php82-zip \
-    php82-intl \
     supervisor \
     curl \
     unzip \
     git \
-    nodejs \
-    npm \
-    icu-dev;
+    # Dependencias para extensiones PHP
+    icu-dev \
+    libzip-dev \
+    libpng-dev \
+    libjpeg-turbo-dev \
+    freetype-dev \
+    # Extensiones requeridas por composer.json
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j$(nproc) \
+        intl \
+        mbstring \
+        pdo_mysql \
+        zip \
+        gd \
+        opcache \
+    && docker-php-ext-enable intl opcache
 
-# Instala Composer (gestor de dependencias de PHP)
+# 2. Verifica que las extensiones estén activas
+RUN php -m | grep -E 'intl|mbstring|pdo_mysql' && \
+    php -i | grep 'GD Support' && \
+    echo "extension=zip.so" >> /usr/local/etc/php/conf.d/docker-php-ext-zip.ini
+
+# 3. Instala Composer globalmente
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Configura el directorio de trabajo dentro del contenedor
+# 4. Configura el directorio de trabajo
 WORKDIR /var/www/html
 
-# Copia todo el código de tu aplicación CodeIgniter
+# 5. Copia solo los archivos necesarios para composer primero (optimización de caché)
+COPY composer.json composer.lock ./
+
+# 6. Instala dependencias (ignora temporalmente la verificación de plataforma)
+RUN composer install --no-dev --optimize-autoloader --ignore-platform-reqs
+
+# 7. Copia toda la aplicación
 COPY . .
 
-# Instala las dependencias de Composer
-RUN composer install --no-dev --optimize-autoloader
+# 8. Configura permisos para CodeIgniter
+RUN chown -R www-data:www-data /var/www/html/writable && \
+    chmod -R 775 /var/www/html/writable
 
-# Configura los permisos de escritura para las carpetas de caché y logs de CodeIgniter
-RUN chmod -R 775 writable/ && \
-    chown -R www-data:www-data writable/ && \
-    chmod -R 775 public/uploads && \
-    chown -R www-data:www-data public/uploads
+# 9. Configuración de Nginx y Supervisor
+COPY docker/nginx.conf /etc/nginx/nginx.conf
+COPY docker/supervisord.conf /etc/supervisor/supervisord.conf
 
-# Expone el puerto 80 para el servidor web
+# 10. Puerto expuesto
 EXPOSE 80
 
-# Inicia los servicios con Supervisor
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
+# 11. Comando de inicio
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
