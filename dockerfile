@@ -1,9 +1,8 @@
-# Usa una imagen base de PHP con FPM (FastCGI Process Manager)
+# Use a PHP base image with FPM (FastCGI Process Manager)
 FROM php:8.2-fpm-alpine
 
-# Instala extensiones de PHP comunes y herramientas necesarias
-# Se incluye 'php82-intl' para la extensión 'intl' requerida por composer.json
-# y 'supervisor' para gestionar Nginx y PHP-FPM
+# Install common PHP extensions and necessary tools
+# The php82-intl extension is included to resolve the dependency issue
 RUN apk add --no-cache \
     nginx \
     php82-bcmath \
@@ -28,36 +27,35 @@ RUN apk add --no-cache \
     nodejs npm \
     ;
 
-# Instala Composer (gestor de dependencias de PHP)
+# Install Composer (PHP dependency manager)
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Configura el directorio de trabajo dentro del contenedor
+# Set the working directory inside the container
 WORKDIR /var/www/html
 
-# Copia todo el código de tu aplicación CodeIgniter
+# Copy your entire CodeIgniter application code
 COPY . .
 
-# Instala las dependencias de Composer
+# Install Composer dependencies
 RUN composer install --no-dev --optimize-autoloader
 
-# Configura los permisos de escritura para las carpetas de caché y logs de CodeIgniter
+# Configure write permissions for CodeIgniter's cache and log folders
 RUN chmod -R 775 writable/ && \
     chown -R www-data:www-data writable/ && \
     chmod -R 775 public/uploads && \
     chown -R www-data:www-data public/uploads \
     ;
 
-# --- Configuración de Nginx y PHP-FPM ---
-# Elimina la configuración predeterminada de Nginx
+# Nginx and PHP-FPM Configuration
+# Delete the default Nginx configuration file
 RUN rm /etc/nginx/conf.d/default.conf
-
-# Copia los archivos de configuración personalizados
+# Copy custom configuration files for Nginx, PHP-FPM, and Supervisor
 COPY docker/nginx/nginx.conf /etc/nginx/conf.d/default.conf
 COPY docker/php-fpm/www.conf /etc/php82/php-fpm.d/www.conf
 COPY docker/supervisor/supervisord.conf /etc/supervisord.conf
 
-# Expone el puerto 80
+# Expose port 80
 EXPOSE 80
 
-# Comando para iniciar Supervisor
+# Command to start Supervisor
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
