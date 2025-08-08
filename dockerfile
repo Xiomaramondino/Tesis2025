@@ -1,43 +1,41 @@
 # Usa una imagen base de PHP con FPM (FastCGI Process Manager)
 FROM php:8.2-fpm-alpine
 
-# Instala las herramientas del sistema y las dependencias de desarrollo necesarias
-# El paquete 'icu-dev' es necesario para la extensión 'intl'
+# Instala extensiones de PHP y otras herramientas necesarias
+# Se han combinado todas las instalaciones en un solo comando para optimizar
+# el tamaño de la imagen y la velocidad de construcción.
 RUN apk add --no-cache \
     nginx \
-    icu-dev \
+    php82-bcmath \
+    php82-mbstring \
+    php82-pdo_mysql \
+    php82-mysqli \
+    php82-dom \
+    php82-xml \
+    php82-ctype \
+    php82-fileinfo \
+    php82-session \
+    php82-json \
+    php82-tokenizer \
+    php82-gd \
+    php82-opcache \
+    php82-zip \
+    php82-intl \
     supervisor \
     curl \
     unzip \
     git \
-    nodejs npm \
-    ;
-
-# Instala y habilita las extensiones de PHP usando el método recomendado por Docker
-RUN docker-php-ext-install -j$(nproc) \
-    bcmath \
-    mbstring \
-    pdo_mysql \
-    mysqli \
-    dom \
-    xml \
-    ctype \
-    fileinfo \
-    session \
-    tokenizer \
-    gd \
-    opcache \
-    zip \
-    intl \
-    ;
+    nodejs \
+    npm \
+    icu-dev;
 
 # Instala Composer (gestor de dependencias de PHP)
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# Establece el directorio de trabajo dentro del contenedor
+# Configura el directorio de trabajo dentro del contenedor
 WORKDIR /var/www/html
 
-# Copia todo el código de tu aplicación CodeIgniter al contenedor
+# Copia todo el código de tu aplicación CodeIgniter
 COPY . .
 
 # Instala las dependencias de Composer
@@ -47,19 +45,15 @@ RUN composer install --no-dev --optimize-autoloader
 RUN chmod -R 775 writable/ && \
     chown -R www-data:www-data writable/ && \
     chmod -R 775 public/uploads && \
-    chown -R www-data:www-data public/uploads \
-    ;
+    chown -R www-data:www-data public/uploads
 
-# --- Configuración de Nginx y PHP-FPM ---
-# Elimina el archivo de configuración predeterminado de Nginx
-RUN rm /etc/nginx/conf.d/default.conf
-# Copia los archivos de configuración personalizados para Nginx, PHP-FPM y Supervisor
-COPY docker/nginx/nginx.conf /etc/nginx/conf.d/default.conf
-COPY docker/php-fpm/www.conf /etc/php82/php-fpm.d/www.conf
-COPY docker/supervisor/supervisord.conf /etc/supervisord.conf
+# Configuración de Nginx
+COPY ./docker/nginx.conf /etc/nginx/nginx.conf
+COPY ./docker/supervisord.conf /etc/supervisord.conf
+COPY ./docker/nginx_site.conf /etc/nginx/conf.d/default.conf
 
-# Expone el puerto 80 para el tráfico web
+# Expone el puerto 80 para el servidor web
 EXPOSE 80
 
-# Comando para iniciar Supervisor cuando el contenedor arranca
+# Inicia los servicios con Supervisor
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
