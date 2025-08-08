@@ -1,30 +1,34 @@
 # Usa una imagen base de PHP con FPM (FastCGI Process Manager)
 FROM php:8.2-fpm-alpine
 
-# Instala extensiones de PHP comunes y herramientas necesarias
-# La extensión php82-intl se incluye para resolver el problema de dependencias con Composer
+# Instala las herramientas del sistema y las dependencias de desarrollo necesarias
+# El paquete 'icu-dev' es necesario para la extensión 'intl'
 RUN apk add --no-cache \
     nginx \
-    php82-bcmath \
-    php82-mbstring \
-    php82-pdo_mysql \
-    php82-mysqli \
-    php82-dom \
-    php82-xml \
-    php82-ctype \
-    php82-fileinfo \
-    php82-session \
-    php82-json \
-    php82-tokenizer \
-    php82-gd \
-    php82-opcache \
-    php82-zip \
-    php82-intl \
+    icu-dev \
     supervisor \
     curl \
     unzip \
     git \
     nodejs npm \
+    ;
+
+# Instala y habilita las extensiones de PHP usando el método recomendado por Docker
+RUN docker-php-ext-install -j$(nproc) \
+    bcmath \
+    mbstring \
+    pdo_mysql \
+    mysqli \
+    dom \
+    xml \
+    ctype \
+    fileinfo \
+    session \
+    tokenizer \
+    gd \
+    opcache \
+    zip \
+    intl \
     ;
 
 # Instala Composer (gestor de dependencias de PHP)
@@ -58,4 +62,4 @@ COPY docker/supervisor/supervisord.conf /etc/supervisord.conf
 EXPOSE 80
 
 # Comando para iniciar Supervisor cuando el contenedor arranca
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]dsaf
+CMD ["/usr/bin/supervisord", "-c", "/etc/supervisord.conf"]
