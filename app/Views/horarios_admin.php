@@ -19,7 +19,7 @@
         align-items: center;
         background-size: cover;
         background-position: center;
-        background-color: #091342;;
+        background-color: #091342;
     }
 
     .navbar {

@@ -24,3 +24,4 @@ in APPPATH\Views\horarios_admin.php on line 161.
  8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
  9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 10 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-08-11 16:13:40 --> Error al tocar timbre en IP 10.81.11.248: 28 : Connection timed out after 2009 milliseconds
