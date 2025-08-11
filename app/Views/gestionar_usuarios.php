@@ -8,7 +8,7 @@
 </head>
 <style>
 body {
-    background-color: #c6a9dc;
+    background-color: #091342;
     padding-top: 100px;
 }
 
@@ -16,7 +16,7 @@ body {
     width: 100%;
     display: flex;
     align-items: center;
-    background-color: #4a045a;
+    background-color: #081136;
     padding: 1rem 2rem;
     position: fixed;
     z-index: 1000;
@@ -60,7 +60,7 @@ body {
 .footer {
     text-align: center;
     padding: 0.5rem;
-    background-color: #4a045a;
+    background-color: #081136;
     font-weight: bold;
     color: white;
     width: 100%;
@@ -146,12 +146,28 @@ body {
         background-color: #4a045a;
         border-radius: 13px;
 }
+.btn-form {
+            background:  #081136; 
+            color: white;
+            padding: 0.5rem 1.5rem;
+            font-size: 1rem;
+            border: none;
+            border-radius: 0.5rem;
+            margin: 0;
+            cursor: pointer;
+            display: inline-block;
+        }
+
+        .btn-form:hover {
+            background-color: #666565;
+            color: white;
+        }
 </style>
 
 <body>
 <!-- Barra de navegación -->
 <nav class="navbar sticky-top">
-    <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
+    <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" width="60px" alt="Logo">
     <div class="logo" style="margin-left: 89px;">RingMind</div>
 
 
