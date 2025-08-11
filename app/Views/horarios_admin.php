@@ -19,29 +19,27 @@
         align-items: center;
         background-size: cover;
         background-position: center;
-        background-color: #b6a0d7;
+        background-color: #091342;;
     }
 
-    /* Barra de navegación sticky */
     .navbar {
-        width: 100%; /* Hace que la barra de navegación ocupe todo el ancho */
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background-color: #4a045a;
-        padding: 1rem 2rem;
-        margin-bottom: 0; /* Elimina el margen para que se quede pegada arriba */
-        position: fixed;
-        z-index: 1000; /* Asegura que esté por encima del contenido */
-    }
-
-    .navbar .logo {
-        color: white;
-        font-size: 1.8rem;
-        font-weight: bold;
-        display: flex;
-    }
-
+    width: 100%;
+    background-color: #081136;
+    padding: 1rem 2rem;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    z-index: 1000;
+  }
+  .navbar .logo {
+    color: white;
+    font-size: 1.9rem;
+    font-weight: bold;
+  }
     .navbar-buttons {
     display: flex;
     flex-direction: column;
@@ -69,32 +67,71 @@
     outline: none;
 }
     
-    /* Estilos para la card */
-    .card-container {
-        width: 80%; /* Ajusta el tamaño de la tarjeta */
-        max-width: 900px; /* Limita el ancho máximo */
-        flex-grow: 1; /* Permite que el contenido crezca y empuje al footer */
-        margin-top: 100px; /* Espacio entre la navbar y la tarjeta */
-        flex-direction: column;
-        justify-content: flex-start; /* Asegura que el contenido se expanda desde arriba */
-        padding-bottom: 60px; /* Espacio entre la tabla y el footer */
-    }
+.card {
+    background: #081136;
+    border-radius: 1.5rem;
+    padding: 2rem 2.5rem;
+    max-width: 700px;
+    margin: 2rem auto 4rem;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
+    width: 90%;
+  }
+
+  .card-title {
+    text-align: center;
+    font-size: 2.4rem;
+    font-weight: 700;
+    margin-bottom: 2rem;
+    color: white;
+ 
+  }
+
+  .horarios-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .horario-card {
+    background: #070f2e;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(163, 143, 193, 0.25);
+    padding: 1.2rem 1.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    color: white;
+  }
+  .horario-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 25px rgba(163, 143, 193, 0.6);
+  }
+
+  .horario-info p {
+    margin: 0.15rem 0;
+    font-size: 1.05rem;
+    line-height: 1.3;
+  }
 
     .footer {
-        text-align: center;
-        padding: 1.2rem;
-        background-color: #4a045a;
-        font-weight: bold;
-        color: white;
-        width: 100%;
-        position: relative;
-        bottom: 0;
-    }
+    text-align: center;
+    background-color: #081136;
+    font-weight: bold;
+    color: white;
+    padding: 0.8rem;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    margin-top: auto;
+    font-size: 0.95rem;
+  }
+
 </style>
 
 <!-- Barra de navegación sticky -->
 <nav class="navbar sticky-top">
-<img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
+<img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" width="60px" alt="Logo">
     <div class="logo" style="padding-right: -600px;">RingMind</div>
 
     <div class="navbar-buttons">
@@ -104,29 +141,30 @@
 
 </nav>
 
-<!-- Contenido principal con card -->
-<div class="container card-container" >
-    <div class="card"  style=" border-radius: 1.5rem;">
-        <div class="card-body">
-            <h1 class="card-title text-center">Horarios</h1>
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Evento</th>
-                        <th>Hora</th>
-                        <th>Dia</th>
-                    </tr>
-                </thead>
-                <tbody>
-                <?php 
-$dias = [1 => 'Lunes', 2 => 'Martes', 3 => 'Miércoles', 4 => 'Jueves', 5 => 'Viernes', 6 => 'Sábado', 7 => 'Domingo']; 
-foreach ($data as $row) { 
-?>
+<div class="card" role="main" aria-label="Lista de horarios de timbre">
+  <h1 class="card-title">Horarios</h1>
+
+  <div class="horarios-list">
+    <?php 
+      $dias = [
+          1 => 'Lunes',
+          2 => 'Martes',
+          3 => 'Miércoles',
+          4 => 'Jueves',
+          5 => 'Viernes',
+          6 => 'Sábado',
+          7 => 'Domingo'
+      ];
+      foreach ($data as $row) { ?>
+              <div class="horario-card">
+          <div class="horario-info">
 <tr>
-    <td><?= htmlspecialchars($row->evento) ?></td>
-    <td><?= htmlspecialchars($row->hora) ?></td>
-    <td><?= $dias[$row->iddia] ?? 'Desconocido' ?></td>
+    <td><p><strong>Evento: </strong><?= htmlspecialchars($row->evento) ?></td></p>
+    <td><p><strong>Hora: </strong><?= htmlspecialchars($row->hora) ?></td></p>
+    <td><p><strong>Día: </strong><?= $dias[$row->iddia] ?? 'Desconocido' ?></td></p>
 </tr>
+</div>
+</div>
 <?php } ?>
                 </tbody>
             </table>
