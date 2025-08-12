@@ -296,28 +296,123 @@ input:-moz-autofill {
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 <script>
+    // Función para validar todo el formulario antes del pago
+    function validarFormulario() {
+        const usuario = document.querySelector('input[name="usuario"]').value.trim();
+        const email = document.querySelector('input[name="email"]').value.trim();
+        const password = document.querySelector('input[name="password"]').value;
+
+        // Validar usuario (solo letras y espacios)
+        if (!/^[a-zA-Z\s]+$/.test(usuario)) {
+            Swal.fire('Error', 'El nombre de usuario solo puede contener letras.', 'error');
+            return false;
+        }
+
+        // Validar email (simple)
+        if (email === '') {
+            Swal.fire('Error', 'El correo es obligatorio.', 'error');
+            return false;
+        }
+
+        // Validar contraseña (6 caracteres, mayúscula, símbolo)
+        if (password.length < 6 || !/[A-Z]/.test(password) || !/[!@#$%*]/.test(password)) {
+            Swal.fire('Error', 'La contraseña debe tener al menos 6 caracteres, una letra mayúscula y un símbolo (!@#$%).', 'error');
+            return false;
+        }
+
+        return true;
+    }
+
+    // Funciones para validar individualmente cada campo con mensajes específicos
+    function validarUsuario() {
+        const usuario = document.querySelector('input[name="usuario"]').value.trim();
+        if (!/^[a-zA-Z\s]+$/.test(usuario)) {
+            Swal.fire('Error', 'El nombre de usuario solo puede contener letras.', 'error');
+            return false;
+        }
+        return true;
+    }
+    function validarEmail() {
+        const email = document.querySelector('input[name="email"]').value.trim();
+        if (email === '') {
+            Swal.fire('Error', 'El correo es obligatorio.', 'error');
+            return false;
+        }
+        return true;
+    }
+    function validarPassword() {
+        const password = document.querySelector('input[name="password"]').value;
+        if (password.length < 6 || !/[A-Z]/.test(password) || !/[!@#$%*]/.test(password)) {
+            Swal.fire('Error', 'La contraseña debe tener al menos 6 caracteres, una letra mayúscula y un símbolo (!@#$%).', 'error');
+            return false;
+        }
+        return true;
+    }
+
+    // Variables para evitar alertas repetidas al enfocar y desenfocar
+    let alertaUsuarioMostrada = false;
+    let alertaEmailMostrada = false;
+    let alertaPasswordMostrada = false;
+
+    // Validar en blur (cuando se pierde foco) para cada input
+    document.addEventListener('DOMContentLoaded', () => {
+        const usuarioInput = document.querySelector('input[name="usuario"]');
+        const emailInput = document.querySelector('input[name="email"]');
+        const passwordInput = document.querySelector('input[name="password"]');
+
+        usuarioInput.addEventListener('blur', () => {
+            if (!validarUsuario()) {
+                if (!alertaUsuarioMostrada) {
+                    alertaUsuarioMostrada = true;
+                    setTimeout(() => { alertaUsuarioMostrada = false; }, 2000);
+                }
+            }
+        });
+
+        emailInput.addEventListener('blur', () => {
+            if (!validarEmail()) {
+                if (!alertaEmailMostrada) {
+                    alertaEmailMostrada = true;
+                    setTimeout(() => { alertaEmailMostrada = false; }, 2000);
+                }
+            }
+        });
+
+        passwordInput.addEventListener('blur', () => {
+            if (!validarPassword()) {
+                if (!alertaPasswordMostrada) {
+                    alertaPasswordMostrada = true;
+                    setTimeout(() => { alertaPasswordMostrada = false; }, 2000);
+                }
+            }
+        });
+    });
+
     // Toggle para mostrar/ocultar contraseña
     let eyeicon = document.getElementById("eyeicon"); 
-    let password = document.getElementById("password"); 
+    let passwordInputField = document.getElementById("password"); 
     eyeicon.onclick = function(){
-        if(password.type == "password"){
-            password.type = "text";
+        if(passwordInputField.type == "password"){
+            passwordInputField.type = "text";
             eyeicon.src = "https://icons.veryicon.com/png/o/miscellaneous/myfont/eye-open-4.png";
         } else {
-            password.type = "password";
+            passwordInputField.type = "password";
             eyeicon.src = "https://static.thenounproject.com/png/1035969-200.png";
         }
     }
 
     // Configuración del botón de PayPal
     paypal.Buttons({
-        
+
         createOrder: function(data, actions) {
-            // Validar campos del formulario antes de proceder al pago
+            if (!validarFormulario()) {
+                return Promise.reject();
+            }
+
             const form = document.getElementById('registerForm');
             const inputs = form.querySelectorAll('input[required]');
             let isValid = true;
-            
+
             inputs.forEach(input => {
                 if(!input.value.trim()) {
                     input.style.borderColor = 'red';
@@ -326,7 +421,7 @@ input:-moz-autofill {
                     input.style.borderColor = '#ddd';
                 }
             });
-            
+
             if(!isValid) {
                 Swal.fire({
                     title: 'Campos requeridos',
@@ -334,13 +429,13 @@ input:-moz-autofill {
                     icon: 'warning',
                     confirmButtonText: 'Aceptar'
                 });
-                return;
+                return Promise.reject();
             }
-            
+
             const producto = document.getElementById('producto').value;
             let precio = 0;
             let descripcion = '';
-            
+
             switch(producto) {
                 case 'timbre_automatizado':
                     precio = 100000;
@@ -351,7 +446,7 @@ input:-moz-autofill {
             return actions.order.create({
                 purchase_units: [{
                     amount: {
-                        value: (precio).toFixed(2), // Convertir a USD (aproximadamente)
+                        value: (precio).toFixed(2),
                         currency_code: "USD"
                     },
                     description: descripcion,
@@ -362,9 +457,9 @@ input:-moz-autofill {
                 }
             });
         },
+
         onApprove: function(data, actions) {
             return actions.order.capture().then(function(details) {
-                // Mostrar mensaje de éxito
                 Swal.fire({
                     title: '¡Pago Completado!',
                     text: 'Gracias ' + details.payer.name.given_name + ' por tu compra',
@@ -372,27 +467,24 @@ input:-moz-autofill {
                     confirmButtonText: 'Aceptar'
                 }).then((result) => {
                     if (result.isConfirmed) {
-                        // Guardar datos del pago en el formulario
                         document.getElementById('payment_status').value = 'completed';
                         document.getElementById('paypal_order_id').value = data.orderID;
-                        
-                        // Mostrar el botón de submit para completar el registro
                         document.getElementById('submit-btn').style.display = 'block';
-                        
-                        // Desplazarse al botón de submit
                         document.getElementById('submit-btn').scrollIntoView({ behavior: 'smooth' });
                     }
                 });
             });
         },
+
         onError: function(err) {
             Swal.fire({
-                title: '',
-                text: 'Por favor, completa tu Información de registro para poder continuar con el pago',
+                title: 'Error en el pago',
+                text: 'Ocurrió un error al procesar el pago. Por favor intenta nuevamente.',
                 icon: 'error',
                 confirmButtonText: 'Aceptar'
             });
         },
+
         onCancel: function(data) {
             Swal.fire({
                 title: 'Cancelado',
@@ -401,11 +493,11 @@ input:-moz-autofill {
                 confirmButtonText: 'Aceptar'
             });
         }
+
     }).render('#paypal-button-container');
 
     // Manejar el envío del formulario
     document.getElementById('registerForm').addEventListener('submit', function(e) {
-        // Verificar que el pago se haya completado
         if(document.getElementById('payment_status').value !== 'completed') {
             e.preventDefault();
             Swal.fire({
@@ -417,17 +509,7 @@ input:-moz-autofill {
         }
     });
 </script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
-<script>
-  $(document).ready(function() {
-    $('#idcolegio').select2({
-      placeholder: "Seleccione una institución",
-      allowClear: true,
-      width: '100%' // asegura que respete el ancho del Bootstrap
-    });
-  });
-</script>
+
 <footer class="footer">
     <p>Tesis timbre automático 2025 <br>
         Marquez Juan - Mondino Xiomara
