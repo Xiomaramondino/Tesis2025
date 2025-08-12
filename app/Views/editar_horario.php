@@ -168,7 +168,9 @@
 label {
     text-align: left;
     display: block;
-    margin-left: -30px;
+    margin-bottom: 0.4rem;
+    margin-left: 0; /* Elimina el margen negativo */
+    font-weight: 500;
 }
 input:-webkit-autofill,
 input:-webkit-autofill:focus,

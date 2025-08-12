@@ -104,10 +104,10 @@ tr:hover {
     color: white;
     padding: 0.8rem;
     width: 100%;
-    position: relative;
     bottom: 0;
     margin-top: auto;
     font-size: 0.95rem;
+    position: relative;
   }
 </style>
 </head>

@@ -8,19 +8,17 @@
 </head>
 <body>
 <style>
-    body {
-        padding-top: 80px; /* Ajuste el padding superior para dar espacio a la navbar sticky */
-        min-height: 100vh; /* Asegura que el cuerpo ocupe al menos toda la pantalla */
-        height: 100vh;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        background-size: cover;
-        background-position: center;
-        background-color: #091342;
-    }
+   body {
+    padding-top: 120px; /* Espacio fijo para la navbar sticky */
+    min-height: 100vh;
+    height: 100%;
+    width: 100%;
+    display: block; /* Quitamos flex que rompía el flujo */
+    background-size: cover;
+    background-position: center;
+    background-color: #091342;
+}
+
 
     .navbar {
     width: 100%;
@@ -34,6 +32,7 @@
     justify-content: space-between;
     box-sizing: border-box;
     z-index: 1000;
+
   }
   .navbar .logo {
     color: white;
@@ -72,10 +71,11 @@
     border-radius: 1.5rem;
     padding: 2rem 2.5rem;
     max-width: 700px;
-    margin: 2rem auto 4rem;
+    margin: 0 auto 4rem; /* margen arriba controlado por padding-top del body */
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.6);
     width: 90%;
-  }
+}
+
 
   .card-title {
     text-align: center;
@@ -121,7 +121,7 @@
     color: white;
     padding: 0.8rem;
     width: 100%;
-    position: relative;
+    position: fixed;
     bottom: 0;
     margin-top: auto;
     font-size: 0.95rem;
