@@ -116,7 +116,20 @@
             color: white;
             margin-top: 3rem;
         }
-
+        input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active {
+    -webkit-text-fill-color: #fff ;
+    transition: background-color 9999s ease-in-out 0s ;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset;
+    caret-color: #fff;
+}
+input:-moz-autofill {
+    box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset ;
+    -moz-text-fill-color: #fff;
+    caret-color: #fff;
+}
     </style>
 
     <nav class="navbar">

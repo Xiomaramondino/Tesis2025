@@ -8,27 +8,37 @@
 
     <style>
         body {
-            background-color: #c7a7da; /* mismo tono violeta de fondo */
+            background-color:  #091342; 
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         .form-card {
-            background-color: #f2dff6;
-            border-radius: 12px;
+            background: #081136; 
+            border-radius: 1.5rem;
             padding: 30px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.5); 
+            transition: transform 0.3s ease;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            color:white;
         }
 
         .form-card h1 {
             text-align: center;
-            font-family: 'Brush Script MT', cursive;
             font-weight: bold;
-            margin-bottom: 25px;
+            margin-bottom: 30px;
         }
 
         .form-control,
         .form-select {
+            padding: 0.6rem 1rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 8px;
+            box-sizing: border-box;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            background-color: transparent;
+            color: white;
+            margin-bottom: 0.8rem;   
         }
 
         .btn-form {
@@ -37,17 +47,34 @@
             border-radius: 8px;
             width: 100%;
         }
+        .form-control::placeholder {
+            color: #bbb;
+        }
+        .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.08);
+            color: #bbb;
+            border: 1px solid #6f42c1;
+            box-shadow: 0 0 10px #6f42c1;
+            caret-color: #bbb;
+        }
+
+        .btn-form {
+            background-color: #070f2e;
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 10px;
+        }
 
         .btn-form:hover {
-            background-color: #45004d;
+            background-color: #666565;
         }
-        
         .navbar {
             width: 100%; /* La barra de navegación ocupa el 100% del ancho */
             display: flex;
             justify-content: space-between;
             align-items: center;
-            background-color:#4a045a;
+            background-color: #081136;
             padding: 1rem 2rem;
             position: fixed; /* Mantiene la navbar fija en la parte superior */
             top: 0;
@@ -68,7 +95,7 @@
             width: 100%; /* Hace que el footer ocupe todo el ancho */
             text-align: center;
             padding: 0.4rem;
-            background-color: #4a045a;
+            background-color: #081136;
             font-weight: bold;
             color: white;
         }
@@ -104,10 +131,24 @@
         color: white; 
         outline: none;
     }
+    input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active {
+    -webkit-text-fill-color: #fff ;
+    transition: background-color 9999s ease-in-out 0s ;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset;
+    caret-color: #fff;
+}
+input:-moz-autofill {
+    box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset ;
+    -moz-text-fill-color: #fff;
+    caret-color: #fff;
+}
     </style>
 
     <nav class="navbar">
-        <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/logo nuevo.png" width="60px" alt="Logo">
+        <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" width="60px" alt="Logo">
         <div class="logo" style="padding-right: -540px;">RingMind</div>
         <div class="navbar-buttons">
         <form action="<?= base_url('/gestionar_usuarios'); ?>" method="get">

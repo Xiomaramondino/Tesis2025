@@ -184,6 +184,7 @@ input:-moz-autofill {
     -moz-text-fill-color: #fff;
     caret-color: #fff;
 }
+
 </style>
 
 <!-- Barra de navegación -->
