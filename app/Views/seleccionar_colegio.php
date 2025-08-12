@@ -98,13 +98,17 @@ tr:hover {
 }
 
 .footer {
-            text-align: center;
-            background-color: #081136;
-            font-weight: bold;
-            color: white;
-            margin-top: 4rem;
-            width: 100%;
-        }
+    text-align: center;
+    background-color: #081136;
+    font-weight: bold;
+    color: white;
+    padding: 0.8rem;
+    width: 100%;
+    position: relative;
+    bottom: 0;
+    margin-top: auto;
+    font-size: 0.95rem;
+  }
 </style>
 </head>
 <body>

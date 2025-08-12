@@ -287,7 +287,6 @@
 
     <hr class="my-5" />
 
-    <!-- Card para mostrar usuarios directivos en tarjetas -->
     <div class="container">
         <div class="card" style="border-radius: 1.5rem; background: #081136; border: 1px solid rgba(255, 255, 255, 0.05); color: white;">
             <div class="card-header">
