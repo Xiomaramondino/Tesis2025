@@ -9,28 +9,43 @@
 </head>
 <body>
   <style>
+    
     body {
-      height: 100vh;
-      width: 100%;
-      display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
-      background-color: #091342;
-      overflow-x: hidden;
-      padding-bottom: 80px;
-    }
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column; /* Columnas: navbar, contenido, footer */
+  background-color: #091342;
+  margin: 0;
+  padding-top: 80px; /* espacio para la navbar */
+}
 
-    .card {
-      background: #081136;
-      color: white;
-      width: 35rem;
-      height: auto;
-      margin-top: 150px;
-      margin-left: 400px;
-      border-radius: 1.5rem;
-      box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.5);
-      border: 1px solid rgba(255, 255, 255, 0.05);
-    }
+main {
+  flex: 1; /* Ocupa todo el espacio disponible */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0; /* espacio arriba y abajo */
+}
+
+.footer {
+  position: relative; /* Quita el absolute para que no flote */
+  width: 100%;
+  text-align: center;
+  padding: 0.3rem;
+  background-color: #081136;
+  font-weight: bold;
+  color: white;
+}
+
+  .card {
+    background: #081136;
+    color: white;
+    width: 30rem; /* mismo ancho que Modificar */
+    border-radius: 1.5rem;
+    box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+  }
 
     .card-body {
       margin-top: -45px;
@@ -84,17 +99,6 @@
 
     .container {
       padding-top: 80px;
-    }
-
-    .footer {
-      position: absolute;
-      bottom: 0;
-      width: 100%;
-      text-align: center;
-      padding: 0.3rem;
-      background-color: #081136;
-      font-weight: bold;
-      color: white;
     }
 
     .alert {
@@ -162,7 +166,7 @@
     }
 
     .btn-submit {
-      background-color: #540466;
+      background-color: #070f2e;
       color: white;
       padding: 0.4rem 1.7rem;
       font-size: 1.1rem;
@@ -171,7 +175,7 @@
     }
 
     .btn-submit:hover {
-      background-color: #6f42c1;
+      background-color: #666565;
     }
   </style>
 
@@ -185,8 +189,7 @@
       </form>
     </div>
   </nav>
-
-  <!-- Formulario Card -->
+<main>
   <div class="card">
     <div class="card-body">
       <div class="container text-center">
@@ -233,7 +236,7 @@
       </div>
     </div>
   </div>
-
+  </main>
   <!-- Footer -->
   <footer class="footer">
     <p>Tesis timbre automático 2025 <br> Marquez Juan - Mondino Xiomara</p>
