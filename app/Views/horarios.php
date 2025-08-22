@@ -267,7 +267,7 @@ input[type="time"]::-moz-focus-inner {
   </button>
 
   <!-- Formulario para agregar evento especial -->
-  <div class="card" style="margin-top:2rem;">
+  <div class="card" style="margin-top:1rem;">
     <h2 class="card-title" style="margin-top:2rem; margin-bottom:1rem; text-align:center; color:#d4b8e0;">Agregar Evento Especial</h2>
 
     <?php if (session()->getFlashdata('success_evento')): ?>
@@ -302,7 +302,8 @@ input[type="time"]::-moz-focus-inner {
   </div>
 
   <!-- Lista de eventos especiales -->
-  <?php if (!empty($eventosEspeciales)) : ?>
+    <!-- Lista de eventos especiales -->
+    <?php if (!empty($eventosEspeciales)) : ?>
     <h2 style="margin-top:2rem; margin-bottom:1rem; text-align:center; color:#d4b8e0;">Eventos Especiales Activos</h2>
     <?php foreach ($eventosEspeciales as $evento) : ?>
       <div class="horario-card">
@@ -320,7 +321,11 @@ input[type="time"]::-moz-focus-inner {
         </div>
       </div>
     <?php endforeach; ?>
+  <?php else : ?>
+      <h2 class="card-title" style="color:#d4b8e0;">Eventos Especiales</h2>
+      <p style="color:white; text-align:center;">No hay eventos especiales activos.</p>
   <?php endif; ?>
+
 
   <!-- Mensajes para horarios normales -->
   <?php if (session()->getFlashdata('success_horario')): ?>

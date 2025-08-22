@@ -15,7 +15,7 @@
             background-color: #091342;
             background-size: cover;
             background-position: center;
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         /* Navbar fija arriba */
@@ -84,6 +84,7 @@
             font-weight: 700;
             margin-bottom: 2rem;
             color: white;
+            font-size: 1.5rem;
         }
 
         .horarios-list {
@@ -121,6 +122,7 @@
             padding: 0.8rem;
             font-size: 0.95rem;
         }
+
     </style>
 </head>
 <body>
@@ -139,8 +141,9 @@
     <div class="card" role="main" aria-label="Lista de horarios de timbre">
 
         <!-- Eventos especiales -->
-        <?php if(!empty($eventosEspeciales)) : ?>
-            <h2 class="card-title" style="margin-top:2rem; margin-bottom:1rem; text-align:center; color:#d4b8e0;">Eventos Especiales</h2>
+              <!-- Eventos especiales -->
+              <?php if(!empty($eventosEspeciales)) : ?>
+            <h2 class="card-title" style="margin-top:2rem; margin-bottom:1rem; text-align:center; color:#d4b8e0;">Eventos Especiales Activos</h2>
             <div class="horarios-list mb-4">
                 <?php foreach($eventosEspeciales as $evento) : ?>
                     <div class="horario-card">
@@ -152,10 +155,14 @@
                     </div>
                 <?php endforeach; ?>
             </div>
+        <?php else : ?>
+            <h2 class="card-title" style="margin-top:2rem; text-align:center; color:#d4b8e0;">Eventos Especiales</h2>
+            <p style="color:white; text-align:center;">No hay eventos especiales activos.</p>
         <?php endif; ?>
 
+
         <!-- Horarios normales -->
-        <h2 class="card-title" style="margin-top:2rem; margin-bottom:1rem; text-align:center; color:#d4b8e0;">Horarios</h2>
+        <h2 class="card-title" style="margin-top:2rem; margin-bottom:1rem; text-align:center; color:#d4b8e0;">Eventos Activos</h2>
         <div class="horarios-list">
             <?php 
             $dias = [
