@@ -65,3 +65,7 @@ $routes->post('/sonar-timbre', 'TimbreController::activarTimbreManual');
 $routes->get('feriados/ver', 'Feriados::ver');
 
 $routes->post('excepciones/registrar', 'Excepciones::registrar');
+
+$routes->post('eventos_especiales/agregar', 'EventosEspecialesController::agregar');
+
+$routes->get('eventos_especiales/delete/(:num)', 'EventosEspecialesController::delete/$1');

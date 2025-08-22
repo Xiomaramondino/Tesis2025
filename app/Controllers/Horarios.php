@@ -5,22 +5,48 @@ namespace App\Controllers;
 
 use CodeIgniter\Controller;
 use App\Models\HorariosModel;
+use App\Models\EventosEspecialesModel;
 
 class Horarios extends Controller
 {
 
     public function index()
-    {
-        $session = session();
-        $idcolegio = $session->get('idcolegio'); // Obtenemos solo el colegio
+{
+    $session = session();
+    $idcolegio = $session->get('idcolegio'); // Obtenemos el colegio del usuario
+
+    // 1️⃣ Verificar si hay dispositivos asociados al colegio
+    $dispositivoModel = new \App\Models\DispositivoModel();
+    $dispositivos = $dispositivoModel->where('idcolegio', $idcolegio)
+                                     ->where('estado', 1) // opcional, solo activos
+                                     ->findAll();
+
+    $tieneDispositivos = !empty($dispositivos);
+
+    // 2️⃣ Traer horarios regulares
+    $modelHorarios = new \App\Models\HorariosModel();
+    $data = $modelHorarios->where('idcolegio', $idcolegio)->findAll();
+
+    // 3️⃣ Traer eventos especiales activos
+    $modelEventos = new \App\Models\EventosEspecialesModel();
+    $hoy = date('Y-m-d');
+    $modelEventos->where('fecha <', $hoy)->set(['activo' => 0])->update();
+
+    $eventosEspeciales = $modelEventos
+                         ->where('idcolegio', $idcolegio)
+                         ->where('activo', 1)
+                         ->orderBy('fecha', 'ASC')
+                         ->findAll();
+
+    // 4️⃣ Pasar todo a la vista
+    return view('horarios', [
+        'data' => $data,
+        'eventosEspeciales' => $eventosEspeciales,
+        'tieneDispositivos' => $tieneDispositivos // <- clave para la vista
+    ]);
+}
+
     
-        $model = new \App\Models\HorariosModel();
-    
-        // Filtramos directamente usando el modelo
-        $data = $model->where('idcolegio', $idcolegio)->findAll();
-    
-        return view('horarios', ['data' => $data]);
-    }
     
     public function editar($idhorario = null)
     {

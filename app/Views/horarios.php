@@ -225,13 +225,23 @@ input[type="time"]::-moz-focus-inner {
 </nav>
 
 <div class="card" role="main" aria-label="Gestión de horarios y eventos">
-  <h1 class="card-title">Horarios</h1>
 
   <!-- Botón para ver feriados -->
   <button class="btn-add" onclick="window.location.href='<?= base_url('feriados/ver') ?>'">
     Ver feriados del año
 </button>
 
+<?php if(session()->getFlashdata('error')): ?>
+    <div style="color:#f44336; font-weight:bold; text-align:center; margin-bottom:1rem;">
+        <?= session()->getFlashdata('error') ?>
+    </div>
+<?php endif; ?>
+
+<?php if(session()->getFlashdata('success')): ?>
+    <div style="color:#4caf50; font-weight:bold; text-align:center; margin-bottom:1rem;">
+        <?= session()->getFlashdata('success') ?>
+    </div>
+<?php endif; ?>
 
   <!-- Formulario para agregar evento especial -->
   <div class="card" style="margin-top:2rem;">
@@ -254,23 +264,50 @@ input[type="time"]::-moz-focus-inner {
   </div>
 
   <!-- Lista de horarios existentes -->
-  <div class="horarios-list" style="margin-top:2rem;">
-    <?php 
-      $dias = [1=>'Lunes',2=>'Martes',3=>'Miércoles',4=>'Jueves',5=>'Viernes',6=>'Sábado',7=>'Domingo'];
-      foreach ($data as $row) { ?>
-        <div class="horario-card">
-          <div class="horario-info">
-            <p><strong>Evento:</strong> <?= htmlspecialchars($row['evento']) ?></p>
-            <p><strong>Hora:</strong> <?= htmlspecialchars($row['hora']) ?></p>
-            <p><strong>Día:</strong> <?= $dias[$row['iddia']] ?? 'Desconocido' ?></p>
-          </div>
-          <div class="horario-actions">
-            <a href="<?= base_url('horarios/editar/' . $row['idhorario']) ?>" class="btn-edit">Modificar</a>
-            <a href="<?= base_url('horarios/delete/' . $row['idhorario']) ?>" class="btn-delete" onclick="return confirm('¿Estás seguro de eliminar este horario?')">Eliminar</a>
-          </div>
-        </div>
-    <?php } ?>
-  </div>
+ <!-- Lista de horarios existentes -->
+<div class="horarios-list" style="margin-top:2rem;">
+
+<!-- Eventos especiales activos -->
+<?php if (!empty($eventosEspeciales)) : ?>
+  <h2 style="margin-bottom:1rem; text-align:center; color:#d4b8e0;">Eventos Especiales Activos</h2>
+  <?php foreach ($eventosEspeciales as $evento) : ?>
+    <div class="horario-card">
+      <div class="horario-info">
+        <p><strong>Evento:</strong> <?= htmlspecialchars($evento->descripcion) ?></p>
+        <p><strong>Fecha:</strong> <?= htmlspecialchars($evento->fecha) ?></p>
+        <p><strong>Hora:</strong> <?= htmlspecialchars($evento->hora) ?></p>
+      </div>
+      <div class="horario-actions">
+        <!-- Botón eliminar evento especial -->
+        <a href="<?= base_url('eventos_especiales/delete/' . $evento->id) ?>" 
+           class="btn-delete" 
+           onclick="return confirm('¿Estás seguro de eliminar este evento especial?')">
+           Eliminar
+        </a>
+      </div>
+    </div>
+  <?php endforeach; ?>
+<?php endif; ?>
+
+<!-- Horarios normales -->
+<h2 style="margin-bottom:1rem; text-align:center; color:#d4b8e0;">Eventos Activos</h2>
+<?php 
+  $dias = [1=>'Lunes',2=>'Martes',3=>'Miércoles',4=>'Jueves',5=>'Viernes',6=>'Sábado',7=>'Domingo'];
+  foreach ($data as $row) { ?>
+    <div class="horario-card">
+      <div class="horario-info">
+        <p><strong>Evento:</strong> <?= htmlspecialchars($row['evento']) ?></p>
+        <p><strong>Hora:</strong> <?= htmlspecialchars($row['hora']) ?></p>
+        <p><strong>Día:</strong> <?= $dias[$row['iddia']] ?? 'Desconocido' ?></p>
+      </div>
+      <div class="horario-actions">
+        <a href="<?= base_url('horarios/editar/' . $row['idhorario']) ?>" class="btn-edit">Modificar</a>
+        <a href="<?= base_url('horarios/delete/' . $row['idhorario']) ?>" class="btn-delete" onclick="return confirm('¿Estás seguro de eliminar este horario?')">Eliminar</a>
+      </div>
+    </div>
+<?php } ?>
+</div>
+
 
   <button class="btn-add" onclick="window.location.href='<?= base_url('horarios/agregar') ?>'">Agregar horario</button>
 </div>
