@@ -77,13 +77,13 @@ class Horarios extends Controller
         // Validar hora
         $horaParsed = date_create($nuevaHora);
         if (!$horaParsed || date_format($horaParsed, 's') !== '00') {
-            session()->setFlashdata('error', 'La hora debe ser precisa.');
+            session()->setFlashdata('error_horario', 'La hora debe ser precisa.');
             return redirect()->to('/horarios/editar/' . $idhorario);
         }
     
         // Validar día
         if (!in_array($iddia, ['1', '2', '3', '4', '5', '6', '7'])) {
-            session()->setFlashdata('error', 'Seleccioná un día válido.');
+            session()->setFlashdata('error_horario', 'Seleccioná un día válido.');
             return redirect()->to('/horarios/editar/' . $idhorario);
         }
     
@@ -96,7 +96,7 @@ class Horarios extends Controller
             ->first();
     
         if ($existe) {
-            session()->setFlashdata('error', 'Esa hora ya está registrada para ese día en este colegio.');
+            session()->setFlashdata('error_horario', 'Esa hora ya está registrada para ese día en este colegio.');
             return redirect()->to('/horarios/editar/' . $idhorario);
         }
     
@@ -109,7 +109,7 @@ class Horarios extends Controller
     
         $model->update($idhorario, $data);
     
-        session()->setFlashdata('success', 'Horario actualizado correctamente.');
+        session()->setFlashdata('success_horario', 'Horario actualizado correctamente');
         return redirect()->to('/horarios');
     }
     
@@ -167,7 +167,7 @@ class Horarios extends Controller
     
         $horariosModel->insert($data);
     
-        session()->setFlashdata('success', 'Horario agregado correctamente.');
+        session()->setFlashdata('success_horario', 'Horario agregado correctamente.');
         return redirect()->to(base_url('horarios'));
     }
     

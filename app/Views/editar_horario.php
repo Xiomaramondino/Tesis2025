@@ -202,9 +202,9 @@ input:-moz-autofill {
 </nav>
 <div class="card" style="width: 30rem;">
 
-<?php if (session()->get('error')): ?>
+<?php if (session()->get('error_horario')): ?>
     <div class="alert alert-danger" role="alert">
-        <span><?= session()->get('error'); ?></span>
+        <span><?= session()->get('error_horario'); ?></span>
         <button type="button" class="close-btn" onclick="this.parentElement.style.display='none';">&times;</button>
     </div>
 <?php endif; ?>
