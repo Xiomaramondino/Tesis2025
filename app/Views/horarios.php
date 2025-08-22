@@ -4,6 +4,8 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Gestión de timbres - Horarios</title>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <style>
   body {
     margin: 0;
@@ -211,6 +213,40 @@ input[type="date"]::-moz-focus-inner,
 input[type="time"]::-moz-focus-inner {
     color: white;
 }
+.alert {
+            margin-top: 20px;
+            padding: 0.75rem 1rem;
+            border-radius: 1rem;
+            text-align: center;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+            font-size: 1rem;
+        }
+
+        .alert-success {
+            background-color: rgba(72, 187, 120, 0.15);
+            border: 1.5px solid rgba(72, 187, 120, 0.6);
+            color: #48bb78;
+        }
+
+        .alert-danger {
+            background-color: rgba(220, 38, 38, 0.15);
+            border: 1.5px solid rgba(220, 38, 38, 0.6);
+            color: #dc2626;
+        }
+        .alert .close-btn {
+            background: none;
+            border: none;
+            color: inherit;
+            font-size: 1.2rem;
+            cursor: pointer;
+            padding: 0;
+            margin-left: 1rem;
+            line-height: 1;
+        }
 </style>
 </head>
 <body>
@@ -231,21 +267,22 @@ input[type="time"]::-moz-focus-inner {
     Ver feriados del año
 </button>
 
-<?php if(session()->getFlashdata('error')): ?>
-    <div style="color:#f44336; font-weight:bold; text-align:center; margin-bottom:1rem;">
-        <?= session()->getFlashdata('error') ?>
-    </div>
-<?php endif; ?>
-
-<?php if(session()->getFlashdata('success')): ?>
-    <div style="color:#4caf50; font-weight:bold; text-align:center; margin-bottom:1rem;">
-        <?= session()->getFlashdata('success') ?>
-    </div>
-<?php endif; ?>
-
   <!-- Formulario para agregar evento especial -->
   <div class="card" style="margin-top:2rem;">
     <h2 class="card-title" style="font-size:1.5rem;">Agregar Evento Especial</h2>
+    <?php if (session()->getFlashdata('success')): ?>
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <?= session()->getFlashdata('success') ?>
+                    <button type="button" class="close-btn" data-bs-dismiss="alert" aria-label="Cerrar">&times;</button>
+                </div>
+            <?php endif; ?>
+
+            <?php if (session()->getFlashdata('error')): ?>
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <?= session()->getFlashdata('error') ?>
+                    <button type="button" class="close-btn" data-bs-dismiss="alert" aria-label="Cerrar">&times;</button>
+                </div>
+            <?php endif; ?>
     <form action="<?= base_url('eventos_especiales/agregar') ?>" method="post">
       <div class=>
         <label for="fecha">Fecha:</label>
