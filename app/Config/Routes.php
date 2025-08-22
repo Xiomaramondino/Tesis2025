@@ -61,3 +61,5 @@ $routes->get('/cambiar-colegio', 'Auth::mostrarOpcionesCambio');
 $routes->post('/cambiar-contexto', 'Auth::cambiarContexto');
 
 $routes->post('/sonar-timbre', 'TimbreController::activarTimbreManual');
+
+$routes->get('feriados/ver', 'Feriados::ver');

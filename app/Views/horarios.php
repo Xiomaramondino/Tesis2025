@@ -228,9 +228,10 @@ input[type="time"]::-moz-focus-inner {
   <h1 class="card-title">Horarios</h1>
 
   <!-- Botón para ver feriados -->
-  <button class="btn-add" onclick="window.open('<?= base_url('feriados/ver') ?>', '_blank')">
+  <button class="btn-add" onclick="window.location.href='<?= base_url('feriados/ver') ?>'">
     Ver feriados del año
-  </button>
+</button>
+
 
   <!-- Formulario para agregar evento especial -->
   <div class="card" style="margin-top:2rem;">
