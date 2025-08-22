@@ -17,7 +17,6 @@
     min-height: 100vh;
   }
 
-  /* Navbar */
   .navbar {
     width: 100%;
     background-color: #081136;
@@ -66,7 +65,6 @@
     font-weight: 700;
     margin-bottom: 2rem;
     color: white;
- 
   }
 
   .horarios-list {
@@ -124,7 +122,7 @@
     background-color: #a7283f;
   }
   .btn-add {
-    margin-top: 2.5rem;
+    margin-top: 1.5rem;
     background-color: #070f2e;
     color: white;
     border: none;
@@ -137,11 +135,11 @@
     display: block;
     margin-left: auto;
     margin-right: auto;
+    cursor: pointer;
   }
   .btn-add:hover {
     background-color: #666565;
   }
-
 
   .footer {
     text-align: center;
@@ -156,6 +154,63 @@
     font-size: 0.95rem;
   }
 
+  .form-control {
+     width: 100%;
+      padding: 0.6rem 1rem;
+      background-color: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 8px;
+      color: white;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      transition: all 0.3s ease;
+    }
+
+    .form-control::placeholder {
+      color: #bbb;
+    }
+
+    .form-control:focus {
+      background-color: rgba(255, 255, 255, 0.08);
+      color: #bbb;
+      border: 1px solid #6f42c1;
+      box-shadow: 0 0 10px #6f42c1;
+      caret-color: #bbb;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:active {
+      -webkit-text-fill-color: #fff;
+      transition: background-color 9999s ease-in-out 0s;
+      -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset;
+      caret-color: #fff;
+    }
+
+    input:-moz-autofill {
+      box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset;
+      -moz-text-fill-color: #fff;
+      caret-color: #fff;
+    }
+ /* Para los inputs de tipo date y time */
+input[type="date"],
+input[type="time"] {
+    color: white; /* texto */
+}
+
+/* Forzar color de los iconos en Chrome/Edge */
+input[type="date"]::-webkit-calendar-picker-indicator,
+input[type="time"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); /* convierte a blanco */
+    cursor: pointer;
+}
+
+/* Para Firefox, se puede usar color del texto */
+input[type="date"]::-moz-focus-inner,
+input[type="time"]::-moz-focus-inner {
+    color: white;
+}
 </style>
 </head>
 <body>
@@ -169,20 +224,38 @@
   </form>
 </nav>
 
-<div class="card" role="main" aria-label="Lista de horarios de timbre">
+<div class="card" role="main" aria-label="Gestión de horarios y eventos">
   <h1 class="card-title">Horarios</h1>
 
-  <div class="horarios-list">
+  <!-- Botón para ver feriados -->
+  <button class="btn-add" onclick="window.open('<?= base_url('feriados/ver') ?>', '_blank')">
+    Ver feriados del año
+  </button>
+
+  <!-- Formulario para agregar evento especial -->
+  <div class="card" style="margin-top:2rem;">
+    <h2 class="card-title" style="font-size:1.5rem;">Agregar Evento Especial</h2>
+    <form action="<?= base_url('eventos_especiales/agregar') ?>" method="post">
+      <div class=>
+        <label for="fecha">Fecha:</label>
+        <input class="form-control" type="date" id="fecha" name="fecha" required>
+      </div>
+      <div class=>
+        <label for="hora">Hora:</label>
+        <input class="form-control" type="time" id="hora" name="hora" required>
+      </div>
+      <div >
+        <label for="descripcion">Descripción:</label>
+        <input class="form-control" type="text" id="descripcion" name="descripcion"required>
+      </div>
+      <button type="submit" class="btn-add">Agregar Evento Especial</button>
+    </form>
+  </div>
+
+  <!-- Lista de horarios existentes -->
+  <div class="horarios-list" style="margin-top:2rem;">
     <?php 
-      $dias = [
-          1 => 'Lunes',
-          2 => 'Martes',
-          3 => 'Miércoles',
-          4 => 'Jueves',
-          5 => 'Viernes',
-          6 => 'Sábado',
-          7 => 'Domingo'
-      ];
+      $dias = [1=>'Lunes',2=>'Martes',3=>'Miércoles',4=>'Jueves',5=>'Viernes',6=>'Sábado',7=>'Domingo'];
       foreach ($data as $row) { ?>
         <div class="horario-card">
           <div class="horario-info">
@@ -191,8 +264,8 @@
             <p><strong>Día:</strong> <?= $dias[$row['iddia']] ?? 'Desconocido' ?></p>
           </div>
           <div class="horario-actions">
-            <a href="<?= base_url('horarios/editar/' . $row['idhorario']) ?>" class="btn-edit" aria-label="Modificar horario <?= htmlspecialchars($row['evento']) ?>">Modificar</a>
-            <a href="<?= base_url('horarios/delete/' . $row['idhorario']) ?>" class="btn-delete" onclick="return confirm('¿Estás seguro de eliminar este horario?')" aria-label="Eliminar horario <?= htmlspecialchars($row['evento']) ?>">Eliminar</a>
+            <a href="<?= base_url('horarios/editar/' . $row['idhorario']) ?>" class="btn-edit">Modificar</a>
+            <a href="<?= base_url('horarios/delete/' . $row['idhorario']) ?>" class="btn-delete" onclick="return confirm('¿Estás seguro de eliminar este horario?')">Eliminar</a>
           </div>
         </div>
     <?php } ?>

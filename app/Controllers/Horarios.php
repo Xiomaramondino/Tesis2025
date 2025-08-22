@@ -158,48 +158,103 @@ class Horarios extends Controller
     }
 
     public function checkTime()
-    {
-        $mac = $this->request->getVar('mac');
-        $response = ['tocar' => false]; // Valor por defecto
-    
-        if (!$mac) {
-            return $this->response->setJSON($response);
-        }
-    
-        $db = \Config\Database::connect();
-    
-        // Buscar dispositivo por MAC
-        $dispositivo = $db->table('dispositivo')
-                          ->where('mac', $mac)
-                          //->where('estado', 1) // ❗Descomentar si querés usar el estado
-                          ->get()
-                          ->getRow();
-    
-        if (!$dispositivo) {
-            return $this->response->setJSON($response);
-        }
-    
-        $idcolegio = $dispositivo->idcolegio;
-    
-        // Obtener hora y día actual del servidor
-        date_default_timezone_set('America/Argentina/Buenos_Aires'); // Asegurate de ajustar según tu zona
-        $horaActual = date('H:i:00'); // formato HH:MM:00 para coincidir con campo TIME
-        $diaSemana = date('N'); // 1 (Lunes) a 7 (Domingo)
-    
-        // Buscar coincidencia en horarios
-        $horario = $db->table('horarios')
-                      ->where('idcolegio', $idcolegio)
-                      ->where('hora', $horaActual)
-                      ->where('iddia', $diaSemana)
-                      ->get()
-                      ->getRow();
-    
-        if ($horario) {
-            $response['tocar'] = true;
-        }
-    
+{
+    $mac = $this->request->getVar('mac');
+    $response = ['tocar' => false]; // Valor por defecto
+
+    if (!$mac) {
         return $this->response->setJSON($response);
     }
+
+    $db = \Config\Database::connect();
+
+    // Buscar dispositivo por MAC
+    $dispositivo = $db->table('dispositivo')
+                      ->where('mac', $mac)
+                      //->where('estado', 1) // opcional
+                      ->get()
+                      ->getRow();
+
+    if (!$dispositivo) {
+        return $this->response->setJSON($response);
+    }
+
+    $idcolegio = $dispositivo->idcolegio;
+
+    // Obtener fecha, hora y día actual
+    date_default_timezone_set('America/Argentina/Buenos_Aires');
+    $fechaHoy   = date('Y-m-d');
+    $horaActual = date('H:i:00');
+    $diaSemana  = date('N'); // 1=lunes, 7=domingo
+    $anio       = date('Y');
+
+    // 1️⃣ Verificar excepciones manuales
+    $excepcion = $db->table('excepciones')
+                    ->where('idcolegio', $idcolegio)
+                    ->where('fecha', $fechaHoy)
+                    ->get()
+                    ->getRow();
+
+    if ($excepcion) {
+        return $this->response->setJSON($response); // No sonar
+    }
+
+    // 2️⃣ Verificar feriados nacionales (API externa)
+    try {
+        $ch = curl_init();
+        curl_setopt($ch, CURLOPT_URL, "https://date.nager.at/api/v3/PublicHolidays/$anio/AR");
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+        $result = curl_exec($ch);
+        curl_close($ch);
+
+        if ($result) {
+            $feriados = json_decode($result, true);
+
+            foreach ($feriados as $feriado) {
+                if ($feriado['date'] === $fechaHoy) {
+                    return $this->response->setJSON($response); // Es feriado → no sonar
+                }
+            }
+        }
+    } catch (\Exception $e) {
+        // Si la API falla, seguimos normalmente (no bloquea el timbre)
+    }
+
+    // 3️⃣ Verificar eventos especiales
+    $evento = $db->table('eventos_especiales')
+                 ->where('idcolegio', $idcolegio)
+                 ->where('fecha', $fechaHoy)
+                 ->where('hora', $horaActual)
+                 ->where('activo', 1)
+                 ->get()
+                 ->getRow();
+
+    if ($evento) {
+        // Marcar como usado para que no se repita
+        $db->table('eventos_especiales')
+           ->where('id', $evento->id)
+           ->update(['activo' => 0]);
+
+        $response['tocar'] = true;
+        return $this->response->setJSON($response);
+    }
+
+    // 4️⃣ Verificar horarios normales
+    $horario = $db->table('horarios')
+                  ->where('idcolegio', $idcolegio)
+                  ->where('hora', $horaActual)
+                  ->where('iddia', $diaSemana)
+                  ->get()
+                  ->getRow();
+
+    if ($horario) {
+        $response['tocar'] = true;
+    }
+
+    return $this->response->setJSON($response);
+}
+
     
     public function horariosLector() 
     {
