@@ -170,7 +170,7 @@
     </div>
 
     <div class="card" role="main" aria-label="Lista de horarios de timbre">
-  <h1 class="card-title">Horarios</h1>
+  <h2 class="card-title" style="margin-top:2rem; margin-bottom:1rem; text-align:center; color:#d4b8e0;">Eventos activos</h2>
 
   <div class="horarios-list">
     <?php 

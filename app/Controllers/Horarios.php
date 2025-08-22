@@ -304,27 +304,38 @@ class Horarios extends Controller
         return view('horarios_lector', ['data' => $data]);
     }
     public function horariosAdmin() 
-{
-    $session = session();
-    $idcolegio = $session->get('idcolegio'); 
-
-    if (!$idcolegio) {
-        session()->setFlashdata('error', 'No se pudo determinar el colegio del administrador.');
-        return redirect()->to('/login');
+    {
+        $session = session();
+        $idcolegio = $session->get('idcolegio'); 
+    
+        if (!$idcolegio) {
+            session()->setFlashdata('error', 'No se pudo determinar el colegio del administrador.');
+            return redirect()->to('/login');
+        }
+    
+        // Traer horarios
+        $model = new \App\Models\HorariosModel();
+        $builder = $model->builder();
+        $builder->where('idcolegio', $idcolegio); 
+        $builder->orderBy('hora', 'ASC'); 
+        $query = $builder->get();
+        $data = $query->getResult();
+    
+        // Traer eventos especiales activos
+        $db = \Config\Database::connect();
+        $eventosEspeciales = $db->table('eventos_especiales')
+                                ->where('idcolegio', $idcolegio)
+                                ->where('activo', 1)
+                                ->orderBy('fecha', 'ASC')
+                                ->get()
+                                ->getResult();
+    
+        return view('horarios_admin', [
+            'data' => $data,
+            'eventosEspeciales' => $eventosEspeciales
+        ]);
     }
-
-    $model = new \App\Models\HorariosModel();
-    $builder = $model->builder();
-
-    $builder->where('idcolegio', $idcolegio); 
-    $builder->orderBy('hora', 'ASC'); 
-
-    $query = $builder->get();
-    $data = $query->getResult();
-
-    return view('horarios_admin', ['data' => $data]);
-}
-
+    
     }
 
 ?>

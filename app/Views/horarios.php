@@ -63,7 +63,6 @@
 
   .card-title {
     text-align: center;
-    font-size: 2.4rem;
     font-weight: 700;
     margin-bottom: 2rem;
     color: white;
@@ -269,7 +268,7 @@ input[type="time"]::-moz-focus-inner {
 
   <!-- Formulario para agregar evento especial -->
   <div class="card" style="margin-top:2rem;">
-    <h2 class="card-title" style="font-size:1.5rem;">Agregar Evento Especial</h2>
+    <h2 class="card-title" style="margin-top:2rem; margin-bottom:1rem; text-align:center; color:#d4b8e0;">Agregar Evento Especial</h2>
 
     <?php if (session()->getFlashdata('success_evento')): ?>
       <div class="alert alert-success alert-dismissible fade show" role="alert">
