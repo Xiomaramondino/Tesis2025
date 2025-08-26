@@ -302,8 +302,7 @@ input[type="time"]::-moz-focus-inner {
   </div>
 
   <!-- Lista de eventos especiales -->
-    <!-- Lista de eventos especiales -->
-    <?php if (!empty($eventosEspeciales)) : ?>
+  <?php if (!empty($eventosEspeciales)) : ?>
     <h2 style="margin-top:2rem; margin-bottom:1rem; text-align:center; color:#d4b8e0;">Eventos Especiales Activos</h2>
     <?php foreach ($eventosEspeciales as $evento) : ?>
       <div class="horario-card">
@@ -362,7 +361,28 @@ input[type="time"]::-moz-focus-inner {
     <?php } ?>
   </div>
 
-  <button class="btn-add" onclick="window.location.href='<?= base_url('horarios/agregar') ?>'">Agregar horario</button>
+  <?php
+  // Comprobar si hay dispositivos asociados
+  $session = session();
+  $idcolegio = $session->get('idcolegio');
+  $db = \Config\Database::connect();
+  $dispositivo = $db->table('dispositivo')->where('idcolegio', $idcolegio)->get()->getRow();
+  ?>
+
+  <!-- Botón Agregar Horario -->
+  <?php if ($dispositivo): ?>
+      <button class="btn-add" onclick="window.location.href='<?= base_url('horarios/agregar') ?>'">
+          Agregar horario
+      </button>
+  <?php else: ?>
+      <button class="btn-add" disabled>
+          Agregar horario
+      </button>
+      <p style="color:#f87171; text-align:center; margin-top:0.5rem; font-weight:bold;">
+          No tienes ningún dispositivo asociado a tu colegio, no puedes agregar horarios.
+      </p>
+  <?php endif; ?>
+
 </div>
 
 <footer class="footer">
