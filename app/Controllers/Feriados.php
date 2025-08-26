@@ -2,12 +2,15 @@
 
 namespace App\Controllers;
 use CodeIgniter\Controller;
+use App\Models\DispositivoModel;
 
 class Feriados extends Controller
 {
     public function ver()
     {
         $anio = date('Y');
+        $session = session();
+        $idcolegio = $session->get('idcolegio');
 
         // Consultar API de feriados argentinos
         $feriados = [];
@@ -26,7 +29,14 @@ class Feriados extends Controller
             $feriados = [];
         }
 
+        // Obtener dispositivos asociados al idcolegio
+        $dispositivoModel = new DispositivoModel();
+        $dispositivos = $dispositivoModel->where('idcolegio', $idcolegio)->findAll();
+
         // Cargar vista
-        return view('feriados_view', ['feriados' => $feriados]);
+        return view('feriados_view', [
+            'feriados' => $feriados,
+            'dispositivos' => $dispositivos
+        ]);
     }
 }

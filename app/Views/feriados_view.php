@@ -196,25 +196,34 @@ input[type="date"]::-moz-calendar-picker-indicator {
 <main>
     <h1>Feriados de Argentina <?= date('Y') ?></h1>
 
-    <!-- Formulario para desactivar timbres -->
-    <section id="excepciones">
-        <h2>Desactivar timbres en un día específico</h2>
-        <?php if(session()->getFlashdata('success')): ?>
-            <p style="color: #0f0;"><?= session()->getFlashdata('success') ?></p>
-        <?php endif; ?>
-        <?php if(session()->getFlashdata('error')): ?>
-            <p style="color: #f00;"><?= session()->getFlashdata('error') ?></p>
-        <?php endif; ?>
-        <form action="<?= base_url('excepciones/registrar') ?>" method="post">
-            <label for="fecha">Fecha:</label>
-            <input class="form-control" type="date" id="fecha" name="fecha" required>
+    <?php if(!empty($dispositivos) && count($dispositivos) > 0): ?>
+        <!-- Formulario para desactivar timbres -->
+        <section id="excepciones">
+            <h2>Desactivar timbres en un día específico</h2>
+            <?php if(session()->getFlashdata('success')): ?>
+                <p style="color: #0f0;"><?= session()->getFlashdata('success') ?></p>
+            <?php endif; ?>
+            <?php if(session()->getFlashdata('error')): ?>
+                <p style="color: #f00;"><?= session()->getFlashdata('error') ?></p>
+            <?php endif; ?>
+            <form action="<?= base_url('excepciones/registrar') ?>" method="post">
+                <label for="fecha">Fecha:</label>
+                <input class="form-control" type="date" id="fecha" name="fecha" required>
 
-            <label for="motivo">Motivo (opcional):</label>
-            <input class="form-control" type="text" id="motivo" name="motivo">
+                <label for="motivo">Motivo (opcional):</label>
+                <input class="form-control" type="text" id="motivo" name="motivo">
 
-            <button type="submit">Desactivar todos los timbres de este día</button>
-        </form>
-    </section>
+                <button type="submit">Desactivar todos los timbres de este día</button>
+            </form>
+        </section>
+    <?php else: ?>
+        <section id="excepciones">
+            <h2>No se puede agregar feriados</h2>
+            <p style="color: #f00;">
+                No hay dispositivos asociados a tu institución. Por favor, registra al menos un dispositivo antes de desactivar timbres.
+            </p>
+        </section>
+    <?php endif; ?>
 
     <!-- Tabla de feriados -->
     <table>
