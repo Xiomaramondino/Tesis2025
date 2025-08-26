@@ -156,9 +156,10 @@
     <div class="logo">RingMind</div>
     <ul class="icon-links">
         <li>
-            <a href="https://www.instagram.com/empresa" target="_blank">
-                <i class="fab fa-instagram"></i>
-            </a>
+        <a href="https://www.instagram.com/timbreautomatico2025" target="_blank">
+    <i class="fab fa-instagram"></i>
+</a>
+
         </li>
         <li>
             <a href="https://mail.google.com/mail/?view=cm&to=timbreautomatico2025@gmail.com" target="_blank">
