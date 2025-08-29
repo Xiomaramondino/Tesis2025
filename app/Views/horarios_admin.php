@@ -163,31 +163,34 @@
 
         <!-- Horarios normales -->
         <h2 class="card-title" style="margin-top:2rem; margin-bottom:1rem; text-align:center; color:#d4b8e0;">Eventos Activos</h2>
-        <div class="horarios-list">
-            <?php 
-            $dias = [
-                1 => 'Lunes',
-                2 => 'Martes',
-                3 => 'Miércoles',
-                4 => 'Jueves',
-                5 => 'Viernes',
-                6 => 'Sábado',
-                7 => 'Domingo'
-            ];
-            foreach ($data as $row) { ?>
-                <div class="horario-card">
-                    <div class="horario-info">
-                        <p><strong>Evento: </strong><?= htmlspecialchars($row->evento) ?></p>
-                        <p><strong>Hora: </strong><?= htmlspecialchars($row->hora) ?></p>
-                        <p><strong>Día: </strong><?= $dias[$row->iddia] ?? 'Desconocido' ?></p>
-                    </div>
+        <?php if (!empty($data)) : ?>
+    <div class="horarios-list">
+        <?php 
+        $dias = [
+            1 => 'Lunes',
+            2 => 'Martes',
+            3 => 'Miércoles',
+            4 => 'Jueves',
+            5 => 'Viernes',
+            6 => 'Sábado',
+            7 => 'Domingo'
+        ];
+        foreach ($data as $row) { ?>
+            <div class="horario-card">
+                <div class="horario-info">
+                    <p><strong>Evento: </strong><?= htmlspecialchars($row->evento) ?></p>
+                    <p><strong>Hora: </strong><?= htmlspecialchars($row->hora) ?></p>
+                    <p><strong>Día: </strong><?= $dias[$row->iddia] ?? 'Desconocido' ?></p>
                 </div>
-            <?php } ?>
-        </div>
+            </div>
+        <?php } ?>
     </div>
-</div>
+<?php else : ?>
+    <p style="color:white; text-align:center;">No hay eventos activos.</p>
+<?php endif; ?>
+</div> 
+</div> 
 
-<!-- Footer -->
 <footer class="footer">
     <p>Tesis timbre automático 2025 <br>
     Marquez Juan - Mondino Xiomara</p>

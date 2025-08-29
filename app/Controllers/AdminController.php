@@ -51,6 +51,17 @@ class AdminController extends Controller
             return redirect()->to('/vista_admin');
         }
     
+        $db = \Config\Database::connect();
+        $dispositivo = $db->table('dispositivo') // 👈 cambia "dispositivos" si tu tabla se llama distinto
+            ->where('idcolegio', $idcolegio)
+            ->get()
+            ->getRow();
+    
+        if (!$dispositivo) {
+            session()->setFlashdata('error', 'Este colegio no tiene un dispositivo (MAC) registrado. Registre un dispositivo antes de agregar directivos.');
+            return redirect()->to('/vista_admin');
+        }
+    
         $usuario = $this->request->getPost('usuario');
         $email = strtolower(trim($this->request->getPost('email')));
     
