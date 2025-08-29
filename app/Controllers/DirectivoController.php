@@ -53,6 +53,16 @@ class DirectivoController extends BaseController
             return redirect()->to('/gestionar_usuarios');
         }
     
+        $db = \Config\Database::connect();
+        $tieneMac = $db->table('dispositivo')
+            ->where('idcolegio', $idcolegio)
+            ->countAllResults();
+    
+        if ($tieneMac == 0) {
+            session()->setFlashdata('error', 'No se puede agregar alumnos porque este colegio no tiene un dispositivo registrado.');
+            return redirect()->to('/gestionar_usuarios');
+        }
+
         $usuarioModel = new \App\Models\Usuario();
         $intermedioModel = new \App\Models\UsuarioColegioModel();
         $idrol = 3; // Lector
