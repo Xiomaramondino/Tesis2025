@@ -3,6 +3,7 @@
 namespace App\Controllers;
 use CodeIgniter\Controller;
 use App\Models\DispositivoModel;
+use App\Models\ExcepcionesModel;
 
 class Feriados extends Controller
 {
@@ -12,7 +13,7 @@ class Feriados extends Controller
         $session = session();
         $idcolegio = $session->get('idcolegio');
 
-        // Consultar API de feriados argentinos
+        // 1️⃣ Consultar API de feriados argentinos
         $feriados = [];
         try {
             $ch = curl_init();
@@ -29,11 +30,24 @@ class Feriados extends Controller
             $feriados = [];
         }
 
-        // Obtener dispositivos asociados al idcolegio
+        // 2️⃣ Consultar excepciones propias del colegio
+        $excepcionesModel = new ExcepcionesModel();
+        $excepcionesDB = $excepcionesModel
+            ->where('idcolegio', $idcolegio)
+            ->findAll();
+
+            foreach ($excepcionesDB as $ex) {
+                array_unshift($feriados, [  // ← se usa array_unshift para ponerlo al principio
+                    'date' => $ex->fecha,
+                    'localName' => $ex->motivo ? "Excepción: {$ex->motivo}" : "Excepción",
+                ]);
+            }
+
+        // 3️⃣ Obtener dispositivos asociados al idcolegio
         $dispositivoModel = new DispositivoModel();
         $dispositivos = $dispositivoModel->where('idcolegio', $idcolegio)->findAll();
 
-        // Cargar vista
+        // 4️⃣ Cargar vista
         return view('feriados_view', [
             'feriados' => $feriados,
             'dispositivos' => $dispositivos

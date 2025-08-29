@@ -115,15 +115,16 @@ section#excepciones {
     padding: 1rem;
     border-radius: 8px;
 }
+
 .form-control {
-    width: 300px; /* ancho fijo más razonable */
-    max-width: 100%; /* responsive en pantallas chicas */
-    padding: 0.4rem 0.6rem; /* menos padding */
+    width: 300px;
+    max-width: 100%;
+    padding: 0.4rem 0.6rem;
     background-color: transparent;
     border: 1px solid rgba(255, 255, 255, 0.3);
     border-radius: 6px;
     color: white;
-    font-size: 0.95rem; /* un poco más pequeño */
+    font-size: 0.95rem;
     margin-bottom: 0.8rem;
     transition: all 0.3s ease;
 }
@@ -149,6 +150,7 @@ input:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset;
     caret-color: #fff;
 }
+
 form button[type="submit"] {
     background-color: #091342;
     color: white;
@@ -163,6 +165,7 @@ form button[type="submit"] {
 form button[type="submit"]:hover {
     background-color: #666565;
 }
+
 /* Icono calendario blanco en inputs type=date */
 input[type="date"]::-webkit-calendar-picker-indicator {
     filter: invert(1) brightness(2);
@@ -175,6 +178,10 @@ input[type="date"]::-moz-calendar-picker-indicator {
     cursor: pointer;
 }
 
+/* Diferenciar excepciones en la tabla */
+tr.excepcion { 
+    background-color: rgba(255, 0, 0, 0.2); 
+}
 </style>
 </head>
 <body>
@@ -226,7 +233,7 @@ input[type="date"]::-moz-calendar-picker-indicator {
         </thead>
         <tbody>
             <?php foreach($feriados as $f): ?>
-            <tr>
+            <tr class="<?= str_contains($f['localName'], 'Excepción') ? 'excepcion' : '' ?>">
                 <td><?= htmlspecialchars($f['date']) ?></td>
                 <td><?= htmlspecialchars($f['localName']) ?></td>
             </tr>
