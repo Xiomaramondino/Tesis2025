@@ -64,3 +64,43 @@ WHERE `idcolegio` = :idcolegio:', [...], false)
  9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-29 11:58:52 --> TypeError: array_unshift(): Argument #1 ($array) must be of type array, null given
+[Method: GET, Route: feriados/ver]
+in APPPATH\Controllers\Feriados.php on line 40.
+ 1 APPPATH\Controllers\Feriados.php(40): array_unshift(null, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Feriados->ver()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Feriados))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-29 11:59:09 --> TypeError: array_unshift(): Argument #1 ($array) must be of type array, null given
+[Method: GET, Route: feriados/ver]
+in APPPATH\Controllers\Feriados.php on line 40.
+ 1 APPPATH\Controllers\Feriados.php(40): array_unshift(null, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Feriados->ver()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Feriados))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-29 12:00:10 --> TypeError: array_unshift(): Argument #1 ($array) must be of type array, null given
+[Method: GET, Route: feriados/ver]
+in APPPATH\Controllers\Feriados.php on line 41.
+ 1 APPPATH\Controllers\Feriados.php(41): array_unshift(null, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Feriados->ver()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Feriados))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-08-29 12:00:11 --> TypeError: array_unshift(): Argument #1 ($array) must be of type array, null given
+[Method: GET, Route: feriados/ver]
+in APPPATH\Controllers\Feriados.php on line 41.
+ 1 APPPATH\Controllers\Feriados.php(41): array_unshift(null, [...])
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Feriados->ver()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Feriados))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
