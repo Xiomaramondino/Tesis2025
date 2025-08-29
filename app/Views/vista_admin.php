@@ -3,35 +3,132 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Gestionar Directivos</title>
+    <title>RingMind - Gestionar Directivos</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
+        :root {
+            --color-primary: #091342;
+            --color-secondary: #081136;
+            --color-tertiary: #070f2e;
+            --color-accent: #7158e2;
+            --color-text-white: white;
+            --color-danger: #dc2626;
+            --color-success: #48bb78;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
         body {
-            background-color: #091342;
+            font-family: var(--font-family);
+            background-color: var(--color-primary);
+            color: var(--color-text-white);
             padding-top: 100px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        .form-card {
-            background: #081136;
-            border-radius: 1.5rem;
-            box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.5);
-            padding: 30px;
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.05);
+        /* --- Navbar mejorada --- */
+        .navbar {
+            width: 100%;
+            background-color: var(--color-secondary);
+            padding: 1rem 2rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
         }
 
-        .form-control {
-            padding: 0.6rem 1rem;
-            background-color: transparent;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            font-size: 1rem;
-            margin-bottom: 0.8rem;
-            transition: all 0.3s ease;
+        .navbar-container {
+            width: 100%;
+            max-width: 1200px; /* Limita el ancho para pantallas grandes */
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
             position: relative;
+        }
+        
+        .logo-link {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo {
+            position: absolute;
             left: 50%;
             transform: translateX(-50%);
             color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+            white-space: nowrap;
+        }
+
+        .navbar-buttons {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            margin-left: auto;
+        }
+        
+        .nav-btn {
+            background-color: transparent;
+            color: white;
+            border: none;
+            padding: 0.3rem 0.8rem;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Main Content */
+        main {
+            flex-grow: 1;
+            padding: 1rem;
+        }
+
+        .card-custom {
+            background: var(--color-secondary);
+            border-radius: 1.5rem;
+            box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.5);
+            padding: 30px;
+            color: var(--color-text-white);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        
+        .btn-custom {
+            background-color: var(--color-tertiary);
+            color: var(--color-text-white);
+            border: none;
+            border-radius: 10px;
+            padding: 10px 20px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .btn-custom:hover {
+            background-color: #666565;
+            transform: translateY(-2px);
+            color: var(--color-text-white);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background-color: transparent;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: var(--color-text-white);
+            font-size: 1rem;
+            transition: all 0.3s ease;
         }
 
         .form-control::placeholder {
@@ -40,107 +137,30 @@
 
         .form-control:focus {
             background-color: rgba(255, 255, 255, 0.08);
-            color: #bbb;
-            border: 1px solid #6f42c1;
-            box-shadow: 0 0 10px #6f42c1;
-            caret-color: #bbb;
+            border: 1px solid var(--color-accent);
+            box-shadow: 0 0 10px var(--color-accent);
+            caret-color: var(--color-text-white);
         }
-
-        .btn-form {
-            background-color: #070f2e;
-            color: white;
-            border: none;
-            width: 100%;
-            border-radius: 10px;
-            padding: 10px;
-        }
-
-        .btn-form:hover {
-            background-color: #666565;
-        }
-
-        .navbar {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            background-color: #081136;
-            padding: 1rem 2rem;
-            position: fixed;
-            z-index: 1000;
-            align-items: center;
-        }
-
-        .navbar .logo {
-            color: white;
-            font-size: 1.9rem;
-            font-weight: bold;
-            padding-left: 80px;
-        }
-
-        .navbar-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
-
-        .cerrar-btn {
-            background-color: transparent;
-            color: white;
-            border: none;
-            padding: 0.3rem 0.8rem;
-            font-size: 1rem;
-            text-align: left;
-            cursor: pointer;
-            text-decoration: none;
-        }
-
-        .cerrar-btn:hover,
-        .cerrar-btn:active,
-        .cerrar-btn:focus {
-            background-color: transparent;
-            color: white;
-            outline: none;
-        }
-
-        .footer {
-            text-align: center;
-            padding: 1.5rem;
-            background-color: #081136;
-            font-weight: bold;
-            color: white;
-            margin-top: 3rem;
-        }
-
-        .btn-ancho-custom {
-            width: 250px;
-            max-width: 100%;
-            background-color: #070f2e;
-            border-radius: 13px;
-        }
-
+        
+        /* Autofill Styles */
         input:-webkit-autofill,
         input:-webkit-autofill:focus,
         input:-webkit-autofill:hover,
         input:-webkit-autofill:active {
-            -webkit-text-fill-color: #fff;
-            transition: background-color 9999s ease-in-out 0s;
-            -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset;
-            caret-color: #fff;
+            -webkit-text-fill-color: var(--color-text-white) !important;
+            transition: background-color 9999s ease-in-out 0s !important;
+            -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset !important;
+            caret-color: var(--color-text-white) !important;
         }
 
-        input:-moz-autofill {
-            box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset;
-            -moz-text-fill-color: #fff;
-            caret-color: #fff;
-        }
-
+        /* Directivos List */
         .directivo-card {
-            background: #091342;
+            background: var(--color-primary);
             border-radius: 1rem;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
             padding: 20px;
-            color: white;
-            transition: background-color 0.3s ease;
+            color: var(--color-text-white);
+            transition: background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .directivo-card:hover {
@@ -164,168 +184,191 @@
             font-size: 0.9rem;
             border-radius: 8px;
         }
-    .alert {
-    margin-top: 20px;
-    padding: 0.75rem 1rem;
-    border-radius: 1rem;
-    text-align: center;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
-    font-weight: 100;
-    font-size: 1rem;
-}
 
-.alert-success {
-    background-color: rgba(72, 187, 120, 0.15);
-    border: 1.5px solid rgba(72, 187, 120, 0.6);
-    color: #48bb78;
-}
+        .alert {
+            padding: 0.75rem 1.25rem;
+            margin-bottom: 1rem;
+            border-radius: 1rem;
+            text-align: center;
+            font-size: 1rem;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
-.alert-danger {
-    background-color: rgba(220, 38, 38, 0.15);
-    border: 1.5px solid rgba(220, 38, 38, 0.6);
-    color: #dc2626;
-}
+        .alert-success {
+            background-color: rgba(72, 187, 120, 0.15);
+            border: 1.5px solid rgba(72, 187, 120, 0.6);
+            color: var(--color-success);
+        }
 
-.alert-info {
-    background-color: rgba(59, 130, 246, 0.15);
-    border: 1.5px solid rgba(59, 130, 246, 0.6);
-    color: #3b82f6;
-}
-.alert .close-btn {
-    background: none;
-    border: none;
-    color: inherit;
-    font-size: 1.2rem;
-    cursor: pointer;
-    padding: 0;
-    margin-left: 1rem;
-    line-height: 1;
-}
+        .alert-danger {
+            background-color: rgba(220, 38, 38, 0.15);
+            border: 1.5px solid rgba(220, 38, 38, 0.6);
+            color: var(--color-danger);
+        }
 
+        .alert-info {
+            background-color: rgba(59, 130, 246, 0.15);
+            border: 1.5px solid rgba(59, 130, 246, 0.6);
+            color: #3b82f6;
+        }
+        
+        /* Footer */
+        .footer {
+            text-align: center;
+            background-color: #081136;
+            font-weight: bold;
+            color: white;
+            padding: 0.8rem;
+            width: 100%;
+            margin-top: auto;
+            font-size: 0.95rem;
+        }
+
+        .note {
+            font-size: 0.9rem;
+            color: #ccc;
+            line-height: 1.4;
+            padding: 1rem;
+            background-color: rgba(255, 255, 255, 0.05);
+            border-left: 4px solid var(--color-accent);
+            border-radius: 0.5rem;
+        }
     </style>
-
-    <nav class="navbar sticky-top">
-        <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" width="60px" alt="Logo" />
-        <div class="logo">RingMind</div>
-        <div class="navbar-buttons">
-            <a href="<?= base_url('/admin/horarios'); ?>" class="btn btn-sm cerrar-btn">Visualizar horarios</a>
-
-            <form action="<?= base_url('/logout'); ?>" method="post">
-                <?= csrf_field(); ?>
-                <button type="submit" class="btn btn-sm cerrar-btn">Cerrar sesión</button>
-                <br />
-            </form>
-        </div>
-    </nav>
 </head>
 
 <body>
-    <br />
-    <div class="text-center mb-3">
-        <form action="<?= base_url('registrar_dispositivo') ?>" method="get">
-            <button type="submit" class="btn btn-form btn-ancho-custom">Registrar y ver mis Dispositivos</button>
-        </form>
-    </div>
-    <div class="text-center mb-3">
-        <form action="<?= base_url('/cambiar-colegio') ?>" method="get">
-            <button type="submit" class="btn btn-form btn-ancho-custom">Cambiar de colegio</button>
-        </form>
-    </div>
+    <nav class="navbar sticky-top">
+        <div class="navbar-container">
+            <a href="#" class="logo-link">
+                <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" width="60px" alt="Logo">
+            </a>
+            
+            <div class="logo">RingMind</div>
 
-    <div class="container mt-4">
-        <div class="col-md-6 mx-auto">
-            <div class="form-card">
-                <center>
-                    <h2>Agregar usuario directivo</h2>
-                </center>
-                <?php if (session()->get('error')) : ?>
-                    <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
-                        <?= session()->get('error'); ?>
-                        <button type="button" class="close-btn" data-bs-dismiss="alert" aria-label="Cerrar">×</button>
-
-                    </div>
-                <?php endif; ?>
-
-                <?php if (session()->get('success') || session()->get('exito')) : ?>
-                    <div class="alert alert-success alert-dismissible fade show mt-3" role="alert">
-                        <?= session()->get('success') ?: session()->get('exito'); ?>
-                        <button type="button" class="close-btn" data-bs-dismiss="alert" aria-label="Cerrar">×</button>
-
-                    </div>
-                <?php endif; ?>
-
-                <?php if (session()->get('info')) : ?>
-                    <div class="alert alert-danger alert-dismissible fade show mt-3" role="alert">
-                        <?= session()->get('info'); ?>
-                        <button type="button" class="close-btn" data-bs-dismiss="alert" aria-label="Cerrar">×</button>
-
-                    </div>
-                <?php endif; ?>
-                <form action="<?= base_url('admin/guardarUsuario') ?>" method="post">
-                    <div class="mb-3">
-                        <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Nombre de usuario" required />
-                    </div>
-
-                    <div class="mb-3">
-                        <input type="email" id="email" name="email" class="form-control" placeholder="Correo electrónico" required />
-                    </div>
-
-                    <div>
-                        ⚠️ <strong>Nota:</strong> Si el directivo no posee una cuenta en el sistema, el mismo le generará una, junto a una contraseña aleatoria y le enviará un correo con un enlace para que pueda cambiarla.
-                    </div>
-                    <br />
-
-                    <div><button type="submit" class="btn btn-form">Agregar directivo</button></div>
+            <div class="navbar-buttons">
+                <a href="<?= base_url('/admin/horarios'); ?>" class="nav-btn">
+                    <i class="fas fa-clock"></i> Visualizar horarios
+                </a>
+                <form action="<?= base_url('/logout'); ?>" method="post">
+                    <?= csrf_field(); ?>
+                    <button type="submit" class="nav-btn">
+                        <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+                    </button>
                 </form>
             </div>
         </div>
-    </div>
+    </nav>
 
-    <hr class="my-5" />
-
-    <div class="container">
-        <div class="card" style="border-radius: 1.5rem; background: #081136; border: 1px solid rgba(255, 255, 255, 0.05); color: white;">
-            <div class="card-header">
-                <h2>Usuarios directivos</h2>
+    <main>
+        <div class="container my-4">
+            <div class="row justify-content-center g-3 mb-5">
+                <div class="col-sm-6 col-md-5 d-grid">
+                    <a href="<?= base_url('registrar_dispositivo') ?>" class="btn btn-custom">
+                        <i class="fas fa-microchip"></i>
+                        Registrar y ver mis Dispositivos
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-5 d-grid">
+                    <a href="<?= base_url('/cambiar-colegio') ?>" class="btn btn-custom">
+                        <i class="fas fa-exchange-alt"></i>
+                        Cambiar de colegio
+                    </a>
+                </div>
             </div>
-            <div class="card-body">
-                <?php if (empty($usuarios_directivos)) : ?>
-                    <p>No hay usuarios directivos vinculados.</p>
-                <?php else : ?>
-                    <div class="row g-3">
-                        <?php foreach ($usuarios_directivos as $usuario) : ?>
-                            <div class="col-md-6">
-                                <div class="directivo-card">
-                                    <h5><?= esc($usuario['usuario']) ?></h5>
-                                    <p><?= esc($usuario['email']) ?></p>
-                                    <div class="d-flex justify-content-between">
-                                        <a href="<?= base_url('admin/eliminar_directivo/' . $usuario['idusuario']) ?>"
-                                            class="btn btn-sm btn-danger"
-                                            onclick="return confirm('¿Estás seguro de eliminar de este colegio a este directivo?');">Desvincular</a>
 
-                                        <a href="<?= base_url('admin/editarDirectivo/' . $usuario['idusuario']) ?>"
-                                            class="btn btn-sm btn-secondary">Editar</a>
-                                    </div>
-                                </div>
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="card-custom">
+                        <h2 class="text-center mb-4">Agregar usuario directivo</h2>
+
+                        <?php if (session()->get('error')) : ?>
+                            <div class="alert alert-danger" role="alert">
+                                <?= session()->get('error'); ?>
                             </div>
-                        <?php endforeach; ?>
+                        <?php endif; ?>
+
+                        <?php if (session()->get('success') || session()->get('exito')) : ?>
+                            <div class="alert alert-success" role="alert">
+                                <?= session()->get('success') ?: session()->get('exito'); ?>
+                            </div>
+                        <?php endif; ?>
+                        
+                        <?php if (session()->get('info')) : ?>
+                            <div class="alert alert-info" role="alert">
+                                <?= session()->get('info'); ?>
+                            </div>
+                        <?php endif; ?>
+
+                        <form action="<?= base_url('admin/guardarUsuario') ?>" method="post">
+                            <div class="mb-3">
+                                <input type="text" id="usuario" name="usuario" class="form-control" placeholder="Nombre de usuario" required />
+                            </div>
+
+                            <div class="mb-3">
+                                <input type="email" id="email" name="email" class="form-control" placeholder="Correo electrónico" required />
+                            </div>
+
+                            <div class="note my-3">
+                                <strong>Importante:</strong> Si el directivo no tiene una cuenta, nuestro sistema creará una automáticamente. Se le enviará un correo con una contraseña temporal y un enlace para que pueda establecer una nueva.
+                            </div>
+                            
+                            <div class="d-grid mt-4">
+                                <button type="submit" class="btn btn-custom">
+                                    <i class="fas fa-user-plus"></i> Agregar directivo
+                                </button>
+                            </div>
+                        </form>
                     </div>
-                <?php endif; ?>
+                </div>
+            </div>
+
+            <hr class="my-5" style="border-color: rgba(255, 255, 255, 0.1);" />
+
+            <div class="row justify-content-center">
+                <div class="col-md-10">
+                    <div class="card-custom">
+                        <h2 class="text-center mb-4">Usuarios directivos</h2>
+                        
+                        <?php if (empty($usuarios_directivos)) : ?>
+                            <p class="text-center">No hay usuarios directivos vinculados.</p>
+                        <?php else : ?>
+                            <div class="row g-3">
+                                <?php foreach ($usuarios_directivos as $usuario) : ?>
+                                    <div class="col-sm-6">
+                                        <div class="directivo-card">
+                                            <h5><?= esc($usuario['usuario']) ?></h5>
+                                            <p class="mb-2"><?= esc($usuario['email']) ?></p>
+                                            <div class="d-flex justify-content-between">
+                                                <a href="<?= base_url('admin/eliminar_directivo/' . $usuario['idusuario']) ?>"
+                                                    class="btn btn-danger btn-sm"
+                                                    onclick="return confirm('¿Estás seguro de eliminar de este colegio a este directivo?');">
+                                                    <i class="fas fa-user-slash"></i> Desvincular
+                                                </a>
+                                                <a href="<?= base_url('admin/editarDirectivo/' . $usuario['idusuario']) ?>"
+                                                    class="btn btn-secondary btn-sm">
+                                                    <i class="fas fa-edit"></i> Editar
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                        <?php endif; ?>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
+    </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-
-    <footer class="footer mt-4">
-        <div class="container text-center">
-            <p>Tesis timbre automático 2025 <br />Marquez Juan - Mondino Xiomara</p>
-        </div>
+    <footer class="footer">
+        <center><p>Tesis timbre automático 2025 <br>
+            Marquez Juan - Mondino Xiomara
+        </p></center>
     </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>

@@ -402,112 +402,94 @@ input:-moz-autofill {
     }
 
     // Configuración del botón de PayPal
+    // Configuración de PayPal
     paypal.Buttons({
+            style: {
+                layout: 'vertical',
+                color: 'blue',
+                shape: 'pill',
+                label: 'paypal'
+            },
+            createOrder: function(data, actions) {
+                if (!validarFormularioCompleto()) {
+                    return actions.reject();
+                }
 
-        createOrder: function(data, actions) {
-            if (!validarFormulario()) {
-                return Promise.reject();
+                const producto = document.getElementById('producto').value;
+                let precio = 0;
+                let descripcion = '';
+
+                switch(producto) {
+                    case 'timbre_automatizado':
+                        precio = 100000;
+                        descripcion = 'Timbre Automatizado';
+                        break;
+                }
+
+                return actions.order.create({
+                    purchase_units: [{
+                        amount: {
+                            value: (precio).toFixed(2),
+                            currency_code: "USD"
+                        },
+                        description: descripcion,
+                        custom_id: producto
+                    }],
+                    application_context: {
+                        shipping_preference: "NO_SHIPPING"
+                    }
+                });
+            },
+
+            onApprove: function(data, actions) {
+                return actions.order.capture().then(function(details) {
+                    Swal.fire({
+                        title: '¡Pago Completado!',
+                        text: 'Gracias ' + details.payer.name.given_name + ' por tu compra.',
+                        icon: 'success',
+                        confirmButtonText: 'Aceptar'
+                    }).then(() => {
+                        document.getElementById('payment_status').value = 'completed';
+                        document.getElementById('paypal_order_id').value = data.orderID;
+                        submitBtn.style.display = 'block';
+                        submitBtn.scrollIntoView({ behavior: 'smooth' });
+                    });
+                });
+            },
+
+            onError: function(err) {
+                console.error("PayPal onError:", err);
+                Swal.fire({
+                    title: 'Error en el pago',
+                    text: 'Ocurrió un error al procesar el pago. Por favor intenta nuevamente.',
+                    icon: 'error',
+                    confirmButtonText: 'Aceptar'
+                });
+            },
+
+            onCancel: function(data) {
+                Swal.fire({
+                    title: 'Cancelado',
+                    text: 'Has cancelado el proceso de pago.',
+                    icon: 'info',
+                    confirmButtonText: 'Aceptar'
+                });
             }
 
-            const form = document.getElementById('registerForm');
-            const inputs = form.querySelectorAll('input[required]');
-            let isValid = true;
+        }).render('#paypal-button-container');
 
-            inputs.forEach(input => {
-                if(!input.value.trim()) {
-                    input.style.borderColor = 'red';
-                    isValid = false;
-                } else {
-                    input.style.borderColor = '#ddd';
-                }
-            });
-
-            if(!isValid) {
+        // Manejar el envío final del formulario
+        registerForm.addEventListener('submit', function(e) {
+            if (document.getElementById('payment_status').value !== 'completed') {
+                e.preventDefault();
                 Swal.fire({
-                    title: 'Campos requeridos',
-                    text: 'Por favor complete todos los campos obligatorios',
+                    title: 'Pago requerido',
+                    text: 'Debes completar el proceso de pago con PayPal antes de registrarte.',
                     icon: 'warning',
                     confirmButtonText: 'Aceptar'
                 });
-                return Promise.reject();
             }
-
-            const producto = document.getElementById('producto').value;
-            let precio = 0;
-            let descripcion = '';
-
-            switch(producto) {
-                case 'timbre_automatizado':
-                    precio = 100000;
-                    descripcion = 'Timbre Automatizado';
-                    break;
-            }
-
-            return actions.order.create({
-                purchase_units: [{
-                    amount: {
-                        value: (precio).toFixed(2),
-                        currency_code: "USD"
-                    },
-                    description: descripcion,
-                    custom_id: producto
-                }],
-                application_context: {
-                    shipping_preference: "NO_SHIPPING"
-                }
-            });
-        },
-
-        onApprove: function(data, actions) {
-            return actions.order.capture().then(function(details) {
-                Swal.fire({
-                    title: '¡Pago Completado!',
-                    text: 'Gracias ' + details.payer.name.given_name + ' por tu compra',
-                    icon: 'success',
-                    confirmButtonText: 'Aceptar'
-                }).then((result) => {
-                    if (result.isConfirmed) {
-                        document.getElementById('payment_status').value = 'completed';
-                        document.getElementById('paypal_order_id').value = data.orderID;
-                        document.getElementById('submit-btn').style.display = 'block';
-                        document.getElementById('submit-btn').scrollIntoView({ behavior: 'smooth' });
-                    }
-                });
-            });
-        },
-
-        onError: function(err) {
-            Swal.fire({
-                title: 'Error en el pago',
-                text: 'Ocurrió un error al procesar el pago. Por favor intenta nuevamente.',
-                icon: 'error',
-                confirmButtonText: 'Aceptar'
-            });
-        },
-
-        onCancel: function(data) {
-            Swal.fire({
-                title: 'Cancelado',
-                text: 'Has cancelado el proceso de pago',
-                icon: 'info',
-                confirmButtonText: 'Aceptar'
-            });
-        }
-
-    }).render('#paypal-button-container');
-
-    // Manejar el envío del formulario
-    document.getElementById('registerForm').addEventListener('submit', function(e) {
-        if(document.getElementById('payment_status').value !== 'completed') {
-            e.preventDefault();
-            Swal.fire({
-                title: 'Pago requerido',
-                text: 'Debes completar el proceso de pago antes de registrar',
-                icon: 'warning',
-                confirmButtonText: 'Aceptar'
-            });
-        }
-    });
+        });
 </script>
 
 <footer class="footer">

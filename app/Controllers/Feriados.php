@@ -36,12 +36,14 @@ class Feriados extends Controller
             ->where('idcolegio', $idcolegio)
             ->findAll();
 
-    foreach ($excepcionesDB as $ex) {
-    array_unshift($feriados, [  // ← se usa array_unshift para ponerlo al principio
-        'date' => $ex->fecha,
-        'localName' => $ex->motivo ? "Excepción: {$ex->motivo}" : "Excepción",
-    ]);
-}
+            foreach ($excepcionesDB as $ex) {
+                array_unshift($feriados, [
+                    'id' => $ex['id'],  // ← agregamos el ID
+                    'date' => $ex['fecha'],
+                    'localName' => $ex['motivo'] ? "Excepción: {$ex['motivo']}" : "Excepción",
+                ]);
+            }
+            
 
         // 3️⃣ Obtener dispositivos asociados al idcolegio
         $dispositivoModel = new DispositivoModel();

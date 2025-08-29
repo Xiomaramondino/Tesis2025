@@ -69,3 +69,6 @@ $routes->post('excepciones/registrar', 'Excepciones::registrar');
 $routes->post('eventos_especiales/agregar', 'EventosEspecialesController::agregar');
 
 $routes->get('eventos_especiales/delete/(:num)', 'EventosEspecialesController::delete/$1');
+
+$routes->get('excepciones/eliminar/(:num)', 'Excepciones::eliminar/$1');
+$routes->post('excepciones/modificar/(:num)', 'Excepciones::modificar/$1');

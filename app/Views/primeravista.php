@@ -72,21 +72,35 @@
         font-size: 1.2rem;
         margin-bottom: 2rem;
     }
-    
-    .hero-section button {
-        padding: 0.8rem 2rem;
-        font-size: 1.1rem;
-        background-color: #070F2E;
-        border: none;
-        color: white;
-        cursor: pointer;
-        border-radius: 5px;
-    }
+  
+    .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
 
-    .hero-section button:hover {
-        background-color: #666565;
-    }
+        .hero-buttons .btn {
+            padding: 0.8rem 2rem;
+            font-size: 1.1rem;
+            background-color: var(--color-tertiary);
+            border: none;
+            color: var(--color-text-white);
+            cursor: pointer;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
 
+        .hero-buttons .btn:hover {
+            background-color: #666565;
+            transform: translateY(-3px);
+        }
+        
     .content {
         display: flex;
         justify-content: space-around;
@@ -94,36 +108,38 @@
     }
 
     .card {
-        padding: 2rem;
-        border-radius: 1.5rem;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-        width: 30%;
-        background-color: transparent;
-        transition: transform 0.3s ease;
-        text-align: center;
-        border: 1px solid rgba(255, 255, 255, 0.05);
-    }
+            padding: 2.5rem 2rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 350px;
+            background-color: #081136;
+            transition: transform 0.3s ease;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+        .card:hover {
+            transform: translateY(-10px);
+        }
 
-    .card h3 {
-        font-size: 1.6rem;
-        margin-bottom: 1rem;
-        color: white;
-    }
+        .card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: white;
+            font-weight: 600;
+        }
 
-    .card p {
-        font-size: 1.1rem;
-        color: white;
-    }
+        .card p {
+            font-size: 1rem;
+            color:#e0e0e0;
+            line-height: 1.5;
+        }
 
-    .card:hover {
-        transform: translateY(-5px);
-    }
-
-    .card .icon {
-        font-size: 2rem; 
-        color: white; 
-        margin-bottom: 1rem;
-    }
+        .card .icon {
+            font-size: 2.5rem; 
+            color:  #7158e2; 
+            margin-bottom: 1rem;
+        }
 
     .footer {
         text-align: center;
@@ -195,37 +211,43 @@
         <h1>Bienvenido/a a SoniTek gestión de timbres</h1>
         <div class="hero-images">
             <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/st.png" width="170px" alt="bus">
+            <div class="hero-buttons">
+            <a href="<?= base_url('/login'); ?>" class="btn">
+                <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+            </a>
+            <a href="<?= base_url('/registro'); ?>" class="btn">
+                <i class="fas fa-shopping-cart"></i> Comprar Producto
+            </a>
         </div>
-        <br>
-
-        <a href="<?= base_url('/login'); ?>">
-            <button>Ir al inicio de sesión</button>
-        </a>
-
-        <a href="<?= base_url('/registro'); ?>">
-            <button>Comprar producto</button>
-        </a>
     </div>
 </header>
 
 <section class="content">
     <div class="card">
         <i class="fa-solid fa-bell icon"></i>
-        <h3>Gestión de timbres</h3>
-        <p>Permite la configuración personalizada de los horarios de timbrado, adaptándolos a las necesidades específicas de la institución.</p>
+        <h3>Gestión de Timbres</h3>
+        <p>
+            Permite la configuración personalizada de los horarios de timbrado, adaptándose
+            a las necesidades específicas de la institución con total flexibilidad.
+        </p>
     </div>
     <div class="card">
         <i class="fa-solid fa-building icon"></i>
-        <h3>Gestión Unificada de Instituciones</h3>
-        <p> Podrá alternar entre sus cuentas activas, cada una vinculada a un establecimiento distinto, y gestionarlas fácilmente desde una misma interfaz.</p>
+        <h3>Gestión Unificada</h3>
+        <p>
+            Podrá alternar entre sus cuentas activas, cada una vinculada a un establecimiento
+            distinto, y gestionarlas fácilmente desde una misma interfaz.
+        </p>
     </div>
     <div class="card">
-        <i class="fa-solid fa-clock icon"></i>
-        <h3>Programación Dinámica del Timbre</h3>
-        <p>Ofrece un botón para activar manualmente el timbre en cualquier momento, junto con un calendario integrado que permite programar fechas en las que el sistema permanecerá inactivo.</p>
+        <i class="fa-solid fa-calendar-alt icon"></i>
+        <h3>Programación Dinámica</h3>
+        <p>
+            Ofrece un botón para activar manualmente el timbre en cualquier momento, junto con
+            un calendario integrado para programar fechas en las que el sistema permanecerá inactivo.
+        </p>
     </div>
 </section>
-
 <footer class="footer">
     <p>Tesis timbre automático 2025 <br>
         Marquez Juan - Mondino Xiomara

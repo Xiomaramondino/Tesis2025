@@ -10,7 +10,7 @@ class ExcepcionesModel extends Model
     protected $primaryKey       = 'id';
     protected $useAutoIncrement = true;
 
-    protected $returnType       = 'object'; 
+    protected $returnType = 'array';
     protected $useSoftDeletes   = false;
 
     protected $allowedFields    = [
