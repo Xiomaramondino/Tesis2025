@@ -194,58 +194,56 @@
       -moz-text-fill-color: #fff;
       caret-color: #fff;
     }
- /* Para los inputs de tipo date y time */
+
 input[type="date"],
 input[type="time"] {
-    color: white; /* texto */
+    color: white;
 }
 
-/* Forzar color de los iconos en Chrome/Edge */
 input[type="date"]::-webkit-calendar-picker-indicator,
 input[type="time"]::-webkit-calendar-picker-indicator {
-    filter: invert(1); /* convierte a blanco */
+    filter: invert(1);
     cursor: pointer;
 }
 
-/* Para Firefox, se puede usar color del texto */
 input[type="date"]::-moz-focus-inner,
 input[type="time"]::-moz-focus-inner {
     color: white;
 }
 .alert {
-            margin-top: 20px;
-            padding: 0.75rem 1rem;
-            border-radius: 1rem;
-            text-align: center;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 100%;
-            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
-            font-size: 1rem;
-        }
+    margin-top: 20px;
+    padding: 0.75rem 1rem;
+    border-radius: 1rem;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
+    font-size: 1rem;
+}
 
-        .alert-success {
-            background-color: rgba(72, 187, 120, 0.15);
-            border: 1.5px solid rgba(72, 187, 120, 0.6);
-            color: #48bb78;
-        }
+.alert-success {
+    background-color: rgba(72, 187, 120, 0.15);
+    border: 1.5px solid rgba(72, 187, 120, 0.6);
+    color: #48bb78;
+}
 
-        .alert-danger {
-            background-color: rgba(220, 38, 38, 0.15);
-            border: 1.5px solid rgba(220, 38, 38, 0.6);
-            color: #dc2626;
-        }
-        .alert .close-btn {
-            background: none;
-            border: none;
-            color: inherit;
-            font-size: 1.2rem;
-            cursor: pointer;
-            padding: 0;
-            margin-left: 1rem;
-            line-height: 1;
-        }
+.alert-danger {
+    background-color: rgba(220, 38, 38, 0.15);
+    border: 1.5px solid rgba(220, 38, 38, 0.6);
+    color: #dc2626;
+}
+.alert .close-btn {
+    background: none;
+    border: none;
+    color: inherit;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0;
+    margin-left: 1rem;
+    line-height: 1;
+}
 </style>
 </head>
 <body>
@@ -259,12 +257,29 @@ input[type="time"]::-moz-focus-inner {
   </form>
 </nav>
 
+<?php
+// Verificar si hay dispositivo asociado al idcolegio
+$session = session();
+$idcolegio = $session->get('idcolegio');
+$db = \Config\Database::connect();
+$dispositivo = $db->table('dispositivo')->where('idcolegio', $idcolegio)->get()->getRow();
+?>
+
 <div class="card" role="main" aria-label="Gestión de horarios y eventos">
 
   <!-- Botón para ver feriados -->
-  <button class="btn-add" onclick="window.location.href='<?= base_url('feriados/ver') ?>'">
-    Ver feriados del año
-  </button>
+  <?php if ($dispositivo): ?>
+      <button class="btn-add" onclick="window.location.href='<?= base_url('feriados/ver') ?>'">
+          Ver feriados del año
+      </button>
+  <?php else: ?>
+      <button class="btn-add" disabled>
+          Ver feriados del año
+      </button>
+      <p style="color:#f87171; text-align:center; margin-top:0.5rem; font-weight:bold;">
+          No tienes ningún dispositivo asociado a tu colegio, no puedes ver los feriados.
+      </p>
+  <?php endif; ?>
 
   <!-- Formulario para agregar evento especial -->
   <div class="card" style="margin-top:1rem;">
@@ -284,21 +299,31 @@ input[type="time"]::-moz-focus-inner {
       </div>
     <?php endif; ?>
 
-    <form action="<?= base_url('eventos_especiales/agregar') ?>" method="post">
-      <div>
-        <label for="fecha">Fecha:</label>
-        <input class="form-control" type="date" id="fecha" name="fecha" required>
-      </div>
-      <div>
-        <label for="hora">Hora:</label>
-        <input class="form-control" type="time" id="hora" name="hora" required>
-      </div>
-      <div>
-        <label for="descripcion">Descripción:</label>
-        <input class="form-control" type="text" id="descripcion" name="descripcion" required>
-      </div>
-      <button type="submit" class="btn-add">Agregar Evento Especial</button>
-    </form>
+    <?php if ($dispositivo): ?>
+        <form action="<?= base_url('eventos_especiales/agregar') ?>" method="post">
+            <div>
+                <label for="fecha">Fecha:</label>
+                <input class="form-control" type="date" id="fecha" name="fecha" required>
+            </div>
+            <div>
+                <label for="hora">Hora:</label>
+                <input class="form-control" type="time" id="hora" name="hora" required>
+            </div>
+            <div>
+                <label for="descripcion">Descripción:</label>
+                <input class="form-control" type="text" id="descripcion" name="descripcion" required>
+            </div>
+            <button type="submit" class="btn-add">Agregar Evento Especial</button>
+        </form>
+    <?php else: ?>
+        <button class="btn-add" disabled>
+            Agregar Evento Especial
+        </button>
+        <p style="color:#f87171; text-align:center; margin-top:0.5rem; font-weight:bold;">
+            No tienes ningún dispositivo asociado a tu colegio, no puedes agregar eventos especiales.
+        </p>
+    <?php endif; ?>
+
   </div>
 
   <!-- Lista de eventos especiales -->
@@ -324,7 +349,6 @@ input[type="time"]::-moz-focus-inner {
       <h2 class="card-title" style="color:#d4b8e0;">Eventos Especiales</h2>
       <p style="color:white; text-align:center;">No hay eventos especiales activos.</p>
   <?php endif; ?>
-
 
   <!-- Mensajes para horarios normales -->
   <?php if (session()->getFlashdata('success_horario')): ?>
@@ -364,14 +388,6 @@ input[type="time"]::-moz-focus-inner {
           <p style="color:white; text-align:center;">No hay eventos activos.</p>
       <?php } ?>
   </div>
-
-  <?php
-  // Comprobar si hay dispositivos asociados
-  $session = session();
-  $idcolegio = $session->get('idcolegio');
-  $db = \Config\Database::connect();
-  $dispositivo = $db->table('dispositivo')->where('idcolegio', $idcolegio)->get()->getRow();
-  ?>
 
   <!-- Botón Agregar Horario -->
   <?php if ($dispositivo): ?>
