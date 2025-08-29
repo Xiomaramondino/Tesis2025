@@ -341,24 +341,28 @@ input[type="time"]::-moz-focus-inner {
       </div>
   <?php endif; ?>
 
-  <!-- Lista de horarios normales -->
   <h2 style="margin-top:2rem; margin-bottom:1rem; text-align:center; color:#d4b8e0;">Eventos Activos</h2>
   <div class="horarios-list">
     <?php 
       $dias = [1=>'Lunes',2=>'Martes',3=>'Miércoles',4=>'Jueves',5=>'Viernes',6=>'Sábado',7=>'Domingo'];
-      foreach ($data as $row) { ?>
-        <div class="horario-card">
-          <div class="horario-info">
-            <p><strong>Evento:</strong> <?= htmlspecialchars($row['evento']) ?></p>
-            <p><strong>Hora:</strong> <?= htmlspecialchars($row['hora']) ?></p>
-            <p><strong>Día:</strong> <?= $dias[$row['iddia']] ?? 'Desconocido' ?></p>
+      
+      if (!empty($data)) { 
+        foreach ($data as $row) { ?>
+          <div class="horario-card">
+            <div class="horario-info">
+              <p><strong>Evento:</strong> <?= htmlspecialchars($row['evento']) ?></p>
+              <p><strong>Hora:</strong> <?= htmlspecialchars($row['hora']) ?></p>
+              <p><strong>Día:</strong> <?= $dias[$row['iddia']] ?? 'Desconocido' ?></p>
+            </div>
+            <div class="horario-actions">
+              <a href="<?= base_url('horarios/editar/' . $row['idhorario']) ?>" class="btn-edit">Modificar</a>
+              <a href="<?= base_url('horarios/delete/' . $row['idhorario']) ?>" class="btn-delete" onclick="return confirm('¿Estás seguro de eliminar este horario?')">Eliminar</a>
+            </div>
           </div>
-          <div class="horario-actions">
-            <a href="<?= base_url('horarios/editar/' . $row['idhorario']) ?>" class="btn-edit">Modificar</a>
-            <a href="<?= base_url('horarios/delete/' . $row['idhorario']) ?>" class="btn-delete" onclick="return confirm('¿Estás seguro de eliminar este horario?')">Eliminar</a>
-          </div>
-        </div>
-    <?php } ?>
+      <?php } 
+      } else { ?>
+          <p style="color:white; text-align:center;">No hay eventos activos.</p>
+      <?php } ?>
   </div>
 
   <?php

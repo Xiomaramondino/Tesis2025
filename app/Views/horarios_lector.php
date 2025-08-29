@@ -209,7 +209,7 @@
                         </div>
                     <?php endforeach; 
                 else: ?>
-                    <p style="color:white; text-align:center;">No hay horarios cargados.</p>
+                    <p style="color:white; text-align:center;">No hay horarios activos.</p>
                 <?php endif; ?>
         </div>
 
