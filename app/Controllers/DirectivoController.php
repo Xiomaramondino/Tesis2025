@@ -263,18 +263,69 @@ public function actualizarUsuario()
         return redirect()->to('/gestionar_usuarios');
     }
 
-    $actualizado = [
-       
-        'email' => $data['email'],
-    ];
+    $nuevoEmail = strtolower(trim($data['email']));
+    $nuevoUsuario = trim($data['usuario']);
 
-    if ($this->Usuario->update($id, $actualizado)) {
-        session()->setFlashdata('success', 'Usuario actualizado correctamente.');
+    $cambios = [];
+    $mensajeCambios = [];
+
+    // Comparación de usuario
+    if ($usuarioExistente['usuario'] !== $nuevoUsuario) {
+        $cambios['usuario'] = $nuevoUsuario;
+        $mensajeCambios[] = "Nombre de usuario actualizado.";
+    }
+
+    // Comparación de email
+    if (strtolower($usuarioExistente['email']) !== $nuevoEmail) {
+        $cambios['email'] = $nuevoEmail;
+        $mensajeCambios[] = "Correo electrónico actualizado.";
+    }
+
+    if (!empty($cambios)) {
+        // Actualizar usuario
+        $this->Usuario->update($id, $cambios);
+
+        // Armar detalle de cambios
+        $detalleCambios = implode(" ", $mensajeCambios);
+
+        // Enviar correo al usuario con todos los datos actualizados
+        $this->_enviarCorreoEdicionUsuario(
+            $cambios['email'] ?? $usuarioExistente['email'],
+            $cambios['usuario'] ?? $usuarioExistente['usuario'],
+            $detalleCambios
+        );
+
+        session()->setFlashdata('success', 'Datos actualizados correctamente. ' . $detalleCambios);
     } else {
-        session()->setFlashdata('error', 'No se pudo actualizar el usuario.');
+        session()->setFlashdata('info', 'No se detectaron cambios en los datos.');
     }
 
     return redirect()->to('/gestionar_usuarios');
+}
+
+private function _enviarCorreoEdicionUsuario($email, $usuario, $detalleCambios)
+{
+    $emailService = \Config\Services::email();
+
+    $emailService->setFrom('timbreautomatico2025@gmail.com', 'Sistema de Gestión de Timbres');
+    $emailService->setTo($email);
+    $emailService->setSubject('Actualización de tu cuenta');
+
+    $mensaje = "
+        <h2>Hola {$usuario},</h2>
+        <p>Tu cuenta en el <strong>Sistema de Gestión de Timbres</strong> fue actualizada por un administrador.</p>
+        <p><strong>Cambios realizados:</strong> {$detalleCambios}</p>
+        <p><strong>Nombre de usuario:</strong> {$usuario}</p>
+        <p><strong>Correo electrónico:</strong> {$email}</p>
+        <p>Si no reconocés esta acción, por favor contactá al administrador del sistema.</p>
+        <br>
+        <p>Saludos,<br>
+        <strong>Sistema de Gestión de Timbres</strong></p>
+    ";
+
+    $emailService->setMessage($mensaje);
+    $emailService->setMailType('html');
+    $emailService->send();
 }
 
 }

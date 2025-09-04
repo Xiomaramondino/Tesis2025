@@ -177,6 +177,13 @@ input:-moz-autofill {
                     <input type="hidden" name="idusuario" value="<?= esc($usuario['idusuario']) ?>">
 
                     <div class="mb-3">
+    <input type="text" id="usuario" name="usuario" 
+           class="form-control" 
+           value="<?= esc($usuario['usuario']) ?>" 
+           placeholder="Nombre de usuario" required>
+</div>
+
+                    <div class="mb-3">
                         <input type="email" id="email" name="email" class="form-control" value="<?= esc($usuario['email']) ?>" placeholder="Correo electrónico" required>
                     </div>
                     
