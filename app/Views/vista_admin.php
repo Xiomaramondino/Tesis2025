@@ -2,9 +2,9 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>RingMind - Gestionar Directivos</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>RingMind - Gestión de Directivos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
         :root {
@@ -42,14 +42,14 @@
 
         .navbar-container {
             width: 100%;
-            max-width: 1200px; /* Limita el ancho para pantallas grandes */
+            max-width: 1200px;
             margin: 0 auto;
             display: flex;
             align-items: center;
             justify-content: space-between;
             position: relative;
         }
-        
+
         .logo-link {
             display: flex;
             align-items: center;
@@ -71,7 +71,7 @@
             align-items: center;
             margin-left: auto;
         }
-        
+
         .nav-btn {
             background-color: transparent;
             color: white;
@@ -84,7 +84,7 @@
             align-items: center;
             gap: 0.5rem;
         }
-        
+
         /* Main Content */
         main {
             flex-grow: 1;
@@ -99,7 +99,7 @@
             color: var(--color-text-white);
             border: 1px solid rgba(255, 255, 255, 0.05);
         }
-        
+
         .btn-custom {
             background-color: var(--color-tertiary);
             color: var(--color-text-white);
@@ -141,7 +141,7 @@
             box-shadow: 0 0 10px var(--color-accent);
             caret-color: var(--color-text-white);
         }
-        
+
         /* Autofill Styles */
         input:-webkit-autofill,
         input:-webkit-autofill:focus,
@@ -215,7 +215,7 @@
             border: 1.5px solid rgba(59, 130, 246, 0.6);
             color: #3b82f6;
         }
-        
+
         /* Footer */
         .footer {
             text-align: center;
@@ -239,14 +239,13 @@
         }
     </style>
 </head>
-
 <body>
     <nav class="navbar sticky-top">
         <div class="navbar-container">
             <a href="#" class="logo-link">
                 <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" width="60px" alt="Logo">
             </a>
-            
+
             <div class="logo">RingMind</div>
 
             <div class="navbar-buttons">
@@ -264,26 +263,22 @@
     </nav>
 
     <main>
-        <div class="container my-4">
-            <div class="row justify-content-center g-3 mb-5">
-                <div class="col-sm-6 col-md-5 d-grid">
-                    <a href="<?= base_url('registrar_dispositivo') ?>" class="btn btn-custom">
-                        <i class="fas fa-microchip"></i>
-                        Registrar y ver mis Dispositivos
-                    </a>
-                </div>
-                <div class="col-sm-6 col-md-5 d-grid">
-                    <a href="<?= base_url('/cambiar-colegio') ?>" class="btn btn-custom">
-                        <i class="fas fa-exchange-alt"></i>
-                        Cambiar de colegio
-                    </a>
-                </div>
+        <div class="container mx-auto my-4 max-w-4xl">
+            <div class="flex flex-col md:flex-row justify-center gap-4 mb-8">
+                <a href="<?= base_url('registrar_dispositivo') ?>" class="btn-custom">
+                    <i class="fas fa-microchip"></i>
+                    Registrar y ver mis Dispositivos
+                </a>
+                <a href="<?= base_url('/cambiar-colegio') ?>" class="btn-custom">
+                    <i class="fas fa-exchange-alt"></i>
+                    Cambiar de colegio
+                </a>
             </div>
 
-            <div class="row justify-content-center">
-                <div class="col-md-10">
+            <div class="flex justify-center">
+                <div class="w-full md:w-3/4 lg:w-2/3">
                     <div class="card-custom">
-                        <h2 class="text-center mb-4">Agregar usuario directivo</h2>
+                        <h2 class="text-center text-2xl md:text-3xl font-bold mb-4">Agregar usuario directivo</h2>
 
                         <?php if (session()->get('error')) : ?>
                             <div class="alert alert-danger" role="alert">
@@ -296,7 +291,7 @@
                                 <?= session()->get('success') ?: session()->get('exito'); ?>
                             </div>
                         <?php endif; ?>
-                        
+
                         <?php if (session()->get('info')) : ?>
                             <div class="alert alert-info" role="alert">
                                 <?= session()->get('info'); ?>
@@ -315,9 +310,9 @@
                             <div class="note my-3">
                                 <strong>Importante:</strong> Si el directivo no tiene una cuenta, nuestro sistema creará una automáticamente. Se le enviará un correo con una contraseña temporal y un enlace para que pueda establecer una nueva.
                             </div>
-                            
+
                             <div class="d-grid mt-4">
-                                <button type="submit" class="btn btn-custom">
+                                <button type="submit" class="btn-custom w-full">
                                     <i class="fas fa-user-plus"></i> Agregar directivo
                                 </button>
                             </div>
@@ -326,49 +321,41 @@
                 </div>
             </div>
 
-            <hr class="my-5" style="border-color: rgba(255, 255, 255, 0.1);" />
+            <hr class="my-8" style="border-color: rgba(255, 255, 255, 0.1);" />
 
-            <div class="row justify-content-center">
-                <div class="col-md-10">
-                    <div class="card-custom">
-                        <h2 class="text-center mb-4">Usuarios directivos</h2>
-                        
-                        <?php if (empty($usuarios_directivos)) : ?>
-                            <p class="text-center">No hay usuarios directivos vinculados.</p>
-                        <?php else : ?>
-                            <div class="row g-3">
-                                <?php foreach ($usuarios_directivos as $usuario) : ?>
-                                    <div class="col-sm-6">
-                                        <div class="directivo-card">
-                                            <h5><?= esc($usuario['usuario']) ?></h5>
-                                            <p class="mb-2"><?= esc($usuario['email']) ?></p>
-                                            <div class="d-flex justify-content-between">
-                                                <a href="<?= base_url('admin/eliminar_directivo/' . $usuario['idusuario']) ?>"
-                                                    class="btn btn-danger btn-sm"
-                                                    onclick="return confirm('¿Estás seguro de eliminar de este colegio a este directivo?');">
-                                                    <i class="fas fa-user-slash"></i> Desvincular
-                                                </a>
-                                                <a href="<?= base_url('admin/editarDirectivo/' . $usuario['idusuario']) ?>"
-                                                    class="btn btn-secondary btn-sm">
-                                                    <i class="fas fa-edit"></i> Editar
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                <?php endforeach; ?>
+            <div class="card-custom">
+                <h2 class="text-center text-2xl md:text-3xl font-bold mb-4">Usuarios directivos</h2>
+                <?php if (empty($usuarios_directivos)) : ?>
+                    <p class="text-center text-gray-400">No hay usuarios directivos vinculados.</p>
+                <?php else : ?>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <?php foreach ($usuarios_directivos as $usuario) : ?>
+                            <div class="directivo-card">
+                                <h5 class="text-lg font-semibold"><?= esc($usuario['usuario']) ?></h5>
+                                <p class="text-gray-400 mb-3"><?= esc($usuario['email']) ?></p>
+                                <div class="flex flex-col sm:flex-row justify-between gap-2">
+                                    <a href="<?= base_url('admin/eliminar_directivo/' . $usuario['idusuario']) ?>"
+                                        class="btn-custom bg-red-600 hover:bg-red-700"
+                                        onclick="return confirm('¿Estás seguro de eliminar de este colegio a este directivo?');">
+                                        <i class="fas fa-user-slash"></i> Desvincular
+                                    </a>
+                                    <a href="<?= base_url('admin/editarDirectivo/' . $usuario['idusuario']) ?>"
+                                        class="btn-custom bg-gray-500 hover:bg-gray-600">
+                                        <i class="fas fa-edit"></i> Editar
+                                    </a>
+                                </div>
                             </div>
-                        <?php endif; ?>
+                        <?php endforeach; ?>
                     </div>
-                </div>
+                <?php endif; ?>
             </div>
         </div>
     </main>
 
     <footer class="footer">
-        <center><p>Tesis timbre automático 2025 <br>
-            Marquez Juan - Mondino Xiomara
-        </p></center>
+        <center>
+            <p>Tesis timbre automático 2025 <br> Marquez Juan - Mondino Xiomara</p>
+        </center>
     </footer>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>

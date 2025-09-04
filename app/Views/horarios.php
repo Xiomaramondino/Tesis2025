@@ -22,7 +22,7 @@
 
   body {
     margin: 0;
-    padding-top: 70px;
+    padding-top: 70px; /* Espacio para la navbar fija */
     background-color: var(--color-primary);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--color-text-light);
@@ -45,7 +45,7 @@
     box-sizing: border-box;
     z-index: 1000;
   }
-
+  
   .navbar .logo {
     color: var(--color-text-white);
     font-size: 1.9rem;
@@ -54,7 +54,7 @@
     align-items: center;
     gap: 0.5rem;
   }
-
+  
   .navbar img {
     height: 40px;
   }
@@ -76,6 +76,8 @@
   .volver-btn:hover {
     color: #d4b8e0;
   }
+  
+  /* Mantén los estilos existentes para el resto de la página */
 
   .card-container {
     background: var(--color-secondary);
@@ -319,15 +321,11 @@
 <body>
 
 <nav class="navbar sticky-top">
-  <div class="logo">
-    <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" alt="Logo">
-    <span>RingMind</span>
-  </div>
-  <form action="<?= base_url('/gestionar_usuarios'); ?>" method="get">
-    <button type="submit" class="volver-btn">
-      <i class="fas fa-arrow-left"></i> Volver
-    </button>
-  </form>
+  <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" height="40px" alt="Logo">
+  <div class="logo">RingMind</div>
+  <a href="<?= base_url('/gestionar_usuarios'); ?>" class="volver-btn">
+    <i class="fas fa-arrow-left"></i> Volver
+  </a>
 </nav>
 
 <?php
@@ -406,9 +404,9 @@
           </div>
           <div class="horario-actions">
             <a href="<?= base_url('eventos_especiales/delete/' . $evento->id) ?>" 
-               class="btn-delete" 
-               onclick="return confirm('¿Estás seguro de eliminar este evento especial?')">
-               <i class="fas fa-trash-alt"></i> Eliminar
+              class="btn-delete" 
+              onclick="return confirm('¿Estás seguro de eliminar este evento especial?')">
+              <i class="fas fa-trash-alt"></i> Eliminar
             </a>
           </div>
         </div>
