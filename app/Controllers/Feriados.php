@@ -55,4 +55,53 @@ class Feriados extends Controller
             'dispositivos' => $dispositivos
         ]);
     }
+
+    public function lectura()
+    {
+        $db = \Config\Database::connect();
+        $session = session();
+        $idcolegio = $session->get('idcolegio');
+    
+        // 1️⃣ Excepciones del colegio
+        $excepciones = $db->table('excepciones')
+                          ->where('idcolegio', $idcolegio)
+                          ->orderBy('fecha', 'ASC')
+                          ->get()
+                          ->getResultArray();
+    
+        foreach ($excepciones as &$ex) {
+            $ex['tipo'] = 'Excepción Colegio';
+            $ex['motivo'] = $ex['motivo'] ?? 'Excepción';
+        }
+    
+        // 2️⃣ Feriados nacionales desde API
+        $anio = date('Y');
+        $feriadosNacionales = [];
+        try {
+            $ch = curl_init();
+            curl_setopt($ch, CURLOPT_URL, "https://date.nager.at/api/v3/PublicHolidays/$anio/AR");
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            curl_setopt($ch, CURLOPT_TIMEOUT, 5);
+            $result = curl_exec($ch);
+            curl_close($ch);
+    
+            if ($result) {
+                $apiFeriados = json_decode($result, true);
+                foreach ($apiFeriados as $f) {
+                    $feriadosNacionales[] = [
+                        'fecha' => $f['date'],
+                        'motivo' => $f['localName'],
+                        'tipo' => 'Feriado Nacional'
+                    ];
+                }
+            }
+        } catch (\Exception $e) {
+            $feriadosNacionales = [];
+        }
+    
+        return view('feriados_lector', [
+            'excepciones' => $excepciones,
+            'feriadosNacionales' => $feriadosNacionales
+        ]);
+    }
 }

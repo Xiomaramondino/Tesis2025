@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Horarios Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVwL4S/T6jL4xP5U5O5+V5aX5tG3p6+rFp5S5b3c4z5p0+V5k5p5D3+w5u5z5O5" crossorigin="anonymous" />
     <style>
         body {
             margin: 0;
@@ -113,6 +114,43 @@
             line-height: 1.3;
         }
 
+        .btn-main {
+            margin-bottom: 1.5rem;
+            background-color: #070f2e;
+            color: white;
+            border: none;
+            border-radius: 1rem;
+            padding: 0.9rem 1.8rem;
+            font-size: 1.1rem;
+            font-weight: 500;
+            width: 100%;
+            max-width: 350px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-main:hover {
+            background-color: #333;
+            transform: translateY(-2px);
+        }
+
+        .btn-main:disabled {
+            background-color: #333;
+            cursor: not-allowed;
+            color: #999;
+        }
+
+        .disabled-message {
+            color: #e24363;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            font-size: 0.95rem;
+        }
+
         /* Footer */
         .footer {
             text-align: center;
@@ -140,10 +178,25 @@
 <div class="main-content">
     <div class="card" role="main" aria-label="Lista de horarios de timbre">
 
+        <?php
+            // Verificar si hay dispositivo asociado al idcolegio
+            $session = session();
+            $idcolegio = $session->get('idcolegio');
+            $db = \Config\Database::connect();
+            $dispositivo = $db->table('dispositivo')->where('idcolegio', $idcolegio)->get()->getRow();
+        ?>
+
+        <!-- Botón Ver Feriados -->
+        <button class="btn-main" onclick="window.location.href='<?= base_url('feriados/lectura') ?>'" <?= $dispositivo ? '' : 'disabled' ?>>
+    <i class="fas fa-calendar-alt"></i> Ver Feriados del Año
+</button>
+<?php if (!$dispositivo): ?>
+    <p class="disabled-message">No tienes un dispositivo asociado, no puedes ver los feriados.</p>
+<?php endif; ?>
+
         <!-- Eventos especiales -->
-              <!-- Eventos especiales -->
-              <?php if(!empty($eventosEspeciales)) : ?>
-            <h2 class="card-title" style="margin-top:2rem; margin-bottom:1rem; text-align:center; color:#d4b8e0;">Eventos Especiales Activos</h2>
+        <?php if(!empty($eventosEspeciales)) : ?>
+            <h2 class="card-title" style="margin-top:1rem; margin-bottom:1rem; text-align:center; color:#d4b8e0;">Eventos Especiales Activos</h2>
             <div class="horarios-list mb-4">
                 <?php foreach($eventosEspeciales as $evento) : ?>
                     <div class="horario-card">
@@ -156,39 +209,39 @@
                 <?php endforeach; ?>
             </div>
         <?php else : ?>
-            <h2 class="card-title" style="margin-top:2rem; text-align:center; color:#d4b8e0;">Eventos Especiales</h2>
+            <h2 class="card-title" style="margin-top:1rem; text-align:center; color:#d4b8e0;">Eventos Especiales</h2>
             <p style="color:white; text-align:center;">No hay eventos especiales activos.</p>
         <?php endif; ?>
-
 
         <!-- Horarios normales -->
         <h2 class="card-title" style="margin-top:2rem; margin-bottom:1rem; text-align:center; color:#d4b8e0;">Eventos Activos</h2>
         <?php if (!empty($data)) : ?>
-    <div class="horarios-list">
-        <?php 
-        $dias = [
-            1 => 'Lunes',
-            2 => 'Martes',
-            3 => 'Miércoles',
-            4 => 'Jueves',
-            5 => 'Viernes',
-            6 => 'Sábado',
-            7 => 'Domingo'
-        ];
-        foreach ($data as $row) { ?>
-            <div class="horario-card">
-                <div class="horario-info">
-                    <p><strong>Evento: </strong><?= htmlspecialchars($row->evento) ?></p>
-                    <p><strong>Hora: </strong><?= htmlspecialchars($row->hora) ?></p>
-                    <p><strong>Día: </strong><?= $dias[$row->iddia] ?? 'Desconocido' ?></p>
-                </div>
+            <div class="horarios-list">
+                <?php 
+                $dias = [
+                    1 => 'Lunes',
+                    2 => 'Martes',
+                    3 => 'Miércoles',
+                    4 => 'Jueves',
+                    5 => 'Viernes',
+                    6 => 'Sábado',
+                    7 => 'Domingo'
+                ];
+                foreach ($data as $row) { ?>
+                    <div class="horario-card">
+                        <div class="horario-info">
+                            <p><strong>Evento: </strong><?= htmlspecialchars($row->evento) ?></p>
+                            <p><strong>Hora: </strong><?= htmlspecialchars($row->hora) ?></p>
+                            <p><strong>Día: </strong><?= $dias[$row->iddia] ?? 'Desconocido' ?></p>
+                        </div>
+                    </div>
+                <?php } ?>
             </div>
-        <?php } ?>
-    </div>
-<?php else : ?>
-    <p style="color:white; text-align:center;">No hay eventos activos.</p>
-<?php endif; ?>
-</div> 
+        <?php else : ?>
+            <p style="color:white; text-align:center;">No hay eventos activos.</p>
+        <?php endif; ?>
+
+    </div> 
 </div> 
 
 <footer class="footer">

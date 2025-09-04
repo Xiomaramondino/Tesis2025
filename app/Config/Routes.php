@@ -72,3 +72,5 @@ $routes->get('eventos_especiales/delete/(:num)', 'EventosEspecialesController::d
 
 $routes->get('excepciones/eliminar/(:num)', 'Excepciones::eliminar/$1');
 $routes->post('excepciones/modificar/(:num)', 'Excepciones::modificar/$1');
+
+$routes->get('feriados/lectura', 'Feriados::lectura');

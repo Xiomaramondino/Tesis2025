@@ -7,3 +7,177 @@ in APPPATH\Controllers\AdminController.php on line 390.
  4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
  5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-04 12:36:33 --> ErrorException: Attempt to read property "descripcion" on array
+[Method: GET, Route: admin/horarios]
+in APPPATH\Views\horarios_admin.php on line 150.
+ 1 APPPATH\Views\horarios_admin.php(150): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "descripcion" on array', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\horarios_admin.php', 150)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\horarios_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_admin', [], true)
+ 5 APPPATH\Controllers\Horarios.php(372): view('horarios_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->horariosAdmin()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-04 12:37:28 --> ErrorException: Undefined array key "descripcion"
+[Method: GET, Route: admin/horarios]
+in APPPATH\Views\horarios_admin.php on line 150.
+ 1 APPPATH\Views\horarios_admin.php(150): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "descripcion"', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\horarios_admin.php', 150)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\horarios_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_admin', [], true)
+ 5 APPPATH\Controllers\Horarios.php(372): view('horarios_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->horariosAdmin()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-04 12:37:29 --> ErrorException: Undefined array key "descripcion"
+[Method: GET, Route: admin/horarios]
+in APPPATH\Views\horarios_admin.php on line 150.
+ 1 APPPATH\Views\horarios_admin.php(150): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "descripcion"', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\horarios_admin.php', 150)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\horarios_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_admin', [], true)
+ 5 APPPATH\Controllers\Horarios.php(372): view('horarios_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->horariosAdmin()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-04 12:39:15 --> Error: Cannot use object of type stdClass as array
+[Method: GET, Route: admin/horarios]
+in APPPATH\Views\horarios_admin.php on line 195.
+ 1 SYSTEMPATH\View\View.php(234): include()
+ 2 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_admin', [], true)
+ 4 APPPATH\Controllers\Horarios.php(372): view('horarios_admin', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->horariosAdmin()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-04 12:39:17 --> Error: Cannot use object of type stdClass as array
+[Method: GET, Route: admin/horarios]
+in APPPATH\Views\horarios_admin.php on line 195.
+ 1 SYSTEMPATH\View\View.php(234): include()
+ 2 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 3 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('horarios_admin', [], true)
+ 4 APPPATH\Controllers\Horarios.php(372): view('horarios_admin', [...])
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->horariosAdmin()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-09-04 12:54:52 --> mysqli_sql_exception: Table 'timbre2025.feriados' doesn't exist in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\Feriados.php(62): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\Feriados->lectura()
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Feriados))
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-09-04 12:54:52 --> CodeIgniter\Database\Exceptions\DatabaseException: Table 'timbre2025.feriados' doesn't exist
+[Method: GET, Route: feriados/lectura]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `feriados`
+ORDER BY `fecha` ASC', [], false)
+ 2 APPPATH\Controllers\Feriados.php(62): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Feriados->lectura()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Feriados))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-04 12:54:52 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Table 'timbre2025.feriados' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `feriados`
+ORDER BY `fecha` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `feriados`
+ORDER BY `fecha` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `feriados`
+ORDER BY `fecha` ASC', [], false)
+ 4 APPPATH\Controllers\Feriados.php(62): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Feriados->lectura()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Feriados))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-04 12:54:52 --> [Caused by] mysqli_sql_exception: Table 'timbre2025.feriados' doesn't exist
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *
+FROM `feriados`
+ORDER BY `fecha` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `feriados`
+ORDER BY `fecha` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `feriados`
+ORDER BY `fecha` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `feriados`
+ORDER BY `fecha` ASC', [], false)
+ 5 APPPATH\Controllers\Feriados.php(62): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Feriados->lectura()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Feriados))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-04 12:55:12 --> CodeIgniter\View\Exceptions\ViewException: Invalid file: "feriados/feriados_lector.php"
+[Method: GET, Route: feriados/lectura]
+in SYSTEMPATH\Exceptions\FrameworkException.php on line 41.
+ 1 SYSTEMPATH\View\View.php(222): CodeIgniter\Exceptions\FrameworkException::forInvalidFile('feriados/feriados_lector.php')
+ 2 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('feriados/feriados_lector', [], true)
+ 3 APPPATH\Controllers\Feriados.php(64): view('feriados/feriados_lector', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Feriados->lectura()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Feriados))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-04 12:55:37 --> ErrorException: Undefined property: stdClass::$descripcion
+[Method: GET, Route: feriados/lectura]
+in APPPATH\Views\feriados_lector.php on line 119.
+ 1 APPPATH\Views\feriados_lector.php(119): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: stdClass::$descripcion', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\feriados_lector.php', 119)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\feriados_lector.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('feriados_lector', [], true)
+ 5 APPPATH\Controllers\Feriados.php(64): view('feriados_lector', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Feriados->lectura()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Feriados))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-04 13:00:11 --> ErrorException: Attempt to read property "fecha" on array
+[Method: GET, Route: feriados/lectura]
+in APPPATH\Views\feriados_lector.php on line 118.
+ 1 APPPATH\Views\feriados_lector.php(118): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "fecha" on array', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\feriados_lector.php', 118)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\feriados_lector.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('feriados_lector', [], true)
+ 5 APPPATH\Controllers\Feriados.php(116): view('feriados_lector', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Feriados->lectura()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Feriados))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
