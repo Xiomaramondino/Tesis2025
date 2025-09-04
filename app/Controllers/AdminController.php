@@ -437,22 +437,24 @@ private function _enviarCorreoNotificacionSolicitante($emailSolicitante, $nombre
     
 
     // 📧 Notificación de cambios por correo
-    private function _enviarCorreoEdicionUsuario($email, $usuario, $cambios)
+    private function _enviarCorreoEdicionUsuario($email, $usuario, $detalleCambios)
     {
         $emailService = \Config\Services::email();
     
         $emailService->setFrom('timbreautomatico2025@gmail.com', 'Sistema de Gestión de Timbres');
         $emailService->setTo($email);
-        $emailService->setSubject('Modificación de tus datos en el sistema');
+        $emailService->setSubject('Actualización de tu cuenta');
     
         $mensaje = "
             <h2>Hola {$usuario},</h2>
             <p>Tu cuenta en el <strong>Sistema de Gestión de Timbres</strong> fue actualizada por un administrador.</p>
-            <p><strong>Cambios realizados:</strong> {$cambios}</p>
-            <p><strong>Correo asociado:</strong> {$email}</p>
+            <p><strong>Cambios realizados:</strong> {$detalleCambios}</p>
+            <p><strong>Nombre de usuario:</strong> {$usuario}</p>
+            <p><strong>Correo electrónico:</strong> {$email}</p>
             <p>Si no reconocés esta acción, por favor contactá al administrador del sistema.</p>
             <br>
-            <p>Saludos,<br>Sistema de Gestión de Timbres</p>
+            <p>Saludos,<br>
+            <strong>Sistema de Gestión de Timbres</strong></p>
         ";
     
         $emailService->setMessage($mensaje);
