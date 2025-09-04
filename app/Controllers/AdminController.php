@@ -386,28 +386,80 @@ private function _enviarCorreoNotificacionSolicitante($emailSolicitante, $nombre
 
     public function guardarEdicionDirectivo()
     {
-        $usuarioModel = new Usuario();
-
         $idusuario = $this->request->getPost('idusuario');
-        
-        $email = $this->request->getPost('email');
-
-        if (empty($email)) {
-            session()->setFlashdata('error', 'Todos los campos son obligatorios.');
-            return redirect()->to('admin/editarDirectivo/' . $idusuario);
+        $usuarioModel = new Usuario();
+    
+        // Datos actuales del usuario
+        $usuarioActual = $usuarioModel->find($idusuario);
+    
+        // Datos nuevos (normalizados)
+        $nuevoUsuario = trim($this->request->getPost('usuario'));
+        $nuevoEmail   = strtolower(trim($this->request->getPost('email')));
+    
+        $cambios = [];
+        $mensajeCambios = [];
+    
+        // Comparación de usuario
+        if ($usuarioActual['usuario'] !== $nuevoUsuario) {
+            $cambios['usuario'] = $nuevoUsuario;
+            $mensajeCambios[] = "Nombre de usuario modificado.";
         }
-
-        $data = [
-            'email' => $email,
-        ];
-
-        if (!$usuarioModel->update($idusuario, $data)) {
-            session()->setFlashdata('error', 'Hubo un error al actualizar al directivo.');
+    
+        // Comparación de email
+        if (strtolower($usuarioActual['email']) !== $nuevoEmail) {
+            $cambios['email'] = $nuevoEmail;
+            $mensajeCambios[] = "Correo electrónico actualizado.";
         }
-
+    
+        if (!empty($cambios)) {
+            // Guardar cambios
+            $usuarioModel->update($idusuario, $cambios);
+    
+            // Construir mensaje para el correo
+            $detalleCambios = implode(" ", $mensajeCambios);
+    
+            // Enviar notificación por mail
+            $this->_enviarCorreoEdicionUsuario(
+                $cambios['email'] ?? $usuarioActual['email'], // si no cambió el mail, uso el viejo
+                $cambios['usuario'] ?? $usuarioActual['usuario'],
+                $detalleCambios
+            );
+    
+            // Flashdata de éxito
+            session()->setFlashdata('success', 'Datos actualizados correctamente. ' . $detalleCambios);
+        } else {
+            // Ningún cambio detectado
+            session()->setFlashdata('info', 'No se detectaron cambios en los datos.');
+        }
+    
         return redirect()->to('/vista_admin');
     }
+    
 
+    // 📧 Notificación de cambios por correo
+    private function _enviarCorreoEdicionUsuario($email, $usuario, $cambios)
+    {
+        $emailService = \Config\Services::email();
+    
+        $emailService->setFrom('timbreautomatico2025@gmail.com', 'Sistema de Gestión de Timbres');
+        $emailService->setTo($email);
+        $emailService->setSubject('Modificación de tus datos en el sistema');
+    
+        $mensaje = "
+            <h2>Hola {$usuario},</h2>
+            <p>Tu cuenta en el <strong>Sistema de Gestión de Timbres</strong> fue actualizada por un administrador.</p>
+            <p><strong>Cambios realizados:</strong> {$cambios}</p>
+            <p><strong>Correo asociado:</strong> {$email}</p>
+            <p>Si no reconocés esta acción, por favor contactá al administrador del sistema.</p>
+            <br>
+            <p>Saludos,<br>Sistema de Gestión de Timbres</p>
+        ";
+    
+        $emailService->setMessage($mensaje);
+        $emailService->setMailType('html');
+        $emailService->send();
+    }
+    
     private function _enviarCorreoRecuperacionInicial($email, $usuario, $token, $idcolegio)
     {
         $emailService = \Config\Services::email();

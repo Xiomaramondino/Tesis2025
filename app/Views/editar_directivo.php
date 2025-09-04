@@ -98,7 +98,8 @@
             font-size: 1rem;
             transition: all 0.3s ease;
             background-color: transparent;
-            color: var(--color-text-white);
+            color: var(--color-text-white) !important;
+
         }
 
         .form-control::placeholder {
@@ -106,11 +107,13 @@
         }
 
         .form-control:focus {
-            background-color: rgba(255, 255, 255, 0.08);
-            border: 1px solid var(--color-accent);
-            box-shadow: 0 0 10px var(--color-accent);
-            caret-color: var(--color-text-white);
-        }
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid var(--color-accent);
+    box-shadow: 0 0 10px var(--color-accent);
+    color: var(--color-text-white) !important; /* 👈 forzar texto blanco */
+    caret-color: var(--color-text-white);     /* cursor blanco */
+}
+
 
         /* Autofill Styles */
         input:-webkit-autofill,
@@ -208,18 +211,29 @@
 
                         <!-- Formulario -->
                         <form action="<?= base_url('admin/guardarEdicionDirectivo') ?>" method="post">
-                            <input type="hidden" name="idusuario" value="<?= esc($usuario['idusuario']) ?>">
+    <input type="hidden" name="idusuario" value="<?= esc($usuario['idusuario']) ?>">
 
-                            <div class="mb-3">
-                                <input type="email" id="email" name="email" class="form-control" value="<?= esc($usuario['email']) ?>" placeholder="Correo electrónico" required>
-                            </div>
+    <div class="mb-3">
+        <input type="text" id="usuario" name="usuario" 
+               class="form-control" 
+               value="<?= esc($usuario['usuario']) ?>" 
+               placeholder="Nombre de usuario" required>
+    </div>
 
-                            <div class="d-grid mt-4">
-                                <button type="submit" class="btn btn-custom">
-                                    <i class="fas fa-save"></i> Actualizar Usuario
-                                </button>
-                            </div>
-                        </form>
+    <div class="mb-3">
+        <input type="email" id="email" name="email" 
+               class="form-control" 
+               value="<?= esc($usuario['email']) ?>" 
+               placeholder="Correo electrónico" required>
+    </div>
+
+    <div class="d-grid mt-4">
+        <button type="submit" class="btn btn-custom">
+            <i class="fas fa-save"></i> Actualizar Usuario
+        </button>
+    </div>
+</form>
+
                     </div>
                 </div>
             </div>
