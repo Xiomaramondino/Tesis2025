@@ -10,6 +10,7 @@
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
         crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <style>
         body {
             padding-top: 90px; /* espacio para navbar */
@@ -81,20 +82,21 @@
             text-align: center;
             font-size: 1.5rem;
             font-weight: 700;
-            margin-bottom: 2rem;
+            margin-bottom: 1.5rem;
+            color: #d4b8e0;
         }
 
         .horarios-list {
             display: flex;
             flex-direction: column;
-            gap: 1.2rem;
+            gap: 1rem;
         }
 
         .horario-card {
             background: #070f2e;
             border-radius: 1rem;
             box-shadow: 0 4px 12px rgba(163, 143, 193, 0.25);
-            padding: 1.2rem 1.8rem;
+            padding: 1rem 1.5rem;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -103,8 +105,8 @@
         }
 
         .horario-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 12px 25px rgba(163, 143, 193, 0.6);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(163, 143, 193, 0.5);
         }
 
         .horario-info p {
@@ -141,6 +143,13 @@
             background-color: #666565;
             color: white;
         }
+
+        .feriado-btn-container {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
@@ -148,7 +157,6 @@
     <nav class="navbar">
         <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" width="60px" alt="Logo" />
         <div class="logo">RingMind</div>
-
         <div class="navbar-buttons">
             <form action="<?= base_url('/logout'); ?>" method="post">
                 <button type="submit" class="btn btn-sm volver-btn">Cerrar sesión</button>
@@ -163,12 +171,31 @@
         </form>
     </div>
 
+    <?php
+    // Verificar dispositivo asociado
+    $session = session();
+    $idcolegio = $session->get('idcolegio');
+    $db = \Config\Database::connect();
+    $dispositivo = $db->table('dispositivo')->where('idcolegio', $idcolegio)->get()->getRow();
+    ?>
+
+    <?php if ($dispositivo): ?>
+        <!-- Botón Ver Feriados -->
+        <div class="feriado-btn-container">
+            <form action="<?= base_url('feriados/lectura') ?>" method="get">
+                <button type="submit" class="btn-form">
+                    <i class="fas fa-calendar-alt"></i> Ver Feriados
+                </button>
+            </form>
+        </div>
+    <?php endif; ?>
+
     <!-- Contenedor principal -->
     <div class="card" role="main" aria-label="Lista de horarios de timbre">
 
         <!-- Eventos Especiales -->
         <?php if (!empty($eventos)) : ?>
-            <h2 class="card-title" style="color:#d4b8e0;">Eventos Especiales</h2>
+            <h2 class="card-title">Eventos Especiales</h2>
             <div class="horarios-list">
                 <?php foreach ($eventos as $evento) : ?>
                     <div class="horario-card">
@@ -181,12 +208,12 @@
                 <?php endforeach; ?>
             </div>
         <?php else : ?>
-            <h2 class="card-title" style="color:#d4b8e0;">Eventos Especiales</h2>
+            <h2 class="card-title">Eventos Especiales</h2>
             <p style="color:white; text-align:center;">No hay eventos especiales activos.</p>
         <?php endif; ?>
 
         <!-- Horarios normales -->
-        <h2 class="card-title" style="color:#d4b8e0;">Eventos Activos</h2>
+        <h2 class="card-title">Eventos Activos</h2>
         <div class="horarios-list">
             <?php 
                 $dias = [
@@ -215,11 +242,7 @@
 
     </div>
 
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"
-    ></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- Footer -->
     <footer class="footer">
