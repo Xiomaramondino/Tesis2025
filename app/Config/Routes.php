@@ -78,3 +78,9 @@ $routes->get('feriados/lectura', 'Feriados::lectura');
 $routes->get('admin/editarProfesor/(:num)', 'AdminController::editarProfesor/$1');
 $routes->post('admin/actualizarProfesor/(:num)', 'AdminController::actualizarProfesor/$1');
 
+$routes->get('/profesor/avisos', 'ProfesorController::avisos');
+
+$routes->get('avisos/crear', 'AvisosController::crearAviso');
+$routes->post('avisos/guardarAviso', 'AvisosController::guardarAviso');
+$routes->get('avisos/listar', 'AvisosController::listar');
+

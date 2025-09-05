@@ -65,14 +65,16 @@ class Auth extends Controller
     }
 
     private function redirigirPorRol($idrol)
-{
-    if ($idrol == 1) {
-        return redirect()->to('/vista_admin');
-    } elseif ($idrol == 2) {
-        return redirect()->to('/gestionar_usuarios');
-    } else {
-        return redirect()->to('/horarios_lector');
-    }
+    {
+        if ($idrol == 1) { // Admin
+            return redirect()->to('/vista_admin');
+        } elseif ($idrol == 2) { // Directivo
+            return redirect()->to('/gestionar_usuarios');
+        } elseif ($idrol == 4) { // Profesor
+            return redirect()->to('/profesor/avisos'); // <-- nueva vista de calendario
+        } else { // Alumno u otro rol
+            return redirect()->to('/horarios_lector');
+        }
 }
 
     public function seleccionarContexto()
