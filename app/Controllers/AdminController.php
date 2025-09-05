@@ -630,33 +630,69 @@ public function editarProfesor($idusuario)
 
 public function actualizarProfesor($idusuario)
 {
-    if (session()->get('idrol') !== '1') {
-        return redirect()->to('/login');
-    }
-
     $usuarioModel = new \App\Models\Usuario();
-    $usuario = $usuarioModel->find($idusuario);
 
-    if (!$usuario) {
-        session()->setFlashdata('error', 'Profesor no encontrado.');
+    $usuarioActual = $usuarioModel->find($idusuario);
+
+    if (!$usuarioActual) {
+        session()->setFlashdata('error', 'Usuario no encontrado.');
         return redirect()->to('/vista_admin');
     }
 
-    $nombre = $this->request->getPost('usuario');
-    $email = strtolower(trim($this->request->getPost('email')));
+    // Obtener datos del formulario
+    $nuevoNombre = $this->request->getPost('usuario');
+    $nuevoEmail = strtolower(trim($this->request->getPost('email')));
 
-    if (empty($nombre) || empty($email)) {
-        session()->setFlashdata('error', 'Todos los campos son obligatorios.');
-        return redirect()->to('admin/editarProfesor/' . $idusuario);
+    // Comparar con los datos actuales
+    $cambios = [];
+    if ($nuevoNombre !== $usuarioActual['usuario']) {
+        $cambios['usuario'] = ['antes' => $usuarioActual['usuario'], 'despues' => $nuevoNombre];
+    }
+    if ($nuevoEmail !== $usuarioActual['email']) {
+        $cambios['email'] = ['antes' => $usuarioActual['email'], 'despues' => $nuevoEmail];
     }
 
-    $usuarioModel->update($idusuario, [
-        'usuario' => $nombre,
-        'email'   => $email
-    ]);
+    // Si hay cambios, actualizar y enviar correo
+    if (!empty($cambios)) {
+        $usuarioModel->update($idusuario, [
+            'usuario' => $nuevoNombre,
+            'email' => $nuevoEmail
+        ]);
 
-    session()->setFlashdata('success', 'Profesor actualizado correctamente.');
+        // Enviar correo informando cambios
+        $this->_enviarCorreoActualizacion($nuevoEmail, $nuevoNombre, $cambios);
+
+        session()->setFlashdata('success', 'Usuario actualizado correctamente.');
+    } else {
+        session()->setFlashdata('info', 'No se realizaron cambios.');
+    }
+
     return redirect()->to('/vista_admin');
+}
+
+// Función privada para enviar correo de actualización
+private function _enviarCorreoActualizacion($email, $usuario, $cambios)
+{
+    $emailService = \Config\Services::email();
+
+    $emailService->setFrom('timbreautomatico2025@gmail.com', 'Sistema de Gestión de Timbres');
+    $emailService->setTo($email);
+    $emailService->setSubject('Actualización de tus datos');
+
+    $mensaje = "<h2>Hola {$usuario},</h2>";
+    $mensaje .= "<p>Se han realizado los siguientes cambios en tu cuenta:</p><ul>";
+    foreach ($cambios as $campo => $valores) {
+        $mensaje .= "<li><strong>" . ucfirst($campo) . ":</strong> {$valores['antes']} → {$valores['despues']}</li>";
+    }
+    $mensaje .= "</ul><p>Si no realizaste estos cambios, contacta con tu administrador.</p>";
+    $mensaje .= "<br><p>Saludos,<br>Equipo del Sistema de Gestión de Timbres</p>";
+
+    $emailService->setMessage($mensaje);
+    $emailService->setMailType('html');
+
+    if (!$emailService->send()) {
+        log_message('error', 'Error al enviar el correo de actualización a ' . $email);
+    }
 }
 
 }
