@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Horarios Admin</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVwL4S/T6jL4xP5U5O5+V5aX5tG3p6+rFp5S5b3c4z5p0+V5k5p5D3+w5u5z5O5" crossorigin="anonymous" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+
     <style>
         body {
             margin: 0;
@@ -187,12 +189,13 @@
         ?>
 
         <!-- Botón Ver Feriados -->
+            <!-- Botón Ver Feriados -->
         <button class="btn-main" onclick="window.location.href='<?= base_url('feriados/lectura') ?>'" <?= $dispositivo ? '' : 'disabled' ?>>
-    <i class="fas fa-calendar-alt"></i> Ver Feriados del Año
-</button>
-<?php if (!$dispositivo): ?>
-    <p class="disabled-message">No tienes un dispositivo asociado, no puedes ver los feriados.</p>
-<?php endif; ?>
+            <i class="fas fa-calendar-alt"></i> Ver Feriados del Año
+        </button>
+        <?php if (!$dispositivo): ?>
+            <p class="disabled-message">No tienes un dispositivo asociado, no puedes ver los feriados.</p>
+        <?php endif; ?>
 
         <!-- Eventos especiales -->
         <?php if(!empty($eventosEspeciales)) : ?>

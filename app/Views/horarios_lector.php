@@ -128,27 +128,41 @@
             left: 0;
         }
 
-        .btn-form {
-            background: #081136;
+        .btn-main {
+            margin-bottom: 1.5rem;
+            background-color: #070f2e;
             color: white;
-            padding: 0.5rem 1.5rem;
-            font-size: 1rem;
             border: none;
-            border-radius: 0.5rem;
-            cursor: pointer;
-            display: inline-block;
-        }
-
-        .btn-form:hover {
-            background-color: #666565;
-            color: white;
-        }
-
-        .feriado-btn-container {
+            border-radius: 1rem;
+            padding: 0.9rem 1.8rem;
+            font-size: 1.1rem;
+            font-weight: 500;
             width: 100%;
-            display: flex;
-            justify-content: center;
-            margin-bottom: 20px;
+            max-width: 350px;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+        }
+
+        .btn-main:hover {
+            background-color: #333;
+            transform: translateY(-2px);
+        }
+
+        .btn-main:disabled {
+            background-color: #333;
+            cursor: not-allowed;
+            color: #999;
+        }
+
+        .disabled-message {
+            color: #e24363;
+            text-align: center;
+            margin-bottom: 1rem;
+            font-weight: bold;
+            font-size: 0.95rem;
         }
     </style>
 </head>
@@ -167,7 +181,7 @@
     <!-- Botón cambiar colegio -->
     <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px; margin-bottom: 10px;">
         <form action="<?= base_url('/cambiar-colegio') ?>" method="get">
-            <button type="submit" class="btn-form">Cambiar de colegio</button>
+            <button type="submit" class="btn-main">Cambiar de colegio</button>
         </form>
     </div>
 
@@ -179,19 +193,16 @@
     $dispositivo = $db->table('dispositivo')->where('idcolegio', $idcolegio)->get()->getRow();
     ?>
 
-    <?php if ($dispositivo): ?>
-        <!-- Botón Ver Feriados -->
-        <div class="feriado-btn-container">
-            <form action="<?= base_url('feriados/lectura') ?>" method="get">
-                <button type="submit" class="btn-form">
-                    <i class="fas fa-calendar-alt"></i> Ver Feriados
-                </button>
-            </form>
-        </div>
-    <?php endif; ?>
-
     <!-- Contenedor principal -->
     <div class="card" role="main" aria-label="Lista de horarios de timbre">
+
+        <!-- Botón Ver Feriados -->
+        <button class="btn-main" onclick="window.location.href='<?= base_url('feriados/lectura') ?>'" <?= $dispositivo ? '' : 'disabled' ?>>
+            <i class="fas fa-calendar-alt"></i> Ver Feriados del Año
+        </button>
+        <?php if (!$dispositivo): ?>
+            <p class="disabled-message">No tienes un dispositivo asociado, no puedes ver los feriados.</p>
+        <?php endif; ?>
 
         <!-- Eventos Especiales -->
         <?php if (!empty($eventos)) : ?>
@@ -200,9 +211,9 @@
                 <?php foreach ($eventos as $evento) : ?>
                     <div class="horario-card">
                         <div class="horario-info">
-                            <p><strong>Descripción:</strong> <?= htmlspecialchars($evento['descripcion']) ?></p>
-                            <p><strong>Fecha:</strong> <?= htmlspecialchars($evento['fecha']) ?></p>
-                            <p><strong>Hora:</strong> <?= htmlspecialchars($evento['hora']) ?></p>
+                            <p><strong>Descripción:</strong> <?= htmlspecialchars($evento->descripcion) ?></p>
+                            <p><strong>Fecha:</strong> <?= htmlspecialchars($evento->fecha) ?></p>
+                            <p><strong>Hora:</strong> <?= htmlspecialchars($evento->hora) ?></p>
                         </div>
                     </div>
                 <?php endforeach; ?>

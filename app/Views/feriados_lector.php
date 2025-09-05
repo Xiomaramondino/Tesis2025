@@ -105,11 +105,19 @@
 <body>
 
 <!-- Navbar -->
+<!-- Navbar -->
 <nav class="navbar">
     <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" width="60px" alt="Logo">
     <div class="logo">RingMind</div>
-    <a href="<?= base_url('/vista_admin'); ?>" class="volver-btn">Volver</a>
+    <?php 
+        $session = session();
+        $rol = (int) $session->get('idrol'); // forzamos a entero
+    ?>
+    <a href="<?= $rol === 1 ? base_url('/admin/horarios') : ($rol === 3 ? base_url('/horarios_lector') : base_url('/')) ?>" 
+       class="volver-btn">Volver</a>
 </nav>
+
+
 
 <!-- Contenido principal -->
 <div class="main-content">
