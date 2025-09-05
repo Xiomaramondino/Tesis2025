@@ -628,5 +628,36 @@ public function editarProfesor($idusuario)
     ]);
 }
 
+public function actualizarProfesor($idusuario)
+{
+    if (session()->get('idrol') !== '1') {
+        return redirect()->to('/login');
+    }
+
+    $usuarioModel = new \App\Models\Usuario();
+    $usuario = $usuarioModel->find($idusuario);
+
+    if (!$usuario) {
+        session()->setFlashdata('error', 'Profesor no encontrado.');
+        return redirect()->to('/vista_admin');
+    }
+
+    $nombre = $this->request->getPost('usuario');
+    $email = strtolower(trim($this->request->getPost('email')));
+
+    if (empty($nombre) || empty($email)) {
+        session()->setFlashdata('error', 'Todos los campos son obligatorios.');
+        return redirect()->to('admin/editarProfesor/' . $idusuario);
+    }
+
+    $usuarioModel->update($idusuario, [
+        'usuario' => $nombre,
+        'email'   => $email
+    ]);
+
+    session()->setFlashdata('success', 'Profesor actualizado correctamente.');
+    return redirect()->to('/vista_admin');
+}
+
 }
 

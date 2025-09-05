@@ -76,4 +76,5 @@ $routes->post('excepciones/modificar/(:num)', 'Excepciones::modificar/$1');
 $routes->get('feriados/lectura', 'Feriados::lectura');
 
 $routes->get('admin/editarProfesor/(:num)', 'AdminController::editarProfesor/$1');
-$routes->post('admin/editarProfesor/(:num)', 'AdminController::actualizarProfesor/$1');
+$routes->post('admin/actualizarProfesor/(:num)', 'AdminController::actualizarProfesor/$1');
+
