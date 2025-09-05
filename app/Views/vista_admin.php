@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>RingMind - Gestión de Directivos</title>
+    <title>RingMind - Gestión de Usuarios</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <style>
@@ -28,7 +28,6 @@
             min-height: 100vh;
         }
 
-        /* --- Navbar mejorada --- */
         .navbar {
             width: 100%;
             background-color: var(--color-secondary);
@@ -85,7 +84,6 @@
             gap: 0.5rem;
         }
 
-        /* Main Content */
         main {
             flex-grow: 1;
             padding: 1rem;
@@ -142,7 +140,6 @@
             caret-color: var(--color-text-white);
         }
 
-        /* Autofill Styles */
         input:-webkit-autofill,
         input:-webkit-autofill:focus,
         input:-webkit-autofill:hover,
@@ -153,7 +150,6 @@
             caret-color: var(--color-text-white) !important;
         }
 
-        /* Directivos List */
         .directivo-card {
             background: var(--color-primary);
             border-radius: 1rem;
@@ -196,6 +192,7 @@
             justify-content: center;
             align-items: center;
             gap: 0.5rem;
+            position: relative;
         }
 
         .alert-success {
@@ -216,7 +213,18 @@
             color: #3b82f6;
         }
 
-        /* Footer */
+        .alert button.close-alert {
+            position: absolute;
+            top: 0.5rem;
+            right: 0.75rem;
+            background: transparent;
+            border: none;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            color: inherit;
+        }
+
         .footer {
             text-align: center;
             background-color: #081136;
@@ -275,26 +283,30 @@
                 </a>
             </div>
 
+            <!-- Card de agregar usuarios -->
             <div class="flex justify-center">
                 <div class="w-full md:w-3/4 lg:w-2/3">
                     <div class="card-custom">
-                        <h2 class="text-center text-2xl md:text-3xl font-bold mb-4">Agregar usuario directivo</h2>
+                        <h2 class="text-center text-2xl md:text-3xl font-bold mb-4">Agregar usuario</h2>
 
                         <?php if (session()->get('error')) : ?>
                             <div class="alert alert-danger" role="alert">
                                 <?= session()->get('error'); ?>
+                                <button type="button" class="close-alert" onclick="this.parentElement.style.display='none';">&times;</button>
                             </div>
                         <?php endif; ?>
 
                         <?php if (session()->get('success') || session()->get('exito')) : ?>
                             <div class="alert alert-success" role="alert">
                                 <?= session()->get('success') ?: session()->get('exito'); ?>
+                                <button type="button" class="close-alert" onclick="this.parentElement.style.display='none';">&times;</button>
                             </div>
                         <?php endif; ?>
 
                         <?php if (session()->get('info')) : ?>
                             <div class="alert alert-info" role="alert">
                                 <?= session()->get('info'); ?>
+                                <button type="button" class="close-alert" onclick="this.parentElement.style.display='none';">&times;</button>
                             </div>
                         <?php endif; ?>
 
@@ -307,13 +319,22 @@
                                 <input type="email" id="email" name="email" class="form-control" placeholder="Correo electrónico" required />
                             </div>
 
+                            <div class="mb-3">
+    <select name="tipo_usuario" id="tipo_usuario" class="form-control" required>
+        <option value="" disabled selected>Seleccione tipo de usuario</option>
+        <option value="2">Directivo / Preceptor</option>
+        <option value="4">Profesor</option>
+    </select>
+</div>
+
+
                             <div class="note my-3">
-                                <strong>Importante:</strong> Si el directivo no tiene una cuenta, nuestro sistema creará una automáticamente. Se le enviará un correo con una contraseña temporal y un enlace para que pueda establecer una nueva.
+                                <strong>Importante:</strong> Si el usuario no tiene una cuenta, nuestro sistema creará una automáticamente. Se le enviará un correo con una contraseña temporal y un enlace para que pueda establecer una nueva.
                             </div>
 
                             <div class="d-grid mt-4">
                                 <button type="submit" class="btn-custom w-full">
-                                    <i class="fas fa-user-plus"></i> Agregar directivo
+                                    <i class="fas fa-user-plus"></i> Agregar usuario
                                 </button>
                             </div>
                         </form>
@@ -323,7 +344,8 @@
 
             <hr class="my-8" style="border-color: rgba(255, 255, 255, 0.1);" />
 
-            <div class="card-custom">
+            <!-- Listado de directivos -->
+            <div class="card-custom mb-8">
                 <h2 class="text-center text-2xl md:text-3xl font-bold mb-4">Usuarios directivos</h2>
                 <?php if (empty($usuarios_directivos)) : ?>
                     <p class="text-center text-gray-400">No hay usuarios directivos vinculados.</p>
@@ -340,6 +362,34 @@
                                         <i class="fas fa-user-slash"></i> Desvincular
                                     </a>
                                     <a href="<?= base_url('admin/editarDirectivo/' . $usuario['idusuario']) ?>"
+                                        class="btn-custom bg-gray-500 hover:bg-gray-600">
+                                        <i class="fas fa-edit"></i> Editar
+                                    </a>
+                                </div>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+
+            <!-- Listado de profesores -->
+            <div class="card-custom mb-8">
+                <h2 class="text-center text-2xl md:text-3xl font-bold mb-4">Usuarios profesores</h2>
+                <?php if (empty($usuarios_profesores)) : ?>
+                    <p class="text-center text-gray-400">No hay profesores vinculados.</p>
+                <?php else : ?>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <?php foreach ($usuarios_profesores as $profesor) : ?>
+                            <div class="directivo-card">
+                                <h5 class="text-lg font-semibold"><?= esc($profesor['usuario']) ?></h5>
+                                <p class="text-gray-400 mb-3"><?= esc($profesor['email']) ?></p>
+                                <div class="flex flex-col sm:flex-row justify-between gap-2">
+                                    <a href="<?= base_url('admin/eliminar_profesor/' . $profesor['idusuario']) ?>"
+                                        class="btn-custom bg-red-600 hover:bg-red-700"
+                                        onclick="return confirm('¿Estás seguro de eliminar a este profesor?');">
+                                        <i class="fas fa-user-slash"></i> Desvincular
+                                    </a>
+                                    <a href="<?= base_url('admin/editarProfesor/' . $profesor['idusuario']) ?>"
                                         class="btn-custom bg-gray-500 hover:bg-gray-600">
                                         <i class="fas fa-edit"></i> Editar
                                     </a>

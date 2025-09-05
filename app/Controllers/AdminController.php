@@ -12,30 +12,41 @@ class AdminController extends Controller
 {
     public function index()
     {
-        // Verificar que el usuario tenga el rol de admin
         if (session()->get('idrol') !== '1') {
             return redirect()->to('/login');
         }
     
-        $idcolegio = session()->get('idcolegio'); // Colegio del admin
-    
+        $idcolegio = session()->get('idcolegio');
         $db = \Config\Database::connect();
     
-        // Obtener directivos asociados al colegio desde la tabla intermedia
+        // Directivos
         $queryDirectivos = $db->table('usuario_colegio uc')
             ->select('u.idusuario, u.usuario, u.email')
             ->join('usuarios u', 'u.idusuario = uc.idusuario')
             ->where('uc.idcolegio', $idcolegio)
-            ->where('uc.idrol', 2) // Rol de directivo
+            ->where('uc.idrol', 2)
             ->orderBy('u.usuario', 'ASC')
             ->get();
     
         $usuarios_directivos = $queryDirectivos->getResultArray();
     
+        // Profesores
+        $queryProfesores = $db->table('usuario_colegio uc')
+            ->select('u.idusuario, u.usuario, u.email')
+            ->join('usuarios u', 'u.idusuario = uc.idusuario')
+            ->where('uc.idcolegio', $idcolegio)
+            ->where('uc.idrol', 4)
+            ->orderBy('u.usuario', 'ASC')
+            ->get();
+    
+        $usuarios_profesores = $queryProfesores->getResultArray();
+    
         return view('vista_admin', [
-            'usuarios_directivos' => $usuarios_directivos
+            'usuarios_directivos' => $usuarios_directivos,
+            'usuarios_profesores' => $usuarios_profesores
         ]);
     }
+    
     
     public function guardarUsuario()
     {
@@ -52,27 +63,34 @@ class AdminController extends Controller
         }
     
         $db = \Config\Database::connect();
-        $dispositivo = $db->table('dispositivo') // 👈 cambia "dispositivos" si tu tabla se llama distinto
+        $dispositivo = $db->table('dispositivo') 
             ->where('idcolegio', $idcolegio)
             ->get()
             ->getRow();
     
         if (!$dispositivo) {
-            session()->setFlashdata('error', 'Este colegio no tiene un dispositivo (MAC) registrado. Registre un dispositivo antes de agregar directivos.');
+            session()->setFlashdata('error', 'Este colegio no tiene un dispositivo (MAC) registrado. Registre un dispositivo antes de agregar usuarios.');
             return redirect()->to('/vista_admin');
         }
     
         $usuario = $this->request->getPost('usuario');
         $email = strtolower(trim($this->request->getPost('email')));
+        $idrol = (int) $this->request->getPost('tipo_usuario');
     
-        if (empty($usuario) || empty($email)) {
-            session()->setFlashdata('error', 'Todos los campos son obligatorios');
+        if (empty($usuario) || empty($email) || empty($idrol)) {
+            session()->setFlashdata('error', 'Todos los campos son obligatorios.');
             return redirect()->to('/vista_admin');
         }
     
+        // Definir texto del tipo de usuario para correos
+        $tipoUsuario = match($idrol) {
+            2 => 'Directivo',
+            4 => 'Profesor',
+            default => 'Usuario'
+        };
+    
         $usuarioModel = new \App\Models\Usuario();
         $intermedioModel = new \App\Models\UsuarioColegioModel(); 
-        $idrol = 2; // Directivo
         $emailSolicitante = session()->get('email'); 
     
         $usuarioExistente = $usuarioModel->where('email', $email)->first();
@@ -80,7 +98,7 @@ class AdminController extends Controller
         if ($usuarioExistente) {
             $idusuario = $usuarioExistente['idusuario'];
     
-            // 💡 Verificar si ya está asociado con ese colegio y rol
+            // Verificar si ya está asociado con ese colegio y rol
             $existeAsociacion = $intermedioModel
                 ->where('idusuario', $idusuario)
                 ->where('idcolegio', $idcolegio)
@@ -88,13 +106,11 @@ class AdminController extends Controller
                 ->first();
     
             if ($existeAsociacion) {
-                session()->setFlashdata('error', 'Este usuario ya está asociado a este colegio con este rol.');
+                session()->setFlashdata('error', "Este usuario ya está asociado a este colegio como $tipoUsuario.");
                 return redirect()->to('/vista_admin');
             }
     
-            $db = \Config\Database::connect();
-    
-            // 🚫 Verificar si ya existe una solicitud pendiente
+            // Verificar si ya existe una solicitud pendiente
             $solicitudPendiente = $db->table('solicitudes_asociacion')
                 ->where('idusuario', $idusuario)
                 ->where('idcolegio', $idcolegio)
@@ -104,10 +120,11 @@ class AdminController extends Controller
                 ->getRow();
     
             if ($solicitudPendiente) {
-                session()->setFlashdata('error', 'Ya existe una solicitud pendiente para este usuario en este colegio.');
+                session()->setFlashdata('error', "Ya existe una solicitud pendiente para este usuario como $tipoUsuario en este colegio.");
                 return redirect()->to('/vista_admin');
             }
-            // ✅ Crear nueva solicitud
+    
+            // Crear nueva solicitud
             $token = bin2hex(random_bytes(32));
     
             $db->table('solicitudes_asociacion')->insert([
@@ -120,26 +137,26 @@ class AdminController extends Controller
                 'email_solicitante' => $emailSolicitante 
             ]);
     
-            $this->_enviarCorreoSolicitudAsociacion($email, $usuarioExistente['usuario'], $token, $idcolegio);
+            $this->_enviarCorreoSolicitudAsociacion($email, $usuarioExistente['usuario'], $token, $idcolegio, $tipoUsuario);
     
-            session()->setFlashdata('success', 'Solicitud de asociación enviada al correo del usuario.');
+            session()->setFlashdata('success', "Solicitud de asociación enviada al correo del usuario como $tipoUsuario.");
             return redirect()->to('/vista_admin');
         }
     
-        // ⚠️ Antes de crear nuevo usuario, asegurarse que NO haya asociación previa con ese email
+        // Antes de crear nuevo usuario, asegurarse que no haya asociación previa
         $usuarioConAsociacion = $usuarioModel->select('usuarios.idusuario')
             ->join('usuario_colegio', 'usuarios.idusuario = usuario_colegio.idusuario')
             ->where('usuarios.email', $email)
             ->where('usuario_colegio.idcolegio', $idcolegio)
-            ->where('usuario_colegio.idrol', $idrol)
+            ->where('usuario_colegio.idrol', $rol)
             ->first();
     
         if ($usuarioConAsociacion) {
-            session()->setFlashdata('error', 'Ya existe un usuario con este correo asociado a este colegio con este rol.');
+            session()->setFlashdata('error', "Ya existe un usuario con este correo asociado a este colegio como $tipoUsuario.");
             return redirect()->to('/vista_admin');
         }
     
-        // ✅ Crear nuevo usuario
+        // Crear nuevo usuario
         $passwordTemporal = bin2hex(random_bytes(4));
         $hashedPassword = password_hash($passwordTemporal, PASSWORD_DEFAULT);
         $token = bin2hex(random_bytes(50));
@@ -156,71 +173,69 @@ class AdminController extends Controller
             session()->setFlashdata('error', 'Error al crear el nuevo usuario.');
             return redirect()->to('/vista_admin');
         }
-        
+    
         $idusuario = $usuarioModel->insertID();
-        
+    
         if (!$idusuario) {
             session()->setFlashdata('error', 'No se pudo obtener el ID del nuevo usuario.');
             return redirect()->to('/vista_admin');
         }
     
-        $emailSolicitante = session()->get('email'); // Asegura que lo extraés antes del insert
-    
-        // ✉️ Crear solicitud de asociación (se confirmará luego)
-        $db = \Config\Database::connect();
+        // Crear solicitud de asociación
         $db->table('solicitudes_asociacion')->insert([
             'idusuario' => $idusuario,
             'idcolegio' => $idcolegio,
-            'idrol' => $idrol,
+            'idrol' => $rol,
             'token' => $token,
             'estado' => 'pendiente',
             'fecha_creacion' => date('Y-m-d H:i:s'),
             'email_solicitante' => $emailSolicitante
         ]);
     
-        $this->_enviarCorreoSolicitudAsociacion($email, $usuario, $token, $idcolegio);
+        $this->_enviarCorreoSolicitudAsociacion($email, $usuario, $token, $idcolegio, $tipoUsuario);
     
-        session()->setFlashdata('success', 'Usuario creado. Se envió una solicitud de asociación al correo.');
+        session()->setFlashdata('success', "Usuario creado. Se envió una solicitud de asociación al correo como $tipoUsuario.");
         return redirect()->to('/vista_admin');
     }
+       
+    private function _enviarCorreoSolicitudAsociacion($email, $usuario, $token, $idcolegio, $tipoUsuario)
+    {
+        $colegioModel = new \App\Models\ColegioModel();
+        $colegio = $colegioModel->find($idcolegio);
+        $nombreColegio = $colegio ? $colegio['nombre'] : 'un colegio';
     
-private function _enviarCorreoSolicitudAsociacion($email, $usuario, $token, $idcolegio)
-{
-    $colegioModel = new \App\Models\ColegioModel();
-    $colegio = $colegioModel->find($idcolegio);
-    $nombreColegio = $colegio ? $colegio['nombre'] : 'un colegio';
-
-    $emailService = \Config\Services::email();
-
-    $emailService->setFrom('timbreautomatico2025@gmail.com', 'Sistema de Gestión de Timbres');
-    $emailService->setTo($email);
-    $emailService->setSubject('Solicitud de asociación a un colegio');
-
-    $linkAceptar = base_url("admin/confirmarAsociacion/$token/aceptar");
-    $linkRechazar = base_url("admin/confirmarAsociacion/$token/rechazar");
-
-    $mensaje = "
-        <h2>Hola {$usuario},</h2>
-        <p>Te invitaron a asociarte como <strong>Directivo</strong> al siguiente colegio:</p>
-        <p><strong>Colegio:</strong> {$nombreColegio}</p>
-        <p>Por favor, confirmá si aceptás esta asociación:</p>
-        <p>
-            <a href='{$linkAceptar}' style='padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px;'>Aceptar</a>
-            &nbsp;
-            <a href='{$linkRechazar}' style='padding: 10px 20px; background: #dc3545; color: white; text-decoration: none; border-radius: 5px;'>Rechazar</a>
-        </p>
-        <p>Si no reconocés este colegio o no querés asociarte, simplemente rechazá la solicitud.</p>
-        <br>
-        <p>Saludos,<br>Equipo del Sistema de Gestión de Timbres</p>
-    ";
-
-    $emailService->setMessage($mensaje);
-    $emailService->setMailType('html');
-
-    if (!$emailService->send()) {
-        log_message('error', 'Error al enviar el correo de solicitud de asociación a ' . $email);
+        $emailService = \Config\Services::email();
+    
+        $emailService->setFrom('timbreautomatico2025@gmail.com', 'Sistema de Gestión de Timbres');
+        $emailService->setTo($email);
+        $emailService->setSubject("Solicitud de asociación como $tipoUsuario");
+    
+        $linkAceptar = base_url("admin/confirmarAsociacion/$token/aceptar");
+        $linkRechazar = base_url("admin/confirmarAsociacion/$token/rechazar");
+    
+        $mensaje = "
+            <h2>Hola {$usuario},</h2>
+            <p>Te invitaron a asociarte como <strong>{$tipoUsuario}</strong> al siguiente colegio:</p>
+            <p><strong>Colegio:</strong> {$nombreColegio}</p>
+            <p>Por favor, confirmá si aceptás esta asociación:</p>
+            <p>
+                <a href='{$linkAceptar}' style='padding: 10px 20px; background: #28a745; color: white; text-decoration: none; border-radius: 5px;'>Aceptar</a>
+                &nbsp;
+                <a href='{$linkRechazar}' style='padding: 10px 20px; background: #dc3545; color: white; text-decoration: none; border-radius: 5px;'>Rechazar</a>
+            </p>
+            <p>Si no reconocés este colegio o no querés asociarte, simplemente rechazá la solicitud.</p>
+            <br>
+            <p>Saludos,<br>Equipo del Sistema de Gestión de Timbres</p>
+        ";
+    
+        $emailService->setMessage($mensaje);
+        $emailService->setMailType('html');
+    
+        if (!$emailService->send()) {
+            log_message('error', 'Error al enviar el correo de solicitud de asociación a ' . $email);
+        }
     }
-}
+    
     private function _enviarCorreoConfirmacionAsociacion($email, $usuario, $token, $idcolegio, $esUsuarioNuevo)
     {
         $colegioModel = new ColegioModel();
@@ -598,4 +613,20 @@ public function guardar_dispositivo() {
     return redirect()->to('registrar_dispositivo')->with('success', 'Dispositivo registrado con éxito.');
 }
 
+public function editarProfesor($idusuario)
+{
+    $usuarioModel = new \App\Models\Usuario();
+    $usuario = $usuarioModel->find($idusuario);
+
+    if (!$usuario) {
+        session()->setFlashdata('error', 'Usuario no encontrado');
+        return redirect()->to('/vista_admin');
+    }
+
+    return view('editar_profesor', [
+        'usuario' => $usuario
+    ]);
 }
+
+}
+
