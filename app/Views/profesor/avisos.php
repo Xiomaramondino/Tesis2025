@@ -64,7 +64,6 @@ body {
     max-width: 1100px;
     margin: 0 auto;
     padding: 1rem;
-
 }
 
 .btn-custom {
@@ -104,6 +103,20 @@ body {
     font-size: 0.95rem;
     left: 0;
     position:absolute;
+}
+
+.fc .fc-timegrid, 
+.fc .fc-timegrid-event, 
+.fc .fc-list-table {
+    color: black;
+}
+
+.fc .fc-col-header-cell-cushion {
+    color: red;
+}
+
+.fc .fc-timegrid-slot-label-cushion {
+    color: white;
 }
 </style>
 </head>
@@ -148,15 +161,16 @@ Marquez Juan - Mondino Xiomara
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
       </div>
       <div class="modal-body">
-        <p><strong>Título:</strong> <span id="avisoTitulo"></span></p>
-        <p><strong>Descripción:</strong> <span id="avisoDescripcion"></span></p>
-        <p><strong>Tipo:</strong> <span id="avisoTipo"></span></p>
-        <p><strong>Fecha Inicio:</strong> <span id="avisoInicio"></span></p>
-        <p><strong>Fecha Fin:</strong> <span id="avisoFin"></span></p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-      </div>
+    <p><strong>Título:</strong> <span id="avisoTitulo"></span></p>
+    <p><strong>Descripción:</strong> <span id="avisoDescripcion"></span></p>
+    <p><strong>Tipo:</strong> <span id="avisoTipo"></span></p>
+    <p><strong>Fecha Inicio:</strong> <span id="avisoInicio"></span></p>
+     </div>
+     <div class="modal-footer">
+    <button type="button" class="btn btn-primary" id="editarAvisoBtn">Editar</button>
+    <button type="button" class="btn btn-danger" id="eliminarAvisoBtn">Eliminar</button>
+    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+    </div>
     </div>
   </div>
 </div>
@@ -168,24 +182,41 @@ document.addEventListener('DOMContentLoaded', function() {
     var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         locale: 'es',
+        allDaySlot: false, 
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,listWeek'
         },
         events: '<?= base_url("avisos/listarJson"); ?>',
-eventClassNames: function(arg) {
-    if(arg.event.extendedProps.tipo === 'alumnos') return ['alumnos'];
-    if(arg.event.extendedProps.tipo === 'profesores') return ['profesores'];
-    if(arg.event.extendedProps.tipo === 'solo_creador') return ['solo_creador'];
-},
+        slotLabelFormat: [
+        { hour: '2-digit', minute: '2-digit', hour12: false } // 24h con minutos
+    ],
+        eventClassNames: function(arg) {
+            if(arg.event.extendedProps.tipo === 'alumnos') return ['alumnos'];
+            if(arg.event.extendedProps.tipo === 'profesores') return ['profesores'];
+            if(arg.event.extendedProps.tipo === 'solo_creador') return ['solo_creador'];
+        },
         eventClick: function(info) {
             // Llenar modal con información del aviso
             document.getElementById('avisoTitulo').innerText = info.event.title;
             document.getElementById('avisoDescripcion').innerText = info.event.extendedProps.descripcion || 'Sin descripción';
             document.getElementById('avisoTipo').innerText = info.event.extendedProps.tipo;
-            document.getElementById('avisoInicio').innerText = info.event.start ? info.event.start.toLocaleString() : '';
-            document.getElementById('avisoFin').innerText = info.event.end ? info.event.end.toLocaleString() : '';
+            document.getElementById('avisoInicio').innerText = info.event.start 
+    ? info.event.start.toLocaleString('es-AR', {
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: false
+      })
+    : '';
+
+
+            // Guardar ID en los botones
+            document.getElementById('editarAvisoBtn').dataset.id = info.event.id;
+            document.getElementById('eliminarAvisoBtn').dataset.id = info.event.id;
 
             // Mostrar modal
             var detalleModal = new bootstrap.Modal(document.getElementById('detalleAvisoModal'));
@@ -194,6 +225,33 @@ eventClassNames: function(arg) {
     });
 
     calendar.render();
+
+    // --- Botones Editar y Eliminar ---
+    document.getElementById('editarAvisoBtn').addEventListener('click', function() {
+        var idAviso = this.dataset.id;
+        // Redirige a la página de edición
+        window.location.href = '<?= base_url("avisos/editar/"); ?>' + idAviso;
+    });
+
+    document.getElementById('eliminarAvisoBtn').addEventListener('click', function() {
+        var idAviso = this.dataset.id;
+        if(confirm("¿Seguro que quieres eliminar este aviso?")) {
+            // Llamada AJAX para eliminar
+            fetch('<?= base_url("avisos/eliminar/"); ?>' + idAviso, { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                if(data.success) {
+                    alert('Aviso eliminado');
+                    calendar.refetchEvents(); // recarga los eventos del calendario
+                    var modal = bootstrap.Modal.getInstance(document.getElementById('detalleAvisoModal'));
+                    modal.hide();
+                } else {
+                    alert('Error al eliminar aviso');
+                }
+            });
+        }
+    });
+
 });
 </script>
 

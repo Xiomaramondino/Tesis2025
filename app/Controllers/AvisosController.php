@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Controllers\BaseController;
 use CodeIgniter\I18n\Time;
+use App\Models\AvisoModel;
 
 class AvisosController extends BaseController
 {
@@ -144,4 +145,41 @@ class AvisosController extends BaseController
         return $this->response->setJSON($eventos);
     }
     
+    public function editar($id)
+{
+    $avisoModel = new \App\Models\AvisoModel();
+    $aviso = $avisoModel->find($id);
+
+    if(!$aviso) {
+        throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("Aviso no encontrado: $id");
+    }
+
+    // Cargar vista de edición pasando los datos del aviso
+    return view('avisos/editar', ['aviso' => $aviso]);
+}
+
+public function actualizar($id)
+{
+    $avisoModel = new \App\Models\AvisoModel();
+
+    // Obtener fecha del input
+    $fecha_input = $this->request->getPost('fecha'); // "YYYY-MM-DDTHH:MM"
+
+    // Convertir al formato MySQL DATETIME
+    $fecha = date('Y-m-d H:i:s', strtotime($fecha_input));
+
+    $data = [
+        'titulo' => $this->request->getPost('titulo'),
+        'descripcion' => $this->request->getPost('descripcion'),
+        'visibilidad' => $this->request->getPost('tipo'),
+        'fecha' => $fecha
+    ];
+
+    if ($avisoModel->update($id, $data)) {
+        return redirect()->to(base_url('profesor/avisos'))->with('success', 'Aviso actualizado correctamente.');
+    } else {
+        return redirect()->back()->withInput()->with('error', 'No se pudo actualizar el aviso.');
+    }
+}
+
 }

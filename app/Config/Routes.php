@@ -84,3 +84,7 @@ $routes->get('avisos/crear', 'AvisosController::crearAviso');
 $routes->post('avisos/guardarAviso', 'AvisosController::guardarAviso');
 $routes->get('avisos/listarJson', 'AvisosController::listarJson');
 
+$routes->get('avisos/editar/(:num)', 'AvisosController::editar/$1');       
+$routes->post('avisos/actualizar/(:num)', 'AvisosController::actualizar/$1'); 
+
+
