@@ -4,25 +4,30 @@
 <meta charset="UTF-8">
 <title>Calendario Avisos</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
-
-<!-- Bootstrap -->
+<script src="https://cdn.tailwindcss.com"></script>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- FullCalendar -->
 <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js"></script>
-
-<!-- FontAwesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-
 <style>
+    :root {
+        --color-primary: #091342;
+        --color-secondary: #081136;
+        --color-tertiary: #070f2e;
+        --color-accent: #7158e2;
+        --color-text-white: white;
+        --color-danger: #dc2626;
+        --color-success: #48bb78;
+        --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
     body {
         padding-top: 90px;
         padding-bottom: 70px;
         min-height: 100vh;
-        background-color: #091342;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        color: white;
+        background-color: var(--color-primary);
+        font-family: var(--font-family);
+        color: var(--color-text-white);
     }
 
     .navbar {
@@ -30,7 +35,7 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background-color: #081136;
+        background-color: var(--color-secondary);
         padding: 1rem 2rem;
         position: fixed;
         top: 0;
@@ -41,12 +46,32 @@
         background: transparent; color: white; border: none; cursor: pointer;
     }
     .navbar-buttons .volver-btn:hover { color: #d4b8e0; }
-
+    
     .container-calendar {
         max-width: 1100px;
         margin: 0 auto;
     }
 
+    .btn-custom {
+        background-color: var(--color-tertiary);
+        color: var(--color-text-white);
+        border: none;
+        border-radius: 10px;
+        padding: 10px 20px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+    }
+
+    .btn-custom:hover {
+        background-color: #666565;
+        transform: translateY(-2px);
+        color: var(--color-text-white);
+    }
+    
     .btn-main {
         background-color: #070f2e;
         color: white;
@@ -93,7 +118,6 @@
 </head>
 <body>
 
-<!-- Navbar -->
 <nav class="navbar">
     <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" width="60px" alt="Logo" />
     <div class="logo">RingMind</div>
@@ -105,11 +129,16 @@
 </nav>
 
 <div class="container-calendar mt-4 text-center">
-    <a href="<?= base_url('avisos/crear') ?>" class="btn btn-main mb-3">
-        <i class="fas fa-plus-circle"></i> Crear Aviso
-    </a>
-
-    <!-- Calendario -->
+    <div class="flex flex-col md:flex-row justify-center gap-4 mb-8">
+        <a href="<?= base_url('avisos/crear') ?>" class="btn-custom">
+            <i class="fas fa-plus-circle"></i>
+            Crear Aviso
+        </a>
+        <a href="<?= base_url('/cambiar-colegio') ?>" class="btn-custom">
+            <i class="fas fa-school"></i>
+            Cambiar de colegio
+        </a>
+    </div>
     <div id="calendar"></div>
 </div>
 

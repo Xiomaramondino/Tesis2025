@@ -164,6 +164,29 @@
             font-weight: bold;
             font-size: 0.95rem;
         }
+        .btn-custom {
+    background-color: var(--color-tertiary, #070f2e);
+    color: var(--color-text-white, #fff);
+    border: none;
+    border-radius: 10px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.btn-custom:hover {
+    background-color: #666565;
+    transform: translateY(-2px);
+    color: var(--color-text-white, #fff);
+}
+
     </style>
 </head>
 <body>
@@ -178,12 +201,16 @@
         </div>
     </nav>
 
-    <!-- Botón cambiar colegio -->
-    <div style="width: 100%; display: flex; justify-content: center; margin-top: 20px; margin-bottom: 10px;">
-        <form action="<?= base_url('/cambiar-colegio') ?>" method="get">
-            <button type="submit" class="btn-main">Cambiar de colegio</button>
-        </form>
+ <!-- Botón cambiar colegio con estilo personalizado -->
+<div class="container-calendar mt-4 text-center">
+    <div class="flex flex-col md:flex-row justify-center gap-4 mb-8">
+        <a href="<?= base_url('/cambiar-colegio') ?>" class="btn-custom">
+            <i class="fas fa-school"></i>
+            Cambiar de colegio
+        </a>
     </div>
+</div>
+
 
     <?php
     // Verificar dispositivo asociado

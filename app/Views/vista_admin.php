@@ -278,7 +278,7 @@
                     Registrar y ver mis Dispositivos
                 </a>
                 <a href="<?= base_url('/cambiar-colegio') ?>" class="btn-custom">
-                    <i class="fas fa-exchange-alt"></i>
+                <i class="fas fa-school"></i>
                     Cambiar de colegio
                 </a>
             </div>
