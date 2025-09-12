@@ -82,5 +82,5 @@ $routes->get('/profesor/avisos', 'ProfesorController::avisos');
 
 $routes->get('avisos/crear', 'AvisosController::crearAviso');
 $routes->post('avisos/guardarAviso', 'AvisosController::guardarAviso');
-$routes->get('avisos/listar', 'AvisosController::listar');
+$routes->get('avisos/listarJson', 'AvisosController::listarJson');
 
