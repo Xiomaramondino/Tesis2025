@@ -89,4 +89,6 @@ $routes->post('avisos/actualizar/(:num)', 'AvisosController::actualizar/$1');
 
 $routes->post('avisos/eliminar/(:num)', 'AvisosController::eliminar/$1');
 
+$routes->get('profesor/horarios', 'ProfesorController::horariosProfesor');
+
 

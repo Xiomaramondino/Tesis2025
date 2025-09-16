@@ -113,8 +113,18 @@
         $session = session();
         $rol = (int) $session->get('idrol'); // forzamos a entero
     ?>
-    <a href="<?= $rol === 1 ? base_url('/admin/horarios') : ($rol === 3 ? base_url('/horarios_lector') : base_url('/')) ?>" 
-       class="volver-btn">Volver</a>
+<a href="<?php 
+    if ($rol === 1) {
+        echo base_url('/admin/horarios');
+    } elseif ($rol === 3) {
+        echo base_url('/horarios_lector');
+    } elseif ($rol === 4) {  // Profesor
+        echo base_url('/profesor/horarios');
+    } else {
+        echo base_url('/');
+    }
+?>" class="volver-btn">Volver</a>
+
 </nav>
 
 

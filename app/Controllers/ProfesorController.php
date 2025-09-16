@@ -58,4 +58,37 @@ class ProfesorController extends Controller
     
         return view('profesor/avisos', ['avisos' => $avisos]);
     }
+    public function horariosProfesor() 
+{
+    $session = session();
+    $idcolegio = $session->get('idcolegio'); 
+
+    if (!$idcolegio) {
+        session()->setFlashdata('error', 'No se pudo determinar el colegio del profesor.');
+        return redirect()->to('/login');
+    }
+
+    // Traer horarios del colegio
+    $model = new \App\Models\HorariosModel();
+    $builder = $model->builder();
+    $builder->where('idcolegio', $idcolegio); 
+    $builder->orderBy('hora', 'ASC'); 
+    $query = $builder->get();
+    $data = $query->getResult();
+
+    // Traer eventos especiales activos
+    $db = \Config\Database::connect();
+    $eventosEspeciales = $db->table('eventos_especiales')
+                            ->where('idcolegio', $idcolegio)
+                            ->where('activo', 1)
+                            ->orderBy('fecha', 'ASC')
+                            ->get()
+                            ->getResult();
+
+    return view('horarios_profesor', [
+        'data' => $data,
+        'eventosEspeciales' => $eventosEspeciales
+    ]);
+}
+
 }    
