@@ -182,6 +182,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         locale: 'es',
+        timeZone: 'local',
         allDaySlot: false, 
         headerToolbar: {
             left: 'prev,next today',
