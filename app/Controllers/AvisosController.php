@@ -171,7 +171,7 @@ public function actualizar($id)
     $data = [
         'titulo' => $this->request->getPost('titulo'),
         'descripcion' => $this->request->getPost('descripcion'),
-        'visibilidad' => $this->request->getPost('tipo'),
+        'visibilidad' => $this->request->getPost('visibilidad'),
         'fecha' => $fecha
     ];
 

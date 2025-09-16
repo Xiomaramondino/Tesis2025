@@ -114,7 +114,44 @@ body {
     margin-top: auto;
     font-size: 0.95rem;
 }
+.btn-custom {
+    background-color: var(--color-tertiary);
+    color: var(--color-text-white);
+    border: none;
+    border-radius: 12px;
+    padding: 0.9rem 1.8rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+}
 
+.btn-custom:hover {
+    background-color: #666565;
+    transform: translateY(-2px);
+    color: var(--color-text-white);
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active {
+    -webkit-text-fill-color: #fff ;
+    transition: background-color 9999s ease-in-out 0s ;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset;
+    caret-color: #fff;
+}
+input:-moz-autofill {
+    box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset ;
+    -moz-text-fill-color: #fff;
+    caret-color: #fff;
+}
 input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     filter: invert(1); /* icono blanco */
     cursor: pointer;
@@ -156,11 +193,18 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
             <option value="solo_creador" <?= $aviso['visibilidad'] === 'solo_creador' ? 'selected' : ''; ?>>Solo yo</option>
         </select>
 
-        <!-- Botones -->
-        <div class="d-flex justify-content-between mt-4">
-            <a href="<?= base_url('profesor/avisos'); ?>" class="btn-main"><i class="fas fa-times"></i> Cancelar</a>
-            <button type="submit" class="btn-main"><i class="fas fa-save"></i> Guardar cambios</button>
-        </div>
+  <!-- Botones -->
+<div class="d-flex flex-column flex-md-row justify-content-between mt-4 gap-3">
+    <a href="<?= base_url('profesor/avisos'); ?>" class="btn-custom w-100 w-md-50 text-center">
+        <i class="fas fa-times"></i>
+        Cancelar
+    </a>
+    <button type="submit" class="btn-custom w-100 w-md-50">
+        <i class="fas fa-save"></i>
+        Guardar cambios
+    </button>
+</div>
+
     </form>
 </div>
 
