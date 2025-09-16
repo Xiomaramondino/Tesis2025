@@ -87,4 +87,6 @@ $routes->get('avisos/listarJson', 'AvisosController::listarJson');
 $routes->get('avisos/editar/(:num)', 'AvisosController::editar/$1');       
 $routes->post('avisos/actualizar/(:num)', 'AvisosController::actualizar/$1'); 
 
+$routes->post('avisos/eliminar/(:num)', 'AvisosController::eliminar/$1');
+
 

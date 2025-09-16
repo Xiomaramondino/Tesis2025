@@ -1,0 +1,9 @@
+CRITICAL - 2025-09-16 11:42:16 --> Error: Class "App\Models\AvisosModel" not found
+[Method: POST, Route: avisos/eliminar/20]
+in APPPATH\Controllers\AvisosController.php on line 192.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AvisosController->eliminar('20')
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AvisosController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

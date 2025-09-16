@@ -181,5 +181,21 @@ public function actualizar($id)
         return redirect()->back()->withInput()->with('error', 'No se pudo actualizar el aviso.');
     }
 }
+public function eliminar($id = null)
+{
+    $this->response->setHeader('Content-Type', 'application/json');
+
+    if (!$id) {
+        return $this->response->setJSON(['success' => false, 'message' => 'ID inválido']);
+    }
+
+    $avisosModel = new \App\Models\AvisoModel();
+
+    if ($avisosModel->delete($id)) {
+        return $this->response->setJSON(['success' => true]);
+    } else {
+        return $this->response->setJSON(['success' => false, 'message' => 'No se pudo eliminar']);
+    }
+}
 
 }
