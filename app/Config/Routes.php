@@ -91,4 +91,9 @@ $routes->post('avisos/eliminar/(:num)', 'AvisosController::eliminar/$1');
 
 $routes->get('profesor/horarios', 'ProfesorController::horariosProfesor');
 
+// Gestión de cursos (solo admin debería usarlas)
+$routes->get('cursos', 'Cursos::index');
+$routes->post('cursos/guardar', 'Cursos::guardar');
+$routes->get('cursos/eliminar/(:num)', 'Cursos::eliminar/$1');
+
 

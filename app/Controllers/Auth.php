@@ -67,8 +67,18 @@ class Auth extends Controller
     private function redirigirPorRol($idrol)
     {
         if ($idrol == 1) { // Admin
-            return redirect()->to('/vista_admin');
-        } elseif ($idrol == 2) { // Directivo
+            $cursoModel = new \App\Models\CursoModel();
+            $idcolegio = session()->get('idcolegio');
+        
+            $hayCursos = $cursoModel->where('idcolegio', $idcolegio)->countAllResults();
+        
+            if ($hayCursos == 0) {
+                // Si no hay cursos cargados, primer setup
+                return redirect()->to('/cursos?setup=1');
+            } else {
+                return redirect()->to('/vista_admin');
+            }
+        }elseif ($idrol == 2) { // Directivo
             return redirect()->to('/gestionar_usuarios');
         } elseif ($idrol == 4) { // Profesor
             return redirect()->to('/profesor/avisos'); // <-- nueva vista de calendario

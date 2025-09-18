@@ -281,6 +281,10 @@
                 <i class="fas fa-school"></i>
                     Cambiar de colegio
                 </a>
+                <a href="<?= base_url('/cursos') ?>" class="btn-custom">
+                <i class="fas fa-book"></i>
+                Cursos
+            </a>
             </div>
 
             <!-- Card de agregar usuarios -->
