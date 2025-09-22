@@ -126,6 +126,15 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     filter: invert(1); /* icono blanco */
     cursor: pointer;
 }
+input:-webkit-autofill,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:active {
+            -webkit-text-fill-color: var(--color-text-white) !important;
+            transition: background-color 9999s ease-in-out 0s !important;
+            -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset !important;
+            caret-color: var(--color-text-white) !important;
+        }
 
 </style>
 </head>
