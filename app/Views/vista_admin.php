@@ -139,7 +139,10 @@
             box-shadow: 0 0 10px var(--color-accent);
             caret-color: var(--color-text-white);
         }
-
+        .form-control option {
+    background-color: var(--color-secondary);  /* Fondo de las opciones */
+    color: var(--color-text-white);  /* Color de texto de las opciones */
+}
         input:-webkit-autofill,
         input:-webkit-autofill:focus,
         input:-webkit-autofill:hover,

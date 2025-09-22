@@ -88,7 +88,10 @@ body {
     box-shadow: 0 0 10px var(--color-accent);
     caret-color: #fff;
 }
-
+.form-control option {
+    background-color: var(--color-secondary);  /* Fondo de las opciones */
+    color: var(--color-text-white);  /* Color de texto de las opciones */
+}
 .btn-main {
     margin-top: 1rem;
     background-color: var(--color-tertiary);
@@ -155,11 +158,12 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 
         <label for="idcurso">Curso (opcional)</label>
         <select id="idcurso" name="idcurso" class="form-control">
-            <option value="">Todos los cursos</option>
-            <?php foreach($cursos as $curso): ?>
-                <option value="<?= $curso->idcurso ?>"><?= $curso->nombre ?></option>
-            <?php endforeach; ?>
-        </select>
+    <option value="">Todos los cursos</option>
+    <?php foreach($cursos as $curso): ?>
+        <option value="<?= $curso->idcurso ?>"><?= $curso->nombre ?> - <?= $curso->division ?></option>
+    <?php endforeach; ?>
+</select>
+
 
         <label for="visibilidad">Visibilidad</label>
         <select id="visibilidad" name="visibilidad" class="form-control" required>
