@@ -694,6 +694,10 @@ private function _enviarCorreoActualizacion($email, $usuario, $cambios)
         log_message('error', 'Error al enviar el correo de actualización a ' . $email);
     }
 }
+public function calendario()
+{
+    return view('calendario_admin');
+}
 
 }
 

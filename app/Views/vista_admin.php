@@ -288,6 +288,10 @@
                 <i class="fas fa-book"></i>
                 Cursos
             </a>
+            <a href="<?= base_url('admin/calendario') ?>" class="btn-custom">
+    <i class="fas fa-calendar-alt"></i>
+    Calendario
+</a>
             </div>
 
             <!-- Card de agregar usuarios -->

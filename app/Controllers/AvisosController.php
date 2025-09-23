@@ -43,27 +43,38 @@ class AvisosController extends BaseController
         $session = session();
         $idusuario = $session->get('idusuario');
         $idcolegio = $session->get('idcolegio');
-
+        $idrol = $session->get('idrol'); // agregamos el rol
+    
         $titulo = $this->request->getPost('titulo');
         $descripcion = $this->request->getPost('descripcion');
         $fecha = $this->request->getPost('fecha'); // formato: YYYY-MM-DD HH:MM
         $idcurso = $this->request->getPost('idcurso') ?: null;
         $visibilidad = $this->request->getPost('visibilidad');
-
+    
         $data = [
-            'idcolegio' => $idcolegio,
-            'idcurso' => $idcurso,
-            'idusuario' => $idusuario,
-            'titulo' => $titulo,
+            'idcolegio'   => $idcolegio,
+            'idcurso'     => $idcurso,
+            'idusuario'   => $idusuario,
+            'idrol'       => $idrol, 
+            'titulo'      => $titulo,
             'descripcion' => $descripcion,
-            'fecha' => $fecha,
+            'fecha'       => $fecha,
             'visibilidad' => $visibilidad
         ];
-
+    
         $this->db->table('avisos')->insert($data);
-
-        return redirect()->to(base_url('profesor/avisos'))->with('success', 'Aviso creado correctamente.');
+    
+        //  Redirección según rol
+        if ($idrol == 1) {
+            return redirect()->to(base_url('admin/calendario'))->with('success', 'Aviso creado correctamente.');
+        } elseif ($idrol == 4) {
+            return redirect()->to(base_url('profesor/avisos'))->with('success', 'Aviso creado correctamente.');
+        } else {
+            // fallback en caso de que sea otro rol
+            return redirect()->to(base_url('/'))->with('success', 'Aviso creado correctamente.');
+        }
     }
+    
 
     public function listarJson()
     {
@@ -97,24 +108,26 @@ class AvisosController extends BaseController
                     ->orWhere('idcurso', null)
                 ->groupEnd();
     
-        } elseif ($idrol == 4) { // Profesor
-            $builder->groupStart()
-                // Avisos para profesores
-                ->where('visibilidad', 'profesores')
-                // Avisos solo creador del profesor
-                ->orGroupStart()
-                    ->where('visibilidad', 'solo_creador')
-                    ->where('idusuario', $idusuario)
-                ->groupEnd()
-                // Avisos para alumnos pero creados por el mismo profesor
-                ->orGroupStart()
-                    ->where('visibilidad', 'alumnos')
-                    ->where('idusuario', $idusuario)
-                ->groupEnd()
-            ->groupEnd();
-        } else { // Directivo o Admin
-            // ven todo dentro del colegio
-        }
+            } elseif ($idrol == 4) { // Profesor
+                $builder->groupStart()
+                    // Avisos generales para profesores
+                    ->where('visibilidad', 'profesores')
+                    // Avisos solo visibles para su creador (pero además en este colegio)
+                    ->orGroupStart()
+    ->where('visibilidad', 'solo_creador')
+    ->where('idusuario', $idusuario)
+    ->where('idrol', $idrol)      // Solo se ve con el mismo rol
+    ->where('idcolegio', $idcolegio) // Solo dentro del mismo colegio
+->groupEnd()
+
+                    // Avisos para alumnos pero creados por el mismo profesor
+                    ->orGroupStart()
+                        ->where('visibilidad', 'alumnos')
+                        ->where('idusuario', $idusuario)
+                        ->where('idcolegio', $idcolegio)
+                    ->groupEnd()
+                ->groupEnd();
+            }
     
         // Filtrar por rango de fechas enviado por FullCalendar
         if ($start && $end) {

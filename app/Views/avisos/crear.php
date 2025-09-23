@@ -144,7 +144,15 @@ input:-webkit-autofill,
 <nav class="navbar">
     <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" alt="Logo">
     <div class="logo">RingMind</div>
-    <a href="<?= base_url('profesor/avisos') ?>" class="volver-btn"><i class="fas fa-arrow-left"></i> Volver</a>
+    <?php 
+    $session = session();
+    $idrol = $session->get('idrol');
+    $urlVolver = ($idrol == 1) ? base_url('admin/calendario') : base_url('profesor/avisos');
+?>
+<a href="<?= $urlVolver ?>" class="volver-btn">
+    <i class="fas fa-arrow-left"></i> Volver
+</a>
+
 </nav>
 
 <div class="card-container">

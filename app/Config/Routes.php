@@ -96,4 +96,5 @@ $routes->get('cursos', 'Cursos::index');
 $routes->post('cursos/guardar', 'Cursos::guardar');
 $routes->get('cursos/eliminar/(:num)', 'Cursos::eliminar/$1');
 
+$routes->get('admin/calendario', 'AdminController::calendario');
 

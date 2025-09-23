@@ -12,6 +12,7 @@ class AvisoModel extends Model
         'idcolegio',
         'idcurso',
         'idusuario',
+        'idrol',
         'titulo',
         'descripcion',
         'fecha',
