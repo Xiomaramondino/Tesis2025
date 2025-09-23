@@ -263,6 +263,10 @@
                         Sonar timbre
                     </button>
                 </form>
+                <a href="<?= base_url('calendario_directivo'); ?>" class="btn-custom">
+        <i class="fas fa-calendar-alt"></i>
+        Ver Calendario
+    </a>
             </div>
 
             <div class="flex justify-center">

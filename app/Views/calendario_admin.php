@@ -2,14 +2,14 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Calendario - RingMind</title>
+<title>Calendario - RingMind (admin)</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-<!-- Tailwind (solo si usás clases de tailwind en otra parte) -->
+<!-- Tailwind -->
 <script src="https://cdn.tailwindcss.com"></script>
 
 <!-- Font Awesome -->
@@ -30,7 +30,7 @@
 
 body {
     margin: 0;
-    padding-top: 80px; /* espacio navbar fija */
+    padding-top: 80px;
     background-color: var(--color-primary);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     color: var(--color-text-white);
@@ -77,6 +77,7 @@ body {
     margin: 0 auto;
     padding: 1rem;
 }
+
 /* Botones */
 .btn-custom {
     background-color: var(--color-tertiary);
@@ -133,10 +134,28 @@ body {
     <div id="calendar"></div>
 </div>
 
-<!-- Footer -->
-<footer class="footer">
-    Tesis timbre automático 2025 <br> Marquez Juan - Mondino Xiomara
-</footer>
+<!-- Modal Detalle Aviso -->
+<div class="modal fade" id="detalleAvisoModal" tabindex="-1" aria-labelledby="detalleAvisoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-dark">
+      <div class="modal-header bg-secondary text-white">
+        <h5 class="modal-title" id="detalleAvisoLabel">Detalle del Aviso</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Título:</strong> <span id="avisoTitulo"></span></p>
+        <p><strong>Descripción:</strong> <span id="avisoDescripcion"></span></p>
+        <p><strong>Tipo:</strong> <span id="avisoTipo"></span></p>
+        <p><strong>Fecha Inicio:</strong> <span id="avisoInicio"></span></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="editarAvisoBtn">Editar</button>
+        <button type="button" class="btn btn-danger" id="eliminarAvisoBtn">Eliminar</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 <script>
 document.addEventListener('DOMContentLoaded', function() {
@@ -156,12 +175,61 @@ document.addEventListener('DOMContentLoaded', function() {
             if(arg.event.extendedProps.tipo === 'alumnos') return ['alumnos'];
             if(arg.event.extendedProps.tipo === 'profesores') return ['profesores'];
             if(arg.event.extendedProps.tipo === 'solo_creador') return ['solo_creador'];
+        },
+        eventClick: function(info) {
+            document.getElementById('avisoTitulo').innerText = info.event.title;
+            document.getElementById('avisoDescripcion').innerText = info.event.extendedProps.descripcion || 'Sin descripción';
+            document.getElementById('avisoTipo').innerText = info.event.extendedProps.tipo;
+            document.getElementById('avisoInicio').innerText = info.event.start 
+            ? info.event.start.toLocaleString('es-AR', {
+                year: 'numeric',
+                month: '2-digit',
+                day: '2-digit',
+                hour: '2-digit',
+                minute: '2-digit',
+                hour12: false
+            })
+            : '';
+
+            document.getElementById('editarAvisoBtn').dataset.id = info.event.id;
+            document.getElementById('eliminarAvisoBtn').dataset.id = info.event.id;
+
+            var detalleModal = new bootstrap.Modal(document.getElementById('detalleAvisoModal'));
+            detalleModal.show();
         }
     });
 
     calendar.render();
+
+    document.getElementById('editarAvisoBtn').addEventListener('click', function() {
+        var idAviso = this.dataset.id;
+        window.location.href = '<?= base_url("avisos/editar/"); ?>' + idAviso;
+    });
+
+    document.getElementById('eliminarAvisoBtn').addEventListener('click', function() {
+        var idAviso = this.dataset.id;
+        if(confirm("¿Seguro que quieres eliminar este aviso?")) {
+            fetch('<?= base_url("avisos/eliminar/"); ?>' + idAviso, { method: 'POST' })
+            .then(response => response.json())
+            .then(data => {
+                if(data.success) {
+                    alert('Aviso eliminado');
+                    calendar.refetchEvents();
+                    var modal = bootstrap.Modal.getInstance(document.getElementById('detalleAvisoModal'));
+                    modal.hide();
+                } else {
+                    alert('Error al eliminar aviso');
+                }
+            });
+        }
+    });
 });
 </script>
+
+<!-- Footer -->
+<footer class="footer">
+    Tesis timbre automático 2025 <br> Marquez Juan - Mondino Xiomara
+</footer>
 
 </body>
 </html>

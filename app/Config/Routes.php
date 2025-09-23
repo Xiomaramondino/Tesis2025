@@ -98,3 +98,5 @@ $routes->get('cursos/eliminar/(:num)', 'Cursos::eliminar/$1');
 
 $routes->get('admin/calendario', 'AdminController::calendario');
 
+$routes->get('calendario_directivo', 'DirectivoController::calendario');
+

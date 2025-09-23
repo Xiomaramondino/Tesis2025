@@ -67,12 +67,15 @@ class AvisosController extends BaseController
         //  Redirección según rol
         if ($idrol == 1) {
             return redirect()->to(base_url('admin/calendario'))->with('success', 'Aviso creado correctamente.');
+        } elseif ($idrol == 2) {
+            return redirect()->to(base_url('/calendario_directivo'))->with('success', 'Aviso creado correctamente.');
         } elseif ($idrol == 4) {
             return redirect()->to(base_url('profesor/avisos'))->with('success', 'Aviso creado correctamente.');
         } else {
             // fallback en caso de que sea otro rol
             return redirect()->to(base_url('/'))->with('success', 'Aviso creado correctamente.');
         }
+        
     }
     
 
@@ -91,7 +94,6 @@ class AvisosController extends BaseController
     
         // Filtro por rol y visibilidad
         if ($idrol == 3) { // Alumno
-            // Cursos del alumno
             $cursosAlumno = $this->db->table('alumno_curso')
                 ->select('idcurso')
                 ->where('idusuario', $idusuario)
@@ -108,26 +110,33 @@ class AvisosController extends BaseController
                     ->orWhere('idcurso', null)
                 ->groupEnd();
     
-            } elseif ($idrol == 4) { // Profesor
-                $builder->groupStart()
-                    // Avisos generales para profesores
-                    ->where('visibilidad', 'profesores')
-                    // Avisos solo visibles para su creador (pero además en este colegio)
-                    ->orGroupStart()
-    ->where('visibilidad', 'solo_creador')
-    ->where('idusuario', $idusuario)
-    ->where('idrol', $idrol)      // Solo se ve con el mismo rol
-    ->where('idcolegio', $idcolegio) // Solo dentro del mismo colegio
-->groupEnd()
-
-                    // Avisos para alumnos pero creados por el mismo profesor
-                    ->orGroupStart()
-                        ->where('visibilidad', 'alumnos')
-                        ->where('idusuario', $idusuario)
-                        ->where('idcolegio', $idcolegio)
-                    ->groupEnd()
-                ->groupEnd();
-            }
+        } elseif ($idrol == 4) { // Profesor
+            $builder->groupStart()
+                ->where('visibilidad', 'profesores') // Avisos generales para profesores
+            ->groupEnd()
+            ->orGroupStart()
+                ->where('visibilidad', 'solo_creador')
+                ->where('idusuario', $idusuario)
+                ->where('idcolegio', $idcolegio)   // Sus propios avisos
+            ->groupEnd()
+            ->orGroupStart()
+                ->where('visibilidad', 'alumnos')
+                ->where('idusuario', $idusuario)
+                ->where('idcolegio', $idcolegio)   // Avisos de alumnos creados por él
+            ->groupEnd();
+    
+        } elseif ($idrol == 2) { // Directivo
+            // Directivo ve todo de su colegio
+            $builder->groupStart()
+                ->where('visibilidad', 'profesores')
+            ->groupEnd()
+            ->orGroupStart()
+                ->where('visibilidad', 'alumnos')
+            ->groupEnd()
+            ->orGroupStart()
+                ->where('visibilidad', 'solo_creador')
+            ->groupEnd();
+        }
     
         // Filtrar por rango de fechas enviado por FullCalendar
         if ($start && $end) {
@@ -158,6 +167,7 @@ class AvisosController extends BaseController
         return $this->response->setJSON($eventos);
     }
     
+    
     public function editar($id)
 {
     $avisoModel = new \App\Models\AvisoModel();
@@ -174,10 +184,11 @@ class AvisosController extends BaseController
 public function actualizar($id)
 {
     $avisoModel = new \App\Models\AvisoModel();
+    $session = session();
+    $idrol = $session->get('idrol');
 
     // Obtener fecha del input
     $fecha_input = $this->request->getPost('fecha'); // "YYYY-MM-DDTHH:MM"
-
     // Convertir al formato MySQL DATETIME
     $fecha = date('Y-m-d H:i:s', strtotime($fecha_input));
 
@@ -189,11 +200,22 @@ public function actualizar($id)
     ];
 
     if ($avisoModel->update($id, $data)) {
-        return redirect()->to(base_url('profesor/avisos'))->with('success', 'Aviso actualizado correctamente.');
+        // Redirigir según rol
+        if ($idrol == 4) { // Profesor
+            return redirect()->to(base_url('profesor/avisos'))->with('success', 'Aviso actualizado correctamente.');
+        } elseif ($idrol == 1) { // Admin
+            return redirect()->to(base_url('admin/calendario'))->with('success', 'Aviso actualizado correctamente.');
+        } elseif ($idrol == 2) { // Directivo
+            return redirect()->to(base_url('/calendario_directivo'))->with('success', 'Aviso actualizado correctamente.');
+        } else {
+            return redirect()->to(base_url('/'))->with('success', 'Aviso actualizado correctamente.');
+        }
     } else {
         return redirect()->back()->withInput()->with('error', 'No se pudo actualizar el aviso.');
     }
+    
 }
+
 public function eliminar($id = null)
 {
     $this->response->setHeader('Content-Type', 'application/json');

@@ -327,5 +327,12 @@ private function _enviarCorreoEdicionUsuario($email, $usuario, $detalleCambios)
     $emailService->setMailType('html');
     $emailService->send();
 }
+public function calendario()
+{
+    // Obtener datos que quieras pasar a la vista, por ejemplo los avisos del directivo
+    $data['titulo'] = 'Calendario - RingMind (Directivo)';
+
+    return view('calendario_directivo', $data);
+}
 
 }

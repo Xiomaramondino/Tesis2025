@@ -164,7 +164,27 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
 <nav class="navbar">
     <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" alt="Logo">
     <div class="logo">RingMind</div>
-    <a href="<?= base_url('profesor/avisos') ?>" class="volver-btn"><i class="fas fa-arrow-left"></i> Volver</a>
+    <?php
+$session = session();
+$idrol = $session->get('idrol');
+
+if ($idrol == 4) {
+    // Profesor
+    $volverUrl = base_url('profesor/avisos');
+} elseif ($idrol == 1) {
+    // Admin
+    $volverUrl = base_url('admin/calendario');
+} elseif ($idrol == 2) {
+    // Directivo
+    $volverUrl = base_url('/calendario_directivo');
+} else {
+    // Otro rol, opcional
+    $volverUrl = base_url('/');
+}
+?>
+<a href="<?= $volverUrl ?>" class="volver-btn"><i class="fas fa-arrow-left"></i> Volver</a>
+
+
 </nav>
 
 <!-- Card -->
