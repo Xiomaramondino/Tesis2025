@@ -100,3 +100,4 @@ $routes->get('admin/calendario', 'AdminController::calendario');
 
 $routes->get('calendario_directivo', 'DirectivoController::calendario');
 
+$routes->get('calendario_alumno', 'AlumnoController::calendario');

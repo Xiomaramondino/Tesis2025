@@ -208,6 +208,10 @@
             <i class="fas fa-school"></i>
             Cambiar de colegio
         </a>
+        <a href="<?= base_url('/calendario_alumno') ?>" class="btn-custom">
+            <i class="fas fa-calendar-alt"></i>
+            Calendario
+        </a>
     </div>
 </div>
 
