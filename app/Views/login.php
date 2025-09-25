@@ -227,13 +227,13 @@ input:-moz-autofill {
 
                             <label for="password"></label>
                             <div class="password-container">
-                                <input type="password" name="password" id="password" class="form-control" required placeholder="Introduce tu contraseña"> 
-                                <img src="https://static.thenounproject.com/png/1035969-200.png" id="eyeicon">
-                            </div>
+    <input type="password" name="password" id="password" class="form-control" required placeholder="Introduce tu contraseña"> 
+    <img src="https://static.thenounproject.com/png/1035969-200.png" id="eyeicon">
+</div>
 
-                            <a href="<?= base_url('/horarios'); ?>"><button>Iniciar sesión</button></a>
-                            <br>
-                            <a href="<?= base_url('recuperar_contrasena') ?>" style="color: #FFFFFF;">Olvidaste tu contraseña?</a>
+<button type="submit">Iniciar sesión</button>
+<br>
+<a href="<?= base_url('recuperar_contrasena') ?>" style="color: #FFFFFF;">¿Olvidaste tu contraseña?</a>
                         </form>
                     </div>
                 </div>
