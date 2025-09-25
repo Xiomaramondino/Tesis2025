@@ -186,7 +186,18 @@ input:-moz-autofill {
                     <div class="mb-3">
                         <input type="email" id="email" name="email" class="form-control" value="<?= esc($usuario['email']) ?>" placeholder="Correo electrónico" required>
                     </div>
-                    
+                    <div class="mb-3">
+                    <select name="idcurso" id="idcurso" class="form-control" required>
+    <option value="" disabled>Seleccione un curso</option>
+    <?php foreach ($cursos as $curso) : ?>
+        <option value="<?= $curso['idcurso'] ?>" <?= ($usuario['idcurso'] ?? '') == $curso['idcurso'] ? 'selected' : '' ?>>
+            <?= esc($curso['nombre']) ?><?= $curso['division'] ? ' - ' . esc($curso['division']) : '' ?>
+        </option>
+    <?php endforeach; ?>
+</select>
+
+
+</div>
 
                     <button type="submit" class="btn btn-form">Actualizar Usuario</button>
                 </form>

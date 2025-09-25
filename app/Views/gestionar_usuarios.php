@@ -229,6 +229,11 @@
             margin-top: auto;
             font-size: 0.95rem;
         }
+        .form-control option {
+    background-color: var(--color-secondary); /* Fondo oscuro */
+    color: var(--color-text-white);           /* Texto blanco */
+}
+
     </style>
 </head>
 
@@ -295,6 +300,17 @@
                             <div class="mb-3">
                                 <input type="email" name="email" class="form-control" placeholder="Correo Electrónico" required>
                             </div>
+                            <div class="mb-3">
+    <select name="idcurso" id="idcurso" class="form-control" required>
+        <option value="" disabled selected>Seleccione un curso</option>
+        <?php foreach ($cursos as $curso) : ?>
+            <option value="<?= $curso['idcurso'] ?>">
+                <?= esc($curso['nombre']) ?><?= $curso['division'] ? ' - ' . esc($curso['division']) : '' ?>
+            </option>
+        <?php endforeach; ?>
+    </select>
+</div>
+
                             <div class="note my-4">
                                 <strong>Importante:</strong> Si el alumno no tiene una cuenta, se creará una automáticamente. Se le enviará un correo con una contraseña temporal y un enlace para que pueda establecer una nueva.
                             </div>

@@ -444,3 +444,309 @@ ORDER BY `fecha` ASC', [...], false)
  9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
 10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
 11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-25 09:48:17 --> ErrorException: Undefined variable $cursos
+[Method: GET, Route: directivo/editarUsuario/234]
+in APPPATH\Views\editar_usuario.php on line 192.
+ 1 APPPATH\Views\editar_usuario.php(192): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $cursos', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\editar_usuario.php', 192)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\editar_usuario.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('editar_usuario', [], true)
+ 5 APPPATH\Controllers\DirectivoController.php(272): view('editar_usuario', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DirectivoController->editarUsuario('234')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DirectivoController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-25 09:49:11 --> Error: Class "App\Controllers\UsuarioModel" not found
+[Method: GET, Route: directivo/editarUsuario/234]
+in APPPATH\Controllers\DirectivoController.php on line 265.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DirectivoController->editarUsuario('234')
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DirectivoController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-25 09:49:28 --> Error: Class "App\Controllers\CursoModel" not found
+[Method: GET, Route: directivo/editarUsuario/234]
+in APPPATH\Controllers\DirectivoController.php on line 266.
+ 1 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DirectivoController->editarUsuario('234')
+ 2 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DirectivoController))
+ 3 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 4 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 5 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 6 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-25 09:50:16 --> ErrorException: Undefined array key "idcurso"
+[Method: GET, Route: directivo/editarUsuario/234]
+in APPPATH\Views\editar_usuario.php on line 193.
+ 1 APPPATH\Views\editar_usuario.php(193): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "idcurso"', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\editar_usuario.php', 193)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\editar_usuario.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('editar_usuario', [], true)
+ 5 APPPATH\Controllers\DirectivoController.php(277): view('editar_usuario', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DirectivoController->editarUsuario('234')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DirectivoController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-25 09:50:52 --> ErrorException: Undefined array key "idcurso"
+[Method: GET, Route: directivo/editarUsuario/234]
+in APPPATH\Views\editar_usuario.php on line 193.
+ 1 APPPATH\Views\editar_usuario.php(193): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "idcurso"', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\editar_usuario.php', 193)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\editar_usuario.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('editar_usuario', [], true)
+ 5 APPPATH\Controllers\DirectivoController.php(277): view('editar_usuario', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DirectivoController->editarUsuario('234')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DirectivoController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-25 09:51:16 --> ErrorException: Undefined array key "id"
+[Method: GET, Route: directivo/editarUsuario/234]
+in APPPATH\Views\editar_usuario.php on line 193.
+ 1 APPPATH\Views\editar_usuario.php(193): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\editar_usuario.php', 193)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\editar_usuario.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('editar_usuario', [], true)
+ 5 APPPATH\Controllers\DirectivoController.php(277): view('editar_usuario', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DirectivoController->editarUsuario('234')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DirectivoController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-25 09:52:24 --> ErrorException: Undefined array key "idcurso"
+[Method: GET, Route: directivo/editarUsuario/234]
+in APPPATH\Views\editar_usuario.php on line 193.
+ 1 APPPATH\Views\editar_usuario.php(193): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "idcurso"', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\editar_usuario.php', 193)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\editar_usuario.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('editar_usuario', [], true)
+ 5 APPPATH\Controllers\DirectivoController.php(277): view('editar_usuario', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DirectivoController->editarUsuario('234')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DirectivoController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-09-25 09:55:58 --> mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')
+OR `idcurso` IS NULL
+ )
+AND   (
+`fecha` >= '2025-09-01 00:00:00'
+AND `fecha...' at line 8 in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *\nFROM `...', 0)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *\nFROM `...')
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *\nFROM `...')
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *\nFROM `...', Array, false)
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AvisosController.php(152): CodeIgniter\Database\BaseBuilder->get()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\AvisosController->listarJson()
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AvisosController))
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#11 {main}
+CRITICAL - 2025-09-25 09:55:58 --> CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')
+OR `idcurso` IS NULL
+ )
+AND   (
+`fecha` >= '2025-09-01 00:00:00'
+AND `fecha...' at line 8
+[Method: GET, Route: avisos/listarJson]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `avisos`
+WHERE `idcolegio` = :idcolegio:
+AND   (
+`visibilidad` = :visibilidad:
+ )
+AND   (
+`idcurso` IN :idcurso:
+OR `idcurso` IS NULL
+ )
+AND   (
+`fecha` >= :fecha:
+AND `fecha` <= :fecha.1:
+ )
+ORDER BY `fecha` ASC', [...], false)
+ 2 APPPATH\Controllers\AvisosController.php(152): CodeIgniter\Database\BaseBuilder->get()
+ 3 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AvisosController->listarJson()
+ 4 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AvisosController))
+ 5 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 6 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 7 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 8 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-25 09:55:58 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')
+OR `idcurso` IS NULL
+ )
+AND   (
+`fecha` >= '2025-09-01 00:00:00'
+AND `fecha...' at line 8
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `avisos`
+WHERE `idcolegio` = \'3\'
+AND   (
+`visibilidad` = \'alumnos\'
+ )
+AND   (
+`idcurso` IN ()
+OR `idcurso` IS NULL
+ )
+AND   (
+`fecha` >= \'2025-09-01 00:00:00\'
+AND `fecha` <= \'2025-10-13 00:00:00\'
+ )
+ORDER BY `fecha` ASC')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `avisos`
+WHERE `idcolegio` = \'3\'
+AND   (
+`visibilidad` = \'alumnos\'
+ )
+AND   (
+`idcurso` IN ()
+OR `idcurso` IS NULL
+ )
+AND   (
+`fecha` >= \'2025-09-01 00:00:00\'
+AND `fecha` <= \'2025-10-13 00:00:00\'
+ )
+ORDER BY `fecha` ASC')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `avisos`
+WHERE `idcolegio` = :idcolegio:
+AND   (
+`visibilidad` = :visibilidad:
+ )
+AND   (
+`idcurso` IN :idcurso:
+OR `idcurso` IS NULL
+ )
+AND   (
+`fecha` >= :fecha:
+AND `fecha` <= :fecha.1:
+ )
+ORDER BY `fecha` ASC', [...], false)
+ 4 APPPATH\Controllers\AvisosController.php(152): CodeIgniter\Database\BaseBuilder->get()
+ 5 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AvisosController->listarJson()
+ 6 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AvisosController))
+ 7 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 8 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 9 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+10 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-25 09:55:58 --> [Caused by] mysqli_sql_exception: You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ')
+OR `idcurso` IS NULL
+ )
+AND   (
+`fecha` >= '2025-09-01 00:00:00'
+AND `fecha...' at line 8
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('SELECT *
+FROM `avisos`
+WHERE `idcolegio` = \'3\'
+AND   (
+`visibilidad` = \'alumnos\'
+ )
+AND   (
+`idcurso` IN ()
+OR `idcurso` IS NULL
+ )
+AND   (
+`fecha` >= \'2025-09-01 00:00:00\'
+AND `fecha` <= \'2025-10-13 00:00:00\'
+ )
+ORDER BY `fecha` ASC', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('SELECT *
+FROM `avisos`
+WHERE `idcolegio` = \'3\'
+AND   (
+`visibilidad` = \'alumnos\'
+ )
+AND   (
+`idcurso` IN ()
+OR `idcurso` IS NULL
+ )
+AND   (
+`fecha` >= \'2025-09-01 00:00:00\'
+AND `fecha` <= \'2025-10-13 00:00:00\'
+ )
+ORDER BY `fecha` ASC')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('SELECT *
+FROM `avisos`
+WHERE `idcolegio` = \'3\'
+AND   (
+`visibilidad` = \'alumnos\'
+ )
+AND   (
+`idcurso` IN ()
+OR `idcurso` IS NULL
+ )
+AND   (
+`fecha` >= \'2025-09-01 00:00:00\'
+AND `fecha` <= \'2025-10-13 00:00:00\'
+ )
+ORDER BY `fecha` ASC')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(1644): CodeIgniter\Database\BaseConnection->query('SELECT *
+FROM `avisos`
+WHERE `idcolegio` = :idcolegio:
+AND   (
+`visibilidad` = :visibilidad:
+ )
+AND   (
+`idcurso` IN :idcurso:
+OR `idcurso` IS NULL
+ )
+AND   (
+`fecha` >= :fecha:
+AND `fecha` <= :fecha.1:
+ )
+ORDER BY `fecha` ASC', [...], false)
+ 5 APPPATH\Controllers\AvisosController.php(152): CodeIgniter\Database\BaseBuilder->get()
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AvisosController->listarJson()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AvisosController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-25 09:57:34 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: directivo/actualizarUsuario]
+in SYSTEMPATH\BaseModel.php on line 1011.
+ 1 SYSTEMPATH\BaseModel.php(1011): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(865): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\DirectivoController.php(320): CodeIgniter\Model->update('234', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DirectivoController->actualizarUsuario()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DirectivoController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-25 09:58:34 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: directivo/actualizarUsuario]
+in SYSTEMPATH\BaseModel.php on line 1011.
+ 1 SYSTEMPATH\BaseModel.php(1011): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(865): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\DirectivoController.php(320): CodeIgniter\Model->update('234', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DirectivoController->actualizarUsuario()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DirectivoController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-25 09:59:01 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: directivo/actualizarUsuario]
+in SYSTEMPATH\BaseModel.php on line 1011.
+ 1 SYSTEMPATH\BaseModel.php(1011): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(865): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\DirectivoController.php(320): CodeIgniter\Model->update('234', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DirectivoController->actualizarUsuario()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DirectivoController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
