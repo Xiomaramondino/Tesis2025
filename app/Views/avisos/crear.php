@@ -127,15 +127,16 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     cursor: pointer;
 }
 input:-webkit-autofill,
-        input:-webkit-autofill:focus,
-        input:-webkit-autofill:hover,
-        input:-webkit-autofill:active {
-            -webkit-text-fill-color: var(--color-text-white) !important;
-            transition: background-color 9999s ease-in-out 0s !important;
-            -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset !important;
-            caret-color: var(--color-text-white) !important;
-        }
+input:-webkit-autofill:focus,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:active {
+    -webkit-text-fill-color: var(--color-text-white) !important;
+    transition: background-color 9999s ease-in-out 0s !important;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset !important;
+    caret-color: var(--color-text-white) !important;
+}
 
+#div-curso { margin-bottom: 1rem; } /* espacio extra */
 </style>
 </head>
 
@@ -145,24 +146,22 @@ input:-webkit-autofill,
     <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" alt="Logo">
     <div class="logo">RingMind</div>
     <?php 
-$session = session();
-$idrol = $session->get('idrol');
+    $session = session();
+    $idrol = $session->get('idrol');
 
-if ($idrol == 1) {
-    $urlVolver = base_url('admin/calendario');
-} elseif ($idrol == 2) {
-    $urlVolver = base_url('/calendario_directivo');
-} elseif ($idrol == 4) {
-    $urlVolver = base_url('profesor/avisos');
-} else {
-    $urlVolver = base_url('/');
-}
-?>
-<a href="<?= $urlVolver ?>" class="volver-btn">
-    <i class="fas fa-arrow-left"></i> Volver
-</a>
-
-
+    if ($idrol == 1) {
+        $urlVolver = base_url('admin/calendario');
+    } elseif ($idrol == 2) {
+        $urlVolver = base_url('/calendario_directivo');
+    } elseif ($idrol == 4) {
+        $urlVolver = base_url('profesor/avisos');
+    } else {
+        $urlVolver = base_url('/');
+    }
+    ?>
+    <a href="<?= $urlVolver ?>" class="volver-btn">
+        <i class="fas fa-arrow-left"></i> Volver
+    </a>
 </nav>
 
 <div class="card-container">
@@ -174,6 +173,7 @@ if ($idrol == 1) {
 
     <form action="<?= base_url('avisos/guardarAviso') ?>" method="post">
         <?= csrf_field(); ?>
+
         <label for="titulo">Título</label>
         <input type="text" id="titulo" name="titulo" class="form-control" placeholder="Ingrese el título" required>
 
@@ -183,15 +183,6 @@ if ($idrol == 1) {
         <label for="fecha">Fecha y hora</label>
         <input type="datetime-local" id="fecha" name="fecha" class="form-control" required>
 
-        <label for="idcurso">Curso (opcional)</label>
-        <select id="idcurso" name="idcurso" class="form-control">
-    <option value="">Todos los cursos</option>
-    <?php foreach($cursos as $curso): ?>
-        <option value="<?= $curso->idcurso ?>"><?= $curso->nombre ?> - <?= $curso->division ?></option>
-    <?php endforeach; ?>
-</select>
-
-
         <label for="visibilidad">Visibilidad</label>
         <select id="visibilidad" name="visibilidad" class="form-control" required>
             <option value="alumnos">Alumnos</option>
@@ -199,9 +190,42 @@ if ($idrol == 1) {
             <option value="solo_creador">Solo yo</option>
         </select>
 
+        <!-- Contenedor select de cursos, solo visible si visibilidad = alumnos -->
+        <div id="div-curso">
+            <label for="idcurso">Curso (opcional)</label>
+            <select id="idcurso" name="idcurso" class="form-control">
+                <option value="">Todos los cursos</option>
+                <?php foreach($cursos as $curso): ?>
+                    <option value="<?= $curso->idcurso ?>"><?= $curso->nombre ?> - <?= $curso->division ?></option>
+                <?php endforeach; ?>
+            </select>
+        </div>
+
         <button type="submit" class="btn-main"><i class="fas fa-save"></i> Guardar aviso</button>
     </form>
 </div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const visibilidad = document.getElementById('visibilidad');
+    const divCurso = document.getElementById('div-curso');
+
+    function toggleCurso() {
+        if(visibilidad.value === 'alumnos') {
+            divCurso.style.display = 'block';
+        } else {
+            divCurso.style.display = 'none';
+            document.getElementById('idcurso').value = '';
+        }
+    }
+
+    // Ejecutar al cargar la página
+    toggleCurso();
+
+    // Ejecutar cada vez que cambie la visibilidad
+    visibilidad.addEventListener('change', toggleCurso);
+});
+</script>
 
 <footer class="footer">
     Tesis timbre automático 2025 <br> Marquez Juan - Mondino Xiomara

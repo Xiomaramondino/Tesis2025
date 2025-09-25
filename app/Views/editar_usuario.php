@@ -29,17 +29,25 @@
         }
 
         .form-control,
-        .form-select {
-            padding: 0.6rem 1rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            border-radius: 8px;
-            box-sizing: border-box;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            background-color: transparent;
-            color: white;
-            margin-bottom: 0.8rem;   
-        }
+    .form-select {
+        padding: 0.6rem 1rem;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        box-sizing: border-box;
+        font-size: 1rem;
+        transition: all 0.3s ease;
+        background-color: #081136; /* Fondo oscuro del select */
+        color: #fff;               /* Texto seleccionado */
+        margin-bottom: 0.8rem;
+        appearance: none;          /* Quita la flecha por defecto en WebKit */
+    }
+
+    /* Opciones del select */
+    .form-control option,
+    .form-select option {
+        background-color: #081136; /* Fondo de las opciones */
+        color: #fff;               /* Texto de las opciones */
+    }
 
         .btn-form {
             background-color: #5c0066;
