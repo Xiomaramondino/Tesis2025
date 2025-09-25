@@ -156,6 +156,11 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     filter: invert(1); /* icono blanco */
     cursor: pointer;
 }
+.form-control option,
+.form-select option {
+    background-color: var(--color-secondary); /* Fondo de las opciones */
+    color: var(--color-text-white); /* Texto blanco */
+}
 </style>
 </head>
 <body>
@@ -165,26 +170,20 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
     <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" alt="Logo">
     <div class="logo">RingMind</div>
     <?php
-$session = session();
-$idrol = $session->get('idrol');
+    $session = session();
+    $idrol = $session->get('idrol');
 
-if ($idrol == 4) {
-    // Profesor
-    $volverUrl = base_url('profesor/avisos');
-} elseif ($idrol == 1) {
-    // Admin
-    $volverUrl = base_url('admin/calendario');
-} elseif ($idrol == 2) {
-    // Directivo
-    $volverUrl = base_url('/calendario_directivo');
-} else {
-    // Otro rol, opcional
-    $volverUrl = base_url('/');
-}
-?>
-<a href="<?= $volverUrl ?>" class="volver-btn"><i class="fas fa-arrow-left"></i> Volver</a>
-
-
+    if ($idrol == 4) {
+        $volverUrl = base_url('profesor/avisos');
+    } elseif ($idrol == 1) {
+        $volverUrl = base_url('admin/calendario');
+    } elseif ($idrol == 2) {
+        $volverUrl = base_url('/calendario_directivo');
+    } else {
+        $volverUrl = base_url('/');
+    }
+    ?>
+    <a href="<?= $volverUrl ?>" class="volver-btn"><i class="fas fa-arrow-left"></i> Volver</a>
 </nav>
 
 <!-- Card -->
@@ -213,17 +212,31 @@ if ($idrol == 4) {
             <option value="solo_creador" <?= $aviso['visibilidad'] === 'solo_creador' ? 'selected' : ''; ?>>Solo yo</option>
         </select>
 
-  <!-- Botones -->
-<div class="d-flex flex-column flex-md-row justify-content-between mt-4 gap-3">
-    <a href="<?= base_url('profesor/avisos'); ?>" class="btn-custom w-100 w-md-50 text-center">
-        <i class="fas fa-times"></i>
-        Cancelar
-    </a>
-    <button type="submit" class="btn-custom w-100 w-md-50">
-        <i class="fas fa-save"></i>
-        Guardar cambios
-    </button>
-</div>
+        <!-- Select de cursos solo para alumnos -->
+        <div id="div-curso" style="display: <?= $aviso['visibilidad'] === 'alumnos' ? 'block' : 'none'; ?>;">
+            <label for="idcurso">Curso</label>
+            <select id="idcurso" name="idcurso" class="form-select">
+    <option value="0" <?= ($aviso['idcurso'] ?? 0) == 0 ? 'selected' : ''; ?>>Todos los cursos</option>
+    <?php foreach ($cursos as $curso): ?>
+        <option value="<?= $curso['idcurso']; ?>" <?= ($aviso['idcurso'] ?? 0) == $curso['idcurso'] ? 'selected' : ''; ?>>
+            <?= esc($curso['nombre']); ?> - <?= esc($curso['division']); ?>
+        </option>
+    <?php endforeach; ?>
+</select>
+
+        </div>
+
+        <!-- Botones -->
+        <div class="d-flex flex-column flex-md-row justify-content-between mt-4 gap-3">
+            <a href="<?= $volverUrl ?>" class="btn-custom w-100 w-md-50 text-center">
+                <i class="fas fa-times"></i>
+                Cancelar
+            </a>
+            <button type="submit" class="btn-custom w-100 w-md-50">
+                <i class="fas fa-save"></i>
+                Guardar cambios
+            </button>
+        </div>
 
     </form>
 </div>
@@ -233,5 +246,20 @@ if ($idrol == 4) {
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Script para mostrar/ocultar curso -->
+<script>
+const visibilidadSelect = document.getElementById('visibilidad');
+const divCurso = document.getElementById('div-curso');
+
+visibilidadSelect.addEventListener('change', () => {
+    if(visibilidadSelect.value === 'alumnos'){
+        divCurso.style.display = 'block';
+    } else {
+        divCurso.style.display = 'none';
+    }
+});
+</script>
+
 </body>
 </html>

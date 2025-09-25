@@ -5,20 +5,21 @@ namespace App\Controllers;
 use App\Controllers\BaseController;
 use CodeIgniter\I18n\Time;
 use App\Models\AvisoModel;
+use App\Models\CursoModel;
 
 class AvisosController extends BaseController
 {
     protected $db;
+    protected $AvisoModel;
+    protected $CursoModel;
 
     public function __construct()
     {
         $this->db = \Config\Database::connect();
+        $this->AvisoModel = new AvisoModel();
+        $this->CursoModel = new CursoModel();
         helper(['form', 'url', 'session']);
     }
-
-    /**
-     * Mostrar formulario para crear aviso
-     */
     public function crearAviso()
     {
         $session = session();
@@ -169,18 +170,23 @@ class AvisosController extends BaseController
     
     
     public function editar($id)
-{
-    $avisoModel = new \App\Models\AvisoModel();
-    $aviso = $avisoModel->find($id);
-
-    if(!$aviso) {
-        throw \CodeIgniter\Exceptions\PageNotFoundException::forPageNotFound("Aviso no encontrado: $id");
+    {
+        $aviso = $this->AvisoModel->find($id);
+    
+        if (!$aviso) {
+            session()->setFlashdata('error', 'Aviso no encontrado.');
+            return redirect()->to('/avisos');
+        }
+    
+        // Traer todos los cursos del colegio del usuario (o según corresponda)
+        $cursos = $this->CursoModel->where('idcolegio', session()->get('idcolegio'))->findAll();
+    
+        return view('avisos/editar', [
+            'aviso' => $aviso,
+            'cursos' => $cursos
+        ]);
     }
-
-    // Cargar vista de edición pasando los datos del aviso
-    return view('avisos/editar', ['aviso' => $aviso]);
-}
-
+    
 public function actualizar($id)
 {
     $avisoModel = new \App\Models\AvisoModel();

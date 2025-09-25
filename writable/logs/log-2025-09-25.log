@@ -750,3 +750,83 @@ in SYSTEMPATH\BaseModel.php on line 1011.
  7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
  8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
  9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-25 12:41:11 --> CodeIgniter\Database\Exceptions\DataException: There is no data to update.
+[Method: POST, Route: directivo/actualizarUsuario]
+in SYSTEMPATH\BaseModel.php on line 1011.
+ 1 SYSTEMPATH\BaseModel.php(1011): CodeIgniter\Database\Exceptions\DataException::forEmptyDataset('update')
+ 2 SYSTEMPATH\Model.php(865): CodeIgniter\BaseModel->update([...], [])
+ 3 APPPATH\Controllers\DirectivoController.php(320): CodeIgniter\Model->update('234', [...])
+ 4 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DirectivoController->actualizarUsuario()
+ 5 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DirectivoController))
+ 6 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 7 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 8 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 9 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-25 12:46:43 --> ErrorException: Undefined property: App\Controllers\DirectivoController::$db
+[Method: POST, Route: directivo/actualizarUsuario]
+in APPPATH\Controllers\DirectivoController.php on line 329.
+ 1 APPPATH\Controllers\DirectivoController.php(329): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\DirectivoController::$db', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\DirectivoController.php', 329)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\DirectivoController->actualizarUsuario()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\DirectivoController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-25 12:54:08 --> ErrorException: Undefined variable $cursos
+[Method: GET, Route: avisos/editar/43]
+in APPPATH\Views\avisos\editar.php on line 215.
+ 1 APPPATH\Views\avisos\editar.php(215): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $cursos', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\avisos\\editar.php', 215)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\avisos\\editar.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('avisos/editar', [], true)
+ 5 APPPATH\Controllers\AvisosController.php(181): view('avisos/editar', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AvisosController->editar('43')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AvisosController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-25 12:56:11 --> ErrorException: Undefined property: App\Controllers\AvisosController::$AvisoModel
+[Method: GET, Route: avisos/editar/43]
+in APPPATH\Controllers\AvisosController.php on line 173.
+ 1 APPPATH\Controllers\AvisosController.php(173): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\AvisosController::$AvisoModel', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\AvisosController.php', 173)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AvisosController->editar('43')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AvisosController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-25 12:58:51 --> ErrorException: Undefined property: App\Controllers\AvisosController::$AvisoModel
+[Method: GET, Route: avisos/editar/43]
+in APPPATH\Controllers\AvisosController.php on line 171.
+ 1 APPPATH\Controllers\AvisosController.php(171): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\AvisosController::$AvisoModel', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\AvisosController.php', 171)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AvisosController->editar('43')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AvisosController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-25 12:58:52 --> ErrorException: Undefined property: App\Controllers\AvisosController::$AvisoModel
+[Method: GET, Route: avisos/editar/43]
+in APPPATH\Controllers\AvisosController.php on line 171.
+ 1 APPPATH\Controllers\AvisosController.php(171): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined property: App\\Controllers\\AvisosController::$AvisoModel', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\AvisosController.php', 171)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AvisosController->editar('43')
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AvisosController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-09-25 12:59:54 --> ErrorException: Attempt to read property "idcurso" on array
+[Method: GET, Route: avisos/editar/43]
+in APPPATH\Views\avisos\editar.php on line 216.
+ 1 APPPATH\Views\avisos\editar.php(216): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Attempt to read property "idcurso" on array', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\avisos\\editar.php', 216)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\avisos\\editar.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('avisos/editar', [], true)
+ 5 APPPATH\Controllers\AvisosController.php(184): view('avisos/editar', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AvisosController->editar('43')
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AvisosController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

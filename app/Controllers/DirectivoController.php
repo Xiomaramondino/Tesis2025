@@ -7,11 +7,20 @@ use App\Models\CursoModel;
 class DirectivoController extends BaseController
 {
     protected $Usuario;
-
+    protected $db;
+    
     public function __construct()
     {
+        // Inicializar modelo
         $this->Usuario = new Usuario();
+    
+        // Inicializar conexión a la base de datos
+        $this->db = \Config\Database::connect();
+    
+        // Cargar helpers si los vas a usar
+        helper(['form', 'url', 'session']);
     }
+    
 
     public function gestionarUsuarios()
     {
@@ -264,14 +273,24 @@ class DirectivoController extends BaseController
     public function editarUsuario($idusuario)
     {
         $usuarioModel = new Usuario();
-        $cursoModel = new CursoModel();
+        $cursoModel   = new CursoModel();
     
-        $usuario = $usuarioModel->find($idusuario); // traigo los datos del usuario
-        $cursos = $cursoModel->where('idcolegio', session()->get('idcolegio'))->findAll(); // traigo cursos del colegio
+        // Traigo los datos del usuario
+        $usuario = $usuarioModel->find($idusuario);
+    
+        // Traigo el curso real desde alumno_curso
+        $alumnoCursoTable = $this->db->table('alumno_curso');
+        $registroCurso = $alumnoCursoTable->where('idusuario', $idusuario)->get()->getRowArray();
+    
+        // Agrego idcurso al array de usuario para usarlo en el select
+        $usuario['idcurso'] = $registroCurso['idcurso'] ?? '';
+    
+        // Traigo todos los cursos del colegio
+        $cursos = $cursoModel->where('idcolegio', session()->get('idcolegio'))->findAll();
     
         $data = [
             'usuario' => $usuario,
-            'cursos' => $cursos
+            'cursos'  => $cursos
         ];
     
         return view('editar_usuario', $data);
@@ -283,6 +302,7 @@ class DirectivoController extends BaseController
         $data = $this->request->getPost();
         $id = $data['idusuario'];
     
+        // Verificar si el usuario existe
         $usuarioExistente = $this->Usuario->find($id);
     
         if (!$usuarioExistente) {
@@ -290,9 +310,10 @@ class DirectivoController extends BaseController
             return redirect()->to('/gestionar_usuarios');
         }
     
-        $nuevoEmail = strtolower(trim($data['email']));
+        // Datos nuevos
+        $nuevoEmail   = strtolower(trim($data['email']));
         $nuevoUsuario = trim($data['usuario']);
-        $nuevoCurso = $data['idcurso'] ?? null; // Capturamos el curso seleccionado
+        $nuevoCurso   = $data['idcurso'] ?? null; // Capturamos el curso seleccionado
     
         $cambios = [];
         $mensajeCambios = [];
@@ -309,26 +330,47 @@ class DirectivoController extends BaseController
             $mensajeCambios[] = "Correo electrónico actualizado.";
         }
     
-        // Comparación de curso
-        if (($usuarioExistente['idcurso'] ?? null) != $nuevoCurso) {
-            $cambios['idcurso'] = $nuevoCurso;
+        // === Comparación de curso en tabla alumno_curso ===
+        $alumnoCursoTable = $this->db->table('alumno_curso');
+        $registroCurso = $alumnoCursoTable->where('idusuario', $id)->get()->getRowArray();
+        $cursoActual = $registroCurso['idcurso'] ?? null;
+    
+        $cambioCurso = false;
+        if ($cursoActual != $nuevoCurso) {
+            $cambioCurso = true;
             $mensajeCambios[] = "Curso actualizado.";
         }
     
+        // === Actualización de usuario ===
         if (!empty($cambios)) {
-            // Actualizar usuario
             $this->Usuario->update($id, $cambios);
+        }
     
-            // Armar detalle de cambios
-            $detalleCambios = implode(" ", $mensajeCambios);
+        // === Actualización de curso en tabla alumno_curso ===
+        if ($cambioCurso) {
+            if ($registroCurso) {
+                // Actualizar curso existente
+                $alumnoCursoTable->where('idusuario', $id)
+                                 ->update(['idcurso' => $nuevoCurso]);
+            } else {
+                // Insertar nuevo registro
+                $alumnoCursoTable->insert([
+                    'idusuario' => $id,
+                    'idcurso'   => $nuevoCurso
+                ]);
+            }
+        }
     
-            // Enviar correo al usuario con todos los datos actualizados
-            $this->_enviarCorreoEdicionUsuario(
-                $cambios['email'] ?? $usuarioExistente['email'],
-                $cambios['usuario'] ?? $usuarioExistente['usuario'],
-                $detalleCambios
-            );
+        // Enviar correo al usuario con todos los datos actualizados
+        $detalleCambios = implode(" ", $mensajeCambios);
+        $this->_enviarCorreoEdicionUsuario(
+            $cambios['email'] ?? $usuarioExistente['email'],
+            $cambios['usuario'] ?? $usuarioExistente['usuario'],
+            $detalleCambios
+        );
     
+        // Mensaje flash según cambios
+        if (!empty($mensajeCambios)) {
             session()->setFlashdata('success', 'Datos actualizados correctamente. ' . $detalleCambios);
         } else {
             session()->setFlashdata('info', 'No se detectaron cambios en los datos.');
@@ -337,7 +379,6 @@ class DirectivoController extends BaseController
         return redirect()->to('/gestionar_usuarios');
     }
     
-
 private function _enviarCorreoEdicionUsuario($email, $usuario, $detalleCambios)
 {
     $emailService = \Config\Services::email();

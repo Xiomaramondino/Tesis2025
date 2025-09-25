@@ -151,7 +151,7 @@ $idrol = $session->get('idrol');
 if ($idrol == 1) {
     $urlVolver = base_url('admin/calendario');
 } elseif ($idrol == 2) {
-    $urlVolver = base_url('directivo/calendario_directivo');
+    $urlVolver = base_url('/calendario_directivo');
 } elseif ($idrol == 4) {
     $urlVolver = base_url('profesor/avisos');
 } else {
