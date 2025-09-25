@@ -85,7 +85,7 @@
   main {
     flex: 1;
     padding: 100px 2rem 2rem 2rem;
-    max-width: 900px;
+    max-width: 950px;
     width: 100%;
     margin: 0 auto;
     box-sizing: border-box;
@@ -194,43 +194,59 @@
     transform: translateY(-2px);
   }
 
-  /* Tabla de feriados */
-  .table-container {
-    overflow-x: auto;
-  }
-
-  table {
+  /* Tabla escolar */
+  .tabla-feriados {
     width: 100%;
-    border-collapse: collapse;
-    background-color: var(--color-secondary);
-    border-radius: 1rem;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    border-collapse: separate;
+    border-spacing: 0 10px;
   }
 
-  th, td {
-    padding: 1rem;
-    text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-
-  th {
+  .tabla-feriados thead {
     background: var(--color-tertiary);
+  }
+
+  .tabla-feriados th {
+    padding: 1rem;
     color: var(--color-text-white);
-    font-weight: 600;
-    text-transform: uppercase;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 8px 8px 0 0;
   }
 
-  tbody tr:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+  .tabla-feriados tbody tr {
+    background: rgba(255, 255, 255, 0.05);
+    transition: transform 0.2s ease, background 0.2s ease;
   }
 
-  .excepcion td {
+  .tabla-feriados tbody tr:hover {
+    transform: scale(1.01);
+    background: rgba(255, 255, 255, 0.1);
+  }
+
+  .tabla-feriados td {
+    padding: 1rem;
+    text-align: center;
+    font-size: 1rem;
+  }
+
+  /* Colores segun tipo */
+  .tabla-feriados tr.feriado td {
+    color: #80ed99;
+  }
+
+  .tabla-feriados tr.excepcion td {
     color: #f87171;
-    font-weight: bold;
   }
-  .excepcion .acciones a {
-      color: #f87171 !important;
+
+  /* Fecha toma color segun tipo */
+  .tabla-feriados tr.feriado .fecha {
+    font-weight: bold;
+    color: #80ed99;
+  }
+
+  .tabla-feriados tr.excepcion .fecha {
+    font-weight: bold;
+    color: #f87171;
   }
 
   .acciones {
@@ -250,7 +266,7 @@
     gap: 0.5rem;
     margin-right: 0.5rem;
   }
-  
+
   .btn-modify {
     background-color: var(--color-accent);
     color: var(--color-text-white);
@@ -266,7 +282,12 @@
   .btn-delete:hover {
     background-color: var(--color-danger-hover);
   }
-  
+
+  .no-acciones {
+    font-style: italic;
+    color: #bbb;
+  }
+
   /* Mensajes de alerta */
   .alert {
     padding: 0.75rem 1.25rem;
@@ -355,34 +376,56 @@
   </section>
 
   <section class="card-section">
-    <h2><i class="fas fa-calendar-check"></i> Calendario de Feriados y Excepciones</h2>
+    <h2><i class="fas fa-calendar-check"></i> Calendario Escolar de Feriados y Excepciones</h2>
     <div class="table-container">
-      <table>
+      <table class="tabla-feriados">
         <thead>
           <tr>
-            <th>Fecha</th>
-            <th>Nombre</th>
-            <th>Acciones</th>
+            <th><i class="fas fa-calendar-day"></i> Fecha</th>
+            <th><i class="fas fa-clock"></i> Día</th>
+            <th><i class="fas fa-book-open"></i> Motivo</th>
+            <th><i class="fas fa-cogs"></i> Acciones</th>
           </tr>
         </thead>
         <tbody>
           <?php foreach($feriados as $f): ?>
-            <tr class="<?= str_contains($f['localName'], 'Excepción') ? 'excepcion' : '' ?>">
-              <td><?= htmlspecialchars($f['date']) ?></td>
-              <td><?= htmlspecialchars($f['localName']) ?></td>
+            <?php 
+              $fechaObj = new DateTime($f['date']); 
+              $diaSemana = $fechaObj->format('l'); 
+              $dias = [
+                'Monday' => 'Lunes',
+                'Tuesday' => 'Martes',
+                'Wednesday' => 'Miércoles',
+                'Thursday' => 'Jueves',
+                'Friday' => 'Viernes',
+                'Saturday' => 'Sábado',
+                'Sunday' => 'Domingo'
+              ];
+              $esExcepcion = str_contains($f['localName'], 'Excepción');
+              $claseFila = $esExcepcion ? 'excepcion' : 'feriado';
+            ?>
+            <tr class="<?= $claseFila ?>">
+              <td><span class="fecha"><?= $fechaObj->format('d/m/Y') ?></span></td>
+              <td><?= $dias[$diaSemana] ?></td>
+              <td>
+                <?php if($esExcepcion): ?>
+                  <i class="fas fa-school"></i> <?= htmlspecialchars($f['localName']) ?>
+                <?php else: ?>
+                  <i class="fas fa-flag"></i> <?= htmlspecialchars($f['localName']) ?>
+                <?php endif; ?>
+              </td>
               <td class="acciones">
-                <?php if(str_contains($f['localName'], 'Excepción')): ?>
-                  <a href="<?= base_url('excepciones/modificar/'.$f['id']) ?>" 
-                     class="btn-modify">
-                     <i class="fas fa-edit"></i> Modificar
+                <?php if($esExcepcion): ?>
+                  <a href="<?= base_url('excepciones/modificar/'.$f['id']) ?>" class="btn-modify">
+                     <i class="fas fa-edit"></i> Editar
                   </a>
                   <a href="<?= base_url('excepciones/eliminar/'.$f['id']) ?>" 
                      class="btn-delete"
                      onclick="return confirm('¿Seguro que desea eliminar esta excepción?');">
-                     <i class="fas fa-trash-alt"></i> Eliminar
+                     <i class="fas fa-trash-alt"></i> Borrar
                   </a>
                 <?php else: ?>
-                  <span>-</span>
+                  <span class="no-acciones">No aplica</span>
                 <?php endif; ?>
               </td>
             </tr>
