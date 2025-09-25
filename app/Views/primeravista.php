@@ -244,7 +244,7 @@
         <h3>Programación Dinámica</h3>
         <p>
             Ofrece un botón para activar manualmente el timbre en cualquier momento, junto con
-            un calendario integrado para programar fechas en las que el sistema permanecerá inactivo.
+            un calendario integrado para programar avisos que se mostraran en el mismo.
         </p>
     </div>
 </section>
