@@ -27,47 +27,6 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
-
-/* Navbar igual a calendario_alumno */
-.navbar {
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--color-secondary);
-    padding: 1rem 2rem;
-    position: fixed;
-    top: 0;
-    z-index: 1000;
-}
-.navbar-left img { height: 40px; }
-.navbar .logo {
-    color: var(--color-text-white);
-    font-size: 1.8rem;
-    font-weight: bold;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-.navbar-right {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-.navbar-right a, .navbar-right button {
-    background: none;
-    border: none;
-    color: white;
-    cursor: pointer;
-    font-size: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-    text-decoration: none;
-}
-
-/* Main y tarjetas */
-main { flex: 1; padding: 1rem; }
 .card-custom {
     background: var(--color-secondary);
     border-radius: 1.5rem;
@@ -107,12 +66,6 @@ main { flex: 1; padding: 1rem; }
     box-shadow: 0 0 10px var(--color-accent);
     caret-color: var(--color-text-white);
 }
-
-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
-th, td { padding: 0.75rem; border: 1px solid rgba(255,255,255,0.1); text-align: left; }
-th { background-color: rgba(255,255,255,0.05); }
-
-/* Footer */
 .footer {
     text-align: center;
     background-color: var(--color-secondary);
@@ -123,8 +76,6 @@ th { background-color: rgba(255,255,255,0.05); }
     margin-top: auto;
     font-size: 0.95rem;
 }
-
-/* Alertas */
 .alert {
     padding: 0.75rem 1.25rem;
     margin-bottom: 1rem;
@@ -141,39 +92,29 @@ th { background-color: rgba(255,255,255,0.05); }
 .alert-success { background-color: rgba(72, 187, 120, 0.15); border: 1.5px solid rgba(72, 187, 120, 0.6); color: var(--color-success); }
 .alert-danger { background-color: rgba(220, 38, 38, 0.15); border: 1.5px solid rgba(220, 38, 38, 0.6); color: var(--color-danger); }
 .alert button.close-alert { position: absolute; top: 0.5rem; right: 0.75rem; background: transparent; border: none; font-size: 1.2rem; font-weight: bold; cursor: pointer; color: inherit; }
-input:-webkit-autofill,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:active {
-    -webkit-text-fill-color: #fff ;
-    transition: background-color 9999s ease-in-out 0s ;
-    -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset;
-    caret-color: #fff;
-}
-input:-moz-autofill {
-    box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset ;
-    -moz-text-fill-color: #fff;
-    caret-color: #fff;
-}
 </style>
 </head>
 <body>
 
 <!-- Navbar -->
-<nav class="navbar">
-    <div class="navbar-left">
-        <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" alt="Logo">
+<nav class="navbar fixed top-0 w-full flex justify-between items-center bg-[var(--color-secondary)] p-4 md:p-6 z-50">
+    <div class="navbar-left flex items-center">
+        <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" alt="Logo" class="h-10 md:h-12">
     </div>
-    <div class="logo">RingMind</div>
-    <div class="navbar-right">
-        <a href="<?= base_url('vista_admin'); ?>" class="nav-btn"><i class="fas fa-arrow-left"></i> Volver</a>
+    <div class="logo text-xl md:text-2xl font-bold absolute left-1/2 transform -translate-x-1/2">
+        RingMind
+    </div>
+    <div class="navbar-right flex items-center gap-2 md:gap-4">
+        <a href="<?= base_url('vista_admin'); ?>" class="nav-btn flex items-center gap-1 text-sm md:text-base">
+            <i class="fas fa-arrow-left"></i> Volver
+        </a>
     </div>
 </nav>
 
-<main>
-    <div class="container mx-auto my-4 max-w-4xl">
+<main class="flex-1 p-4 md:p-8">
+    <div class="container mx-auto max-w-4xl">
         <div class="card-custom">
-            <h2 class="text-center text-2xl md:text-3xl font-bold mb-4">Gestión de Cursos y Divisiones</h2>
+            <h2 class="text-center text-xl md:text-3xl font-bold mb-4">Gestión de Cursos y Divisiones</h2>
 
             <?php if(session()->get('success')): ?>
                 <div class="alert alert-success">
@@ -191,17 +132,19 @@ input:-moz-autofill {
 
             <!-- Formulario de agregar curso -->
             <form action="<?= base_url('cursos/guardar') ?>" method="post" class="mb-4">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                     <input type="text" name="nombre" class="form-control" placeholder="Ej: 1º Año, 2º Grado" required>
                     <input type="text" name="division" class="form-control" placeholder="Ej: A, B, C (opcional)">
-                    <button type="submit" class="btn-custom w-full"><i class="fas fa-plus"></i> Agregar</button>
+                    <button type="submit" class="btn-custom w-full md:w-auto justify-center">
+                        <i class="fas fa-plus"></i> Agregar
+                    </button>
                 </div>
             </form>
 
             <!-- Botón “Listo / Cursos cargados” -->
             <?php if(count($cursos) > 0): ?>
                 <div class="mb-4">
-                    <a href="<?= base_url('vista_admin') ?>" class="btn-custom w-full bg-green-600 hover:bg-green-700">
+                    <a href="<?= base_url('vista_admin') ?>" class="btn-custom w-full md:w-auto bg-green-600 hover:bg-green-700 text-center">
                         Cursos cargados, accionar para continuar.
                     </a>
                 </div>
@@ -209,21 +152,21 @@ input:-moz-autofill {
 
             <!-- Tabla de cursos -->
             <div class="overflow-x-auto mt-4">
-                <table>
+                <table class="min-w-full">
                     <thead>
                         <tr>
-                            <th>Curso</th>
-                            <th>División</th>
-                            <th>Acciones</th>
+                            <th class="text-left px-3 py-2">Curso</th>
+                            <th class="text-left px-3 py-2">División</th>
+                            <th class="text-left px-3 py-2">Acciones</th>
                         </tr>
                     </thead>
                     <tbody>
                         <?php foreach($cursos as $curso): ?>
                             <tr>
-                                <td><?= esc($curso['nombre']) ?></td>
-                                <td><?= esc($curso['division']) ?></td>
-                                <td>
-                                    <a href="<?= base_url('cursos/eliminar/'.$curso['idcurso']) ?>" class="btn-custom bg-red-600 hover:bg-red-700">
+                                <td class="px-3 py-2"><?= esc($curso['nombre']) ?></td>
+                                <td class="px-3 py-2"><?= esc($curso['division']) ?></td>
+                                <td class="px-3 py-2">
+                                    <a href="<?= base_url('cursos/eliminar/'.$curso['idcurso']) ?>" class="btn-custom bg-red-600 hover:bg-red-700 w-full md:w-auto justify-center">
                                         <i class="fas fa-trash"></i> Eliminar
                                     </a>
                                 </td>
