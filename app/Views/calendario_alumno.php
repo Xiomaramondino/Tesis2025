@@ -59,13 +59,12 @@ body {
     align-items: center;
     gap: 0.5rem;
 }
-.navbar-right form button {
-    background: none;
-    border: none;
+.navbar-right a {
     color: white;
-    cursor: pointer;
+    text-decoration: none;
     font-size: 1rem;
 }
+.navbar-right a:hover { color: #d4b8e0; }
 
 /* Contenedor calendario */
 .container-calendar {
@@ -82,6 +81,13 @@ body {
 .fc-event.alumnos { background-color: #28a745; }
 .fc-event.profesores { background-color: #007bff; }
 
+/* Modal detalle aviso */
+.modal-header.bg-secondary { background-color: var(--color-secondary) !important; color: white; }
+.modal-body p { margin-bottom: 0.5rem; }
+.modal-footer .btn-secondary { background-color: #666565; color: white; border: none; }
+.modal-footer .btn-secondary:hover { background-color: #555; }
+
+/* Footer */
 .footer {
     text-align: center;
     background-color: var(--color-secondary);
@@ -89,7 +95,7 @@ body {
     color: white;
     padding: 0.8rem;
     width: 100%;
-    position: relative; /* ya no fijo */
+    position: relative;
     bottom: 0;
     margin-top: 2rem;
 }
@@ -104,10 +110,7 @@ body {
     </div>
     <div class="logo">RingMind</div>
     <div class="navbar-right">
-    <a href="<?= base_url('/horarios_lector'); ?>" class="btn-volver">
-    <i class="fas fa-arrow-left"></i> Volver
-</a>
-
+        <a href="<?= base_url('/horarios_lector'); ?>"><i class="fas fa-arrow-left"></i> Volver</a>
     </div>
 </nav>
 
@@ -116,10 +119,32 @@ body {
     <div id="calendar"></div>
 </div>
 
+<!-- Modal Detalle Aviso -->
+<div class="modal fade" id="detalleAvisoModal" tabindex="-1" aria-labelledby="detalleAvisoLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content text-dark">
+      <div class="modal-header bg-secondary text-white">
+        <h5 class="modal-title" id="detalleAvisoLabel">Detalle del Aviso</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body">
+        <p><strong>Título:</strong> <span id="avisoTitulo"></span></p>
+        <p><strong>Descripción:</strong> <span id="avisoDescripcion"></span></p>
+        <p><strong>Tipo:</strong> <span id="avisoTipo"></span></p>
+        <p><strong>Fecha Inicio:</strong> <span id="avisoInicio"></span></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Script FullCalendar -->
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     var calendarEl = document.getElementById('calendar');
+
     var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
         locale: 'es',
@@ -133,11 +158,28 @@ document.addEventListener('DOMContentLoaded', function() {
         eventClassNames: function(arg) {
             if(arg.event.extendedProps.tipo === 'alumnos') return ['alumnos'];
             if(arg.event.extendedProps.tipo === 'profesores') return ['profesores'];
+            if(arg.event.extendedProps.tipo === 'solo_creador') return ['solo_creador'];
         },
         eventClick: function(info) {
-            alert("Aviso: " + info.event.title + "\nTipo: " + info.event.extendedProps.tipo);
+            document.getElementById('avisoTitulo').innerText = info.event.title;
+            document.getElementById('avisoDescripcion').innerText = info.event.extendedProps.descripcion || 'Sin descripción';
+            document.getElementById('avisoTipo').innerText = info.event.extendedProps.tipo;
+            document.getElementById('avisoInicio').innerText = info.event.start
+                ? info.event.start.toLocaleString('es-AR', {
+                    year: 'numeric',
+                    month: '2-digit',
+                    day: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: false
+                  })
+                : '';
+            
+            var detalleModal = new bootstrap.Modal(document.getElementById('detalleAvisoModal'));
+            detalleModal.show();
         }
     });
+
     calendar.render();
 });
 </script>
