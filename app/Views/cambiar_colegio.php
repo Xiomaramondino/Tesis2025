@@ -20,7 +20,7 @@
 .navbar {
     width: 100%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;  /* centra el texto RingMind */
     align-items: center;
     background-color: #081136;
     padding: 1rem 2rem;
@@ -30,6 +30,10 @@
     box-sizing: border-box;
 }
 
+.navbar .logo-left {
+    position: absolute;  /* saca el logo del flujo y lo pega a la izquierda */
+    left: 2rem;          /* margen desde el borde izquierdo */
+}
 .navbar .logo {
     color: white;
     font-size: 1.9rem;
@@ -112,9 +116,10 @@ tr:hover {
 <body>
 
 <nav class="navbar">
-    <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" width="60px" alt="Logo">
-    <div class="logo" style="padding-right: 580px;">RingMind</div>
+    <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" width="60px" alt="Logo" class="logo-left">
+    <div class="logo">RingMind</div>
 </nav>
+
 <br>
 <br>
 <h2>Cambiar de colegio</h2>

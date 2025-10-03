@@ -45,17 +45,7 @@ class EventosEspecialesController extends Controller
         $fecha = $this->request->getPost('fecha');
         $hora = $this->request->getPost('hora');
         $descripcion = $this->request->getPost('descripcion');
-    
-        // Validación: no permitir fecha y hora pasadas
-        $eventoDateTime = strtotime($fecha . ' ' . $hora);
-        $ahora = time();
-    
-        if ($eventoDateTime < $ahora) {
-            session()->setFlashdata('error_evento', 'No se puede agregar un evento en una fecha y hora ya pasada.');
-            return redirect()->back();
-        }
-    
-        // Si pasa la validación, insertamos
+
         $db->table('eventos_especiales')->insert([
             'idcolegio'   => $idcolegio,
             'fecha'       => $fecha,

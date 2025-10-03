@@ -9,14 +9,21 @@
 <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <style>
-        body {
-            height: 100vh;
-            width: 100%;
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            background-color:  #091342; 
-        }
+     body {
+    min-height: 100vh;               /* altura mínima de la pantalla */
+    display: flex;                    /* habilita flexbox */
+    flex-direction: column;           /* apila elementos verticalmente */
+    justify-content: space-between;   /* separa contenido y footer */
+    margin: 0;
+    background-color: #091342;
+}
+
+.main-content {
+    flex-grow: 1;                     /* ocupa el espacio disponible para centrar la card */
+    display: flex;
+    justify-content: center;          /* centra horizontalmente */
+    align-items: center;              /* centra verticalmente */
+}
         
         .navbar {
             width: 100%; 

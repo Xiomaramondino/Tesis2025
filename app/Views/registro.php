@@ -411,9 +411,9 @@ input:-moz-autofill {
                 label: 'paypal'
             },
             createOrder: function(data, actions) {
-                if (!validarFormularioCompleto()) {
-                    return actions.reject();
-                }
+              if (!validarFormulario()) {
+    throw new Error("Formulario inválido");
+}
 
                 const producto = document.getElementById('producto').value;
                 let precio = 0;
@@ -451,6 +451,8 @@ input:-moz-autofill {
                     }).then(() => {
                         document.getElementById('payment_status').value = 'completed';
                         document.getElementById('paypal_order_id').value = data.orderID;
+
+                        const submitBtn = document.getElementById('submit-btn');
                         submitBtn.style.display = 'block';
                         submitBtn.scrollIntoView({ behavior: 'smooth' });
                     });

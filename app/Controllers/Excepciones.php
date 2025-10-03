@@ -60,38 +60,55 @@ class Excepciones extends Controller
     return redirect()->back();
 }
 
-public function modificar($id)
-{
-    $session = session();
-    $model = new ExcepcionesModel();
-    $request = $this->request;
+ public function modificar($id)
+    {
+        $session = session();
+        $model = new ExcepcionesModel();
 
-    $excepcion = $model->find($id);
-    if(!$excepcion){
-        $session->setFlashdata('error', 'Excepción no encontrada.');
-        return redirect()->back();
+        // Buscamos la excepción
+        $excepcion = $model->find($id);
+        if (!$excepcion) {
+            $session->setFlashdata('error', 'Excepción no encontrada.');
+            return redirect()->back();
+        }
+
+        // Mostramos la vista para modificar
+        return view('excepciones_modificar', ['excepcion' => $excepcion]);
     }
 
-    if($request->getMethod() === 'post'){
+    public function actualizar($id)
+    {
+        $session = session();
+        $model = new ExcepcionesModel();
+        $request = $this->request;
+
+        $excepcion = $model->find($id);
+        if (!$excepcion) {
+            $session->setFlashdata('error', 'Excepción no encontrada.');
+            return redirect()->back();
+        }
+
+        // Tomamos los datos del formulario
         $fecha = $request->getPost('fecha');
         $motivo = $request->getPost('motivo');
 
-        if(!$fecha){
+        // Validación simple
+        if (!$fecha) {
             $session->setFlashdata('error', 'Debe seleccionar una fecha.');
             return redirect()->back();
         }
 
+        // Guardamos los cambios
         $model->update($id, [
             'fecha' => $fecha,
             'motivo' => $motivo
         ]);
 
         $session->setFlashdata('success', 'Excepción modificada correctamente.');
-        return redirect()->to(base_url('feriados')); // o donde quieras redirigir
+
+        // Redirigimos a la lista de feriados
+        return redirect()->to(base_url('feriados/ver'));
     }
 
-    // Vista para modificar la excepción
-    return view('excepciones_modificar', ['excepcion' => $excepcion]);
-}
 
 }

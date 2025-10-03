@@ -260,7 +260,7 @@ class Horarios extends Controller
         // Marcar como usado para que no se repita
         $db->table('eventos_especiales')
            ->where('id', $evento->id)
-           ->update(['activo' => 0]);
+           ->delete();
 
         $response['tocar'] = true;
         return $this->response->setJSON($response);

@@ -14,44 +14,61 @@
             background-color: #091342;
             padding-top: 100px;
         }
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* logo a la izquierda y boton a la derecha */
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 70px;
+    background-color: #081136;
+    padding: 0 2rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 1000;
+    box-sizing: border-box;
+}
 
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-            width: 97%;
-            background-color: #081136;
-            padding: 1rem 2rem;
-            position: fixed;
-        }
-        .navbar .logo {
-            color: white;
-            font-size: 1.8rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
+.logo-left {
+    display: flex;
+    align-items: center;
+}
 
-        .navbar-buttons {
-            display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-        }
+.logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    color: white;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
 
-        .volver-btn {
-            background-color: transparent;
-            color: white;
-            border: none;
-            padding: 0.3rem 1.7rem;
-            font-size: 1rem;
-            text-align: left;
-            cursor: pointer;
-            text-decoration: none;
-        }
+.navbar-buttons {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.navbar-buttons button {
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem; /* suficiente espacio para que no se corte */
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+
+
+.volver-btn {
+    background-color: transparent;
+    color: white;
+    border: none;
+    padding: 0.5rem 1.5rem; /* un poco más de espacio horizontal y vertical */
+    font-size: 1rem;
+    cursor: pointer;
+    text-decoration: none;
+}
         .volver-btn:hover,
         .volver-btn:active,
         .volver-btn:focus {
@@ -220,15 +237,14 @@ input:-moz-autofill {
 <body>
 
 <nav class="navbar sticky-top">
-    <div class="logo">
-        <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" width="50px" alt="Logo" style="padding-right: 510px;"> RingMind
-    </div>
-    <div class="navbar-buttons">
-        <form action="<?= base_url('/vista_admin'); ?>" method="get">
-            <button type="submit" class="volver-btn">Volver</button>
-        </form>
-    </div>
+    <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" width="50px" alt="Logo" class="logo-left">
+    <div class="logo">RingMind</div>
+    <form action="<?= base_url('/vista_admin'); ?>" method="get" class="navbar-buttons">
+        <button type="submit" class="volver-btn">Volver</button>
+    </form>
 </nav>
+
+
 
 <div class="container">
     <div class="card">

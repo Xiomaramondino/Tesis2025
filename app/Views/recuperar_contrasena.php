@@ -8,24 +8,32 @@
     <style>
     
     body {
-            height: 100vh;
-            width: 100%;
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            background-color:  #091342; 
-        }
-        
-    .card {
+    min-height: 100vh;
     display: flex;
-    margin-left: 443px;
-    margin-top: 90px;
+    flex-direction: column;
+    justify-content: center; /* centra verticalmente */
+    align-items: center; /* Esto ayuda a separar contenido y footer */
+    background-color: #091342;
+    margin: 0;
+    
+}
+
+.main-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* Ocupa el espacio disponible */
+}
+        
+.card {
     border-radius: 1.5rem;
     max-width: 550px;
+    width: 90%; /* ocupa hasta 90% del ancho en pantallas pequeñas */
     background: #081136;
     box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.5);
     color: white;
     border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2rem;
 }
 .form-control {
     width: 120%; 
@@ -53,14 +61,20 @@
     box-shadow: 0 0 10px #6f42c1 ;
     caret-color: #bbb;
 }
-    .navbar {
-    width: 100%; 
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+   .navbar {
+    width: 100%;
+    position: relative; /* para usar posición absoluta si hace falta */
     background-color: #081136;
     padding: 1rem 2rem;
-        }
+    display: flex;
+    justify-content: center; /* centra el logo centralizable */
+    align-items: center;
+}
+
+.navbar .logo-left {
+    position: absolute; /* lo sacamos del flujo para que quede a la izquierda */
+    left: 2rem; /* margen desde el borde izquierdo */
+}
 
     .navbar .logo {
     color: white;
@@ -97,13 +111,15 @@
         }
 
         .footer {
-            text-align: center;
-            color: white;
-            margin-top: 10rem;
-            background-color: #081136;
-            font-weight: bold;;
-            padding: 0.3rem;
-        }
+    width: 100%; /* ocupa todo el ancho */
+    text-align: center;
+    color: white;
+    background-color: #081136;
+    font-weight: bold;
+    padding: 0.5rem;
+    box-sizing: border-box; /* evita que padding lo corte */
+}
+
         button {
             padding: 0.4rem 1.7rem;
             font-size: 1.1rem;
@@ -136,11 +152,12 @@ input:-moz-autofill {
 <body>
     <!-- Barra de navegación -->
     <nav class="navbar">
-        <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" width="60px" alt="Logo">
-        <center> <div class="logo" style="padding-right: 579px;">RingMind</div></center>
-    </nav>
+    <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" width="60px" alt="Logo" class="logo-left">
+    <div class="logo">RingMind</div>
+</nav>
 
     <!-- Card para recuperar contraseña -->
+    <div class="main-content">
     <div class="card" style="width: 30rem;">
         <div class="card-body">
             <div class="container text-center">
@@ -179,7 +196,7 @@ input:-moz-autofill {
             </div>
         </div>
     </div>
-
+</div>
     <!-- Pie de página -->
     <footer class="footer">
         <p>Tesis timbre automático 2025 <br>
