@@ -103,3 +103,7 @@ $routes->get('admin/calendario', 'AdminController::calendario');
 $routes->get('calendario_directivo', 'DirectivoController::calendario');
 
 $routes->get('calendario_alumno', 'AlumnoController::calendario');
+
+$routes->get('admin/solicitudesPendientes', 'AdminController::solicitudesPendientes');
+$routes->post('admin/procesar_solicitud', 'AdminController::procesarSolicitud');
+

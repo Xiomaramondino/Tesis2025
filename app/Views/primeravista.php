@@ -190,6 +190,18 @@
     </ul>
 </nav>
 
+<?php if(session()->getFlashdata('success')): ?>
+    <div class="alert alert-success" style="margin: 15px 2rem; padding: 1rem; border-radius: 10px; background-color: #48bb78; color: white;">
+        <?= session()->getFlashdata('success') ?>
+    </div>
+<?php endif; ?>
+
+<?php if(session()->getFlashdata('error')): ?>
+    <div class="alert alert-danger" style="margin: 15px 2rem; padding: 1rem; border-radius: 10px; background-color: #dc2626; color: white;">
+        <?= session()->getFlashdata('error') ?>
+    </div>
+<?php endif; ?>
+
 <script>
     function openGmail(event) {
         var email = "timbreautomatico2025@gmail.com";

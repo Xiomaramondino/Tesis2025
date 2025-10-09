@@ -280,6 +280,10 @@
                     <i class="fas fa-microchip"></i>
                     Registrar y ver mis Dispositivos
                 </a>
+                <a href="<?= base_url('admin/solicitudesPendientes') ?>" class="btn-custom">
+    <i class="fas fa-envelope-open-text"></i>
+    Solicitudes Pendientes
+</a>
                 <a href="<?= base_url('/cambiar-colegio') ?>" class="btn-custom">
                 <i class="fas fa-school"></i>
                     Cambiar de colegio

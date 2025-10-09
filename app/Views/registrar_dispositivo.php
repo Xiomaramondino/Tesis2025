@@ -14,75 +14,38 @@
             background-color: #091342;
             padding-top: 100px;
         }
-.navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between; /* logo a la izquierda y boton a la derecha */
-    position: fixed;
-    top: 0;
-    width: 100%;
-    height: 70px;
-    background-color: #081136;
-    padding: 0 2rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-    z-index: 1000;
-    box-sizing: border-box;
-}
-
-.logo-left {
-    display: flex;
-    align-items: center;
-}
-
-.logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    color: white;
-    font-size: 1.8rem;
-    font-weight: bold;
-}
-
-.navbar-buttons {
-    display: flex;
-    align-items: center;
-    height: 100%;
-}
-
-.navbar-buttons button {
-    background-color: transparent;
-    color: white;
-    border: none;
-    padding: 0.5rem 1.5rem; /* suficiente espacio para que no se corte */
-    font-size: 1rem;
-    cursor: pointer;
-}
-
-
-
-.volver-btn {
-    background-color: transparent;
-    color: white;
-    border: none;
-    padding: 0.5rem 1.5rem; /* un poco más de espacio horizontal y vertical */
-    font-size: 1rem;
-    cursor: pointer;
-    text-decoration: none;
-}
-        .volver-btn:hover,
-        .volver-btn:active,
-        .volver-btn:focus {
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            height: 70px;
+            background-color: #081136;
+            padding: 0 2rem;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        .logo-left { display: flex; align-items: center; }
+        .logo {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            color: white;
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        .navbar-buttons button, .volver-btn {
             background-color: transparent;
-            color: white; 
-            outline: none;
+            color: white;
+            border: none;
+            padding: 0.5rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
         }
-
-        .container {
-            max-width: 900px; 
-            margin: 40px auto 40px auto; 
-            padding: 20px;
-        }
-
+        .container { max-width: 900px; margin: 40px auto; padding: 20px; }
         .card {
             background: #081136;
             padding: 30px;
@@ -90,44 +53,18 @@
             box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.5);
             margin-bottom: 50px;
         }
-        .card h2 {
-            text-align: center;
-            margin-bottom: 1rem;
-            color: white; 
-            font-size: 1.8rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: white;
-            font-weight: 600; 
-        }
-
+        .card h2 { text-align: center; color: white; margin-bottom: 1rem; }
+        .form-group label { color: white; font-weight: 600; }
         .form-control {
             width: calc(100% - 20px);
             padding: 0.6rem 1rem;
             border: 1px solid rgba(255, 255, 255, 0.2);
             border-radius: 8px;
-            box-sizing: border-box;
-            font-size: 1rem;
-            transition: all 0.3s ease;
             background-color: transparent;
             color: white;
-            margin-bottom: 0.8rem;    
+            margin-bottom: 0.8rem;
         }
-
-        .form-control::placeholder {
-            color: #bbb;
-        }
-        .form-control:focus {
-            background-color: rgba(255, 255, 255, 0.08);
-            color: #bbb;
-            border: 1px solid #6f42c1;
-            box-shadow: 0 0 10px #6f42c1;
-            caret-color: #bbb;
-        }
-
+        .form-control::placeholder { color: #bbb; }
         button {
             padding: 12px 30px;
             font-size: 1.1rem;
@@ -137,79 +74,42 @@
             cursor: pointer;
             border-radius: 5px;
             width: 40%;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-            margin-top: 15px;
-            margin: 13px auto 0 auto; 
+            margin: 13px auto 0 auto;
             display: block;
         }
-
-        button:hover {
-            background-color:#666565; 
-        }
-
+        button:hover { background-color:#666565; }
         .alert {
-    margin: 20px auto 0 auto; 
-    padding: 0.75rem 1rem;
-    border-radius: 1rem;
-    justify-content: space-between;
-    align-items: center;
-    width: 60%;
-    box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
-    font-size: 1rem;
-  
-}
-.alert-success {
-    background-color: rgba(72, 187, 120, 0.15);
-    border: 1.5px solid rgba(72, 187, 120, 0.6);
-    color: #48bb78;
-}
-.alert-danger {
-    background-color: rgba(220, 38, 38, 0.15);
-    border: 1.5px solid rgba(220, 38, 38, 0.6);
-    color: #dc2626;
-}
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-            color: white;
+            margin: 20px auto;
+            padding: 0.75rem 1rem;
+            border-radius: 1rem;
+            width: 60%;
+            text-align: center;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.3);
         }
-
-        th, td {
-            padding: 8px 8px;
-            text-align: left;
+        .alert-success {
+            background-color: rgba(72, 187, 120, 0.15);
+            border: 1.5px solid rgba(72, 187, 120, 0.6);
+            color: #48bb78;
         }
-
-        th {
-            background-color: #070F2E;
-            color: #ffffff;
-            font-weight: bold;
+        .alert-danger {
+            background-color: rgba(220, 38, 38, 0.15);
+            border: 1.5px solid rgba(220, 38, 38, 0.6);
+            color: #dc2626;
         }
-
-        tr:hover {
-            background-color: rgba(255, 255, 255, 0.05);
-        }
-
-        .btn-sm {
-            padding: 6px 12px;
-            font-size: 0.85rem;
-            border-radius: 4px;
-            text-decoration: none;
-            transition: background-color 0.3s ease, transform 0.2s ease;
-        }
-
+        table { width: 100%; border-collapse: collapse; color: white; margin-top: 10px; }
+        th, td { padding: 8px; text-align: left; }
+        th { background-color: #070F2E; font-weight: bold; }
+        tr:hover { background-color: rgba(255, 255, 255, 0.05); }
+        .btn-sm { padding: 6px 12px; border-radius: 4px; text-decoration: none; }
         .btn-danger {
             background-color: #dc3545;
             color: white;
             border: 1px solid #dc3545;
         }
-
         .btn-danger:hover {
             background-color: #c82333;
             border-color: #bd2130;
-            transform: translateY(-1px);
         }
-
         .footer {
             text-align: center;
             padding: 0.1rem;
@@ -218,20 +118,6 @@
             color: white;
             margin-top: 3rem;
         }
-        input:-webkit-autofill,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:active {
-    -webkit-text-fill-color: #fff ;
-    transition: background-color 9999s ease-in-out 0s ;
-    -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset;
-    caret-color: #fff;
-}
-input:-moz-autofill {
-    box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset ;
-    -moz-text-fill-color: #fff;
-    caret-color: #fff;
-}
     </style>
 </head>
 <body>
@@ -244,9 +130,28 @@ input:-moz-autofill {
     </form>
 </nav>
 
-
-
 <div class="container">
+
+    <!-- Estado general de dispositivos -->
+    <div class="card">
+        <h2>Estado de tus dispositivos</h2>
+        <?php 
+            $registrados = count($mis_dispositivos);
+            $pendientes = max(0, $totalComprados - $registrados);         
+        ?>
+        <p style="color:white; text-align:center; font-size:1.1rem;">
+            Compraste <strong><?= $totalComprados ?></strong> dispositivo(s).<br>
+            Ya registraste <strong><?= $registrados ?></strong>.<br>
+            <?php if ($totalComprados == 0): ?>
+                <span style="color:#f87171;">Aún no compraste dispositivos.</span>
+            <?php elseif ($pendientes > 0): ?>
+                <span style="color:#f87171;">Te falta registrar <?= $pendientes ?> dispositivo(s).</span>
+            <?php else: ?>
+                <span style="color:#48bb78;">¡Todos tus dispositivos están registrados!</span>
+            <?php endif; ?>
+        </p>
+    </div>
+
     <div class="card">
         <h2>Registrar Dispositivo</h2>
 
@@ -258,54 +163,53 @@ input:-moz-autofill {
             <div class="alert alert-success"><?= session()->getFlashdata('success'); ?></div>
         <?php endif; ?>
 
+        <?php if ($totalComprados > 0 && $pendientes > 0): ?>
         <form action="<?= base_url('guardar_dispositivo') ?>" method="post">
             <?= csrf_field(); ?>
             <div class="form-group">
                 <label for="mac">Dirección MAC:</label>
                 <input type="text" name="mac" class="form-control" placeholder="AA:BB:CC:DD:EE:FF" required>
             </div>
-            <button type="submit" class="btn btn-primary mt-2">Registrar</button>
+            <button type="submit">Registrar</button>
         </form>
+        <?php elseif ($totalComprados == 0): ?>
+            <p style="color:white; text-align:center;">No puedes registrar dispositivos porque aún no compraste ninguno.</p>
+        <?php else: ?>
+            <p style="color:white; text-align:center;">Ya registraste todos tus dispositivos.</p>
+        <?php endif; ?>
     </div>
 
-    <div class="card mt-4" >
-        <div class="card-header" >
-            <h2>Mis Dispositivos</h2>
-        </div>
-        <div class="card-body">
-            <table class="table table-bordered">
-                <thead>
-                    <tr>
-                        <th>Dirección MAC</th>
-                        <th>Colegio</th>
-                        <th>Acción</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php if (!empty($mis_dispositivos)): ?>
-                        <?php foreach ($mis_dispositivos as $dispositivo): ?>
-                            <tr>
-                                <td><?= esc($dispositivo['mac']) ?></td>
-                                <td><?= esc($dispositivo['nombre_colegio']) ?></td>
-                                <td>
-                                    <a href="<?= base_url('/dispositivos/eliminar/' . esc($dispositivo['iddispositivo'])) ?>" class="btn btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar este dispositivo?')">Eliminar</a>
-                                </td>
-                            </tr>
-                        <?php endforeach; ?>
-                    <?php else: ?>
+    <div class="card mt-4">
+        <h2>Mis Dispositivos</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Dirección MAC</th>
+                    <th>Colegio</th>
+                    <th>Acción</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php if (!empty($mis_dispositivos)): ?>
+                    <?php foreach ($mis_dispositivos as $dispositivo): ?>
                         <tr>
-                            <td colspan="3" class="text-center">No tienes dispositivos registrados.</td>
+                            <td><?= esc($dispositivo['mac']) ?></td>
+                            <td><?= esc($dispositivo['nombre_colegio']) ?></td>
+                            <td>
+                                <a href="<?= base_url('/dispositivos/eliminar/' . esc($dispositivo['iddispositivo'])) ?>" class="btn-sm btn-danger" onclick="return confirm('¿Estás seguro de eliminar este dispositivo?')">Eliminar</a>
+                            </td>
                         </tr>
-                    <?php endif; ?>
-                </tbody>
-            </table>
-        </div>
+                    <?php endforeach; ?>
+                <?php else: ?>
+                    <tr><td colspan="3" style="text-align:center;">No tienes dispositivos registrados.</td></tr>
+                <?php endif; ?>
+            </tbody>
+        </table>
     </div>
 </div>
 
 <footer class="footer">
     <p>Tesis timbre automático 2025 <br> Marquez Juan - Mondino Xiomara</p>
 </footer>
-
 </body>
 </html>

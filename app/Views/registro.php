@@ -13,25 +13,26 @@
 </head>
 <body>
 <style>
-
     body {
-            height: 100vh;
-            width: 100%;
-            flex-direction: column; 
-            justify-content: center; 
-            align-items: center; 
-            background-color:  #091342; 
-        }
-    .card{
-    margin-left: 30%;
-    max-width: 550px;
-    background: #081136;
-    padding: 30px;
-    border-radius: 1.5rem;
-    box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.5);
-    margin-top: 55px;
-    color: white;
-    border: 1px solid rgba(255, 255, 255, 0.05);
+        height: 100vh;
+        width: 100%;
+        flex-direction: column; 
+        justify-content: center; 
+        align-items: center; 
+        background-color: #091342; /* color-primary */
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .card {
+        margin-left: 30%;
+        max-width: 550px;
+        background: #081136; /* color-secondary */
+        padding: 30px;
+        border-radius: 1.5rem;
+        box-shadow: 0px 8px 50px rgba(0, 0, 0, 0.5);
+        margin-top: 55px;
+        color: white; /* color-text-white */
+        border: 1px solid rgba(255, 255, 255, 0.05);
     }
     
     .section-title {
@@ -47,127 +48,137 @@
     }
 
     .form-control {
-    border-radius: 8px;
-    width: 100%; 
-    padding: 0.6rem 1rem;
-    background-color: transparent;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    color: white;
-    font-size: 1rem;
-    margin-bottom: 0.8rem;
-    transition: all 0.3s ease;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+        border-radius: 8px;
+        width: 100%; 
+        padding: 0.6rem 1rem;
+        background-color: transparent;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: white;
+        font-size: 1rem;
+        margin-bottom: 0.8rem;
+        transition: all 0.3s ease;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     .form-control::placeholder {
-    color: #bbb;
-}
-.form-control:focus {
-    background-color: rgba(255, 255, 255, 0.08);
-    color: #bbb ;
-    border: 1px solid #6f42c1 ;
-    box-shadow: 0 0 10px #6f42c1 ;
-    caret-color: #bbb;
-}
-    
-    .password-container {
-    position: relative;
-    margin-bottom: 1.2rem;
-}
+        color: #bbb;
+    }
 
-.password-container img {
-    position: absolute;
-    top: 50%;
-    right: 10px;
-    transform: translateY(-50%);
-    width: 20px;
-    height: auto;
-    cursor: pointer;
-    filter: invert(1) brightness(2);
-    transition: filter 0.3s ease;
-}
+    .form-control:focus {
+        background-color: rgba(255, 255, 255, 0.08);
+        color: #bbb;
+        border: 1px solid #7158e2; /* color-accent */
+        box-shadow: 0 0 10px #7158e2;
+        caret-color: #bbb;
+    }
+
+    .form-control option {
+        background-color: #081136; /* color-secondary */
+        color: white; /* color-text-white */
+    }
+
+    .password-container {
+        position: relative;
+        margin-bottom: 1.2rem;
+    }
+
+    .password-container img {
+        position: absolute;
+        top: 50%;
+        right: 10px;
+        transform: translateY(-50%);
+        width: 20px;
+        height: auto;
+        cursor: pointer;
+        filter: invert(1) brightness(2);
+        transition: filter 0.3s ease;
+    }
 
     .btn-primary {
         width: 100%;
         padding: 0.8rem;
         margin-top: 1.5rem;
-        background-color: #070F2E;
+        background-color: #070F2E; /* color-tertiary */
         border: none;
     }
     .btn-primary:hover {
         background-color: #666565;
     }
+
     .login-link {
         text-align: center;
         margin-top: 1rem;
-        color: #540466;
+        color: #7158e2; /* color-accent */
         text-decoration: none;
     }
     .login-link:hover {
-        color: #4a045a;
+        color: #540466;
         text-decoration: underline;
     }  
-   
+
     .navbar {
-            width: 100%; 
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #081136;
-            padding: 1rem 2rem;
-        }
+        width: 100%; 
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background-color: #081136; /* color-secondary */
+        padding: 1rem 2rem;
+    }
 
-        .navbar .logo {
-            color: white;
-            font-size: 1.9rem;
-            font-weight: bold;
-        }
+    .navbar .logo {
+        color: white;
+        font-size: 1.9rem;
+        font-weight: bold;
+    }
 
-.volver-btn {
-    background-color: transparent;
-    color: white;
-    border: none;
-    padding: 0.3rem 0.8rem;
-    font-size: 1rem;
-    text-align: left;
-    cursor: pointer;
-    text-decoration: none;
-}
+    .volver-btn {
+        background-color: transparent;
+        color: white;
+        border: none;
+        padding: 0.3rem 0.8rem;
+        font-size: 1rem;
+        text-align: left;
+        cursor: pointer;
+        text-decoration: none;
+    }
 
-.volver-btn:hover,
-.volver-btn:active,
-.volver-btn:focus {
-    background-color: transparent;
-    color: white; 
-    outline: none;
-}
+    .volver-btn:hover,
+    .volver-btn:active,
+    .volver-btn:focus {
+        background-color: transparent;
+        color: white; 
+        outline: none;
+    }
+
     #submit-btn {
         display: none; 
     }
+
     .footer {
-            text-align: center;
-            background-color: #081136;
-            font-weight: bold;
-            color: white;
-            margin-top: 4.6rem;
-            padding: 0.3rem;
-        }
-        input:-webkit-autofill,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:active {
-    -webkit-text-fill-color: #fff ;
-    transition: background-color 9999s ease-in-out 0s ;
-    -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset;
-    caret-color: #fff;
-}
-input:-moz-autofill {
-    box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset ;
-    -moz-text-fill-color: #fff;
-    caret-color: #fff;
-}
+        text-align: center;
+        background-color: #081136; /* color-secondary */
+        font-weight: bold;
+        color: white;
+        margin-top: 4.6rem;
+        padding: 0.3rem;
+    }
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:active {
+        -webkit-text-fill-color: #fff;
+        transition: background-color 9999s ease-in-out 0s;
+        -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset;
+        caret-color: #fff;
+    }
+    input:-moz-autofill {
+        box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset;
+        -moz-text-fill-color: #fff;
+        caret-color: #fff;
+    }
 </style>
 
 <!-- Barra de navegación -->
@@ -255,6 +266,18 @@ input:-moz-autofill {
                                 <option value="timbre_automatizado">Timbre Automatizado - $100.000</option>
                             </select>
                         </div>
+
+<div class="form-group">
+    <label for="cantidad">Cantidad de Dispositivos:</label>
+    <select name="cantidad" class="form-control" id="cantidad" required>
+        <option value="" disabled selected>Seleccione cantidad</option>
+        <option value="1" <?= old('cantidad') == 1 ? 'selected' : '' ?>>1</option>
+        <option value="2" <?= old('cantidad') == 2 ? 'selected' : '' ?>>2</option>
+        <option value="3" <?= old('cantidad') == 3 ? 'selected' : '' ?>>3</option>
+        <option value="4" <?= old('cantidad') == 4 ? 'selected' : '' ?>>4</option>
+        <option value="5" <?= old('cantidad') == 5 ? 'selected' : '' ?>>5</option>
+    </select>
+</div>
 
                         <!-- Sección de Facturación -->
                         <h4 class="section-title">Información de registro</h4>
@@ -410,36 +433,40 @@ input:-moz-autofill {
                 shape: 'pill',
                 label: 'paypal'
             },
-            createOrder: function(data, actions) {
-              if (!validarFormulario()) {
-    throw new Error("Formulario inválido");
-}
+           createOrder: function(data, actions) {
+    if (!validarFormulario()) {
+        throw new Error("Formulario inválido");
+    }
 
-                const producto = document.getElementById('producto').value;
-                let precio = 0;
-                let descripcion = '';
+    const producto = document.getElementById('producto').value;
+    const cantidad = parseInt(document.getElementById('cantidad').value) || 1; // NUEVO
+    let precioUnitario = 0;
+    let descripcion = '';
 
-                switch(producto) {
-                    case 'timbre_automatizado':
-                        precio = 100000;
-                        descripcion = 'Timbre Automatizado';
-                        break;
-                }
+    switch(producto) {
+        case 'timbre_automatizado':
+            precioUnitario = 100000;
+            descripcion = 'Timbre Automatizado';
+            break;
+    }
 
-                return actions.order.create({
-                    purchase_units: [{
-                        amount: {
-                            value: (precio).toFixed(2),
-                            currency_code: "USD"
-                        },
-                        description: descripcion,
-                        custom_id: producto
-                    }],
-                    application_context: {
-                        shipping_preference: "NO_SHIPPING"
-                    }
-                });
+    const total = precioUnitario * cantidad; // TOTAL según cantidad
+
+    return actions.order.create({
+        purchase_units: [{
+            amount: {
+                value: total.toFixed(2), // <-- se envía el total
+                currency_code: "USD"
             },
+            description: `${descripcion} x${cantidad}`, // opcional, mostrar cantidad
+            custom_id: producto
+        }],
+        application_context: {
+            shipping_preference: "NO_SHIPPING"
+        }
+    });
+},
+
 
             onApprove: function(data, actions) {
                 return actions.order.capture().then(function(details) {

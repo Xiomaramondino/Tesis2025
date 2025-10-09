@@ -548,18 +548,36 @@ public function registrar_dispositivo()
 {
     $session = session();
     $idusuario = $session->get('idusuario');
+    $idcolegio = $session->get('idcolegio');
 
     if (!$idusuario) {
         return redirect()->to('/login')->with('error', 'Sesión no iniciada.');
     }
 
     $dispositivoModel = new DispositivoModel();
+    $usuarioColegioModel = new \App\Models\UsuarioColegioModel();
+
+    // Dispositivos ya registrados
     $mis_dispositivos = $dispositivoModel->getDispositivosConColegio($idusuario);
 
+    // Obtener la cantidad total comprada desde usuario_colegio
+    $usuarioColegio = $usuarioColegioModel
+        ->where('idusuario', $idusuario)
+        ->where('idcolegio', $idcolegio)
+        ->first();
+
+    $totalComprados = $usuarioColegio['total_comprados'] ?? 0;
+    $totalRegistrados = count($mis_dispositivos);
+    $pendientes = max(0, $totalComprados - $totalRegistrados);
+
     return view('registrar_dispositivo', [
-        'mis_dispositivos' => $mis_dispositivos
+        'mis_dispositivos' => $mis_dispositivos,
+        'totalComprados' => $totalComprados,
+        'totalRegistrados' => $totalRegistrados,
+        'pendientes' => $pendientes
     ]);
 }
+
 
     public function eliminar_dispositivo($iddispositivo)
     {
@@ -699,5 +717,87 @@ public function calendario()
     return view('calendario_admin');
 }
 
+public function solicitudesPendientes()
+{
+    $session = \Config\Services::session();
+    $usuarioColegioModel = new \App\Models\UsuarioColegioModel();
+    $solicitudModel = new \App\Models\SolicitudAdminModel();
+    $usuarioModel = new \App\Models\Usuario();
+
+    $idusuario = session()->get('idusuario');
+
+    // Obtener colegio donde el usuario es admin
+    $adminColegio = $usuarioColegioModel
+        ->where('idusuario', $idusuario)
+        ->where('idrol', 1)
+        ->first();
+
+    if(!$adminColegio){
+        return redirect()->to('/admin')->with('error', 'No eres admin de ninguna institución.');
+    }
+
+    $idcolegio = $adminColegio['idcolegio'];
+
+    // Obtener solicitudes pendientes
+    $solicitudes = $solicitudModel->obtenerPendientesPorColegio($idcolegio);
+
+    // Adjuntar datos del usuario que realizó la solicitud
+    foreach($solicitudes as &$sol){
+        $usr = $usuarioModel->find($sol['idusuario']);
+        $sol['usuario'] = $usr['usuario'];
+        $sol['email'] = $usr['email'];
+    }
+
+    return view('solicitudes_admin', ['solicitudes' => $solicitudes]);
+}
+
+public function procesarSolicitud()
+{
+    $solicitudModel = new \App\Models\SolicitudAdminModel();
+    $usuarioColegioModel = new \App\Models\UsuarioColegioModel();
+
+    $data = $this->request->getJSON();
+
+    if(!$data || !isset($data->id) || !isset($data->estado)){
+        return $this->response->setJSON(['status'=>'error','msg'=>'Datos inválidos']);
+    }
+
+    $solicitud = $solicitudModel->find($data->id);
+    if(!$solicitud){
+        return $this->response->setJSON(['status'=>'error','msg'=>'Solicitud no encontrada']);
+    }
+
+    if($data->estado === 'aceptada'){
+        // Verificar si ya existe asociación para ese usuario y colegio
+        $yaAsociado = $usuarioColegioModel
+            ->where('idusuario', $solicitud['idusuario'])
+            ->where('idcolegio', $solicitud['idcolegio'])
+            ->first();
+
+        if($yaAsociado){
+            // Si ya está asociado, solo sumamos la cantidad comprada
+            $nuevoTotal = $yaAsociado['total_comprados'] + $solicitud['cantidad'];
+            $usuarioColegioModel->update($yaAsociado['id'], ['total_comprados' => $nuevoTotal]);
+        } else {
+            // Crear la asociación y guardar la cantidad de timbres comprados
+            $usuarioColegioModel->insert([
+                'idusuario' => $solicitud['idusuario'],
+                'idcolegio' => $solicitud['idcolegio'],
+                'idrol' => 1,
+                'total_comprados' => $solicitud['cantidad']
+            ]);
+        }
+
+        $msg = "Solicitud aceptada correctamente";
+    } else {
+        // Rechazada → se puede eliminar o solo marcar como rechazada
+        $msg = "Solicitud rechazada correctamente";
+    }
+
+    // Actualizar estado de solicitud
+    $solicitudModel->actualizarEstado($data->id, $data->estado);
+
+    return $this->response->setJSON(['status'=>'ok','msg'=>$msg]);
+}
 }
 
