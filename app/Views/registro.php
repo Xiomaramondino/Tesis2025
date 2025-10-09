@@ -306,8 +306,10 @@
                         </div>
                         
                         <!-- Input hidden para el estado del pago -->
+
                         <input type="hidden" name="payment_status" id="payment_status" value="">
                         <input type="hidden" name="paypal_order_id" id="paypal_order_id" value="">
+                        <input type="hidden" name="cantidad" id="cantidad_oculta" value=""> 
                         
                         <input class="btn btn-primary" type="submit" id="submit-btn" value="Iniciar sesión">
                     </form>
@@ -424,102 +426,70 @@
         }
     }
 
-    // Configuración del botón de PayPal
-    // Configuración de PayPal
-    paypal.Buttons({
-            style: {
-                layout: 'vertical',
-                color: 'blue',
-                shape: 'pill',
-                label: 'paypal'
-            },
-           createOrder: function(data, actions) {
-    if (!validarFormulario()) {
-        throw new Error("Formulario inválido");
-    }
+ paypal.Buttons({
+    style: { layout: 'vertical', color: 'blue', shape: 'pill', label: 'paypal' },
 
-    const producto = document.getElementById('producto').value;
-    const cantidad = parseInt(document.getElementById('cantidad').value) || 1; // NUEVO
-    let precioUnitario = 0;
-    let descripcion = '';
-
-    switch(producto) {
-        case 'timbre_automatizado':
-            precioUnitario = 100000;
-            descripcion = 'Timbre Automatizado';
-            break;
-    }
-
-    const total = precioUnitario * cantidad; // TOTAL según cantidad
-
-    return actions.order.create({
-        purchase_units: [{
-            amount: {
-                value: total.toFixed(2), // <-- se envía el total
-                currency_code: "USD"
-            },
-            description: `${descripcion} x${cantidad}`, // opcional, mostrar cantidad
-            custom_id: producto
-        }],
-        application_context: {
-            shipping_preference: "NO_SHIPPING"
+    createOrder: function(data, actions) {
+        if (!validarFormulario()) throw new Error("Formulario inválido");
+        const producto = document.getElementById('producto').value;
+        const cantidad = parseInt(document.getElementById('cantidad').value) || 1;
+        let precioUnitario = 0;
+        switch(producto) {
+            case 'timbre_automatizado': precioUnitario = 100000; break;
         }
-    });
-},
-
-
-            onApprove: function(data, actions) {
-                return actions.order.capture().then(function(details) {
-                    Swal.fire({
-                        title: '¡Pago Completado!',
-                        text: 'Gracias ' + details.payer.name.given_name + ' por tu compra.',
-                        icon: 'success',
-                        confirmButtonText: 'Aceptar'
-                    }).then(() => {
-                        document.getElementById('payment_status').value = 'completed';
-                        document.getElementById('paypal_order_id').value = data.orderID;
-
-                        const submitBtn = document.getElementById('submit-btn');
-                        submitBtn.style.display = 'block';
-                        submitBtn.scrollIntoView({ behavior: 'smooth' });
-                    });
-                });
-            },
-
-            onError: function(err) {
-                console.error("PayPal onError:", err);
-                Swal.fire({
-                    title: 'Error en el pago',
-                    text: 'Ocurrió un error al procesar el pago. Por favor intenta nuevamente.',
-                    icon: 'error',
-                    confirmButtonText: 'Aceptar'
-                });
-            },
-
-            onCancel: function(data) {
-                Swal.fire({
-                    title: 'Cancelado',
-                    text: 'Has cancelado el proceso de pago.',
-                    icon: 'info',
-                    confirmButtonText: 'Aceptar'
-                });
-            }
-
-        }).render('#paypal-button-container');
-
-        // Manejar el envío final del formulario
-        registerForm.addEventListener('submit', function(e) {
-            if (document.getElementById('payment_status').value !== 'completed') {
-                e.preventDefault();
-                Swal.fire({
-                    title: 'Pago requerido',
-                    text: 'Debes completar el proceso de pago con PayPal antes de registrarte.',
-                    icon: 'warning',
-                    confirmButtonText: 'Aceptar'
-                });
-            }
+        const total = precioUnitario * cantidad;
+        return actions.order.create({
+            purchase_units: [{
+                amount: { value: total.toFixed(2), currency_code: "USD" },
+                description: `Timbre Automatizado x${cantidad}`,
+                custom_id: producto
+            }],
+            application_context: { shipping_preference: "NO_SHIPPING" }
         });
+    },
+
+    onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+            Swal.fire({
+                title: '¡Pago Completado!',
+                text: 'Gracias ' + details.payer.name.given_name + ' por tu compra.',
+                icon: 'success',
+                confirmButtonText: 'Aceptar'
+            }).then(() => {
+                document.getElementById('payment_status').value = 'completed';
+                document.getElementById('paypal_order_id').value = data.orderID;
+
+                // ✅ Guardar cantidad seleccionada antes del envío
+                const cantidadSeleccionada = document.getElementById('cantidad').value;
+                document.getElementById('cantidad_oculta').value = cantidadSeleccionada;
+
+                const submitBtn = document.getElementById('submit-btn');
+                submitBtn.style.display = 'block';
+                submitBtn.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+    },
+
+    onError: function(err) {
+        console.error("PayPal onError:", err);
+        Swal.fire('Error', 'Ocurrió un error al procesar el pago.', 'error');
+    },
+
+    onCancel: function(data) {
+        Swal.fire('Cancelado', 'Has cancelado el proceso de pago.', 'info');
+    }
+
+}).render('#paypal-button-container');
+
+// Control del envío final
+document.getElementById('registerForm').addEventListener('submit', function(e) {
+    if (document.getElementById('payment_status').value !== 'completed') {
+        e.preventDefault();
+        Swal.fire('Pago requerido', 'Debes completar el pago antes de registrarte.', 'warning');
+    }
+});
 </script>
+
 
 <footer class="footer">
     <p>Tesis timbre automático 2025 <br>

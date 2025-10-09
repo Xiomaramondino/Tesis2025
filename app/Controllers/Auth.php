@@ -192,6 +192,7 @@ public function guardarRegistro()
         ->where('idcolegio', $idcolegio)
         ->where('idrol', 1)
         ->first();
+        
     // CASO 1: El usuario ya existe
     if ($usuarioExistente) {
         $idusuario = $usuarioExistente['idusuario'];
@@ -216,10 +217,6 @@ public function guardarRegistro()
                 ]);
         session()->setFlashdata('success', 'Tu solicitud de compra adicional ha sido enviada para revisión. Debe ser aprobada por el administrador antes de continuar.');
         return redirect()->to(base_url('/'));
-            }else {
-                // Ya tiene otro rol (por ejemplo, lector o directivo)
-                session()->set('error', 'Este correo ya está registrado en esta institución con otro rol. Iniciá sesión con tu cuenta.');
-                return redirect()->to('login');
             }
         } else {
             // Si no está asociado a ese colegio
@@ -246,7 +243,7 @@ public function guardarRegistro()
                 ]);
 
                 session()->setFlashdata('success', 'Se ha enviado una solicitud al admin del colegio para aprobación.');
-                return redirect()->to('registro');
+                return redirect()->to('/');
             }
         }
     }
@@ -287,7 +284,7 @@ public function guardarRegistro()
             ]);
 
             session()->setFlashdata('success', '¡Registro completado! Se ha enviado una solicitud al admin para aprobación.');
-            return redirect()->to('registro');
+            return redirect()->to('/');
         }
     } else {
         session()->set('error', 'Ocurrió un error al registrar el usuario. Intenta nuevamente.');

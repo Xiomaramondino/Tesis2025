@@ -248,6 +248,33 @@
             border-left: 4px solid var(--color-accent);
             border-radius: 0.5rem;
         }
+
+      /* Botón de notificación con estilo btn-custom */
+.btn-custom.notification {
+    position: relative;
+    padding-right: 2.2rem; /* espacio para el puntito */
+}
+
+/* Puntito verde */
+.btn-custom.notification::after {
+    content: '';
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    width: 10px;
+    height: 10px;
+    background-color: #48bb78; /* verde tipo WhatsApp */
+    border-radius: 50%;
+    border: 2px solid var(--color-tertiary);
+    display: none; /* oculto por defecto */
+}
+
+/* Mostrar el puntito cuando hay notificación */
+.btn-custom.notification.has-notif::after {
+    display: block;
+}
+
+
     </style>
 </head>
 <body>
@@ -280,7 +307,11 @@
                     <i class="fas fa-microchip"></i>
                     Registrar y ver mis Dispositivos
                 </a>
-                <a href="<?= base_url('admin/solicitudesPendientes') ?>" class="btn-custom"> <i class="fas fa-envelope-open-text"></i> Solicitudes Pendientes </a>
+               <a href="<?= base_url('admin/solicitudesPendientes') ?>" 
+   class="btn-custom notification <?= isset($solicitudesPendientes) && $solicitudesPendientes > 0 ? 'has-notif' : '' ?>">
+    <i class="fas fa-envelope-open-text"></i> Solicitudes Pendientes
+</a>
+
                 <a href="<?= base_url('/cambiar-colegio') ?>" class="btn-custom">
                 <i class="fas fa-school"></i>
                     Cambiar de colegio

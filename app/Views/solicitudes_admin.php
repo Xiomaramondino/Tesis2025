@@ -100,6 +100,7 @@ body {
                             <p><strong>Usuario:</strong> <?= esc($solicitud['usuario']) ?></p>
                             <p><strong>Email:</strong> <?= esc($solicitud['email']) ?></p>
                             <p><strong>Producto:</strong> <?= esc($solicitud['producto']) ?></p>
+                            <p><strong>Cantidad:</strong> <?= esc($solicitud['cantidad']) ?></p>
                             <p><strong>Paypal Order ID:</strong> <?= esc($solicitud['paypal_order_id']) ?></p>
                             <p><strong>Fecha:</strong> <?= esc($solicitud['fecha_solicitud']) ?></p>
                         </div>

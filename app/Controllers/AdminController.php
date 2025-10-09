@@ -10,43 +10,47 @@ use App\Models\DispositivoModel;
 
 class AdminController extends Controller
 {
-    public function index()
-    {
-        if (session()->get('idrol') !== '1') {
-            return redirect()->to('/login');
-        }
-    
-        $idcolegio = session()->get('idcolegio');
-        $db = \Config\Database::connect();
-    
-        // Directivos
-        $queryDirectivos = $db->table('usuario_colegio uc')
-            ->select('u.idusuario, u.usuario, u.email')
-            ->join('usuarios u', 'u.idusuario = uc.idusuario')
-            ->where('uc.idcolegio', $idcolegio)
-            ->where('uc.idrol', 2)
-            ->orderBy('u.usuario', 'ASC')
-            ->get();
-    
-        $usuarios_directivos = $queryDirectivos->getResultArray();
-    
-        // Profesores
-        $queryProfesores = $db->table('usuario_colegio uc')
-            ->select('u.idusuario, u.usuario, u.email')
-            ->join('usuarios u', 'u.idusuario = uc.idusuario')
-            ->where('uc.idcolegio', $idcolegio)
-            ->where('uc.idrol', 4)
-            ->orderBy('u.usuario', 'ASC')
-            ->get();
-    
-        $usuarios_profesores = $queryProfesores->getResultArray();
-    
-        return view('vista_admin', [
-            'usuarios_directivos' => $usuarios_directivos,
-            'usuarios_profesores' => $usuarios_profesores
-        ]);
+public function index()
+{
+    if (session()->get('idrol') !== '1') {
+        return redirect()->to('/login');
     }
-    
+
+    $idcolegio = session()->get('idcolegio');
+    $db = \Config\Database::connect();
+
+    // Directivos
+    $queryDirectivos = $db->table('usuario_colegio uc')
+        ->select('u.idusuario, u.usuario, u.email')
+        ->join('usuarios u', 'u.idusuario = uc.idusuario')
+        ->where('uc.idcolegio', $idcolegio)
+        ->where('uc.idrol', 2)
+        ->orderBy('u.usuario', 'ASC')
+        ->get();
+
+    $usuarios_directivos = $queryDirectivos->getResultArray();
+
+    // Profesores
+    $queryProfesores = $db->table('usuario_colegio uc')
+        ->select('u.idusuario, u.usuario, u.email')
+        ->join('usuarios u', 'u.idusuario = uc.idusuario')
+        ->where('uc.idcolegio', $idcolegio)
+        ->where('uc.idrol', 4)
+        ->orderBy('u.usuario', 'ASC')
+        ->get();
+
+    $usuarios_profesores = $queryProfesores->getResultArray();
+
+    //Contar solicitudes pendientes
+    $solicitudModel = new \App\Models\SolicitudAdminModel();
+    $solicitudesPendientes = count($solicitudModel->obtenerPendientesPorColegio($idcolegio));
+
+    return view('vista_admin', [
+        'usuarios_directivos' => $usuarios_directivos,
+        'usuarios_profesores' => $usuarios_profesores,
+        'solicitudesPendientes' => $solicitudesPendientes
+    ]);
+}
     
     public function guardarUsuario()
     {
@@ -755,47 +759,56 @@ public function procesarSolicitud()
 {
     $solicitudModel = new \App\Models\SolicitudAdminModel();
     $usuarioColegioModel = new \App\Models\UsuarioColegioModel();
+    $usuarioModel = new \App\Models\Usuario(); 
 
     $data = $this->request->getJSON();
 
-    if(!$data || !isset($data->id) || !isset($data->estado)){
-        return $this->response->setJSON(['status'=>'error','msg'=>'Datos inválidos']);
+    if (!$data || !isset($data->id) || !isset($data->estado)) {
+        return $this->response->setJSON(['status' => 'error', 'msg' => 'Datos inválidos']);
     }
 
     $solicitud = $solicitudModel->find($data->id);
-    if(!$solicitud){
-        return $this->response->setJSON(['status'=>'error','msg'=>'Solicitud no encontrada']);
+    if (!$solicitud) {
+        return $this->response->setJSON(['status' => 'error', 'msg' => 'Solicitud no encontrada']);
     }
 
-    // Cargar servicio de email
+    // 🔹 Buscar datos del usuario para enviar el correo
+    $usuario = $usuarioModel->find($solicitud['idusuario']);
+    if (!$usuario) {
+        return $this->response->setJSON(['status' => 'error', 'msg' => 'Usuario no encontrado']);
+    }
+
+    $nombreUsuario = $usuario['usuario'];
+    $emailUsuario = $usuario['email'];
+
     $email = \Config\Services::email();
 
-    if($data->estado === 'aceptada'){
-        // Verificar si ya existe asociación para ese usuario y colegio
+    if ($data->estado === 'aceptada') {
+        // Verificar si ya existe asociación
         $yaAsociado = $usuarioColegioModel
             ->where('idusuario', $solicitud['idusuario'])
             ->where('idcolegio', $solicitud['idcolegio'])
             ->first();
 
-        if($yaAsociado){
-            $nuevoTotal = $yaAsociado['total_comprados'] + $solicitud['cantidad'];
+        if ($yaAsociado) {
+            $nuevoTotal = $yaAsociado['total_comprados'] + ($solicitud['cantidad'] ?? 1);
             $usuarioColegioModel->update($yaAsociado['id'], ['total_comprados' => $nuevoTotal]);
         } else {
             $usuarioColegioModel->insert([
                 'idusuario' => $solicitud['idusuario'],
                 'idcolegio' => $solicitud['idcolegio'],
                 'idrol' => 1,
-                'total_comprados' => $solicitud['cantidad']
+                'total_comprados' => $solicitud['cantidad'] ?? 1
             ]);
         }
 
         $msg = "Solicitud aceptada correctamente";
 
-        // Enviar email de aceptación
-        $email->setTo($solicitud['email']);
+        // ✅ Enviar email de aceptación
+        $email->setTo($emailUsuario);
         $email->setSubject('Solicitud de Admin Aceptada');
         $email->setMessage("
-            Hola {$solicitud['usuario']},<br><br>
+            Hola {$nombreUsuario},<br><br>
             Tu solicitud para ser administrador del colegio con ID {$solicitud['idcolegio']} ha sido <strong>ACEPTADA</strong>.<br>
             Ya puedes acceder con tus credenciales.<br><br>
             Saludos,<br>RingMind
@@ -803,24 +816,22 @@ public function procesarSolicitud()
         $email->send();
 
     } else {
-        // Rechazada
         $msg = "Solicitud rechazada correctamente";
 
-        // Enviar email de rechazo
-        $email->setTo($solicitud['email']);
+        // ✅ Enviar email de rechazo
+        $email->setTo($emailUsuario);
         $email->setSubject('Solicitud de Admin Rechazada');
         $email->setMessage("
-            Hola {$solicitud['usuario']},<br><br>
+            Hola {$nombreUsuario},<br><br>
             Lamentamos informarte que tu solicitud para ser administrador del colegio con ID {$solicitud['idcolegio']} ha sido <strong>RECHAZADA</strong>.<br><br>
             Saludos,<br>RingMind
         ");
         $email->send();
     }
 
-    // Actualizar estado de solicitud
+    // Actualizar estado
     $solicitudModel->actualizarEstado($data->id, $data->estado);
 
-    return $this->response->setJSON(['status'=>'ok','msg'=>$msg]);
+    return $this->response->setJSON(['status' => 'ok', 'msg' => $msg]);
 }
 }
-

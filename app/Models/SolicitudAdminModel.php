@@ -15,6 +15,7 @@ class SolicitudAdminModel extends Model
         'paypal_order_id',
         'payment_status',
         'estado',
+        'email',
         'fecha_solicitud'
     ];
 
