@@ -767,6 +767,9 @@ public function procesarSolicitud()
         return $this->response->setJSON(['status'=>'error','msg'=>'Solicitud no encontrada']);
     }
 
+    // Cargar servicio de email
+    $email = \Config\Services::email();
+
     if($data->estado === 'aceptada'){
         // Verificar si ya existe asociación para ese usuario y colegio
         $yaAsociado = $usuarioColegioModel
@@ -775,11 +778,9 @@ public function procesarSolicitud()
             ->first();
 
         if($yaAsociado){
-            // Si ya está asociado, solo sumamos la cantidad comprada
             $nuevoTotal = $yaAsociado['total_comprados'] + $solicitud['cantidad'];
             $usuarioColegioModel->update($yaAsociado['id'], ['total_comprados' => $nuevoTotal]);
         } else {
-            // Crear la asociación y guardar la cantidad de timbres comprados
             $usuarioColegioModel->insert([
                 'idusuario' => $solicitud['idusuario'],
                 'idcolegio' => $solicitud['idcolegio'],
@@ -789,9 +790,31 @@ public function procesarSolicitud()
         }
 
         $msg = "Solicitud aceptada correctamente";
+
+        // Enviar email de aceptación
+        $email->setTo($solicitud['email']);
+        $email->setSubject('Solicitud de Admin Aceptada');
+        $email->setMessage("
+            Hola {$solicitud['usuario']},<br><br>
+            Tu solicitud para ser administrador del colegio con ID {$solicitud['idcolegio']} ha sido <strong>ACEPTADA</strong>.<br>
+            Ya puedes acceder con tus credenciales.<br><br>
+            Saludos,<br>RingMind
+        ");
+        $email->send();
+
     } else {
-        // Rechazada → se puede eliminar o solo marcar como rechazada
+        // Rechazada
         $msg = "Solicitud rechazada correctamente";
+
+        // Enviar email de rechazo
+        $email->setTo($solicitud['email']);
+        $email->setSubject('Solicitud de Admin Rechazada');
+        $email->setMessage("
+            Hola {$solicitud['usuario']},<br><br>
+            Lamentamos informarte que tu solicitud para ser administrador del colegio con ID {$solicitud['idcolegio']} ha sido <strong>RECHAZADA</strong>.<br><br>
+            Saludos,<br>RingMind
+        ");
+        $email->send();
     }
 
     // Actualizar estado de solicitud

@@ -18,12 +18,8 @@ class SolicitudAdminModel extends Model
         'fecha_solicitud'
     ];
 
-    protected $useTimestamps = false; // ya tenemos fecha_solicitud con default CURRENT_TIMESTAMP
-
-    // Opcional: agregar funciones útiles
-    /**
-     * Obtener solicitudes pendientes de un colegio
-     */
+    protected $useTimestamps = false; 
+    
     public function obtenerPendientesPorColegio($idcolegio)
     {
         return $this->where('idcolegio', $idcolegio)
@@ -32,17 +28,12 @@ class SolicitudAdminModel extends Model
                     ->findAll();
     }
 
-    /**
-     * Cambiar estado de solicitud (aceptada o rechazada)
-     */
+
     public function actualizarEstado($idSolicitud, $estado)
     {
         return $this->update($idSolicitud, ['estado' => $estado]);
     }
 
-    /**
-     * Eliminar solicitudes pendientes antiguas (por ejemplo >48h)
-     */
     public function eliminarPendientesAntiguas()
     {
         $fechaLimite = date('Y-m-d H:i:s', strtotime('-48 hours'));
