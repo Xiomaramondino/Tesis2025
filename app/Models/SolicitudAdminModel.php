@@ -11,6 +11,7 @@ class SolicitudAdminModel extends Model
     protected $allowedFields = [
         'idusuario',
         'idcolegio',
+        'cantidad',
         'producto',
         'paypal_order_id',
         'payment_status',

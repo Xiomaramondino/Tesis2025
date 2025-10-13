@@ -192,18 +192,28 @@ public function actualizar($id)
     $avisoModel = new \App\Models\AvisoModel();
     $session = session();
     $idrol = $session->get('idrol');
+    $idusuario = $session->get('idusuario');
 
     // Obtener fecha del input
     $fecha_input = $this->request->getPost('fecha'); // "YYYY-MM-DDTHH:MM"
-    // Convertir al formato MySQL DATETIME
     $fecha = date('Y-m-d H:i:s', strtotime($fecha_input));
 
+    // Construir array de datos
     $data = [
-        'titulo' => $this->request->getPost('titulo'),
+        'titulo'      => $this->request->getPost('titulo'),
         'descripcion' => $this->request->getPost('descripcion'),
         'visibilidad' => $this->request->getPost('visibilidad'),
-        'fecha' => $fecha
+        'fecha'       => $fecha,
+        'idusuario'   => $idusuario, // opcional, si querés registrar quién lo actualizó
+        'idrol'       => $idrol      // opcional
     ];
+
+    // Si la visibilidad es 'alumnos', agregar idcurso
+    if ($this->request->getPost('visibilidad') === 'alumnos') {
+        $data['idcurso'] = $this->request->getPost('idcurso'); // el input debe llamarse 'idcurso'
+    } else {
+        $data['idcurso'] = null; // limpiar si no es alumnos
+    }
 
     if ($avisoModel->update($id, $data)) {
         // Redirigir según rol
@@ -219,8 +229,8 @@ public function actualizar($id)
     } else {
         return redirect()->back()->withInput()->with('error', 'No se pudo actualizar el aviso.');
     }
-    
 }
+
 
 public function eliminar($id = null)
 {

@@ -49,7 +49,7 @@
         .logo {
             font-size: 1.8rem;
             font-weight: bold;
-            color: var(--color-text-white);
+            color: white;
             position: absolute;
             left: 50%;
             transform: translateX(-50%);
@@ -64,7 +64,7 @@
 
         .nav-btn {
             background-color: var(--color-tertiary);
-            color: var(--color-text-white);
+            color: white;
             padding: 0.5rem 1rem;
             border-radius: 10px;
             text-decoration: none;
@@ -85,7 +85,7 @@
             font-size: 1.5rem;
             background: none;
             border: none;
-            color: var(--color-text-white);
+            color: white;
             cursor: pointer;
         }
         /* Container */
@@ -275,6 +275,16 @@
             .alert {
                 width: 100%;
             }
+        }
+
+          input:-webkit-autofill,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:active {
+            -webkit-text-fill-color: white !important;
+            transition: background-color 9999s ease-in-out 0s !important;
+            -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset !important;
+            caret-color: white !important;
         }
     </style>
 </head>

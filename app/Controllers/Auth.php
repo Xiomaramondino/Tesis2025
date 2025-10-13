@@ -280,6 +280,7 @@ public function guardarRegistro()
                 'producto' => $producto,
                 'paypal_order_id' => $paypalOrderId,
                 'payment_status' => $paymentStatus,
+                'email' => $email,
                 'estado' => 'pendiente'
             ]);
 

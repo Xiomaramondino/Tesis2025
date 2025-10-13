@@ -92,6 +92,16 @@ body {
 .alert-success { background-color: rgba(72, 187, 120, 0.15); border: 1.5px solid rgba(72, 187, 120, 0.6); color: var(--color-success); }
 .alert-danger { background-color: rgba(220, 38, 38, 0.15); border: 1.5px solid rgba(220, 38, 38, 0.6); color: var(--color-danger); }
 .alert button.close-alert { position: absolute; top: 0.5rem; right: 0.75rem; background: transparent; border: none; font-size: 1.2rem; font-weight: bold; cursor: pointer; color: inherit; }
+
+  input:-webkit-autofill,
+        input:-webkit-autofill:focus,
+        input:-webkit-autofill:hover,
+        input:-webkit-autofill:active {
+            -webkit-text-fill-color: var(--color-text-white) !important;
+            transition: background-color 9999s ease-in-out 0s !important;
+            -webkit-box-shadow: 0 0 0px 1000px rgba(255, 255, 255, 0.05) inset !important;
+            caret-color: var(--color-text-white) !important;
+        }
 </style>
 </head>
 <body>

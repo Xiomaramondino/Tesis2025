@@ -8,7 +8,7 @@ class Usuario extends Model
 {
     protected $table = 'usuarios';
     protected $primaryKey = 'idusuario';
-    protected $allowedFields = ['usuario', 'email', 'password', 'token','iddispositivo','idcolegio','idrol','idturno','turno', 'curso', 'ciclo', 'fecha_registro'];
+    protected $allowedFields = ['usuario', 'email', 'password', 'token','iddispositivo','fecha_registro'];
 
     // Hash password before inserting or updating
     public function beforeInsert(array $data)
