@@ -727,6 +727,7 @@ public function solicitudesPendientes()
     $usuarioColegioModel = new \App\Models\UsuarioColegioModel();
     $solicitudModel = new \App\Models\SolicitudAdminModel();
     $usuarioModel = new \App\Models\Usuario();
+    $adminAceptadosModel = new \App\Models\AdminAceptadosModel(); // 👈 nuevo
 
     $idusuario = session()->get('idusuario');
 
@@ -736,7 +737,7 @@ public function solicitudesPendientes()
         ->where('idrol', 1)
         ->first();
 
-    if(!$adminColegio){
+    if (!$adminColegio) {
         return redirect()->to('/admin')->with('error', 'No eres admin de ninguna institución.');
     }
 
@@ -745,21 +746,40 @@ public function solicitudesPendientes()
     // Obtener solicitudes pendientes
     $solicitudes = $solicitudModel->obtenerPendientesPorColegio($idcolegio);
 
-    // Adjuntar datos del usuario que realizó la solicitud
-    foreach($solicitudes as &$sol){
+    foreach ($solicitudes as &$sol) {
         $usr = $usuarioModel->find($sol['idusuario']);
         $sol['usuario'] = $usr['usuario'];
         $sol['email'] = $usr['email'];
     }
 
-    return view('solicitudes_admin', ['solicitudes' => $solicitudes]);
+    // 👇 Obtener los admins ya aceptados (historial)
+    $admins = $adminAceptadosModel
+        ->where('idcolegio', $idcolegio)
+        ->orderBy('fecha_aceptacion', 'DESC')
+        ->findAll();
+
+foreach ($admins as &$a) {
+    $usr = $usuarioModel->find($a['idusuario']);
+    $a['usuario'] = $usr['usuario'] ?? 'Sin nombre';
+    $a['email'] = $usr['email'] ?? 'Sin email';
+
+    // Renombrar fecha para la vista
+    $a['fecha_registro'] = $a['fecha_aceptacion'] ?? '';
 }
+
+  return view('solicitudes_admin', [
+        'solicitudes' => $solicitudes,
+        'admins' => $admins 
+    ]);
+}
+
 
 public function procesarSolicitud()
 {
     $solicitudModel = new \App\Models\SolicitudAdminModel();
     $usuarioColegioModel = new \App\Models\UsuarioColegioModel();
     $usuarioModel = new \App\Models\Usuario(); 
+    $adminAceptadosModel = new \App\Models\AdminAceptadosModel(); // ✅ Nuevo modelo
 
     $data = $this->request->getJSON();
 
@@ -772,7 +792,6 @@ public function procesarSolicitud()
         return $this->response->setJSON(['status' => 'error', 'msg' => 'Solicitud no encontrada']);
     }
 
-    // 🔹 Buscar datos del usuario para enviar el correo
     $usuario = $usuarioModel->find($solicitud['idusuario']);
     if (!$usuario) {
         return $this->response->setJSON(['status' => 'error', 'msg' => 'Usuario no encontrado']);
@@ -780,7 +799,6 @@ public function procesarSolicitud()
 
     $nombreUsuario = $usuario['usuario'];
     $emailUsuario = $usuario['email'];
-
     $email = \Config\Services::email();
 
     if ($data->estado === 'aceptada') {
@@ -802,7 +820,11 @@ public function procesarSolicitud()
             ]);
         }
 
-        $msg = "Solicitud aceptada correctamente";
+        // ✅ Registrar aceptación en historial
+        $adminAceptadosModel->insert([
+            'idusuario' => $solicitud['idusuario'],
+            'idcolegio' => $solicitud['idcolegio']
+        ]);
 
         // ✅ Enviar email de aceptación
         $email->setTo($emailUsuario);
@@ -815,9 +837,9 @@ public function procesarSolicitud()
         ");
         $email->send();
 
-    } else {
-        $msg = "Solicitud rechazada correctamente";
+        $msg = "Solicitud aceptada correctamente y registrada en historial.";
 
+    } else {
         // ✅ Enviar email de rechazo
         $email->setTo($emailUsuario);
         $email->setSubject('Solicitud de Admin Rechazada');
@@ -827,6 +849,8 @@ public function procesarSolicitud()
             Saludos,<br>RingMind
         ");
         $email->send();
+
+        $msg = "Solicitud rechazada correctamente.";
     }
 
     // Actualizar estado
@@ -834,4 +858,5 @@ public function procesarSolicitud()
 
     return $this->response->setJSON(['status' => 'ok', 'msg' => $msg]);
 }
+
 }

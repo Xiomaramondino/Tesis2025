@@ -1,0 +1,68 @@
+CRITICAL - 2025-10-16 08:02:03 --> ErrorException: Undefined array key "id"
+[Method: POST, Route: admin/procesar_solicitud]
+in APPPATH\Controllers\AdminController.php on line 795.
+ 1 APPPATH\Controllers\AdminController.php(795): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\AdminController.php', 795)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->procesarSolicitud()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-16 08:39:14 --> ErrorException: Undefined array key "id"
+[Method: POST, Route: admin/procesar_solicitud]
+in APPPATH\Controllers\AdminController.php on line 810.
+ 1 APPPATH\Controllers\AdminController.php(810): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "id"', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\AdminController.php', 810)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->procesarSolicitud()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-16 08:46:29 --> ErrorException: Undefined variable $aceptados
+[Method: GET, Route: admin/solicitudesPendientes]
+in APPPATH\Controllers\AdminController.php on line 761.
+ 1 APPPATH\Controllers\AdminController.php(761): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $aceptados', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\AdminController.php', 761)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->solicitudesPendientes()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-16 08:46:43 --> ErrorException: Undefined array key "nombre_colegio"
+[Method: GET, Route: admin/solicitudesPendientes]
+in APPPATH\Views\solicitudes_admin.php on line 169.
+ 1 APPPATH\Views\solicitudes_admin.php(169): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nombre_colegio"', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\solicitudes_admin.php', 169)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\solicitudes_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('solicitudes_admin', [], true)
+ 5 APPPATH\Controllers\AdminController.php(767): view('solicitudes_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->solicitudesPendientes()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-16 08:47:58 --> ErrorException: Undefined array key "fecha_registro"
+[Method: GET, Route: admin/solicitudesPendientes]
+in APPPATH\Views\solicitudes_admin.php on line 169.
+ 1 APPPATH\Views\solicitudes_admin.php(169): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "fecha_registro"', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\solicitudes_admin.php', 169)
+ 2 SYSTEMPATH\View\View.php(234): include('C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Views\\solicitudes_admin.php')
+ 3 SYSTEMPATH\View\View.php(237): CodeIgniter\View\View->CodeIgniter\View\{closure}()
+ 4 SYSTEMPATH\Common.php(1169): CodeIgniter\View\View->render('solicitudes_admin', [], true)
+ 5 APPPATH\Controllers\AdminController.php(767): view('solicitudes_admin', [...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->solicitudesPendientes()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-16 08:50:23 --> ErrorException: Undefined array key "nombre_colegio"
+[Method: GET, Route: admin/solicitudesPendientes]
+in APPPATH\Controllers\AdminController.php on line 767.
+ 1 APPPATH\Controllers\AdminController.php(767): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined array key "nombre_colegio"', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\AdminController.php', 767)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->solicitudesPendientes()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

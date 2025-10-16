@@ -3,10 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RingMind - Solicitudes Pendientes</title>
+<title>RingMind - Administradores y Solicitudes</title>
+
+<!-- Tailwind y SweetAlert -->
 <script src="https://cdn.tailwindcss.com"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 <style>
 :root {
     --color-primary: #091342;
@@ -27,6 +30,8 @@ body {
     flex-direction: column;
     min-height: 100vh;
 }
+
+/* Tarjetas */
 .card-custom {
     background: var(--color-secondary);
     border-radius: 1.5rem;
@@ -36,6 +41,8 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.05);
     margin-bottom: 2rem;
 }
+
+/* Botones */
 .btn-custom {
     background-color: var(--color-tertiary);
     color: var(--color-text-white);
@@ -48,7 +55,13 @@ body {
     gap: 0.5rem;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
-.btn-custom:hover { background-color: #666565; transform: translateY(-2px); color: var(--color-text-white); }
+.btn-custom:hover { 
+    background-color: #666565; 
+    transform: translateY(-2px); 
+    color: var(--color-text-white); 
+}
+
+/* Alertas */
 .alert-info {
     background-color: rgba(59, 130, 246, 0.15);
     border: 1.5px solid rgba(59, 130, 246, 0.6);
@@ -57,6 +70,8 @@ body {
     padding: 0.8rem 1rem;
     text-align: center;
 }
+
+/* Footer */
 .footer {
     text-align: center;
     background-color: var(--color-secondary);
@@ -69,60 +84,104 @@ body {
 }
 </style>
 </head>
+
 <body>
 
-<!-- Navbar idéntica a la de cursos -->
+<!-- Navbar -->
 <nav class="navbar fixed top-0 w-full flex justify-between items-center bg-[var(--color-secondary)] p-4 md:p-6 z-50">
     <div class="navbar-left flex items-center">
-        <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png" alt="Logo" class="h-10 md:h-12">
+        <img src="http://localhost/juanxiomaram2024/tesina2025/fondo/prueba.png"alt="Logo" class="h-10 md:h-12">
     </div>
     <div class="logo text-xl md:text-2xl font-bold absolute left-1/2 transform -translate-x-1/2">
         RingMind
     </div>
     <div class="navbar-right flex items-center gap-2 md:gap-4">
-        <a href="<?= base_url('vista_admin'); ?>" class="nav-btn flex items-center gap-1 text-sm md:text-base">
+        <a href="<?= base_url('vista_admin'); ?>" class="nav-btn flex items-center gap-1 text-sm md:text-base hover:underline">
             <i class="fas fa-arrow-left"></i> Volver
         </a>
     </div>
 </nav>
 
+<!-- Contenido principal -->
 <main class="flex-1 p-4 md:p-8">
-    <div class="container mx-auto max-w-4xl">
-        <h2 class="text-center text-xl md:text-3xl font-bold mb-6">Solicitudes Pendientes</h2>
+    <div class="container mx-auto max-w-6xl space-y-10">
 
-        <?php if(empty($solicitudes)) : ?>
-            <div class="alert-info">No hay solicitudes pendientes por el momento.</div>
-        <?php else: ?>
-            <?php foreach($solicitudes as $solicitud): ?>
-                <div class="card-custom">
-                    <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-                        <div class="flex-1">
-                            <p><strong>Usuario:</strong> <?= esc($solicitud['usuario']) ?></p>
-                            <p><strong>Email:</strong> <?= esc($solicitud['email']) ?></p>
-                            <p><strong>Producto:</strong> <?= esc($solicitud['producto']) ?></p>
-                            <p><strong>Cantidad:</strong> <?= esc($solicitud['cantidad']) ?></p>
-                            <p><strong>Paypal Order ID:</strong> <?= esc($solicitud['paypal_order_id']) ?></p>
-                            <p><strong>Fecha:</strong> <?= esc($solicitud['fecha_solicitud']) ?></p>
-                        </div>
-                        <div class="flex gap-2 mt-3 md:mt-0">
-                            <button class="btn-custom bg-green-600 hover:bg-green-700" onclick="procesarSolicitud(<?= $solicitud['id'] ?>, 'aceptada')">
-                                <i class="fas fa-check"></i> Aceptar
-                            </button>
-                            <button class="btn-custom bg-red-600 hover:bg-red-700" onclick="procesarSolicitud(<?= $solicitud['id'] ?>, 'rechazada')">
-                                <i class="fas fa-times"></i> Rechazar
-                            </button>
+        <!-- SECCIÓN 1: Solicitudes Pendientes -->
+        <section>
+            <h2 class="text-center text-2xl md:text-3xl font-bold mb-6">Solicitudes Pendientes</h2>
+
+            <?php if(empty($solicitudes)) : ?>
+                <div class="alert-info">No hay solicitudes pendientes por el momento.</div>
+            <?php else: ?>
+                <?php foreach($solicitudes as $solicitud): ?>
+                    <div class="card-custom">
+                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
+                            <div class="flex-1">
+                                <p><strong>Usuario:</strong> <?= esc($solicitud['usuario']) ?></p>
+                                <p><strong>Email:</strong> <?= esc($solicitud['email']) ?></p>
+                                <p><strong>Producto:</strong> <?= esc($solicitud['producto']) ?></p>
+                                <p><strong>Cantidad:</strong> <?= esc($solicitud['cantidad']) ?></p>
+                                <p><strong>PayPal Order ID:</strong> <?= esc($solicitud['paypal_order_id']) ?></p>
+                                <p><strong>Fecha:</strong> <?= esc($solicitud['fecha_solicitud']) ?></p>
+                            </div>
+
+                            <div class="flex gap-2 mt-3 md:mt-0">
+                                <button 
+                                    class="btn-custom bg-green-600 hover:bg-green-700" 
+                                    onclick="procesarSolicitud(<?= $solicitud['id'] ?>, 'aceptada')">
+                                    <i class="fas fa-check"></i> Aceptar
+                                </button>
+                                <button 
+                                    class="btn-custom bg-red-600 hover:bg-red-700" 
+                                    onclick="procesarSolicitud(<?= $solicitud['id'] ?>, 'rechazada')">
+                                    <i class="fas fa-times"></i> Rechazar
+                                </button>
+                            </div>
                         </div>
                     </div>
-                </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </section>
+
+        <!-- SECCIÓN 2: Administradores Registrados -->
+        <section>
+            <h2 class="text-center text-2xl md:text-3xl font-bold mb-6">Administradores Registrados</h2>
+
+            <?php if(empty($admins)) : ?>
+                <div class="alert-info">No hay administradores registrados todavía.</div>
+            <?php else: ?>
+               <div class="overflow-x-auto rounded-xl shadow-lg">
+    <table class="w-full border-collapse">
+        <thead class="bg-[var(--color-tertiary)] text-white">
+            <tr>
+                <th class="py-3 px-4 text-left uppercase tracking-wider">Usuario</th>
+                <th class="py-3 px-4 text-left uppercase tracking-wider">Email</th>
+                <th class="py-3 px-4 text-left uppercase tracking-wider">Fecha Registro</th>
+            </tr>
+        </thead>
+        <tbody class="bg-[var(--color-secondary)]">
+            <?php foreach($admins as $admin): ?>
+            <tr class="border-b border-gray-700 hover:bg-[var(--color-accent)] hover:text-white transition-colors duration-300">
+                <td class="py-3 px-4"><?= esc($admin['usuario']) ?></td>
+                <td class="py-3 px-4"><?= esc($admin['email']) ?></td>
+                <td class="py-3 px-4"><?= esc($admin['fecha_registro']) ?></td>
+            </tr>
             <?php endforeach; ?>
-        <?php endif; ?>
+        </tbody>
+    </table>
+</div>
+
+            <?php endif; ?>
+        </section>
     </div>
 </main>
 
+<!-- Footer -->
 <footer class="footer">
     <p>Tesis timbre automático 2025 <br> Marquez Juan - Mondino Xiomara</p>
 </footer>
 
+<!-- Scripts -->
 <script>
 function procesarSolicitud(id, estado) {
     Swal.fire({
@@ -151,6 +210,37 @@ function procesarSolicitud(id, estado) {
                 }
             })
             .catch(() => Swal.fire('Error', 'Ocurrió un error al procesar la solicitud.', 'error'));
+        }
+    });
+}
+
+function eliminarAdmin(id) {
+    Swal.fire({
+        title: '¿Eliminar administrador?',
+        text: 'Esta acción no se puede deshacer.',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonText: 'Sí, eliminar',
+        cancelButtonText: 'Cancelar'
+    }).then((result) => {
+        if(result.isConfirmed) {
+            fetch('<?= base_url("admin/eliminar_admin") ?>', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-Requested-With': 'XMLHttpRequest'
+                },
+                body: JSON.stringify({ id: id })
+            })
+            .then(res => res.json())
+            .then(data => {
+                if(data.status === 'ok'){
+                    Swal.fire('Eliminado', data.msg, 'success').then(() => location.reload());
+                } else {
+                    Swal.fire('Error', data.msg, 'error');
+                }
+            })
+            .catch(() => Swal.fire('Error', 'No se pudo eliminar el administrador.', 'error'));
         }
     });
 }
