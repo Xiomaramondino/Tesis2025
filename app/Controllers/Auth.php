@@ -87,20 +87,32 @@ class Auth extends Controller
         }
 }
 
-    public function seleccionarContexto()
+public function seleccionarContexto()
 {
     $session = session();
     $valor = $this->request->getPost('idcolegio');
 
     list($idcolegio, $idrol) = explode('-', $valor);
 
+    // Consultar si es admin principal en ese colegio
+    $db = \Config\Database::connect();
+    $usuarioColegio = $db->table('usuario_colegio')
+        ->where('idusuario', $session->get('idusuario'))
+        ->where('idcolegio', $idcolegio)
+        ->get()
+        ->getRowArray();
+
+    $es_admin_principal = ($usuarioColegio && $usuarioColegio['es_admin_principal'] == 1) ? 1 : 0;
+
     $session->set([
         'idcolegio' => $idcolegio,
-        'idrol'     => $idrol
+        'idrol'     => $idrol,
+        'es_admin_principal' => $es_admin_principal
     ]);
 
     return $this->redirigirPorRol($idrol);
 }
+
 
 public function mostrarOpcionesCambio()
 {
@@ -226,7 +238,8 @@ public function guardarRegistro()
                     'idusuario' => $idusuario,
                     'idcolegio' => $idcolegio,
                     'idrol' => $idrol,
-                    'total_comprados' => $cantidad
+                    'total_comprados' => $cantidad,
+                    'es_admin_principal' => 1 
                 ]);
                 session()->setFlashdata('success', 'Ahora estás asociado como admin de esta institución.');
                 return redirect()->to('login');
@@ -267,7 +280,8 @@ public function guardarRegistro()
                 'idusuario' => $idusuario,
                 'idcolegio' => $idcolegio,
                 'idrol' => $idrol,
-                'total_comprados' => $cantidad
+                'total_comprados' => $cantidad,
+                'es_admin_principal' => 1
             ]);
             session()->set('exito', '¡Registro y compra completados con éxito! Ahora eres admin de la institución.');
             return redirect()->to('login');

@@ -7,6 +7,6 @@ class UsuarioColegioModel extends Model
 {
     protected $table      = 'usuario_colegio';
     protected $primaryKey = 'idusuario_colegio';
-    protected $allowedFields = ['idusuario', 'idcolegio', 'idrol','total_comprados'];
+    protected $allowedFields = ['idusuario', 'idcolegio', 'idrol','total_comprados','es_admin_principal'];
 }
 ?>

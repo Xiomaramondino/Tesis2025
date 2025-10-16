@@ -429,24 +429,27 @@
  paypal.Buttons({
     style: { layout: 'vertical', color: 'blue', shape: 'pill', label: 'paypal' },
 
-    createOrder: function(data, actions) {
-        if (!validarFormulario()) throw new Error("Formulario inválido");
-        const producto = document.getElementById('producto').value;
-        const cantidad = parseInt(document.getElementById('cantidad').value) || 1;
-        let precioUnitario = 0;
-        switch(producto) {
-            case 'timbre_automatizado': precioUnitario = 100000; break;
-        }
-        const total = precioUnitario * cantidad;
-        return actions.order.create({
-            purchase_units: [{
-                amount: { value: total.toFixed(2), currency_code: "USD" },
-                description: `Timbre Automatizado x${cantidad}`,
-                custom_id: producto
-            }],
-            application_context: { shipping_preference: "NO_SHIPPING" }
-        });
-    },
+   createOrder: function(data, actions) {
+    if (!validarFormulario()) {
+        Swal.fire('Error', 'Formulario incompleto o incorrecto.', 'error');
+        return;
+    }
+    const producto = document.getElementById('producto').value;
+    const cantidad = parseInt(document.getElementById('cantidad').value) || 1;
+    let precioUnitario = 0;
+    switch(producto) {
+        case 'timbre_automatizado': precioUnitario = 100000; break;
+    }
+    const total = precioUnitario * cantidad;
+    return actions.order.create({
+        purchase_units: [{
+            amount: { value: total.toFixed(2), currency: "USD" },
+            description: `Timbre Automatizado x${cantidad}`,
+            custom_id: producto
+        }],
+        application_context: { shipping_preference: "NO_SHIPPING" }
+    });
+},
 
     onApprove: function(data, actions) {
         return actions.order.capture().then(function(details) {

@@ -17,6 +17,16 @@ public function index()
     }
 
     $idcolegio = session()->get('idcolegio');
+    $usuarioColegioModel = new \App\Models\UsuarioColegioModel();
+
+    // Obtener primer admin del colegio según campo es_primer_admin
+    $primerAdmin = $usuarioColegioModel
+        ->where('idcolegio', $idcolegio)
+        ->where('idrol', 1)
+        ->where('es_admin_principal', 1)  
+        ->first();
+
+    // Ahora cargás el resto como antes
     $db = \Config\Database::connect();
 
     // Directivos
@@ -41,16 +51,18 @@ public function index()
 
     $usuarios_profesores = $queryProfesores->getResultArray();
 
-    //Contar solicitudes pendientes
+    // Contar solicitudes pendientes
     $solicitudModel = new \App\Models\SolicitudAdminModel();
     $solicitudesPendientes = count($solicitudModel->obtenerPendientesPorColegio($idcolegio));
 
     return view('vista_admin', [
         'usuarios_directivos' => $usuarios_directivos,
         'usuarios_profesores' => $usuarios_profesores,
-        'solicitudesPendientes' => $solicitudesPendientes
+        'solicitudesPendientes' => $solicitudesPendientes,
+        'primerAdmin' => $primerAdmin
     ]);
 }
+
     
     public function guardarUsuario()
     {
