@@ -330,11 +330,22 @@ public function enviar_recuperacion()
                 ->first();
 
     if ($user) {
+        // Generar token aleatorio
         $token = bin2hex(random_bytes(50));
-        $usuarioModel->update($user['idusuario'], ['token' => $token]);
 
-        $this->sendRecoveryEmail($email, $token); // ya no pasa idcolegio
-        session()->setFlashdata('success', 'Se ha enviado un enlace de recuperación a tu correo.');
+        // Establecer fecha de expiración (24 horas desde ahora)
+        $expira = date('Y-m-d H:i:s', strtotime('+24 hours'));
+
+        // Guardar token y fecha de expiración
+        $usuarioModel->update($user['idusuario'], [
+            'token' => $token,
+            'token_expira' => $expira
+        ]);
+
+        // Enviar correo con enlace de recuperación
+        $this->sendRecoveryEmail($email, $token);
+
+        session()->setFlashdata('success', 'Se ha enviado un enlace de recuperación a tu correo. El enlace expirará en 24 horas.');
     } else {
         session()->setFlashdata('error', 'No se encontró un usuario con ese correo.');
     }
@@ -380,12 +391,19 @@ public function resetear_contrasena()
         return redirect()->to('recuperar_contrasena');
     }
 
+    // ✅ Verificar si el token expiró
+    if (isset($user['token_expira']) && strtotime($user['token_expira']) < time()) {
+        session()->setFlashdata('error', 'El enlace ha expirado. Solicita uno nuevo.');
+        return redirect()->to('recuperar_contrasena');
+    }
+
     return view('resetear_contrasena', [
         'token' => $token,
         'usuario' => $user['usuario'],
         'email' => $user['email']
     ]);
 }
+
 
 public function procesar_resetear_contrasena()
 {
@@ -402,19 +420,23 @@ public function procesar_resetear_contrasena()
                 ->where('token', $token)
                 ->first();
 
-    if ($user) {
-        $usuarioModel->update($user['idusuario'], [
-            'password' => password_hash($nuevaContrasenia, PASSWORD_DEFAULT),
-            'token' => null
-        ]);
-
-        session()->setFlashdata('success', 'Tu contraseña ha sido actualizada.');
-        return redirect()->to('login');
-    } else {
-        session()->setFlashdata('error', 'Token inválido o expirado.');
+  if ($user) {
+    // Verificar si el token expiró antes de permitir el cambio
+    if (isset($user['token_expira']) && strtotime($user['token_expira']) < time()) {
+        session()->setFlashdata('error', 'El enlace ha expirado. Solicita uno nuevo.');
         return redirect()->to('recuperar_contrasena');
     }
-}
-}
 
+    // Actualizar la contraseña y limpiar token/expiración
+    $usuarioModel->update($user['idusuario'], [
+        'password' => password_hash($nuevaContrasenia, PASSWORD_DEFAULT),
+        'token' => null,
+        'token_expira' => null // limpiar también la fecha
+    ]);
+
+    session()->setFlashdata('success', 'Tu contraseña ha sido actualizada.');
+    return redirect()->to('login');
+}
+  }
+}
 ?>
