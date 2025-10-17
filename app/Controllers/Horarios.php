@@ -48,19 +48,28 @@ class Horarios extends Controller
 
     
     
-    public function editar($idhorario = null)
-    {
-        $model = new HorariosModel();
+ public function editar($idhorario = null)
+{
+    $session = session();
+    $idusuario = $session->get('idusuario');
+    $idcolegio = $session->get('idcolegio');
 
-        if ($idhorario === null) {
-            return redirect()->to('/horarios');
-        }
-
-        $data['horario'] = $model->getHorario($idhorario);
-
-
-        return view('editar_horario', $data);
+    // Si no hay sesión iniciada, redirigir al login
+    if (!$idusuario || !$idcolegio) {
+        return redirect()->to(base_url('login'));
     }
+
+    $model = new HorariosModel();
+
+    if ($idhorario === null) {
+        return redirect()->to('/horarios');
+    }
+
+    $data['horario'] = $model->getHorario($idhorario);
+
+    return view('editar_horario', $data);
+}
+
 
     public function actualizar()
     {
@@ -115,10 +124,19 @@ class Horarios extends Controller
     
 
 
-    public function agregar()
-    {
-        return view('horarios_add');
+public function agregar()
+{
+    $session = session();
+    $idusuario = $session->get('idusuario');
+    $idcolegio = $session->get('idcolegio');
+
+    // Si no hay sesión iniciada, redirigir al login
+    if (!$idusuario || !$idcolegio) {
+        return redirect()->to(base_url('login'));
     }
+
+    return view('horarios_add');
+}
 
     public function add()
     {

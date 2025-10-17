@@ -22,34 +22,41 @@ class DirectivoController extends BaseController
     }
     
 
-    public function gestionarUsuarios()
-    {
-        $idcolegio = session()->get('idcolegio');
-    
-        $db = \Config\Database::connect();
-    
-        // Obtener alumnos asociados al colegio
-        $lectores = $db->table('usuario_colegio uc')
-            ->select('u.idusuario, u.usuario, u.email')
-            ->join('usuarios u', 'u.idusuario = uc.idusuario')
-            ->where('uc.idcolegio', $idcolegio)
-            ->where('uc.idrol', 3)
-            ->orderBy('u.usuario', 'ASC')
-            ->get()
-            ->getResultArray();
-    
-        // Obtener cursos cargados por el colegio
-        $cursos = $db->table('cursos')
-            ->where('idcolegio', $idcolegio)
-            ->orderBy('nombre', 'ASC')
-            ->get()
-            ->getResultArray();
-    
-        return view('gestionar_usuarios', [
-            'lectores' => $lectores,
-            'cursos' => $cursos
-        ]);
+ public function gestionarUsuarios()
+{
+    $session = session();
+    $idcolegio = $session->get('idcolegio');
+
+    // Si no hay sesión iniciada, redirigir al login
+    if (!$idcolegio) {
+        return redirect()->to(base_url('login'));
     }
+
+    $db = \Config\Database::connect();
+
+    // Obtener alumnos asociados al colegio
+    $lectores = $db->table('usuario_colegio uc')
+        ->select('u.idusuario, u.usuario, u.email')
+        ->join('usuarios u', 'u.idusuario = uc.idusuario')
+        ->where('uc.idcolegio', $idcolegio)
+        ->where('uc.idrol', 3)
+        ->orderBy('u.usuario', 'ASC')
+        ->get()
+        ->getResultArray();
+
+    // Obtener cursos cargados por el colegio
+    $cursos = $db->table('cursos')
+        ->where('idcolegio', $idcolegio)
+        ->orderBy('nombre', 'ASC')
+        ->get()
+        ->getResultArray();
+
+    return view('gestionar_usuarios', [
+        'lectores' => $lectores,
+        'cursos' => $cursos
+    ]);
+}
+
     
     // Agregar nuevo lector con contraseña aleatoria y token de recuperación
     public function agregarUsuario()

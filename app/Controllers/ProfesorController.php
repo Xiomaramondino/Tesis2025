@@ -24,6 +24,10 @@ class ProfesorController extends Controller
         $idusuario = $this->session->get('idusuario');
         $idcolegio = $this->session->get('idcolegio');
     
+         if (!$idusuario || !$idcolegio) {
+        return redirect()->to(base_url('login'));
+    }
+    
         // Traer cursos del profesor si existe la tabla profesor_curso
         $cursosProfesor = $this->db->table('profesor_curso')
             ->select('idcurso')
