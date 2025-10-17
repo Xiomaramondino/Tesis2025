@@ -177,6 +177,44 @@ main {
     .btn-submit:hover {
       background-color: #666565;
     }
+    /* Estilo del <select> */
+select.form-control {
+  background-color: #081136;
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  padding: 0.6rem 1rem;
+  font-size: 1rem;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+/* Hover y focus del select */
+select.form-control:hover,
+select.form-control:focus {
+  background-color: #0b184d;
+  border: 1px solid #6f42c1;
+  box-shadow: 0 0 10px #6f42c1;
+  outline: none;
+}
+
+/* Estilo de las opciones dentro del select */
+select.form-control option {
+  background-color: #081136;
+  color: white;
+}
+input[type="time"]::-webkit-calendar-picker-indicator {
+  filter: invert(1); /* Invierte los colores (lo hace blanco en fondos oscuros) */
+  cursor: pointer;
+}
+
+/* Opcional: cambia también el color del reloj cuando pasás el mouse */
+input[type="time"]:hover::-webkit-calendar-picker-indicator {
+  filter: invert(1) brightness(1.2);
+}
   </style>
 
   <!-- Navbar -->
