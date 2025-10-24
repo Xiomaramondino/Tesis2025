@@ -41,7 +41,7 @@ public function activarTimbreManual()
     $client = \Config\Services::curlrequest();
 
     foreach ($dispositivos as $disp) {
-        $url = 'http://' . $disp['ip'] . '/tocar';
+     $url = 'http://' . $disp['ip'] . '/tocar?key=R1ngM1nd2025';
 
         try {
             $client->get($url, ['timeout' => 2]); // timeout opcional

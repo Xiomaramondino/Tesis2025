@@ -1,0 +1,629 @@
+ERROR - 2025-10-24 11:01:54 --> Email: sendWithSmtp throwed ErrorException: stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php:1916
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'stream_socket_e...', 'C:\\xampp\\htdocs...', 1916)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1916): stream_socket_enable_crypto(Resource id #149, true, 121)
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(250): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(156): App\Controllers\AdminController->_enviarCorreoSolicitudAsociacion('xiomimondino@gm...', 'xiomara mondino', 'a992b8350c8a4ad...', '27', 'Directivo')
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-10-24 11:01:54 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-10-24 11:01:54 --> 220 smtp.gmail.com ESMTP 41be03b00d2f7-b6cf4e4303dsm5262633a12.37 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [186.124.202.171]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250 SMTPUTF8
+
+starttls: 220 2.0.0 Ready to start TLS
+
+ERROR - 2025-10-24 11:01:54 --> Error al enviar el correo de solicitud de asociación a xiomimondino@gmail.com
+CRITICAL - 2025-10-24 11:02:25 --> ErrorException: Undefined variable $rol
+[Method: POST, Route: admin/guardarUsuario]
+in APPPATH\Controllers\AdminController.php on line 167.
+ 1 APPPATH\Controllers\AdminController.php(167): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $rol', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\AdminController.php', 167)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-24 11:03:13 --> ErrorException: Undefined variable $rol
+[Method: POST, Route: admin/guardarUsuario]
+in APPPATH\Controllers\AdminController.php on line 204.
+ 1 APPPATH\Controllers\AdminController.php(204): CodeIgniter\Debug\Exceptions->errorHandler(2, 'Undefined variable $rol', 'C:\\xampp\\htdocs\\juanxiomaram2024\\tesina2025\\app\\Controllers\\AdminController.php', 204)
+ 2 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+ 3 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+ 4 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 5 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+ 6 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+ 7 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-10-24 11:03:40 --> Email: sendWithSmtp throwed ErrorException: stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php:1916
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'stream_socket_e...', 'C:\\xampp\\htdocs...', 1916)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1916): stream_socket_enable_crypto(Resource id #149, true, 121)
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(250): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(156): App\Controllers\AdminController->_enviarCorreoSolicitudAsociacion('juanjojojolvl1@...', 'juan marquez', '11476717a18d926...', '27', 'Profesor')
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-10-24 11:03:40 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-10-24 11:03:40 --> 220 smtp.gmail.com ESMTP d9443c01a7336-29490bd98f3sm11966205ad.101 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [186.124.202.171]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250 SMTPUTF8
+
+starttls: 220 2.0.0 Ready to start TLS
+
+ERROR - 2025-10-24 11:03:40 --> Error al enviar el correo de solicitud de asociación a juanjojojolvl1@gmail.com
+ERROR - 2025-10-24 11:11:19 --> Email: sendWithSmtp throwed ErrorException: stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php:1916
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'stream_socket_e...', 'C:\\xampp\\htdocs...', 1916)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1916): stream_socket_enable_crypto(Resource id #150, true, 121)
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(250): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(211): App\Controllers\AdminController->_enviarCorreoSolicitudAsociacion('xiomaramondino@...', 'xiomara mondino', '4efbcb83bd24258...', '27', 'Directivo')
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-10-24 11:11:19 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-10-24 11:11:19 --> 220 smtp.gmail.com ESMTP d2e1a72fcca58-7a274a64ba9sm6017563b3a.12 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [186.124.202.171]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250 SMTPUTF8
+
+starttls: 220 2.0.0 Ready to start TLS
+
+ERROR - 2025-10-24 11:11:19 --> Error al enviar el correo de solicitud de asociación a xiomaramondino@alumnos.itr3.edu.ar
+ERROR - 2025-10-24 11:11:31 --> Email: sendWithSmtp throwed ErrorException: stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php:1916
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'stream_socket_e...', 'C:\\xampp\\htdocs...', 1916)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1916): stream_socket_enable_crypto(Resource id #149, true, 121)
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(250): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(211): App\Controllers\AdminController->_enviarCorreoSolicitudAsociacion('juanmarquez@alu...', 'juan marquez', '05469e4d68a6705...', '27', 'Profesor')
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-10-24 11:11:31 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-10-24 11:11:31 --> 220 smtp.gmail.com ESMTP d2e1a72fcca58-7a274a9ce15sm6147284b3a.23 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [186.124.202.171]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250 SMTPUTF8
+
+starttls: 220 2.0.0 Ready to start TLS
+
+ERROR - 2025-10-24 11:11:31 --> Error al enviar el correo de solicitud de asociación a juanmarquez@alumnos.itr3.edu.ar
+ERROR - 2025-10-24 11:20:58 --> Email: sendWithSmtp throwed ErrorException: stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php:1916
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'stream_socket_e...', 'C:\\xampp\\htdocs...', 1916)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1916): stream_socket_enable_crypto(Resource id #149, true, 121)
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(250): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(156): App\Controllers\AdminController->_enviarCorreoSolicitudAsociacion('xiomaramondino@...', 'xiomara mondino', '4d3ac8159705a20...', '27', 'Directivo')
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-10-24 11:20:58 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-10-24 11:20:58 --> 220 smtp.gmail.com ESMTP 98e67ed59e1d1-33fb0191b29sm5983903a91.19 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [186.124.202.171]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250 SMTPUTF8
+
+starttls: 220 2.0.0 Ready to start TLS
+
+ERROR - 2025-10-24 11:20:58 --> Error al enviar el correo de solicitud de asociación a xiomaramondino@alumnos.itr3.edu.ar
+ERROR - 2025-10-24 11:21:10 --> Email: sendWithSmtp throwed ErrorException: stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php:1916
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'stream_socket_e...', 'C:\\xampp\\htdocs...', 1916)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1916): stream_socket_enable_crypto(Resource id #149, true, 121)
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(250): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(211): App\Controllers\AdminController->_enviarCorreoSolicitudAsociacion('juanjojojolvl1@...', 'juan marquez', '6a34cc573bf29de...', '27', 'Profesor')
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-10-24 11:21:10 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-10-24 11:21:10 --> 220 smtp.gmail.com ESMTP d2e1a72fcca58-7a274a9ceb8sm6165237b3a.21 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [186.124.202.171]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250 SMTPUTF8
+
+starttls: 220 2.0.0 Ready to start TLS
+
+ERROR - 2025-10-24 11:21:10 --> Error al enviar el correo de solicitud de asociación a juanjojojolvl1@gmail.com
+ERROR - 2025-10-24 11:25:37 --> Email: sendWithSmtp throwed ErrorException: stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php:1916
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'stream_socket_e...', 'C:\\xampp\\htdocs...', 1916)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1916): stream_socket_enable_crypto(Resource id #149, true, 121)
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(250): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(156): App\Controllers\AdminController->_enviarCorreoSolicitudAsociacion('juanmarquez@alu...', 'juan marquez', '3acfad5a6a29fdd...', '27', 'Profesor')
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-10-24 11:25:37 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-10-24 11:25:37 --> 220 smtp.gmail.com ESMTP d9443c01a7336-2946dfc099dsm58757185ad.73 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [186.124.202.171]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250 SMTPUTF8
+
+starttls: 220 2.0.0 Ready to start TLS
+
+ERROR - 2025-10-24 11:25:37 --> Error al enviar el correo de solicitud de asociación a juanmarquez@alumnos.itr3.edu.ar
+ERROR - 2025-10-24 11:29:36 --> Email: sendWithSmtp throwed ErrorException: stream_socket_enable_crypto(): SSL: Se ha anulado una conexión establecida por el software en su equipo host in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php:1916
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'stream_socket_e...', 'C:\\xampp\\htdocs...', 1916)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1916): stream_socket_enable_crypto(Resource id #149, true, 121)
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(250): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(156): App\Controllers\AdminController->_enviarCorreoSolicitudAsociacion('juanmarquez@alu...', 'juan marquez', '660406be7f5c522...', '27', 'Directivo')
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-10-24 11:29:36 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-10-24 11:29:36 --> 220 smtp-relay.gmail.com ESMTP d75a77b69052e-4eb9fd827ebsm119341cf.8 - gsmtp
+
+hello: 421-4.7.0 Try again later, closing connection. (EHLO)
+421-4.7.0  For more information, go to
+421 4.7.0  https://support.google.com/a/answer/3221692 d75a77b69052e-4eb9fd827ebsm119341cf.8 - gsmtp
+
+The following SMTP error was encountered: 421-4.7.0 Try again later, closing connection. (EHLO)
+421-4.7.0  For more information, go to
+421 4.7.0  https://support.google.com/a/answer/3221692 d75a77b69052e-4eb9fd827ebsm119341cf.8 - gsmtp
+
+starttls: 
+The following SMTP error was encountered: 
+ERROR - 2025-10-24 11:29:36 --> Error al enviar el correo de solicitud de asociación a juanmarquez@alumnos.itr3.edu.ar
+ERROR - 2025-10-24 11:29:36 --> Email: sendWithSmtp throwed ErrorException: fwrite(): Send of 6 bytes failed with errno=10053 Se ha anulado una conexión establecida por el software en su equipo host in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php:2075
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(8, 'fwrite(): Send ...', 'C:\\xampp\\htdocs...', 2075)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(2075): fwrite(Resource id #149, 'QUIT\r\n')
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1984): CodeIgniter\Email\Email->sendData('QUIT\r\n')
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(2219): CodeIgniter\Email\Email->sendCommand('quit')
+#4 [internal function]: CodeIgniter\Email\Email->__destruct()
+#5 {main}
+ERROR - 2025-10-24 11:30:51 --> Email: sendWithSmtp throwed ErrorException: stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php:1916
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'stream_socket_e...', 'C:\\xampp\\htdocs...', 1916)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1916): stream_socket_enable_crypto(Resource id #149, true, 121)
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(250): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(156): App\Controllers\AdminController->_enviarCorreoSolicitudAsociacion('juanjojojolvl1@...', 'juan marquez', '629f4a93bb9522e...', '27', 'Directivo')
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-10-24 11:30:51 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-10-24 11:30:51 --> 220 smtp.gmail.com ESMTP 98e67ed59e1d1-33fafdd38b6sm5979695a91.0 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [186.124.202.171]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250 SMTPUTF8
+
+starttls: 220 2.0.0 Ready to start TLS
+
+ERROR - 2025-10-24 11:30:51 --> Error al enviar el correo de solicitud de asociación a juanjojojolvl1@gmail.com
+ERROR - 2025-10-24 11:35:45 --> Email: sendWithSmtp throwed ErrorException: stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php:1916
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'stream_socket_e...', 'C:\\xampp\\htdocs...', 1916)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1916): stream_socket_enable_crypto(Resource id #150, true, 121)
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(250): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(156): App\Controllers\AdminController->_enviarCorreoSolicitudAsociacion('juanmarquez@alu...', 'juan marquez', '1f9fe3a7d9f491e...', '27', 'Profesor')
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-10-24 11:35:45 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-10-24 11:35:45 --> 220 smtp.gmail.com ESMTP d9443c01a7336-294942c412bsm3920515ad.72 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [186.124.202.171]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250 SMTPUTF8
+
+starttls: 220 2.0.0 Ready to start TLS
+
+ERROR - 2025-10-24 11:35:45 --> Error al enviar el correo de solicitud de asociación a juanmarquez@alumnos.itr3.edu.ar
+ERROR - 2025-10-24 11:37:43 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php:1896
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): SS...', 'C:\\xampp\\htdocs...', 1896)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1896): fsockopen('ssl://smtp.gmai...', 465, NULL, NULL, 5)
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(250): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(156): App\Controllers\AdminController->_enviarCorreoSolicitudAsociacion('juanmarquez@alu...', 'juan marquez', 'd268c456d67455a...', '27', 'Directivo')
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-10-24 11:37:43 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-10-24 11:37:43 --> 
+ERROR - 2025-10-24 11:37:43 --> Error al enviar el correo de solicitud de asociación a juanmarquez@alumnos.itr3.edu.ar
+ERROR - 2025-10-24 11:39:17 --> Email: sendWithSmtp throwed ErrorException: stream_socket_enable_crypto(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php:1916
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'stream_socket_e...', 'C:\\xampp\\htdocs...', 1916)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1916): stream_socket_enable_crypto(Resource id #149, true, 121)
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(250): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(156): App\Controllers\AdminController->_enviarCorreoSolicitudAsociacion('juanjojojolvl1@...', 'juan marquez', '72cb6f4da3257c7...', '27', 'Directivo')
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-10-24 11:39:17 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-10-24 11:39:17 --> 220 smtp.gmail.com ESMTP 41be03b00d2f7-b6cf4e2d81dsm5374222a12.30 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [186.124.202.171]
+250-SIZE 35882577
+250-8BITMIME
+250-STARTTLS
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250 SMTPUTF8
+
+starttls: 220 2.0.0 Ready to start TLS
+
+ERROR - 2025-10-24 11:39:17 --> Error al enviar el correo de solicitud de asociación a juanjojojolvl1@gmail.com
+ERROR - 2025-10-24 11:41:56 --> Email: sendWithSmtp throwed ErrorException: fsockopen(): SSL operation failed with code 1. OpenSSL Error messages:
+error:0A000086:SSL routines::certificate verify failed in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php:1896
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'fsockopen(): SS...', 'C:\\xampp\\htdocs...', 1896)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1896): fsockopen('tls://smtp.gmai...', 465, NULL, NULL, 5)
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(250): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(156): App\Controllers\AdminController->_enviarCorreoSolicitudAsociacion('xiomimondino@gm...', 'xiomara mondino', 'b7a2c5449c76eb7...', '27', 'Profesor')
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-10-24 11:41:56 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-10-24 11:41:56 --> 
+ERROR - 2025-10-24 11:41:56 --> Error al enviar el correo de solicitud de asociación a xiomimondino@gmail.com
+ERROR - 2025-10-24 11:44:08 --> Email: sendWithSmtp throwed ErrorException: stream_socket_enable_crypto(): SSL/TLS already set-up for this stream in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php:1916
+Stack trace:
+#0 [internal function]: CodeIgniter\Debug\Exceptions->errorHandler(2, 'stream_socket_e...', 'C:\\xampp\\htdocs...', 1916)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1916): stream_socket_enable_crypto(Resource id #149, true, 121)
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1809): CodeIgniter\Email\Email->SMTPConnect()
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1694): CodeIgniter\Email\Email->sendWithSmtp()
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Email\Email.php(1589): CodeIgniter\Email\Email->spoolEmail()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(250): CodeIgniter\Email\Email->send()
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\AdminController.php(156): App\Controllers\AdminController->_enviarCorreoSolicitudAsociacion('xiomimondino@gm...', 'xiomara mondino', '0606b1d05fb7788...', '27', 'Directivo')
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\AdminController->guardarUsuario()
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\AdminController))
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#13 {main}
+ERROR - 2025-10-24 11:44:08 --> Email: Unable to send email using SMTP. Your server might not be configured to send mail using this method.
+ERROR - 2025-10-24 11:44:08 --> 220 smtp.gmail.com ESMTP d2e1a72fcca58-7a274a619d5sm6229206b3a.1 - gsmtp
+
+hello: 250-smtp.gmail.com at your service, [186.124.202.171]
+250-SIZE 35882577
+250-8BITMIME
+250-AUTH LOGIN PLAIN XOAUTH2 PLAIN-CLIENTTOKEN OAUTHBEARER XOAUTH
+250-ENHANCEDSTATUSCODES
+250-PIPELINING
+250-CHUNKING
+250 SMTPUTF8
+
+starttls: 530-5.7.0 Authentication Required. For more information, go to
+530 5.7.0  https://support.google.com/accounts/troubleshooter/2402620. d2e1a72fcca58-7a274a619d5sm6229206b3a.1 - gsmtp
+
+The following SMTP error was encountered: 530-5.7.0 Authentication Required. For more information, go to
+530 5.7.0  https://support.google.com/accounts/troubleshooter/2402620. d2e1a72fcca58-7a274a619d5sm6229206b3a.1 - gsmtp
+
+ERROR - 2025-10-24 11:44:08 --> Error al enviar el correo de solicitud de asociación a xiomimondino@gmail.com
+ERROR - 2025-10-24 12:01:55 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`ringmind`.`horarios`, CONSTRAINT `horarios_ibfk_2` FOREIGN KEY (`iddia`) REFERENCES `dias_semana` (`iddia`) ON DELETE CASCADE) in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `ho...', 0)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ho...')
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ho...')
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ho...', Array, false)
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\BaseModel.php(840): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Model.php(802): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\Horarios.php(186): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\Horarios->add()
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-10-24 12:01:55 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`ringmind`.`horarios`, CONSTRAINT `horarios_ibfk_2` FOREIGN KEY (`iddia`) REFERENCES `dias_semana` (`iddia`) ON DELETE CASCADE)
+[Method: POST, Route: horarios/add]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `horarios` (`evento`, `hora`, `idcolegio`, `iddia`) VALUES (:evento:, :hora:, :idcolegio:, :iddia:)', [...], false)
+ 2 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Horarios.php(186): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->add()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-24 12:01:55 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`ringmind`.`horarios`, CONSTRAINT `horarios_ibfk_2` FOREIGN KEY (`iddia`) REFERENCES `dias_semana` (`iddia`) ON DELETE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `horarios` (`evento`, `hora`, `idcolegio`, `iddia`) VALUES (\' recreo\', \'12:10\', \'27\', \'5\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `horarios` (`evento`, `hora`, `idcolegio`, `iddia`) VALUES (\' recreo\', \'12:10\', \'27\', \'5\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `horarios` (`evento`, `hora`, `idcolegio`, `iddia`) VALUES (:evento:, :hora:, :idcolegio:, :iddia:)', [...], false)
+ 4 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Horarios.php(186): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->add()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-24 12:01:55 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`ringmind`.`horarios`, CONSTRAINT `horarios_ibfk_2` FOREIGN KEY (`iddia`) REFERENCES `dias_semana` (`iddia`) ON DELETE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `horarios` (`evento`, `hora`, `idcolegio`, `iddia`) VALUES (\' recreo\', \'12:10\', \'27\', \'5\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `horarios` (`evento`, `hora`, `idcolegio`, `iddia`) VALUES (\' recreo\', \'12:10\', \'27\', \'5\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `horarios` (`evento`, `hora`, `idcolegio`, `iddia`) VALUES (\' recreo\', \'12:10\', \'27\', \'5\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `horarios` (`evento`, `hora`, `idcolegio`, `iddia`) VALUES (:evento:, :hora:, :idcolegio:, :iddia:)', [...], false)
+ 5 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Horarios.php(186): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->add()
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-10-24 12:05:36 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`ringmind`.`horarios`, CONSTRAINT `horarios_ibfk_2` FOREIGN KEY (`iddia`) REFERENCES `dias_semana` (`iddia`) ON DELETE CASCADE) in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `ho...', 0)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ho...')
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ho...')
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ho...', Array, false)
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\BaseModel.php(840): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Model.php(802): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\Horarios.php(186): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\Horarios->add()
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-10-24 12:05:36 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`ringmind`.`horarios`, CONSTRAINT `horarios_ibfk_2` FOREIGN KEY (`iddia`) REFERENCES `dias_semana` (`iddia`) ON DELETE CASCADE)
+[Method: POST, Route: horarios/add]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `horarios` (`evento`, `hora`, `idcolegio`, `iddia`) VALUES (:evento:, :hora:, :idcolegio:, :iddia:)', [...], false)
+ 2 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Horarios.php(186): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->add()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-24 12:05:36 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`ringmind`.`horarios`, CONSTRAINT `horarios_ibfk_2` FOREIGN KEY (`iddia`) REFERENCES `dias_semana` (`iddia`) ON DELETE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `horarios` (`evento`, `hora`, `idcolegio`, `iddia`) VALUES (\' recreo\', \'12:10\', \'27\', \'5\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `horarios` (`evento`, `hora`, `idcolegio`, `iddia`) VALUES (\' recreo\', \'12:10\', \'27\', \'5\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `horarios` (`evento`, `hora`, `idcolegio`, `iddia`) VALUES (:evento:, :hora:, :idcolegio:, :iddia:)', [...], false)
+ 4 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Horarios.php(186): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->add()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-24 12:05:36 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`ringmind`.`horarios`, CONSTRAINT `horarios_ibfk_2` FOREIGN KEY (`iddia`) REFERENCES `dias_semana` (`iddia`) ON DELETE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `horarios` (`evento`, `hora`, `idcolegio`, `iddia`) VALUES (\' recreo\', \'12:10\', \'27\', \'5\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `horarios` (`evento`, `hora`, `idcolegio`, `iddia`) VALUES (\' recreo\', \'12:10\', \'27\', \'5\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `horarios` (`evento`, `hora`, `idcolegio`, `iddia`) VALUES (\' recreo\', \'12:10\', \'27\', \'5\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `horarios` (`evento`, `hora`, `idcolegio`, `iddia`) VALUES (:evento:, :hora:, :idcolegio:, :iddia:)', [...], false)
+ 5 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Horarios.php(186): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->add()
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+ERROR - 2025-10-24 12:05:44 --> mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`ringmind`.`horarios`, CONSTRAINT `horarios_ibfk_2` FOREIGN KEY (`iddia`) REFERENCES `dias_semana` (`iddia`) ON DELETE CASCADE) in C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php:312
+Stack trace:
+#0 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `ho...', 0)
+#1 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `ho...')
+#2 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `ho...')
+#3 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `ho...', Array, false)
+#4 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+#5 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\BaseModel.php(840): CodeIgniter\Model->doInsert(Array)
+#6 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Model.php(802): CodeIgniter\BaseModel->insert(Array, true)
+#7 C:\xampp\htdocs\juanxiomaram2024\tesina2025\app\Controllers\Horarios.php(186): CodeIgniter\Model->insert(Array)
+#8 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(933): App\Controllers\Horarios->add()
+#9 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+#10 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(NULL, Object(Config\Cache), false)
+#11 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(325): CodeIgniter\CodeIgniter->run()
+#12 C:\xampp\htdocs\juanxiomaram2024\tesina2025\system\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+#13 C:\xampp\htdocs\juanxiomaram2024\tesina2025\public\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+#14 {main}
+CRITICAL - 2025-10-24 12:05:44 --> CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`ringmind`.`horarios`, CONSTRAINT `horarios_ibfk_2` FOREIGN KEY (`iddia`) REFERENCES `dias_semana` (`iddia`) ON DELETE CASCADE)
+[Method: POST, Route: horarios/add]
+in SYSTEMPATH\Database\BaseConnection.php on line 688.
+ 1 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `horarios` (`evento`, `hora`, `idcolegio`, `iddia`) VALUES (:evento:, :hora:, :idcolegio:, :iddia:)', [...], false)
+ 2 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 3 SYSTEMPATH\BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 4 SYSTEMPATH\Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 5 APPPATH\Controllers\Horarios.php(186): CodeIgniter\Model->insert([...])
+ 6 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->add()
+ 7 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+ 8 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+ 9 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+10 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+11 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-24 12:05:44 --> [Caused by] CodeIgniter\Database\Exceptions\DatabaseException: Cannot add or update a child row: a foreign key constraint fails (`ringmind`.`horarios`, CONSTRAINT `horarios_ibfk_2` FOREIGN KEY (`iddia`) REFERENCES `dias_semana` (`iddia`) ON DELETE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 317.
+ 1 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `horarios` (`evento`, `hora`, `idcolegio`, `iddia`) VALUES (\' recreo\', \'12:10\', \'27\', \'5\')')
+ 2 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `horarios` (`evento`, `hora`, `idcolegio`, `iddia`) VALUES (\' recreo\', \'12:10\', \'27\', \'5\')')
+ 3 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `horarios` (`evento`, `hora`, `idcolegio`, `iddia`) VALUES (:evento:, :hora:, :idcolegio:, :iddia:)', [...], false)
+ 4 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 5 SYSTEMPATH\BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 6 SYSTEMPATH\Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 7 APPPATH\Controllers\Horarios.php(186): CodeIgniter\Model->insert([...])
+ 8 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->add()
+ 9 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+10 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+11 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+12 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+13 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))
+CRITICAL - 2025-10-24 12:05:44 --> [Caused by] mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`ringmind`.`horarios`, CONSTRAINT `horarios_ibfk_2` FOREIGN KEY (`iddia`) REFERENCES `dias_semana` (`iddia`) ON DELETE CASCADE)
+in SYSTEMPATH\Database\MySQLi\Connection.php on line 312.
+ 1 SYSTEMPATH\Database\MySQLi\Connection.php(312): mysqli->query('INSERT INTO `horarios` (`evento`, `hora`, `idcolegio`, `iddia`) VALUES (\' recreo\', \'12:10\', \'27\', \'5\')', 0)
+ 2 SYSTEMPATH\Database\BaseConnection.php(734): CodeIgniter\Database\MySQLi\Connection->execute('INSERT INTO `horarios` (`evento`, `hora`, `idcolegio`, `iddia`) VALUES (\' recreo\', \'12:10\', \'27\', \'5\')')
+ 3 SYSTEMPATH\Database\BaseConnection.php(648): CodeIgniter\Database\BaseConnection->simpleQuery('INSERT INTO `horarios` (`evento`, `hora`, `idcolegio`, `iddia`) VALUES (\' recreo\', \'12:10\', \'27\', \'5\')')
+ 4 SYSTEMPATH\Database\BaseBuilder.php(2340): CodeIgniter\Database\BaseConnection->query('INSERT INTO `horarios` (`evento`, `hora`, `idcolegio`, `iddia`) VALUES (:evento:, :hora:, :idcolegio:, :iddia:)', [...], false)
+ 5 SYSTEMPATH\Model.php(394): CodeIgniter\Database\BaseBuilder->insert()
+ 6 SYSTEMPATH\BaseModel.php(840): CodeIgniter\Model->doInsert([...])
+ 7 SYSTEMPATH\Model.php(802): CodeIgniter\BaseModel->insert([...], true)
+ 8 APPPATH\Controllers\Horarios.php(186): CodeIgniter\Model->insert([...])
+ 9 SYSTEMPATH\CodeIgniter.php(933): App\Controllers\Horarios->add()
+10 SYSTEMPATH\CodeIgniter.php(509): CodeIgniter\CodeIgniter->runController(Object(App\Controllers\Horarios))
+11 SYSTEMPATH\CodeIgniter.php(355): CodeIgniter\CodeIgniter->handleRequest(null, Object(Config\Cache), false)
+12 SYSTEMPATH\Boot.php(325): CodeIgniter\CodeIgniter->run()
+13 SYSTEMPATH\Boot.php(67): CodeIgniter\Boot::runCodeIgniter(Object(CodeIgniter\CodeIgniter))
+14 FCPATH\index.php(57): CodeIgniter\Boot::bootWeb(Object(Config\Paths))

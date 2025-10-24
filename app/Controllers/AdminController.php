@@ -164,7 +164,7 @@ public function index()
             ->join('usuario_colegio', 'usuarios.idusuario = usuario_colegio.idusuario')
             ->where('usuarios.email', $email)
             ->where('usuario_colegio.idcolegio', $idcolegio)
-            ->where('usuario_colegio.idrol', $rol)
+            ->where('usuario_colegio.idrol', $idrol)
             ->first();
     
         if ($usuarioConAsociacion) {
@@ -201,7 +201,7 @@ public function index()
         $db->table('solicitudes_asociacion')->insert([
             'idusuario' => $idusuario,
             'idcolegio' => $idcolegio,
-            'idrol' => $rol,
+            'idrol' => $idrol,
             'token' => $token,
             'estado' => 'pendiente',
             'fecha_creacion' => date('Y-m-d H:i:s'),

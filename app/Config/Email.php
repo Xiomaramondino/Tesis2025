@@ -39,12 +39,12 @@ class Email extends BaseConfig
     /**
      * SMTP Password
      */
-    public string $SMTPPass = 'u v x n z c g c s b a h w i j z';
+    public string $SMTPPass = 'mg j w o c j s q l y h x g i e';
 
     /**
      * SMTP Port
      */
-    public int $SMTPPort = 587;
+    public int $SMTPPort =465;
 
     /**
      * SMTP Timeout (in seconds)
@@ -63,7 +63,7 @@ class Email extends BaseConfig
      *             to the server. 'ssl' means implicit SSL. Connection on port
      *             465 should set this to ''.
      */
-    public string $SMTPCrypto = 'tls';
+    public string $SMTPCrypto = 'ssl';
     
 
     /**
