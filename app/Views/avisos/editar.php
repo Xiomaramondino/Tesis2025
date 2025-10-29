@@ -209,6 +209,7 @@ input[type="datetime-local"]::-webkit-calendar-picker-indicator {
         <select id="visibilidad" name="visibilidad" class="form-select" required>
             <option value="alumnos" <?= $aviso['visibilidad'] === 'alumnos' ? 'selected' : ''; ?>>Alumnos</option>
             <option value="profesores" <?= $aviso['visibilidad'] === 'profesores' ? 'selected' : ''; ?>>Profesores</option>
+            <option value="directivos" <?= $aviso['visibilidad'] === 'directivos' ? 'selected' : ''; ?>>Directivos</option>
             <option value="solo_creador" <?= $aviso['visibilidad'] === 'solo_creador' ? 'selected' : ''; ?>>Solo yo</option>
         </select>
 

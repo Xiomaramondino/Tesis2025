@@ -187,6 +187,7 @@ input:-webkit-autofill:active {
         <select id="visibilidad" name="visibilidad" class="form-control" required>
             <option value="alumnos">Alumnos</option>
             <option value="profesores">Profesores</option>
+              <option value="directivos">Directivos</option>
             <option value="solo_creador">Solo yo</option>
         </select>
 

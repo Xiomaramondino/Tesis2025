@@ -80,95 +80,97 @@ class AvisosController extends BaseController
     }
     
 
-    public function listarJson()
-    {
-        $session = session();
-        $idusuario = $session->get('idusuario');
-        $idcolegio = $session->get('idcolegio');
-        $idrol = $session->get('idrol');
-    
-        $start = $this->request->getGet('start');
-        $end   = $this->request->getGet('end');
-    
-        $builder = $this->db->table('avisos');
-        $builder->where('idcolegio', $idcolegio);
-    
-        // Filtro por rol y visibilidad
-        if ($idrol == 3) { // Alumno
-            $cursosAlumno = $this->db->table('alumno_curso')
-                ->select('idcurso')
-                ->where('idusuario', $idusuario)
-                ->get()
-                ->getResultArray();
-    
-            $cursosIds = array_column($cursosAlumno, 'idcurso');
-    
-            $builder->groupStart()
-                ->where('visibilidad', 'alumnos')
-                ->groupEnd()
-                ->groupStart()
-                    ->whereIn('idcurso', $cursosIds)
-                    ->orWhere('idcurso', null)
-                ->groupEnd();
-    
-        } elseif ($idrol == 4) { // Profesor
-            $builder->groupStart()
-                ->where('visibilidad', 'profesores') // Avisos generales para profesores
-            ->groupEnd()
-            ->orGroupStart()
-                ->where('visibilidad', 'solo_creador')
-                ->where('idusuario', $idusuario)
-                ->where('idcolegio', $idcolegio)   // Sus propios avisos
-            ->groupEnd()
-            ->orGroupStart()
-                ->where('visibilidad', 'alumnos')
-                ->where('idusuario', $idusuario)
-                ->where('idcolegio', $idcolegio)   // Avisos de alumnos creados por él
-            ->groupEnd();
-    
-        } elseif ($idrol == 2) { // Directivo
-            // Directivo ve todo de su colegio
-            $builder->groupStart()
-                ->where('visibilidad', 'profesores')
-            ->groupEnd()
-            ->orGroupStart()
-                ->where('visibilidad', 'alumnos')
-            ->groupEnd()
-            ->orGroupStart()
-                ->where('visibilidad', 'solo_creador')
-            ->groupEnd();
-        }
-    
-        // Filtrar por rango de fechas enviado por FullCalendar
-        if ($start && $end) {
-            $start = date('Y-m-d H:i:s', strtotime($start));
-            $end   = date('Y-m-d H:i:s', strtotime($end));
-    
-            $builder->groupStart()
-                ->where('fecha >=', $start)
-                ->where('fecha <=', $end)
-            ->groupEnd();
-        }
-    
-        $avisos = $builder->orderBy('fecha', 'ASC')->get()->getResultArray();
-    
-        // Transformar a formato compatible con FullCalendar
-        $eventos = [];
-        foreach ($avisos as $aviso) {
-            $eventos[] = [
-                'id' => $aviso['idaviso'],
-                'title' => $aviso['titulo'],
-                'start' => date('c', strtotime($aviso['fecha'])),
-                'end'   => isset($aviso['fecha_fin']) && $aviso['fecha_fin'] ? date('c', strtotime($aviso['fecha_fin'])) : null,
-                'tipo'  => $aviso['visibilidad'],
-                'descripcion' => $aviso['descripcion'],
-            ];
-        }
-    
-        return $this->response->setJSON($eventos);
+public function listarJson()
+{
+    $session = session();
+    $idusuario = $session->get('idusuario');
+    $idcolegio = $session->get('idcolegio');
+    $idrol = $session->get('idrol');
+
+    $start = $this->request->getGet('start');
+    $end   = $this->request->getGet('end');
+
+    $builder = $this->db->table('avisos');
+    $builder->where('idcolegio', $idcolegio);
+
+    // 🔹 Filtro por rol y visibilidad
+    if ($idrol == 1) { // ADMIN
+        // Solo ve los avisos que él mismo creó y sean de tipo "solo_creador"
+        $builder->groupStart()
+            ->where('visibilidad', 'solo_creador')
+            ->where('idusuario', $idusuario)
+            ->where('idcolegio', $idcolegio)
+        ->groupEnd();
+
+    } elseif ($idrol == 2) { // DIRECTIVO
+        // Solo ve avisos con visibilidad "directivos"
+        $builder->groupStart()
+            ->where('visibilidad', 'directivos')
+            ->where('idcolegio', $idcolegio)
+        ->groupEnd();
+
+    } elseif ($idrol == 3) { // ALUMNO
+        $cursosAlumno = $this->db->table('alumno_curso')
+            ->select('idcurso')
+            ->where('idusuario', $idusuario)
+            ->get()
+            ->getResultArray();
+
+        $cursosIds = array_column($cursosAlumno, 'idcurso');
+
+        $builder->groupStart()
+            ->where('visibilidad', 'alumnos')
+        ->groupEnd()
+        ->groupStart()
+            ->whereIn('idcurso', $cursosIds)
+            ->orWhere('idcurso', null)
+        ->groupEnd();
+
+    } elseif ($idrol == 4) { // PROFESOR
+        $builder->groupStart()
+            ->where('visibilidad', 'profesores') // Avisos generales para profesores
+        ->groupEnd()
+        ->orGroupStart()
+            ->where('visibilidad', 'solo_creador')
+            ->where('idusuario', $idusuario)
+            ->where('idcolegio', $idcolegio) // Sus propios avisos
+        ->groupEnd()
+        ->orGroupStart()
+            ->where('visibilidad', 'alumnos')
+            ->where('idusuario', $idusuario)
+            ->where('idcolegio', $idcolegio) // Avisos de alumnos creados por él
+        ->groupEnd();
     }
-    
-    
+
+    // 🔹 Filtro por rango de fechas (FullCalendar)
+    if ($start && $end) {
+        $start = date('Y-m-d H:i:s', strtotime($start));
+        $end   = date('Y-m-d H:i:s', strtotime($end));
+
+        $builder->groupStart()
+            ->where('fecha >=', $start)
+            ->where('fecha <=', $end)
+        ->groupEnd();
+    }
+
+    $avisos = $builder->orderBy('fecha', 'ASC')->get()->getResultArray();
+
+    // 🔹 Transformar a formato FullCalendar
+    $eventos = [];
+    foreach ($avisos as $aviso) {
+        $eventos[] = [
+            'id' => $aviso['idaviso'],
+            'title' => $aviso['titulo'],
+            'start' => date('c', strtotime($aviso['fecha'])),
+            'end'   => isset($aviso['fecha_fin']) && $aviso['fecha_fin'] ? date('c', strtotime($aviso['fecha_fin'])) : null,
+            'tipo'  => $aviso['visibilidad'],
+            'descripcion' => $aviso['descripcion'],
+        ];
+    }
+
+    return $this->response->setJSON($eventos);
+}
+
     public function editar($id)
     {
         $aviso = $this->AvisoModel->find($id);
