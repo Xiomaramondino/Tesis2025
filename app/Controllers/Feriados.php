@@ -10,8 +10,20 @@ class Feriados extends Controller
     public function ver()
     {
         $anio = date('Y');
-        $session = session();
-        $idcolegio = $session->get('idcolegio');
+$session = session();
+
+$idcolegio = $session->get('idcolegio');
+$idrol = $session->get('idrol');
+
+// Solo puede acceder el rol 2 (directivo)
+if ($idrol != 2) {
+    return redirect()->to('/login')->with('error', 'No tienes permiso para acceder a esta sección.');
+}
+
+// Verificar que exista colegio
+if (!$idcolegio) {
+    return redirect()->to('/login')->with('error', 'No se pudo determinar el colegio seleccionado.');
+}
 
         // 1️⃣ Consultar API de feriados argentinos
         $feriados = [];

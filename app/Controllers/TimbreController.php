@@ -50,7 +50,7 @@ public function activarTimbreManual()
         }
     }
 
-    return redirect()->back();
+    return redirect()->back()->with('success', 'Timbre activado correctamente.');
 }
 
 }
