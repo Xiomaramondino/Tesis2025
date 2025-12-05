@@ -13,7 +13,21 @@ class Horarios extends Controller
     public function index()
 {
     $session = session();
-    $idcolegio = $session->get('idcolegio'); // Obtenemos el colegio del usuario
+     // Verificar si la sesión está activa
+    if (!$session->has('idusuario')) {
+        return redirect()->to('/login')->with('error', 'Debes iniciar sesión.');
+    }
+
+    // Obtener datos guardados en la sesión
+    $idcolegio = $session->get('idcolegio');
+    $idrol = $session->get('idrol'); // <-- debe estar seteado cuando elige el colegio
+
+    // Verificar si el rol es 2 (directivo)
+    if ($idrol != 2) {
+        return redirect()
+            ->to('/login')
+            ->with('error', 'No tienes permiso para acceder a esta sección.');
+    }
 
     // 1️⃣ Verificar si hay dispositivos asociados al colegio
     $dispositivoModel = new \App\Models\DispositivoModel();
@@ -51,13 +65,20 @@ class Horarios extends Controller
  public function editar($idhorario = null)
 {
     $session = session();
-    $idusuario = $session->get('idusuario');
-    $idcolegio = $session->get('idcolegio');
 
-    // Si no hay sesión iniciada, redirigir al login
-    if (!$idusuario || !$idcolegio) {
-        return redirect()->to(base_url('login'));
-    }
+// Verificar sesión activa
+if (!$session->has('idusuario')) {
+    return redirect()->to('/login')->with('error', 'Debes iniciar sesión.');
+}
+
+$idcolegio = $session->get('idcolegio');
+$idrol = $session->get('idrol');
+
+// Verificar si es directivo (rol 2)
+if ($idrol != 2) {
+    return redirect()->to('/login')->with('error', 'No tienes permisos para editar horarios.');
+}
+
 
     $model = new HorariosModel();
 
@@ -74,7 +95,6 @@ class Horarios extends Controller
     public function actualizar()
     {
         $session = session();
-        $idturno = $session->get('idturno');
         $idcolegio = $session->get('idcolegio'); // Obtenemos el colegio desde la sesión
     
         $model = new HorariosModel();
@@ -127,12 +147,16 @@ class Horarios extends Controller
 public function agregar()
 {
     $session = session();
-    $idusuario = $session->get('idusuario');
-    $idcolegio = $session->get('idcolegio');
 
-    // Si no hay sesión iniciada, redirigir al login
-    if (!$idusuario || !$idcolegio) {
-        return redirect()->to(base_url('login'));
+    if (!$session->has('idusuario')) {
+        return redirect()->to('/login')->with('error', 'Debes iniciar sesión.');
+    }
+
+    $idcolegio = $session->get('idcolegio');
+    $idrol = $session->get('idrol');
+
+    if ($idrol != 2) {
+        return redirect()->to('/login')->with('error', 'No tienes permisos para modificar horarios.');
     }
 
     return view('horarios_add');
@@ -303,12 +327,19 @@ public function agregar()
 public function horariosLector()
 {
     $session = session();
-    $idcolegio = $session->get('idcolegio'); 
+$idcolegio = $session->get('idcolegio');
+$idrol = $session->get('idrol');
 
-    if (!$idcolegio) {
-        session()->setFlashdata('error', 'No se pudo determinar el colegio del alumno.');
-        return redirect()->to('/login');
-    }
+// Verificar si el usuario es lector (rol 3)
+if ($idrol != 3) {
+    return redirect()->to('/login')->with('error', 'No tienes permiso para acceder.');
+}
+
+// Verificar si existe colegio en la sesión
+if (!$idcolegio) {
+    return redirect()->to('/login')->with('error', 'No se pudo determinar el colegio del alumno.');
+}
+
 
     // Traer horarios normales
     $horariosModel = new \App\Models\HorariosModel();
@@ -333,12 +364,19 @@ public function horariosLector()
     public function horariosAdmin() 
     {
         $session = session();
-        $idcolegio = $session->get('idcolegio'); 
-    
-        if (!$idcolegio) {
-            session()->setFlashdata('error', 'No se pudo determinar el colegio del administrador.');
-            return redirect()->to('/login');
-        }
+$idcolegio = $session->get('idcolegio');
+$idrol = $session->get('idrol');
+
+// Verificar si el usuario es administrador (rol 1)
+if ($idrol != 1) {
+    return redirect()->to('/login')->with('error', 'No tienes permiso para acceder.');
+}
+
+// Verificar si existe colegio en la sesión
+if (!$idcolegio) {
+    return redirect()->to('/login')->with('error', 'No se pudo determinar el colegio del administrador.');
+}
+
     
         // Traer horarios
         $model = new \App\Models\HorariosModel();

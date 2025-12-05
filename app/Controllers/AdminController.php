@@ -12,8 +12,9 @@ class AdminController extends Controller
 {
 public function index()
 {
-    if (session()->get('idrol') !== '1') {
-        return redirect()->to('/login');
+     // Verificar si el usuario es admin (rol 1)
+    if (session()->get('idrol') != 1) {
+        return redirect()->to('/login')->with('error', 'No tienes permiso para acceder.');
     }
 
     $idcolegio = session()->get('idcolegio');

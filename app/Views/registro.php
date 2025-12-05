@@ -358,13 +358,24 @@
         return true;
     }
     function validarEmail() {
-        const email = document.querySelector('input[name="email"]').value.trim();
-        if (email === '') {
-            Swal.fire('Error', 'El correo es obligatorio.', 'error');
-            return false;
-        }
-        return true;
+    const email = document.querySelector('input[name="email"]').value.trim();
+
+    // Verificar que no esté vacío
+    if (email === '') {
+        Swal.fire('Error', 'El correo es obligatorio.', 'error');
+        return false;
     }
+
+    // Expresión regular básica para validar email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+        Swal.fire('Error', 'El correo no tiene un formato válido.', 'error');
+        return false;
+    }
+
+    return true; // Si pasó todas las validaciones
+}
+
     function validarPassword() {
         const password = document.querySelector('input[name="password"]').value;
         if (password.length < 6 || !/[A-Z]/.test(password) || !/[!@#$%*]/.test(password)) {

@@ -25,12 +25,18 @@ class DirectivoController extends BaseController
  public function gestionarUsuarios()
 {
     $session = session();
-    $idcolegio = $session->get('idcolegio');
+$idcolegio = $session->get('idcolegio');
+$idrol = $session->get('idrol');
 
-    // Si no hay sesión iniciada, redirigir al login
-    if (!$idcolegio) {
-        return redirect()->to(base_url('login'));
-    }
+// Verificar si es directivo (rol 2)
+if ($idrol != 2) {
+    return redirect()->to('/login')->with('error', 'No tienes permiso para acceder.');
+}
+
+// Verificar si existe colegio en sesión
+if (!$idcolegio) {
+    return redirect()->to('/login')->with('error', 'No se pudo determinar el colegio seleccionado.');
+}
 
     $db = \Config\Database::connect();
 
